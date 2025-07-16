@@ -4,13 +4,13 @@ import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import Section from '@/components/ui/Section';
 import { motion } from 'framer-motion';
-import { 
-  Building2, 
-  Users, 
-  User, 
-  Building, 
-  Clock, 
-  Target, 
+import {
+  Building2,
+  Users,
+  User,
+  Building,
+  Clock,
+  Target,
   Award,
   Briefcase,
   House,
@@ -90,34 +90,19 @@ export default function Home() {
   return (
     <MainLayout>
       {/* Hero Section - Con padding responsivo mejorado */}
-      <div 
+      <div
         className="hero-section flex items-center justify-center relative overflow-hidden"
         style={{ background: 'var(--gradient-primary)' }}
       >
         {/* Imagen de fondo con overlay mejorado */}
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&h=1080&fit=crop&crop=center')",
-            opacity: 0.15
+            backgroundImage: "url('https://www.gestium-sli.com/uploads/2/1/0/8/21081106/background-images/619440374.jpg')",
+            opacity: 0.9
           }}
         />
-        
-        {/* Elementos geométricos animados */}
-        <motion.div 
-          className="absolute top-20 right-20 w-px h-64 opacity-30"
-          style={{ backgroundColor: 'var(--gold)' }}
-          animate={{ 
-            height: [0, 256, 0],
-            opacity: [0, 0.4, 0]
-          }}
-          transition={{ 
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        
+
         <div className="text-center relative z-10 container-fluid">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -125,19 +110,19 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             {/* Badge Animado con nueva paleta */}
-            <motion.div 
+            <motion.div
               className="mb-8"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              
+
             </motion.div>
-            
+
             {/* Título Principal con animación */}
-            <motion.h1 
+            <motion.h1
               className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-none tracking-tight text-shadow-strong"
-              style={{ 
+              style={{
                 fontFamily: "'Playfair Display', serif",
                 color: 'var(--white)'
               }}
@@ -146,7 +131,7 @@ export default function Home() {
               transition={{ delay: 0.4, duration: 0.8 }}
             >
               GESTIUM
-              <motion.span 
+              <motion.span
                 className="block text-4xl md:text-6xl lg:text-7xl font-light mt-2"
                 style={{ color: 'var(--gold)' }}
                 initial={{ opacity: 0, x: -50 }}
@@ -156,20 +141,20 @@ export default function Home() {
                 SLI
               </motion.span>
             </motion.h1>
-            
+
             {/* Línea decorativa animada */}
-            <motion.div 
+            <motion.div
               className="w-32 h-1 mx-auto mb-8"
               style={{ backgroundColor: 'var(--gold)' }}
               initial={{ width: 0 }}
               animate={{ width: 128 }}
               transition={{ delay: 1, duration: 0.8 }}
             />
-            
+
             {/* Subtítulo con animación - HTML corregido */}
-            <motion.div 
+            <motion.div
               className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed"
-              style={{ 
+              style={{
                 color: 'rgba(255, 255, 255, 0.9)',
                 fontFamily: "'Inter', sans-serif"
               }}
@@ -178,12 +163,12 @@ export default function Home() {
               transition={{ delay: 1.2, duration: 0.6 }}
             >
               Soluciones jurídicas{' '}
-              <motion.span 
+              <motion.span
                 className="relative inline-block text-gradient-gold"
                 whileHover={{ scale: 1.05 }}
               >
                 integrales
-                <motion.div 
+                <motion.div
                   className="absolute bottom-0 left-0 h-0.5 rounded"
                   style={{ backgroundColor: 'var(--gold)' }}
                   initial={{ width: 0 }}
@@ -193,46 +178,9 @@ export default function Home() {
               </motion.span>
               {' '}para instituciones financieras, empresas y personas naturales
             </motion.div>
-            
-            {/* Estadísticas animadas con nueva paleta */}
-            <div className="flex flex-wrap justify-center gap-12 mb-12">
-              {[
-                { number: '20+', text: 'Años de Experiencia', icon: TrendingUp },
-                { number: '100%', text: 'Clientes Satisfechos', icon: Users },
-                { number: '100%', text: 'Compromiso', icon: CheckCircle2 }
-              ].map((stat, index) => (
-                <motion.div 
-                  key={index} 
-                  className="text-center group"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.5 + index * 0.2, duration: 0.5 }}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <div className="flex items-center justify-center mb-2">
-                    <stat.icon className="w-6 h-6 mr-2" style={{ color: 'var(--gold)' }} />
-                    <motion.div 
-                      className="text-3xl md:text-4xl font-black"
-                      style={{ color: 'var(--gold)' }}
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 1.5 + index * 0.2, duration: 0.5 }}
-                    >
-                      {stat.number}
-                    </motion.div>
-                  </div>
-                  <div 
-                    className="text-sm font-medium uppercase tracking-wider"
-                    style={{ color: 'var(--white)' }}
-                  >
-                    {stat.text}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            
+
             {/* CTAs con animaciones doradas */}
-            <motion.div 
+            <motion.div
               className="flex flex-col md:flex-row gap-6 justify-center items-center"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -240,7 +188,7 @@ export default function Home() {
             >
               <motion.button
                 className="group px-10 py-4 font-bold uppercase tracking-wider transition-all duration-300 relative overflow-hidden shadow-xl"
-                style={{ 
+                style={{
                   background: 'var(--gradient-gold)',
                   color: 'var(--charcoal)',
                   border: 'none'
@@ -257,14 +205,14 @@ export default function Home() {
                 />
                 <span className="relative z-10">Consulta Gratuita</span>
               </motion.button>
-              
+
               <motion.button
                 className="group px-10 py-4 font-bold uppercase tracking-wider transition-all duration-300 border-2 bg-transparent"
-                style={{ 
+                style={{
                   borderColor: 'var(--white)',
                   color: 'var(--white)'
                 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   backgroundColor: 'rgba(255, 255, 255, 0.1)'
                 }}
@@ -277,25 +225,279 @@ export default function Home() {
         </div>
       </div>
 
+      {/* SECCIÓN DE ESPECIALIZACIÓN PROFESIONAL */}
+      <div
+        className="relative py-20 overflow-hidden"
+        style={{
+          background: 'linear-gradient(135deg, var(--platinum) 0%, #F1F5F9 50%, var(--white) 100%)',
+        }}
+      >
+        {/* Patrón de fondo sutil */}
+        <div
+          className="absolute inset-0 opacity-3"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A961' fill-opacity='0.03'%3E%3Cpath d='M50 50L25 25h50L50 50zM50 50L75 75H25L50 50z'/%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
+
+        <div className="container-fluid relative z-10">
+          {/* Header de la Sección */}
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div
+              className="inline-block mb-4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+            >
+              <span
+                className="px-6 py-2 text-sm font-bold uppercase tracking-[0.15em] border-2 bg-white"
+                style={{
+                  color: 'var(--gold)',
+                  borderColor: 'var(--gold)',
+                  borderRadius: '50px',
+                  boxShadow: '0 4px 15px rgba(201, 169, 97, 0.1)'
+                }}
+              >
+                Áreas de Especialización
+              </span>
+            </motion.div>
+
+            <motion.h2
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight"
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                color: 'var(--charcoal)',
+                lineHeight: 1.1
+              }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              Expertos en
+              <motion.span
+                className="block"
+                style={{ color: 'var(--gold)' }}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8, duration: 0.6 }}
+              >
+                Derecho Integral
+              </motion.span>
+            </motion.h2>
+
+            <motion.p
+              className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
+              style={{ color: 'var(--silver)' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+            >
+              Cobertura completa en las principales ramas del derecho con
+              <span className="font-semibold" style={{ color: 'var(--gold)' }}> experiencia comprobada</span>
+              {' '}y resultados excepcionales
+            </motion.p>
+          </motion.div>
+
+          {/* Grid Premium de Especialidades */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {[
+              {
+                title: 'Cobranza Judicial',
+                description: 'Procesos judiciales especializados para recuperación de cartera',
+                icon: '',
+                stats: '200+ casos',
+                color: 'from-blue-500 to-blue-600'
+              },
+              {
+                title: 'Cobranza Extrajudicial',
+                description: 'Negociación estratégica y mediación para soluciones eficientes',
+                icon: '',
+                stats: '150+ acuerdos',
+                color: 'from-green-500 to-green-600'
+              },
+              {
+                title: 'Cobranza Coactiva',
+                description: 'Ejecución administrativa especializada en entidades públicas',
+                icon: '',
+                stats: '120+ procesos',
+                color: 'from-orange-500 to-orange-600'
+              },
+              {
+                title: 'Derecho Inmobiliario',
+                description: 'Transacciones, registro y asesoría en bienes raíces',
+                icon: '',
+                stats: '180+ transacciones',
+                color: 'from-purple-500 to-purple-600'
+              },
+              {
+                title: 'Derecho Civil',
+                description: 'Asuntos civiles, familiares y representación integral',
+                icon: '',
+                stats: '300+ casos',
+                color: 'from-teal-500 to-teal-600'
+              },
+              {
+                title: 'Derecho Corporativo',
+                description: 'Asesoría empresarial, constituciones y compliance',
+                icon: '',
+                stats: '100+ empresas',
+                color: 'from-indigo-500 to-indigo-600'
+              }
+            ].map((area, index) => (
+              <motion.div
+                key={index}
+                className="group relative"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                whileHover={{ y: -8 }}
+              >
+                {/* Card Principal */}
+                <div
+                  className="relative p-8 bg-white transition-all duration-500 group-hover:shadow-2xl overflow-hidden"
+                  style={{
+                    borderRadius: '20px',
+                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+                    border: '1px solid rgba(201, 169, 97, 0.1)'
+                  }}
+                >
+                  {/* Efecto de brillo superior */}
+                  <motion.div
+                    className="absolute top-0 left-0 w-full h-1 opacity-0 group-hover:opacity-100 transition-all duration-500"
+                    style={{ background: 'var(--gradient-gold)' }}
+                  />
+
+                  {/* Icono grande */}
+                  <motion.div
+                    className="text-4xl mb-4"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {area.icon}
+                  </motion.div>
+
+                  {/* Contenido */}
+                  <h3
+                    className="text-xl md:text-2xl font-bold mb-3 group-hover:text-opacity-100 transition-all duration-300"
+                    style={{
+                      color: 'var(--charcoal)',
+                      fontFamily: "'Playfair Display', serif"
+                    }}
+                  >
+                    {area.title}
+                  </h3>
+
+                  <p
+                    className="text-sm md:text-base mb-4 leading-relaxed"
+                    style={{ color: 'var(--silver)' }}
+                  >
+                    {area.description}
+                  </p>
+
+                  {/* Estadística */}
+                  <div className="flex items-center justify-between">
+                    <span
+                      className="text-sm font-bold uppercase tracking-wider"
+                      style={{ color: 'var(--gold)' }}
+                    >
+                      {area.stats}
+                    </span>
+
+                    <motion.div
+                      className="w-8 h-8 rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-300"
+                      style={{ backgroundColor: 'rgba(201, 169, 97, 0.1)' }}
+                      whileHover={{ rotate: 90 }}
+                    >
+                      <ArrowRight size={16} style={{ color: 'var(--gold)' }} />
+                    </motion.div>
+                  </div>
+
+                  {/* Efecto de hover lateral */}
+                  <motion.div
+                    className="absolute left-0 top-0 w-1 h-0 group-hover:h-full transition-all duration-500"
+                    style={{ backgroundColor: 'var(--gold)' }}
+                  />
+                </div>
+
+                {/* Sombra flotante */}
+                <motion.div
+                  className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-30 transition-all duration-500"
+                  style={{
+                    background: 'radial-gradient(ellipse at center, rgba(201, 169, 97, 0.15) 0%, transparent 70%)',
+                    filter: 'blur(15px)',
+                    transform: 'translateY(8px) scale(0.95)'
+                  }}
+                />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Call to Action */}
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8, duration: 0.6 }}
+          >
+            <motion.button
+              className="group px-10 py-4 font-bold uppercase tracking-wider transition-all duration-300 relative overflow-hidden"
+              style={{
+                background: 'var(--gradient-gold)',
+                color: 'var(--charcoal)',
+                border: 'none',
+                borderRadius: '50px',
+                boxShadow: '0 8px 25px rgba(201, 169, 97, 0.3)'
+              }}
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <motion.div
+                className="absolute inset-0"
+                style={{ background: 'linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent)' }}
+                initial={{ x: '-100%' }}
+                whileHover={{ x: '100%' }}
+                transition={{ duration: 0.6 }}
+              />
+              <span className="relative z-10 flex items-center gap-2">
+                Ver Todas Nuestras Áreas
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </span>
+            </motion.button>
+          </motion.div>
+        </div>
+      </div>
+
       {/* Services Section - Con paleta dorada */}
       <Section background="white" padding="lg">
-        <motion.div 
+        <motion.div
           className="text-center mb-20"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 
+          <h2
             className="text-4xl md:text-5xl font-bold mb-4 tracking-tight"
-            style={{ 
+            style={{
               fontFamily: "'Playfair Display', serif",
               color: 'var(--charcoal)'
             }}
           >
             Nuestros Servicios
           </h2>
-          <motion.div 
+          <motion.div
             className="w-24 h-1 mx-auto mb-6"
             style={{ backgroundColor: 'var(--gold)' }}
             initial={{ width: 0 }}
@@ -303,7 +505,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
           />
-          <p 
+          <p
             className="text-xl max-w-3xl mx-auto"
             style={{ color: 'var(--silver)' }}
           >
@@ -315,7 +517,7 @@ export default function Home() {
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <motion.div 
+              <motion.div
                 key={index}
                 className="group bg-white transition-all duration-500 hover:scale-105 relative overflow-hidden hover-lift"
                 style={{ boxShadow: 'var(--shadow-minimal)' }}
@@ -332,24 +534,24 @@ export default function Home() {
                     alt={service.title}
                     className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
                   />
-                  <div 
+                  <div
                     className="absolute inset-0"
-                    style={{ 
+                    style={{
                       background: 'linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(0, 0, 0, 0.3) 100%)'
                     }}
                   />
-                  
+
                   {/* Número decorativo */}
-                  <div 
+                  <div
                     className="absolute top-4 right-4 text-4xl font-black opacity-80"
                     style={{ color: 'var(--white)' }}
                   >
                     {service.number}
                   </div>
-                  
+
                   {/* Icono con nueva paleta */}
                   <div className="absolute bottom-4 left-4">
-                    <motion.div 
+                    <motion.div
                       className="w-12 h-12 rounded-lg flex items-center justify-center shadow-lg"
                       style={{ background: 'var(--gradient-gold)' }}
                       whileHover={{ rotate: 360 }}
@@ -359,15 +561,15 @@ export default function Home() {
                     </motion.div>
                   </div>
                 </div>
-                
+
                 <div className="p-6">
-                  <h3 
+                  <h3
                     className="text-xl font-bold mb-3"
                     style={{ color: 'var(--charcoal)' }}
                   >
                     {service.title}
                   </h3>
-                  <p 
+                  <p
                     className="mb-4 text-sm leading-relaxed"
                     style={{ color: 'var(--silver)' }}
                   >
@@ -389,36 +591,36 @@ export default function Home() {
       </Section>
 
       {/* Values Section - Iconos corregidos */}
-      <div 
+      <div
         className="px-6 py-20 relative overflow-hidden"
         style={{ backgroundColor: 'var(--platinum)' }}
       >
         {/* Imagen de fondo sutil */}
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center opacity-5"
           style={{
             backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&h=1080&fit=crop&crop=center')"
           }}
         />
-        
+
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div 
+          <motion.div
             className="text-center mb-20"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 
+            <h2
               className="text-4xl md:text-5xl font-bold mb-4 tracking-tight"
-              style={{ 
+              style={{
                 fontFamily: "'Playfair Display', serif",
                 color: 'var(--charcoal)'
               }}
             >
               Nuestros Valores
             </h2>
-            <motion.div 
+            <motion.div
               className="w-24 h-1 mx-auto mb-6"
               style={{ backgroundColor: 'var(--gold)' }}
               initial={{ width: 0 }}
@@ -426,7 +628,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.6 }}
             />
-            <p 
+            <p
               className="text-xl max-w-3xl mx-auto"
               style={{ color: 'var(--silver)' }}
             >
@@ -438,7 +640,7 @@ export default function Home() {
             {values.map((value, index) => {
               const IconComponent = value.icon;
               return (
-                <motion.div 
+                <motion.div
                   key={index}
                   className="text-center p-8 bg-white transition-all duration-500 hover:scale-105 group relative overflow-hidden hover-lift"
                   style={{ boxShadow: 'var(--shadow-minimal)' }}
@@ -449,29 +651,29 @@ export default function Home() {
                   whileHover={{ y: -10 }}
                 >
                   {/* Métrica destacada con nueva paleta */}
-                  <motion.div 
+                  <motion.div
                     className="absolute top-4 right-4 text-right"
                     initial={{ opacity: 0, scale: 0.5 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.2, duration: 0.5 }}
                   >
-                    <div 
+                    <div
                       className="text-2xl font-black"
                       style={{ color: 'var(--gold)' }}
                     >
                       {value.metric}
                     </div>
-                    <div 
+                    <div
                       className="text-xs uppercase tracking-wider"
                       style={{ color: 'var(--silver)' }}
                     >
                       {value.metricText}
                     </div>
                   </motion.div>
-                  
+
                   {/* Icono con nueva paleta - CORREGIDO */}
-                  <motion.div 
+                  <motion.div
                     className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300"
                     style={{ backgroundColor: 'rgba(201, 169, 97, 0.1)' }}
                     whileHover={{ rotate: 360 }}
@@ -479,17 +681,17 @@ export default function Home() {
                   >
                     <IconComponent className="w-8 h-8" style={{ color: 'var(--gold)' }} />
                   </motion.div>
-                  
-                  <h3 
+
+                  <h3
                     className="text-2xl font-bold mb-4"
-                    style={{ 
+                    style={{
                       color: 'var(--charcoal)',
                       fontFamily: "'Playfair Display', serif"
                     }}
                   >
                     {value.title}
                   </h3>
-                  <p 
+                  <p
                     className="leading-relaxed"
                     style={{ color: 'var(--silver)' }}
                   >
@@ -504,23 +706,23 @@ export default function Home() {
 
       {/* Practice Areas - Con nueva paleta */}
       <Section background="white" padding="lg">
-        <motion.div 
+        <motion.div
           className="text-center mb-20"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 
+          <h2
             className="text-4xl md:text-5xl font-bold mb-4 tracking-tight"
-            style={{ 
+            style={{
               fontFamily: "'Playfair Display', serif",
               color: 'var(--charcoal)'
             }}
           >
             Áreas de Práctica
           </h2>
-          <motion.div 
+          <motion.div
             className="w-24 h-1 mx-auto mb-6"
             style={{ backgroundColor: 'var(--gold)' }}
             initial={{ width: 0 }}
@@ -528,7 +730,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
           />
-          <p 
+          <p
             className="text-xl max-w-3xl mx-auto"
             style={{ color: 'var(--silver)' }}
           >
@@ -540,10 +742,10 @@ export default function Home() {
           {practiceAreas.map((area, index) => {
             const IconComponent = area.icon;
             return (
-              <motion.div 
+              <motion.div
                 key={index}
                 className="group p-6 bg-white border-l-4 transition-all duration-500 hover:scale-105 relative overflow-hidden hover-lift"
-                style={{ 
+                style={{
                   borderLeftColor: 'var(--gold)',
                   boxShadow: 'var(--shadow-minimal)'
                 }}
@@ -559,19 +761,19 @@ export default function Home() {
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
                     >
-                      <IconComponent 
-                        className="w-8 h-8 mt-1 flex-shrink-0" 
-                        style={{ color: 'var(--gold)' }} 
+                      <IconComponent
+                        className="w-8 h-8 mt-1 flex-shrink-0"
+                        style={{ color: 'var(--gold)' }}
                       />
                     </motion.div>
                     <div className="flex-1">
-                      <h4 
+                      <h4
                         className="font-bold text-lg mb-2"
                         style={{ color: 'var(--charcoal)' }}
                       >
                         {area.name}
                       </h4>
-                      <p 
+                      <p
                         className="text-sm mb-3"
                         style={{ color: 'var(--silver)' }}
                       >
@@ -587,10 +789,10 @@ export default function Home() {
                       </motion.button>
                     </div>
                   </div>
-                  
+
                   {/* Número de casos */}
                   <div className="text-right ml-4">
-                    <motion.div 
+                    <motion.div
                       className="text-lg font-black"
                       style={{ color: 'var(--gold)' }}
                       initial={{ scale: 0 }}
@@ -600,7 +802,7 @@ export default function Home() {
                     >
                       {area.cases}
                     </motion.div>
-                    <div 
+                    <div
                       className="text-xs uppercase tracking-wider"
                       style={{ color: 'var(--silver)' }}
                     >
@@ -613,7 +815,7 @@ export default function Home() {
           })}
         </div>
 
-        <motion.div 
+        <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -622,12 +824,12 @@ export default function Home() {
         >
           <motion.button
             className="px-12 py-4 font-bold uppercase tracking-wider transition-all duration-300 border-2 relative overflow-hidden group"
-            style={{ 
+            style={{
               borderColor: 'var(--charcoal)',
               color: 'var(--charcoal)',
               backgroundColor: 'transparent'
             }}
-            whileHover={{ 
+            whileHover={{
               scale: 1.05,
               backgroundColor: 'var(--charcoal)',
               color: 'var(--white)'
@@ -640,18 +842,18 @@ export default function Home() {
       </Section>
 
       {/* CTA Section - Con padding responsivo */}
-      <div 
+      <div
         className="section-padding-y relative overflow-hidden"
-        style={{ 
+        style={{
           background: 'var(--gradient-primary)',
           backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&h=1080&fit=crop&crop=center')",
           backgroundBlendMode: 'overlay'
         }}
       >
         <div className="container-fluid text-center relative z-10">
-          <motion.h2 
+          <motion.h2
             className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-shadow-strong"
-            style={{ 
+            style={{
               fontFamily: "'Playfair Display', serif",
               color: 'var(--white)'
             }}
@@ -662,8 +864,8 @@ export default function Home() {
           >
             ¿Necesita Asistencia Legal?
           </motion.h2>
-          
-          <motion.div 
+
+          <motion.div
             className="w-32 h-1 mx-auto mb-8"
             style={{ backgroundColor: 'var(--gold)' }}
             initial={{ width: 0 }}
@@ -671,8 +873,8 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
           />
-          
-          <motion.p 
+
+          <motion.p
             className="text-xl mb-12 leading-relaxed"
             style={{ color: 'rgba(255, 255, 255, 0.9)' }}
             initial={{ opacity: 0, y: 30 }}
@@ -681,7 +883,7 @@ export default function Home() {
             transition={{ delay: 0.6, duration: 0.6 }}
           >
             Contáctenos para una{' '}
-            <motion.span 
+            <motion.span
               style={{ color: 'var(--gold)' }}
               whileHover={{ scale: 1.1 }}
             >
@@ -689,8 +891,8 @@ export default function Home() {
             </motion.span>{' '}
             y personalizada
           </motion.p>
-          
-          <motion.div 
+
+          <motion.div
             className="flex flex-col md:flex-row gap-6 justify-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -699,7 +901,7 @@ export default function Home() {
           >
             <motion.button
               className="group px-12 py-4 font-bold uppercase tracking-wider transition-all duration-300 relative overflow-hidden shadow-xl"
-              style={{ 
+              style={{
                 background: 'var(--gradient-gold)',
                 color: 'var(--charcoal)',
                 border: 'none'
@@ -719,14 +921,14 @@ export default function Home() {
                 <ArrowRight className="w-5 h-5" />
               </span>
             </motion.button>
-            
+
             <motion.button
               className="group px-12 py-4 font-bold uppercase tracking-wider border-2 transition-all duration-300 bg-transparent"
-              style={{ 
+              style={{
                 borderColor: 'var(--white)',
                 color: 'var(--white)'
               }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 backgroundColor: 'rgba(255, 255, 255, 0.1)'
               }}

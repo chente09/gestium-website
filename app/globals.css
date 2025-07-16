@@ -7,8 +7,8 @@
   --charcoal: #1a1a1a;         /* Carbón elegante */
   --black: #000000;            /* Negro puro */
   --white: #FFFFFF;            /* Blanco puro */
-  --gold: #656e7e;             /* Oro elegante y sutil */
-  --gold-dark: #4b545f;        /* Oro más oscuro */
+  --gold: #C9A961;             /* Oro elegante y sutil */
+  --gold-dark: #B8975A;        /* Oro más oscuro */
   --navy: #0F172A;             /* Azul marino profundo */
   --steel: #334155;            /* Gris acero */
   --platinum: #F8FAFC;         /* Platino claro */
@@ -74,31 +74,10 @@ body {
   padding-top: 5rem; /* 80px del header */
 }
 
-/* Hero section con padding responsivo corregido */
+/* Hero section con padding responsivo */
 .hero-section {
   min-height: 100vh;
-  padding-top: clamp(4rem, 15vh, 10rem); /* Aumentado para mejor separación */
   padding-bottom: clamp(2rem, 5vh, 4rem);
-}
-
-/* Alternativa más segura para el hero */
-.hero-safe {
-  min-height: 100vh;
-  padding-top: max(6rem, 15vh); /* Toma el valor mayor siempre */
-  padding-bottom: clamp(2rem, 5vh, 4rem);
-}
-
-/* Solución específica para header fixed - actualizada */
-.main-with-header {
-  margin-top: 4.5rem; /* 72px del header más grande */
-}
-
-.hero-content {
-  min-height: calc(100vh - 4.5rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 0;
 }
 
 /* Secciones que necesitan espacio del header */

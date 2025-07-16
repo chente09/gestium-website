@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { ScaleIcon, MapPinIcon, PhoneIcon, EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
+import {  MapPinIcon, PhoneIcon, EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline';
 
 const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear();
@@ -24,65 +25,45 @@ const Footer: React.FC = () => {
     ];
 
     return (
-        <footer 
+        <footer
             className="relative"
             style={{ background: 'var(--gradient-primary)' }}
         >
             {/* Línea decorativa superior */}
-            <div 
+            <div
                 className="h-1 w-full"
                 style={{ backgroundColor: 'var(--red)' }}
             />
-            
+
             <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
                     {/* Logo and Description */}
                     <div className="col-span-1 lg:col-span-1">
-                        <Link href="/" className="flex items-center space-x-3 mb-6 group">
-                            <div 
-                                className="p-2 transition-all duration-300 group-hover:scale-110"
-                                style={{ backgroundColor: 'var(--red)' }}
-                            >
-                                <ScaleIcon 
-                                    className="h-6 w-6" 
-                                    style={{ color: 'var(--white)' }}
+                        <Link href="/" className="inline-block group">
+                            {/* Contenedor con tamaño definido y posición relativa */}
+                            <div className="relative h-[180px] w-48 transition-all duration-300 group-hover:scale-105"> {/* <-- AJUSTA EL TAMAÑO DEL LOGO AQUÍ */}
+                                <Image
+                                    src="/images/image.png"
+                                    alt="Gestium SLI"
+                                    fill
+                                    className="object-contain" // object-contain asegura que no se deforme
+                                    sizes="192px" // Esto debe coincidir con el ancho (w-48 = 12rem = 192px)
+                                    priority
                                 />
                             </div>
-                            <div className="flex flex-col">
-                                <span 
-                                    className="text-2xl font-black tracking-tight"
-                                    style={{ 
-                                        fontFamily: 'var(--font-display)',
-                                        color: 'var(--white)'
-                                    }}
-                                >
-                                    GESTIUM
-                                </span>
-                                <span 
-                                    className="text-sm font-medium tracking-widest -mt-1"
-                                    style={{ color: 'var(--red)' }}
-                                >
-                                    SLI
-                                </span>
-                            </div>
                         </Link>
-                        
-                        <p 
-                            className="text-sm leading-relaxed mb-8"
-                            style={{ color: 'rgba(255, 255, 255, 0.8)' }}
-                        >
-                            Estudio jurídico orientado a brindar asistencia legal y soluciones eficientes
-                            con plena puntualidad y dedicación.
+
+                        <p className="mt-4 ">
                         </p>
 
                         {/* Contact Info Minimalista */}
                         <div className="space-y-4">
                             <div className="flex items-center space-x-3 group">
-                                <MapPinIcon 
-                                    className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110" 
+                                <MapPinIcon
+                                    className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
                                     style={{ color: 'var(--red)' }}
                                 />
-                                <span 
+                                <span
                                     className="text-sm"
                                     style={{ color: 'rgba(255, 255, 255, 0.9)' }}
                                 >
@@ -90,11 +71,11 @@ const Footer: React.FC = () => {
                                 </span>
                             </div>
                             <div className="flex items-center space-x-3 group">
-                                <PhoneIcon 
-                                    className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110" 
+                                <PhoneIcon
+                                    className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
                                     style={{ color: 'var(--red)' }}
                                 />
-                                <span 
+                                <span
                                     className="text-sm"
                                     style={{ color: 'rgba(255, 255, 255, 0.9)' }}
                                 >
@@ -102,11 +83,11 @@ const Footer: React.FC = () => {
                                 </span>
                             </div>
                             <div className="flex items-center space-x-3 group">
-                                <EnvelopeIcon 
-                                    className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110" 
+                                <EnvelopeIcon
+                                    className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
                                     style={{ color: 'var(--red)' }}
                                 />
-                                <span 
+                                <span
                                     className="text-sm"
                                     style={{ color: 'rgba(255, 255, 255, 0.9)' }}
                                 >
@@ -118,7 +99,7 @@ const Footer: React.FC = () => {
 
                     {/* Practice Areas */}
                     <div>
-                        <h3 
+                        <h3
                             className="text-lg font-bold mb-6 uppercase tracking-wider"
                             style={{ color: 'var(--white)' }}
                         >
@@ -143,7 +124,7 @@ const Footer: React.FC = () => {
 
                     {/* Quick Links */}
                     <div>
-                        <h3 
+                        <h3
                             className="text-lg font-bold mb-6 uppercase tracking-wider"
                             style={{ color: 'var(--white)' }}
                         >
@@ -168,13 +149,13 @@ const Footer: React.FC = () => {
 
                     {/* CTA Section */}
                     <div>
-                        <h3 
+                        <h3
                             className="text-lg font-bold mb-6 uppercase tracking-wider"
                             style={{ color: 'var(--white)' }}
                         >
                             Asistencia Legal
                         </h3>
-                        <p 
+                        <p
                             className="text-sm mb-6"
                             style={{ color: 'rgba(255, 255, 255, 0.8)' }}
                         >
@@ -183,7 +164,7 @@ const Footer: React.FC = () => {
                         <Link
                             href="/contacto"
                             className="inline-block px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 mb-8"
-                            style={{ 
+                            style={{
                                 backgroundColor: 'var(--red)',
                                 color: 'var(--white)'
                             }}
@@ -194,18 +175,18 @@ const Footer: React.FC = () => {
                         {/* Business Hours */}
                         <div>
                             <div className="flex items-center space-x-2 mb-4">
-                                <ClockIcon 
-                                    className="h-5 w-5" 
+                                <ClockIcon
+                                    className="h-5 w-5"
                                     style={{ color: 'var(--red)' }}
                                 />
-                                <h4 
+                                <h4
                                     className="font-bold text-sm uppercase tracking-wider"
                                     style={{ color: 'var(--white)' }}
                                 >
                                     Horarios
                                 </h4>
                             </div>
-                            <div 
+                            <div
                                 className="text-sm space-y-2"
                                 style={{ color: 'rgba(255, 255, 255, 0.8)' }}
                             >
@@ -219,7 +200,7 @@ const Footer: React.FC = () => {
                                 </div>
                                 <div className="flex justify-between">
                                     <span>Domingos:</span>
-                                    <span 
+                                    <span
                                         className="font-medium"
                                         style={{ color: 'var(--red)' }}
                                     >
@@ -232,27 +213,27 @@ const Footer: React.FC = () => {
                 </div>
 
                 {/* Bottom Bar Minimalista */}
-                <div 
+                <div
                     className="border-t pt-8 mt-16"
                     style={{ borderTopColor: 'rgba(255, 255, 255, 0.1)' }}
                 >
                     <div className="flex flex-col lg:flex-row justify-between items-center">
-                        <p 
+                        <p
                             className="text-sm"
                             style={{ color: 'rgba(255, 255, 255, 0.6)' }}
                         >
                             © {currentYear} Gestium SLI. Todos los derechos reservados.
                         </p>
                         <div className="flex space-x-8 mt-4 lg:mt-0">
-                            <Link 
-                                href="/politica-privacidad" 
+                            <Link
+                                href="/politica-privacidad"
                                 className="text-sm transition-all duration-300 hover:scale-105"
                                 style={{ color: 'rgba(255, 255, 255, 0.6)' }}
                             >
                                 Política de Privacidad
                             </Link>
-                            <Link 
-                                href="/terminos-condiciones" 
+                            <Link
+                                href="/terminos-condiciones"
                                 className="text-sm transition-all duration-300 hover:scale-105"
                                 style={{ color: 'rgba(255, 255, 255, 0.6)' }}
                             >
