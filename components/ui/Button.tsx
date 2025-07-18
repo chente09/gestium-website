@@ -7,6 +7,7 @@ interface ButtonProps {
     children: React.ReactNode;
     variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
     size?: 'sm' | 'md' | 'lg';
+    cursor?: 'pointer'; // ✨ NUEVO: Propiedad para cursor
     href?: string;
     onClick?: () => void;
     className?: string;
@@ -33,13 +34,15 @@ const Button: React.FC<ButtonProps> = ({
     fullWidth = false,
 }) => {
     // Base styles usando las variables CSS de Gestium
-    const baseStyles = 'inline-flex items-center justify-center font-bold uppercase tracking-wider transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 relative overflow-hidden';
+    const baseStyles = 'inline-flex items-center justify-center font-bold uppercase tracking-wider transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 relative overflow-hidden cursor-pointer';
 
     // ✨ Condicional para bordes afilados
     const borderRadius = sharp ? '' : 'rounded-md';
     
     // ✨ Ancho completo opcional
     const width = fullWidth ? 'w-full' : '';
+
+    const cursorStyle = disabled ? 'cursor-not-allowed' : 'cursor-pointer';
 
     // Variant styles con paleta Gestium
     const variantStyles = {
@@ -82,7 +85,7 @@ const Button: React.FC<ButtonProps> = ({
         }
     };
 
-    const finalClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabledStyles} ${width} ${className}`.trim();
+    const finalClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${disabledStyles} ${width} ${cursorStyle} ${className}`.trim();
 
     // ✨ Contenido del botón con flecha opcional
     const buttonContent = (
@@ -193,7 +196,7 @@ export const SectionButton: React.FC<Omit<ButtonProps, 'variant' | 'size' | 'sha
             transition={{ delay: 0.6, duration: 0.5 }}
         >
             <motion.button
-                className="group px-8 py-3 text-sm font-medium uppercase tracking-wider transition-all duration-300 border"
+                className="group px-8 py-3 text-sm font-medium uppercase tracking-wider transition-all duration-300 border cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 relative overflow-hidden"
                 style={{
                     borderColor: 'var(--red-gestium)',
                     color: 'var(--red-gestium)',

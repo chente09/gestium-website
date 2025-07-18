@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation'; 
 import React from 'react';
 import Image from 'next/image';
 import MainLayout from '@/components/layout/MainLayout';
@@ -17,6 +18,8 @@ import {
 } from '@heroicons/react/24/outline';
 
 export default function NosotrosPage() {
+    const router = useRouter();
+
     const timeline = [
         {
             year: '2005',
@@ -107,7 +110,7 @@ export default function NosotrosPage() {
                         >
                             Especialistas en{' '}
                             <motion.span
-                                style={{ color: 'var(--red-gestium)' }}
+                                style={{ color: 'var(--red-gestium)', textShadow: '0 0 9px gray'  }}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.5, duration: 0.6 }}
@@ -408,10 +411,12 @@ export default function NosotrosPage() {
                             style={{
                                 background: 'var(--gradient-red)',
                                 color: 'var(--white)',
-                                border: 'none'
+                                border: 'none',
+                                cursor: 'pointer'
                             }}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
+                            onClick={() => router.push('/nosotros/equipo')}
                         >
                             <span className="relative z-10">
                                 Ver Nuestro Equipo
@@ -422,13 +427,15 @@ export default function NosotrosPage() {
                             className="px-12 py-4 font-bold uppercase tracking-wider border-2 transition-all duration-300 bg-transparent"
                             style={{
                                 borderColor: 'var(--white)',
-                                color: 'var(--white)'
+                                color: 'var(--white)',
+                                cursor: 'pointer'
                             }}
                             whileHover={{
                                 scale: 1.05,
                                 backgroundColor: 'rgba(255, 255, 255, 0.1)'
                             }}
                             whileTap={{ scale: 0.98 }}
+                            onClick={() => router.push('/contacto')}
                         >
                             Contactar
                         </motion.button>

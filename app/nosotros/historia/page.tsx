@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation'; 
 import React from 'react';
 import Image from 'next/image';
 import MainLayout from '@/components/layout/MainLayout';
@@ -92,9 +93,11 @@ const achievements = [
 ];
 
 export default function NuestroHistoriaPage() {
+    const router = useRouter();
+
     return (
         <MainLayout>
-            {/* Hero Section */}
+            {/* Hero Section - Responsivo corregido */}
             <div
                 className="relative py-32 overflow-hidden"
                 style={{
@@ -122,7 +125,7 @@ export default function NuestroHistoriaPage() {
                         >
                             Nuestra{' '}
                             <motion.span
-                                style={{ color: 'var(--red-gestium)' }}
+                                style={{ color: 'var(--red-gestium)', textShadow: '0 0 9px gray' }}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.5, duration: 0.6 }}
@@ -153,8 +156,8 @@ export default function NuestroHistoriaPage() {
                 </div>
             </div>
 
-            {/* Etapas de Desarrollo */}
-            <Section className="py-20 bg-slate-50">
+            {/* Etapas de Desarrollo - Timeline responsivo corregido */}
+            <Section className="py-16 sm:py-20 bg-slate-50">
                 <div className="max-w-7xl mx-auto px-4">
                     <SectionHeader
                         title="Etapas de Desarrollo"
@@ -163,7 +166,7 @@ export default function NuestroHistoriaPage() {
                         centered={true}
                     />
 
-                    <div className="mt-16 space-y-16">
+                    <div className="mt-12 sm:mt-16 space-y-12 sm:space-y-16">
                         {stageData.map((stage, index) => {
                             const IconComponent = stage.icon;
                             const isEven = index % 2 === 0;
@@ -175,79 +178,87 @@ export default function NuestroHistoriaPage() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.8, delay: index * 0.2 }}
                                     viewport={{ once: true, margin: "-100px" }}
-                                    className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}
+                                    className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 sm:gap-12`}
                                 >
-                                    {/* Imagen Real */}
-                                    <div className="lg:w-1/2">
+                                    {/* Imagen Real - Responsivo corregido */}
+                                    <div className="w-full lg:w-1/2">
                                         <motion.div
-                                            className="relative h-96 rounded-none overflow-hidden group"
+                                            className="relative h-64 sm:h-80 md:h-96 rounded-none overflow-hidden group"
                                             whileHover={{ scale: 1.02 }}
                                             transition={{ duration: 0.3 }}
                                         >
                                             <Image
                                                 src={
-                                                    stage.id === 'fundacion' ? '/images/ofi/Ofi3.jpg' :
-                                                        stage.id === 'consolidacion' ? '/images/equipo/DAVID.v2.JPG' :
-                                                            '/images/ofi/Ofi.JPG'
+                                                    stage.id === 'fundacion' ? '/images/ofi/inicios.jpg' :
+                                                        stage.id === 'consolidacion' ? '/images/ofi/david-bn.jpg' :
+                                                            '/images/logo.sa.png'
                                                 }
                                                 alt={stage.imageAlt}
                                                 fill
                                                 className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                                sizes="(max-width: 1024px) 100vw, 50vw"
                                             />
-                                            <div className={`absolute inset-0   opacity-60 group-hover:opacity-40 transition-all duration-300`}></div>
+                                            <div className="absolute inset-0  group-hover:opacity-40 transition-all duration-300" ></div>
 
                                             {/* Overlay content para logo en fundación */}
                                             {stage.id === 'fundacion' && (
-                                                <div className="absolute inset-0 bg-white/90 flex items-center justify-center">
-                                                    <div className="text-center">
-                                                        <Image
-                                                            src="/images/image.png"
-                                                            alt="Logo GESTIUM Fundación"
-                                                            width={200}
-                                                            height={200}
-                                                            className="mx-auto opacity-80"
-                                                        />
-                                                        <p className="mt-4 text-slate-600 font-medium">Fundación 2005</p>
-                                                    </div>
+                                                <div className="absolute inset-0 flex items-center justify-center">
+
                                                 </div>
                                             )}
                                         </motion.div>
                                     </div>
 
-                                    {/* Contenido */}
-                                    <div className="lg:w-1/2 space-y-6">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-12 h-12 flex items-center justify-center">
-                                                <IconComponent className="w-6 h-6 text-white" />
+                                    {/* Contenido - Responsivo corregido */}
+                                    <div className="w-full lg:w-1/2 space-y-4 sm:space-y-6">
+                                        <div className="flex items-start sm:items-center gap-3 flex-col sm:flex-row">
+                                            <div
+                                                className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full flex-shrink-0"
+                                                style={{ backgroundColor: 'var(--red-gestium)' }}
+                                            >
+                                                <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                             </div>
-                                            <div>
-                                                <p className="text-sm font-medium text-red-600 uppercase tracking-wider">
+                                            <div className="flex-1">
+                                                <p className="text-xs sm:text-sm font-medium uppercase tracking-wider mb-1"
+                                                    style={{ color: 'var(--red-gestium)' }}>
                                                     {stage.period}
                                                 </p>
-                                                <h3 className="text-3xl font-playfair font-bold text-slate-900">
+                                                <h3 className="text-2xl sm:text-3xl font-bold mb-1"
+                                                    style={{
+                                                        fontFamily: "'Playfair Display', serif",
+                                                        color: 'var(--charcoal)'
+                                                    }}>
                                                     {stage.title}
                                                 </h3>
-                                                <p className="text-lg text-slate-600 font-medium">
+                                                <p className="text-base sm:text-lg font-medium"
+                                                    style={{ color: 'var(--silver)' }}>
                                                     {stage.subtitle}
                                                 </p>
                                             </div>
                                         </div>
 
-                                        <p className="text-lg text-slate-700 leading-relaxed">
+                                        <p className="text-base sm:text-lg leading-relaxed"
+                                            style={{ color: 'var(--steel)' }}>
                                             {stage.description}
                                         </p>
 
-                                        <div className="space-y-3">
+                                        <div className="space-y-2 sm:space-y-3">
                                             {stage.highlights.map((highlight, highlightIndex) => (
                                                 <motion.div
                                                     key={highlightIndex}
                                                     initial={{ opacity: 0, x: -20 }}
                                                     whileInView={{ opacity: 1, x: 0 }}
                                                     transition={{ delay: 0.1 * highlightIndex }}
-                                                    className="flex items-center gap-3"
+                                                    className="flex items-start gap-2 sm:gap-3"
                                                 >
-                                                    <ChevronRight className="w-5 h-5 text-red-600 flex-shrink-0" />
-                                                    <span className="text-slate-700">{highlight}</span>
+                                                    <ChevronRight
+                                                        className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5"
+                                                        style={{ color: 'var(--red-gestium)' }}
+                                                    />
+                                                    <span className="text-sm sm:text-base"
+                                                        style={{ color: 'var(--steel)' }}>
+                                                        {highlight}
+                                                    </span>
                                                 </motion.div>
                                             ))}
                                         </div>
@@ -259,8 +270,8 @@ export default function NuestroHistoriaPage() {
                 </div>
             </Section>
 
-            {/* Logros y Reconocimientos */}
-            <Section className="py-20 bg-white">
+            {/* Logros y Reconocimientos - Grid responsivo corregido */}
+            <Section className="py-16 sm:py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-4">
                     <SectionHeader
                         title="Logros que nos Definen"
@@ -269,7 +280,7 @@ export default function NuestroHistoriaPage() {
                         centered={true}
                     />
 
-                    <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                         {achievements.map((achievement, index) => {
                             const IconComponent = achievement.icon;
 
@@ -282,13 +293,21 @@ export default function NuestroHistoriaPage() {
                                     viewport={{ once: true }}
                                     className="text-center group"
                                 >
-                                    <div className="w-16 h-16 mx-auto mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                        <IconComponent className="w-8 h-8 text-white" />
+                                    <div
+                                        className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto mb-4 sm:mb-6 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 rounded-full"
+                                        style={{ backgroundColor: 'var(--red-gestium)' }}
+                                    >
+                                        <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                                     </div>
-                                    <h4 className="text-xl font-playfair font-bold text-slate-900 mb-3">
+                                    <h4 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3"
+                                        style={{
+                                            fontFamily: "'Playfair Display', serif",
+                                            color: 'var(--charcoal)'
+                                        }}>
                                         {achievement.title}
                                     </h4>
-                                    <p className="text-slate-600 leading-relaxed">
+                                    <p className="leading-relaxed text-sm sm:text-base"
+                                        style={{ color: 'var(--silver)' }}>
                                         {achievement.description}
                                     </p>
                                 </motion.div>
@@ -298,18 +317,19 @@ export default function NuestroHistoriaPage() {
                 </div>
             </Section>
 
-            {/* Presente y Futuro */}
+            {/* Presente y Futuro - CTA responsivo corregido */}
             <div
-                className="py-20 relative overflow-hidden"
+                className="py-16 sm:py-20 relative overflow-hidden"
                 style={{
                     background: 'var(--gradient-primary)',
                     backgroundImage: "url('/images/ofi/justicia.jpg')",
-                    backgroundBlendMode: 'overlay'
                 }}
             >
-                <div className="container-fluid text-center relative z-10">
+                <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }} />
+
+                <div className="container-fluid text-center relative z-10 px-4">
                     <motion.h2
-                        className="text-4xl md:text-5xl font-bold mb-6 tracking-tight"
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 tracking-tight"
                         style={{
                             fontFamily: "'Playfair Display', serif",
                             color: 'var(--white)'
@@ -323,16 +343,16 @@ export default function NuestroHistoriaPage() {
                     </motion.h2>
 
                     <motion.div
-                        className="w-32 h-1 mx-auto mb-8"
+                        className="w-20 sm:w-24 md:w-32 h-1 mx-auto mb-6 sm:mb-8"
                         style={{ backgroundColor: 'var(--red-gestium)' }}
                         initial={{ width: 0 }}
-                        whileInView={{ width: 128 }}
+                        whileInView={{ width: '8rem' }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3, duration: 0.6 }}
                     />
 
                     <motion.p
-                        className="text-xl mb-12 leading-relaxed max-w-3xl mx-auto"
+                        className="text-base sm:text-lg md:text-xl mb-8 sm:mb-12 leading-relaxed max-w-3xl mx-auto"
                         style={{ color: 'rgba(255, 255, 255, 0.9)' }}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -340,26 +360,28 @@ export default function NuestroHistoriaPage() {
                         transition={{ delay: 0.6, duration: 0.6 }}
                     >
                         Como GESTIUM S.A., continuamos construyendo sobre la sólida base de confianza
-                            y excelencia establecida desde 2005, proyectándonos hacia el futuro con la
-                            misma pasión y compromiso que nos ha caracterizado.
+                        y excelencia establecida desde 2005, proyectándonos hacia el futuro con la
+                        misma pasión y compromiso que nos ha caracterizado.
                     </motion.p>
 
                     <motion.div
-                        className="flex flex-col md:flex-row gap-6 justify-center"
+                        className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.9, duration: 0.6 }}
                     >
                         <motion.button
-                            className="px-12 py-4 font-bold uppercase tracking-wider transition-all duration-300 relative overflow-hidden shadow-xl"
+                            className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider transition-all duration-300 relative overflow-hidden shadow-xl"
                             style={{
                                 background: 'var(--gradient-red)',
                                 color: 'var(--white)',
-                                border: 'none'
+                                border: 'none',
+                                cursor: 'pointer'
                             }}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
+                            onClick={() => router.push('/nosotros/equipo')}
                         >
                             <span className="relative z-10">
                                 Conocer Nuestro Equipo
@@ -367,16 +389,18 @@ export default function NuestroHistoriaPage() {
                         </motion.button>
 
                         <motion.button
-                            className="px-12 py-4 font-bold uppercase tracking-wider border-2 transition-all duration-300 bg-transparent"
+                            className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider border-2 transition-all duration-300 bg-transparent"
                             style={{
                                 borderColor: 'var(--white)',
-                                color: 'var(--white)'
+                                color: 'var(--white)',
+                                cursor: 'pointer'
                             }}
                             whileHover={{
                                 scale: 1.05,
                                 backgroundColor: 'rgba(255, 255, 255, 0.1)'
                             }}
                             whileTap={{ scale: 0.98 }}
+                            onClick={() => router.push('/nosotros/valores')}
                         >
                             Nuestros Valores
                         </motion.button>

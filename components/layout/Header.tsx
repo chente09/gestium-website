@@ -152,7 +152,7 @@ const Header: React.FC = () => {
                                 {/* Dropdown MINIMALISTA */}
                                 {item.dropdown && activeDropdown === item.name && (
                                     <motion.div
-                                        className="absolute top-full left-0 w-64 mt-2 backdrop-blur-xl border shadow-2xl overflow-hidden"
+                                        className="absolute top-[15px] left-0 w-64 mt-2 backdrop-blur-xl border shadow-2xl overflow-hidden"
                                         style={{
                                             backgroundColor: 'rgba(0, 0, 0, 0.4)',
                                             borderColor: 'rgba(167, 26, 33, 0.2)'

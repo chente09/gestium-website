@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation'; 
 import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import Section from '@/components/ui/Section';
@@ -10,6 +11,8 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import { SectionButton } from '@/components/ui/Button';
 
 export default function Home() {
+  const router = useRouter();
+
   const services = [
     {
       title: 'Recuperación de Cartera',
@@ -165,6 +168,7 @@ export default function Home() {
                   <CTAButton
                     variant="primary"
                     size="lg"
+                    onClick={() => router.push('/contacto')}
                   >
                     Consulta Gratuita
                   </CTAButton>
@@ -178,9 +182,11 @@ export default function Home() {
                     whileHover={{
                       scale: 1.02,
                       backgroundColor: 'var(--white)',
-                      color: 'var(--charcoal)'
+                      color: 'var(--charcoal)',
+                      cursor: 'pointer'
                     }}
                     whileTap={{ scale: 0.98 }}
+                    onClick={() => router.push('/servicios')}
                   >
                     Ver Servicios
                   </motion.button>
@@ -428,7 +434,7 @@ export default function Home() {
                       >
                         <ArrowRight
                           size={12}
-                          style={{ color: 'var(--red-gestium)' }}
+                          style={{ color: 'var(--red-gestium)', cursor: 'pointer' }}
                         />
                       </motion.div>
                     </div>
@@ -438,7 +444,7 @@ export default function Home() {
           </div>
 
           {/* Call to Action Discreto */}
-          <SectionButton>
+          <SectionButton onClick={() => router.push('/contacto')} cursor='pointer'>
             Ver Todas las Áreas
           </SectionButton>
         </div>
@@ -517,7 +523,7 @@ export default function Home() {
                   </p>
                   <motion.button
                     className="group text-sm font-bold uppercase tracking-wider flex items-center gap-2 transition-all duration-300"
-                    style={{ color: 'var(--red-gestium)' }} // Cambiado de gold
+                    style={{ color: 'var(--red-gestium)', cursor: 'pointer' }} // Cambiado de gold
                     whileHover={{ x: 5 }}
                   >
                     Ver Más
@@ -771,6 +777,7 @@ export default function Home() {
                       className="group/btn text-sm font-bold uppercase tracking-wider flex items-center gap-2 transition-all duration-300"
                       style={{ color: 'var(--red-gestium)' }}
                       whileHover={{ x: 5 }}
+                      onClick={() => router.push(`/areas/${area.name.toLowerCase()}`) }
                     >
                       Más Información
                     </motion.button>
@@ -804,7 +811,7 @@ export default function Home() {
         </div>
 
         {/* Call to Action Mejorado */}
-        <SectionButton>
+        <SectionButton onClick={() => router.push('/areas')}>
           Ver Todas las Áreas de Práctica
         </SectionButton>
       </Section>
@@ -872,10 +879,12 @@ export default function Home() {
               style={{
                 background: 'var(--gradient-red)', // Cambiado de gradient-gold
                 color: 'var(--white)', // Cambiado a blanco
-                border: 'none'
+                border: 'none',
+                cursor: 'pointer'
               }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => router.push('/contacto')}
             >
               <motion.div
                 className="absolute inset-0 bg-white"
@@ -894,13 +903,15 @@ export default function Home() {
               className="group px-12 py-4 font-bold uppercase tracking-wider border-2 transition-all duration-300 bg-transparent"
               style={{
                 borderColor: 'var(--white)',
-                color: 'var(--white)'
+                color: 'var(--white)',
+                cursor: 'pointer'
               }}
               whileHover={{
                 scale: 1.05,
                 backgroundColor: 'rgba(255, 255, 255, 0.1)'
               }}
               whileTap={{ scale: 0.98 }}
+              onClick={() => router.push('tel:+5932543653')}
             >
               (+593) 2-543-653
             </motion.button>

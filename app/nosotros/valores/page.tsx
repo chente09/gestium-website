@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation'; 
 import React from 'react';
 import Image from 'next/image';
 import MainLayout from '@/components/layout/MainLayout';
@@ -27,7 +28,7 @@ const missionVisionData = [
         icon: Target,
         content: 'Dar un soporte íntegro a nuestros clientes en cualquier campo que lo requieran dentro del ámbito legal; realizar toda gestión con la mayor agilidad y eficiencia, para satisfacer oportunamente las necesidades de nuestros clientes, apoyándonos principalmente en el recurso humano debidamente especializado y capacitado, buscando brindar la mayor calidad en nuestros servicios, proponiendo siempre precios muy competitivos.',
         color: 'from-red-600 to-red-700',
-        bgImage: '/images/equipo/DAVID.v2.JPG'
+        bgImage: '/images/mision.jpg'
     },
     {
         id: 'vision',
@@ -35,7 +36,7 @@ const missionVisionData = [
         icon: Eye,
         content: 'Consolidar nuestro crecimiento y mantenernos en la imagen de nuestros clientes como una alternativa altamente eficaz y cercana para la solución de todo tipo de conflicto o gestión.',
         color: 'from-slate-700 to-slate-900',
-        bgImage: '/images/ofi/Ofi.JPG'
+        bgImage: '/images/vision.jpg'
     }
 ];
 
@@ -86,21 +87,23 @@ const principlesData = [
     {
         title: 'Filosofía de Trabajo',
         description: 'Nuestra filosofía está enfocada en la construcción y el mantenimiento de una relación profesional a largo plazo con nuestros clientes, basada en el cumplimiento, respeto y la confianza mutua.',
-        image: '/images/ofi/Ofi.JPG'
+        image: '/images/filosy.avif'
     },
     {
         title: 'Servicio Personalizado',
         description: 'Contamos con un equipo de profesionales idóneo y personalizado, así como integrado y estable, lo que nos permite establecer sólidas relaciones con nuestros clientes.',
-        image: '/images/equipo/DAVID.v2.JPG'
+        image: '/images/servicio.avif'
     },
     {
         title: 'Adaptabilidad',
         description: 'Tenemos la flexibilidad para adaptarnos al perfil y requerimientos de nuestro cliente, lo que nos permite intervenir en diferentes campos del derecho.',
-        image: '/images/ofi/Ofi.JPG'
+        image: '/images/adptabilidad.avif'
     }
 ];
 
 export default function NuestrosValoresPage() {
+    const router = useRouter();
+
     return (
         <MainLayout>
             {/* Hero Section */}
@@ -131,7 +134,7 @@ export default function NuestrosValoresPage() {
                         >
                             Nuestros{' '}
                             <motion.span
-                                style={{ color: 'var(--red-gestium)' }}
+                                style={{ color: 'var(--red-gestium)', textShadow: '0 0 9px gray'  }}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.5, duration: 0.6 }}
@@ -184,12 +187,12 @@ export default function NuestrosValoresPage() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.8, delay: index * 0.2 }}
                                     viewport={{ once: true, margin: "-100px" }}
-                                    className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}
+                                    className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-8 lg:gap-12`}
                                 >
                                     {/* Imagen */}
-                                    <div className="lg:w-1/2">
+                                    <div className="w-full lg:w-1/2">
                                         <motion.div
-                                            className="relative h-96 rounded-none overflow-hidden group"
+                                            className="relative h-64 sm:h-80 lg:h-96 rounded-none overflow-hidden group"
                                             whileHover={{ scale: 1.02 }}
                                             transition={{ duration: 0.3 }}
                                         >
@@ -198,15 +201,9 @@ export default function NuestrosValoresPage() {
                                                 alt={item.title}
                                                 fill
                                                 className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                                sizes="(max-width: 1024px) 100vw, 50vw"
                                             />
-                                            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-all duration-300"></div>
-
-                                            {/* Overlay con icono */}
-                                            <div className="absolute inset-0 flex items-center justify-center">
-                                                <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center`}>
-                                                    <IconComponent className="w-10 h-10 text-white" />
-                                                </div>
-                                            </div>
+                                            <div className="absolute inset-0 transition-all duration-300"></div>
                                         </motion.div>
                                     </div>
 
@@ -308,6 +305,8 @@ export default function NuestrosValoresPage() {
                                             alt={principle.title}
                                             fill
                                             className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                            loading="lazy"
                                         />
                                         <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-all duration-300"></div>
                                     </div>
@@ -384,10 +383,12 @@ export default function NuestrosValoresPage() {
                             style={{
                                 background: 'var(--gradient-red)',
                                 color: 'var(--white)',
-                                border: 'none'
+                                border: 'none',
+                                cursor: 'pointer'
                             }}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.98 }}
+                            onClick={() => router.push('/nosotros/historia')}
                         >
                             <span className="relative z-10">
                                 Conocer Nuestra Historia
@@ -398,13 +399,15 @@ export default function NuestrosValoresPage() {
                             className="px-12 py-4 font-bold uppercase tracking-wider border-2 transition-all duration-300 bg-transparent"
                             style={{
                                 borderColor: 'var(--white)',
-                                color: 'var(--white)'
+                                color: 'var(--white)',
+                                cursor: 'pointer'
                             }}
                             whileHover={{
                                 scale: 1.05,
                                 backgroundColor: 'rgba(255, 255, 255, 0.1)'
                             }}
                             whileTap={{ scale: 0.98 }}
+                            onClick={() => router.push('/nosotros/equipo')}
                         >
                             Nuestro Equipo
                         </motion.button>

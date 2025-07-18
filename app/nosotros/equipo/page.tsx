@@ -16,9 +16,10 @@ interface TeamMember {
     image: string;
     description: string;
     experience: string;
-    education?: string;
-    achievements: string[];
+    education?: string[];
+    achievements?: string[];
     isLeader?: boolean;
+    textPosition?: 'left' | 'right';
 }
 
 export default function EquipoPage() {
@@ -29,18 +30,13 @@ export default function EquipoPage() {
             id: 'david-maldonado',
             name: 'Dr. David Maldonado Viteri',
             title: 'Gerente General',
-            specialization: 'Derecho Procesal y Recuperación de Cartera',
+            specialization: 'Recuperación de Cartera, Derecho Civil, Derecho de Familia y Derecho Laboral',
             image: '/images/equipo/DAVID.v2.jpg',
-            description: 'Líder con amplia trayectoria en el sector jurídico, especializado en derecho procesal y recuperación de cartera. Su experiencia como Notario Primero de Quito le otorga una perspectiva única en el manejo de procesos legales complejos.',
+            description: 'Fundador del Estudio Jurídico GESTIUM en el año 2.005. Abogado en libre ejercicio, con experiencia en recuperación de cartera, procurador de Instituciones Financieras como Produbanco, Banco Pichincha y anteriormente de Banco Cofiec. Ex Notario Primero Suplente del cantón Quito',
             experience: 'Ex-Notario Primero de Quito (2007-2014)',
-            education: 'Maestría en Derecho Procesal',
-            achievements: [
-                'Fundador de GESTIUM Servicios Legales Integrales',
-                'Ex-Notario Primero de Quito',
-                'Especialista en cobranza coactiva',
-                'Desarrollo de GESTIUM-APP'
-            ],
-            isLeader: true
+            education: ['Doctor en Jurisprudencia', 'Abogado de los Tribunales de la República del Ecuador', 'Maestría en Derecho Procesal'],
+            isLeader: true,
+            textPosition: 'left'
         },
         {
             id: 'michelle-ochoa',
@@ -54,7 +50,8 @@ export default function EquipoPage() {
                 'Asesoría legal en fusiones y reorganizaciones societarias',
                 'Gestión de cumplimiento corporativo (compliance)',
                 'Estrategias legales para entidades bancarias'
-            ]
+            ],
+            textPosition: 'right'
         },
         {
             id: 'karla-padilla',
@@ -67,22 +64,22 @@ export default function EquipoPage() {
             achievements: [
                 'Litigios exitosos en procesos civiles y coactivos',
                 'Asesoría en casos de derecho penal y familiar',
-                'Gestión de procesos inmobiliarios urbanos'
-            ]
+            ],
+            textPosition: 'left'
         },
         {
             id: 'sofia-teran',
-            name: 'Ab. Madeline Sofía Terán',
-            title: 'Abogada Junior',
+            name: 'Ab. Sofía Terán',
+            title: 'Derecho civil y laboral',
             specialization: 'Derecho Civil, Laboral y Propiedad Intelectual',
             image: '/images/equipo/ST-v2.png',
-            description: 'Abogada junior con formación en Derecho y Relaciones Internacionales, con habilidades destacadas en comunicación, análisis jurídico y coordinación de procesos legales.',
+            description: 'Abogada junior en materia civil, laboral y propiedad intelectual. Licenciada en Relaciones Internacionales con subespecialización en Ciencias Políticas por la Universidad San Francisco de Quito. Posee amplias habilidades en comunicación empresarial.',
             experience: 'Formación multidisciplinaria y práctica jurídica',
             achievements: [
-                'Apoyo en procesos civiles y laborales',
-                'Investigación jurídica en propiedad intelectual',
-                'Coordinación de procesos con enfoque comunicacional'
-            ]
+                'Investigadora en el capítulo de Género del libro Memorias 30 años irreverentes de la Fundacion Regional de Asesoria en Derechos Humanos INREDH',
+                'Investigadora en el informe Ruta de incidencia de manejo de datos sobre violencia y agresiones a personas LGBTIQ+ para DATALAT',
+            ],
+            textPosition: 'right'
         },
         {
             id: 'silvia-arteaga',
@@ -96,7 +93,8 @@ export default function EquipoPage() {
                 'Liderazgo de equipos legales especializados',
                 'Estrategias de recuperación para cartera compleja',
                 'Supervisión de procesos judiciales masivos'
-            ]
+            ],
+            textPosition: 'left'
         },
         {
             id: 'sofia-guana',
@@ -110,12 +108,13 @@ export default function EquipoPage() {
                 'Colaboración en casos coactivos e inmobiliarios',
                 'Apoyo integral en audiencias y trámites',
                 'Gestión personalizada de clientes'
-            ]
+            ],
+            textPosition: 'left'
         },
         {
             id: 'tatiana-cordonez',
             name: 'Tatiana Cordonez',
-            title: 'Especialista en Cobranzas',
+            title: 'Especialista en Inmobiliario',
             specialization: 'Derecho Inmobiliario y Familiar',
             image: '/images/equipo/tc-v1.jpg',
             description: 'Estudiante avanzada de Derecho con sólida formación en áreas inmobiliaria, propiedad intelectual, familia y societario. Brinda soluciones legales prácticas y confiables.',
@@ -124,7 +123,8 @@ export default function EquipoPage() {
                 'Asesoría legal en procesos inmobiliarios y familiares',
                 'Apoyo en estructuración societaria',
                 'Atención personalizada al cliente'
-            ]
+            ],
+            textPosition: 'right'
         },
         {
             id: 'vicente-nenger',
@@ -138,7 +138,8 @@ export default function EquipoPage() {
                 'Desarrollo y mantenimiento de GESTIUM-APP',
                 'Automatización de procesos coactivos',
                 'Soluciones digitales orientadas al usuario'
-            ]
+            ],
+            textPosition: 'right'
         },
         {
             id: 'marco-sanguano',
@@ -152,49 +153,51 @@ export default function EquipoPage() {
                 'Gestión de expedientes judiciales',
                 'Control de tiempos procesales',
                 'Trámite de escritos y notificaciones'
-            ]
+            ],
+            textPosition: 'left'
         },
         {
             id: 'maria-paula-peralta',
             name: 'María Paula Peralta',
-            title: 'Coordinadora de Comunicaciones',
+            title: 'Pasante Legal',
             specialization: 'Atención al Cliente Jurídico',
             image: '/images/equipo/MP-v2.jpg',
             description: 'Estudiante de Derecho con destacada trayectoria académica y capacidad investigativa. Aporta una mirada analítica y comunicacional al área de atención y cobranzas.',
-            experience: 'Gestión de relaciones institucionales',
+            experience: 'Área judicial y de cobranzas',
             achievements: [
                 'Publicaciones en editoriales internacionales',
-                'Beca académica por excelencia',
-                'Gestión de comunicaciones legales'
-            ]
+                'Beca académica por excelencia'
+            ],
+            textPosition: 'left'
         },
         {
             id: 'alexa-vasconez',
             name: 'Alexa Vásconez',
-            title: 'Asistente Administrativa',
+            title: 'Pasante Legal',
             specialization: 'Gestión Jurídica Interna',
             image: '/images/equipo/AV-v2.jpg',
             description: 'Estudiante de Derecho con méritos académicos y experiencia práctica en derecho penal, civil y cobranzas. Destaca por su compromiso y adaptabilidad.',
-            experience: 'Apoyo administrativo legal',
+            experience: 'Gestión de trámites internos y cobranzas',
             achievements: [
                 'Becas por excelencia académica',
                 'Colaboración en cobranzas y procesos judiciales',
                 'Gestión de trámites internos'
-            ]
+            ],
+            textPosition: 'left'
         },
         {
             id: 'ingrid-perez',
             name: 'Ingrid Pérez',
-            title: 'Especialista en Archivo',
+            title: 'Pasante Legal',
             specialization: 'Gestión Documental Legal',
             image: '/images/equipo/ingrid.jpg',
-            description: 'Estudiante universitaria con experiencia como pasante legal en el Banco Pichincha. Especializada en organización documental y archivo jurídico.',
-            experience: 'Archivo legal en banca',
+            description: 'Estudiante universitaria con experiencia como pasante legal en el Banco Pichincha. Destaca por su capacidad de organización y apoyo en la gestión de cartera.',
+            experience: 'Cobranza y redacción de demandas',
             achievements: [
-                'Clasificación de expedientes físicos y digitales',
-                'Apoyo en auditorías documentales',
-                'Organización de archivo jurídico'
-            ]
+                'Colaboración en cobranzas y procesos judiciales',
+                'Gestión de trámites internos'
+            ],
+            textPosition: 'left'
         }
 
     ];
@@ -229,7 +232,7 @@ export default function EquipoPage() {
                         >
                             Nuestro{' '}
                             <motion.span
-                                style={{ color: 'var(--red-gestium)' }}
+                                style={{ color: 'var(--red-gestium)', textShadow: '0 0 9px gray' }}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.5, duration: 0.6 }}
@@ -271,7 +274,7 @@ export default function EquipoPage() {
 
                 {/* Team Grid Premium */}
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
                         {teamMembers.map((member, index) => (
                             <motion.div
                                 key={member.id}
@@ -288,21 +291,24 @@ export default function EquipoPage() {
                                 whileHover={{ y: -8, scale: 1.02 }}
                                 onClick={() => setSelectedMember(member)}
                             >
-                                <div className="relative overflow-hidden bg-white shadow-lg transition-all duration-500 group-hover:shadow-2xl">
-                                    {/* Photo Container - Relación 3:2 */}
-                                    <div className="relative h-64 overflow-hidden">
+                                <div className="relative overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl ">
+                                    {/* Photo Container - OPTIMIZADO PARA ALTA CALIDAD */}
+                                    <div className="relative h-80 overflow-hidden bg-gray-100"> {/* Aumentado de h-64 a h-80 */}
                                         <Image
                                             src={member.image}
                                             alt={member.name}
                                             fill
-                                            className="object-cover transition-all duration-700 group-hover:scale-110"
-                                            sizes="(max-width: 768px) 50vw, 25vw"
+                                            className="object-cover transition-all duration-700 group-hover:scale-110 "
+                                            // ✨ CONFIGURACIONES CLAVE PARA CALIDAD MÁXIMA
+                                            quality={95} // Calidad máxima para fotos profesionales
+                                            priority={true} // Prioridad para las primeras 4 imágenes
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                                            placeholder="blur" // Blur mientras carga
+                                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                                         />
-
+                                        <div className="absolute inset-0 bg-black/10 pointer-events-none z-10" /> 
                                         {/* Overlay Premium */}
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
-
-                                        
 
                                         {/* Hover Content */}
                                         <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
@@ -353,19 +359,19 @@ export default function EquipoPage() {
                 </div>
             </Section>
 
-            {/* Modal Premium */}
+            {/* Modal Premium Full-Width - CON POSICIONAMIENTO DINÁMICO */}
             <AnimatePresence>
                 {selectedMember && (
                     <motion.div
                         className="fixed inset-0 z-50 flex items-center justify-center p-4"
-                        style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
+                        style={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={() => setSelectedMember(null)}
                     >
                         <motion.div
-                            className="relative bg-white max-w-6xl w-full h-[90vh] flex flex-col lg:flex-row overflow-hidden"
+                            className="relative bg-white max-w-7xl w-full h-[95vh] overflow-hidden"
                             initial={{ scale: 0.7, opacity: 0, y: 50 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.7, opacity: 0, y: 50 }}
@@ -374,106 +380,191 @@ export default function EquipoPage() {
                         >
                             {/* Close Button */}
                             <button
-                                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all duration-300 flex items-center justify-center"
+                                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all duration-300 flex items-center justify-center"
                                 onClick={() => setSelectedMember(null)}
                             >
                                 <XMarkIcon className="w-6 h-6" />
                             </button>
 
-                            {/* Photo Section - Imagen estática con relación de aspecto */}
-                            <div className="lg:w-1/2 w-full h-64 lg:h-full flex-shrink-0">
-                                <div className="relative w-full h-full">
-                                    <Image
-                                        src={selectedMember.image}
-                                        alt={selectedMember.name}
-                                        fill
-                                        className="object-cover"
-                                        sizes="(max-width: 1024px) 100vw, 50vw"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                                </div>
+                            {/* Background Image - FULL WIDTH */}
+                            <div className="absolute inset-0">
+                                <Image
+                                    src={selectedMember.image}
+                                    alt={selectedMember.name}
+                                    fill
+                                    className="object-cover"
+                                    quality={95}
+                                    priority={true}
+                                    sizes="100vw"
+                                    placeholder="blur"
+                                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                                />
                             </div>
 
-                            {/* Content Section - Solo el contenido tiene scroll */}
-                            <div className="lg:w-1/2 w-full flex-1 flex flex-col overflow-hidden">
-                                <div className="p-6 lg:p-8 flex-1 overflow-y-auto">
-                                    <motion.div
-                                        initial={{ opacity: 0, x: 30 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.2, duration: 0.6 }}
-                                        className="space-y-6"
-                                    >
-                                        
+                            {/* Gradient Overlay - DINÁMICO SEGÚN POSICIÓN */}
+                            <div className={`absolute inset-0 ${selectedMember.textPosition === 'right'
+                                ? 'bg-gradient-to-l from-black/70 via-black/30 to-black/5'
+                                : 'bg-gradient-to-r from-black/70 via-black/30 to-black/5'
+                                }`} />
 
-                                        <h2
-                                            className="text-3xl lg:text-4xl font-bold mb-2"
-                                            style={{
-                                                color: 'var(--charcoal)',
-                                                fontFamily: "'Playfair Display', serif"
-                                            }}
-                                        >
-                                            {selectedMember.name}
-                                        </h2>
+                            {/* Content Section - POSICIÓN DINÁMICA Y TAMAÑO REDUCIDO */}
+                            <div className={`absolute inset-0 flex items-end ${selectedMember.textPosition === 'right'
+                                ? 'justify-end'
+                                : 'justify-start'
+                                }`}>
+                                <div className={`w-full ${selectedMember.textPosition === 'right'
+                                    ? 'max-w-lg'  // ← Más delgado para la derecha
+                                    : 'max-w-xl'  // ← Tamaño normal para la izquierda
+                                    } h-[100vh] ${selectedMember.textPosition === 'right'
+                                        ? 'mr-8 lg:mr-12'
+                                        : 'ml-8 lg:ml-12'
+                                    }`}>
+                                    {/* Contenedor scrolleable SIN fondo visible - REDUCIDO */}
+                                    <div className="h-full overflow-y-auto scrollbar-hide">
+                                        <div className="min-h-full p-5 lg:p-6 text-white flex flex-col justify-end">
+                                            <motion.div
+                                                initial={{
+                                                    opacity: 0,
+                                                    x: selectedMember.textPosition === 'right' ? 50 : -50
+                                                }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: 0.3, duration: 0.8 }}
+                                                className="space-y-5 pt-[55vh]"
+                                            >
+                                                {/* Nombre */}
+                                                <h2
+                                                    className="text-3xl lg:text-4xl font-bold leading-tight"
+                                                >
+                                                    {selectedMember.name}
+                                                </h2>
 
-                                        <p
-                                            className="text-xl font-semibold mb-6"
-                                            style={{ color: 'var(--red-gestium)' }}
-                                        >
-                                            {selectedMember.title}
-                                        </p>
-
-                                        <div className="space-y-6">
-                                            <div>
-                                                <h3 className="font-semibold mb-2" style={{ color: 'var(--charcoal)' }}>
-                                                    Especialización
-                                                </h3>
-                                                <p style={{ color: 'var(--silver)' }}>
-                                                    {selectedMember.specialization}
+                                                {/* Título */}
+                                                <p
+                                                    className="text-lg lg:text-xl font-semibold"
+                                                    style={{
+                                                        color: 'var(--red-gestium)',
+                                                        fontFamily: "'Inter', sans-serif"
+                                                    }}
+                                                >
+                                                    {selectedMember.title}
                                                 </p>
-                                            </div>
 
-                                            <div>
-                                                <h3 className="font-semibold mb-2" style={{ color: 'var(--charcoal)' }}>
-                                                    Descripción
-                                                </h3>
-                                                <p className="leading-relaxed" style={{ color: 'var(--silver)' }}>
-                                                    {selectedMember.description}
-                                                </p>
-                                            </div>
-
-                                            {selectedMember.education && (
-                                                <div>
-                                                    <h3 className="font-semibold mb-2" style={{ color: 'var(--charcoal)' }}>
-                                                        Formación
+                                                {/* Especialización */}
+                                                <div className="space-y-2">
+                                                    <h3
+                                                        className="text-base font-semibold"
+                                                        style={{ fontFamily: "'Inter', sans-serif" }}
+                                                    >
+                                                        Especialización
                                                     </h3>
-                                                    <p style={{ color: 'var(--silver)' }}>
-                                                        {selectedMember.education}
+                                                    <p
+                                                        className="text-sm lg:text-base leading-relaxed opacity-90"
+                                                        style={{ fontFamily: "'Inter', sans-serif" }}
+                                                    >
+                                                        {selectedMember.specialization}
                                                     </p>
                                                 </div>
-                                            )}
 
-                                            <div>
-                                                <h3 className="font-semibold mb-2" style={{ color: 'var(--charcoal)' }}>
-                                                    Logros Destacados
-                                                </h3>
-                                                <ul className="space-y-2">
-                                                    {selectedMember.achievements.map((achievement, index) => (
-                                                        <li key={index} className="flex items-start gap-3">
-                                                            <div
-                                                                className="w-2 h-2 rounded-full mt-2"
-                                                                style={{ backgroundColor: 'var(--red-gestium)' }}
-                                                            />
-                                                            <span style={{ color: 'var(--silver)' }}>
-                                                                {achievement}
-                                                            </span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
+                                                {/* Descripción */}
+                                                <div className="space-y-2">
+                                                    <h3
+                                                        className="text-base font-semibold"
+                                                        style={{ fontFamily: "'Inter', sans-serif" }}
+                                                    >
+                                                        Descripción
+                                                    </h3>
+                                                    <p
+                                                        className="text-sm lg:text-base leading-relaxed opacity-90"
+                                                        style={{ fontFamily: "'Inter', sans-serif" }}
+                                                    >
+                                                        {selectedMember.description}
+                                                    </p>
+                                                </div>
+
+                                                {/* Experiencia */}
+                                                {selectedMember.experience && (
+                                                    <div className="space-y-2">
+                                                        <h3
+                                                            className="text-base font-semibold"
+                                                            style={{ fontFamily: "'Inter', sans-serif" }}
+                                                        >
+                                                            Experiencia
+                                                        </h3>
+                                                        <p
+                                                            className="text-sm lg:text-base leading-relaxed opacity-90"
+                                                            style={{ fontFamily: "'Inter', sans-serif" }}
+                                                        >
+                                                            {selectedMember.experience}
+                                                        </p>
+                                                    </div>
+                                                )}
+
+                                                {/* Formación */}
+                                                {selectedMember.education && selectedMember.education.length > 0 && (
+                                                    <div className="space-y-2">
+                                                        <h3
+                                                            className="text-base font-semibold"
+                                                            style={{ fontFamily: "'Inter', sans-serif" }}
+                                                        >
+                                                            Formación
+                                                        </h3>
+                                                        <ul className="space-y-1">
+                                                            {selectedMember.education.map((edu, index) => (
+                                                                <li
+                                                                    key={index}
+                                                                    className="text-sm lg:text-base opacity-90"
+                                                                    style={{ fontFamily: "'Inter', sans-serif" }}
+                                                                >
+                                                                    • {edu}
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                )}
+
+                                                {/* Logros Destacados */}
+                                                {selectedMember.achievements && selectedMember.achievements.length > 0 && (
+                                                    <div className="space-y-3">
+                                                        <h3
+                                                            className="text-base font-semibold"
+                                                            style={{ fontFamily: "'Inter', sans-serif" }}
+                                                        >
+                                                            Logros Destacados
+                                                        </h3>
+                                                        <ul className="space-y-2">
+                                                            {selectedMember.achievements.map((achievement, index) => (
+                                                                <li key={index} className="flex items-start gap-3">
+                                                                    <div
+                                                                        className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
+                                                                        style={{ backgroundColor: 'var(--red-gestium)' }}
+                                                                    />
+                                                                    <span
+                                                                        className="text-sm lg:text-base leading-relaxed opacity-90"
+                                                                        style={{ fontFamily: "'Inter', sans-serif" }}
+                                                                    >
+                                                                        {achievement}
+                                                                    </span>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                )}
+                                            </motion.div>
                                         </div>
-                                    </motion.div>
+                                    </div>
                                 </div>
                             </div>
+
+                            {/* CSS para ocultar scrollbar completamente */}
+                            <style jsx>{`
+                    .scrollbar-hide {
+                        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+                        scrollbar-width: none;     /* Firefox */
+                    }
+                    .scrollbar-hide::-webkit-scrollbar {
+                        display: none;             /* Safari and Chrome */
+                    }
+                `}</style>
                         </motion.div>
                     </motion.div>
                 )}
