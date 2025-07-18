@@ -3,9 +3,9 @@ import React from 'react';
 interface SectionProps {
     children: React.ReactNode;
     className?: string;
-    background?: 'white' | 'gray' | 'blue' | 'dark';
+    background?: 'white' | 'platinum' | 'dark' | 'primary' | 'gradient-primary';
     padding?: 'sm' | 'md' | 'lg' | 'xl';
-    maxWidth?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '7xl' | 'full';
+    containerClass?: string;
 }
 
 const Section: React.FC<SectionProps> = ({
@@ -13,40 +13,59 @@ const Section: React.FC<SectionProps> = ({
     className = '',
     background = 'white',
     padding = 'lg',
-    maxWidth = '7xl',
+    containerClass = '',
 }) => {
-    // Background styles
+    // Background styles usando las variables CSS de Gestium
     const backgroundStyles = {
         white: 'bg-white',
-        gray: 'bg-gray-50',
-        blue: 'bg-blue-600 text-white',
-        dark: 'bg-gray-900 text-white',
+        platinum: '',
+        dark: '',
+        primary: '',
+        'gradient-primary': '',
     };
 
-    // Padding styles
+    // Función para obtener estilos de fondo personalizados
+    const getBackgroundStyle = () => {
+        switch (background) {
+            case 'platinum':
+                return { backgroundColor: 'var(--platinum)' };
+            case 'dark':
+                return { backgroundColor: 'var(--charcoal)' };
+            case 'primary':
+                return { backgroundColor: 'var(--red-gestium)' };
+            case 'gradient-primary':
+                return { background: 'var(--gradient-primary)' };
+            default:
+                return {};
+        }
+    };
+
+    // Padding styles con responsive design
     const paddingStyles = {
-        sm: 'py-8',
-        md: 'py-12',
-        lg: 'py-16',
-        xl: 'py-20',
+        sm: 'py-8 sm:py-12',
+        md: 'py-12 sm:py-16',
+        lg: 'py-16 sm:py-20',
+        xl: 'py-20 sm:py-24 lg:py-32',
     };
 
-    // Max width styles
-    const maxWidthStyles = {
-        sm: 'max-w-sm',
-        md: 'max-w-md',
-        lg: 'max-w-lg',
-        xl: 'max-w-xl',
-        '2xl': 'max-w-2xl',
-        '7xl': 'max-w-7xl',
-        full: 'max-w-full',
+    // Determinar color de texto basado en el fondo
+    const getTextColor = () => {
+        if (background === 'dark' || background === 'primary' || background === 'gradient-primary') {
+            return 'text-white';
+        }
+        return 'text-charcoal';
     };
 
-    const sectionClassName = `${backgroundStyles[background]} ${paddingStyles[padding]} ${className}`.trim();
-    const containerClassName = `${maxWidthStyles[maxWidth]} mx-auto px-4 sm:px-6 lg:px-8`;
+    const sectionClassName = `${backgroundStyles[background]} ${paddingStyles[padding]} ${getTextColor()} ${className}`.trim();
+    
+    // Usar container-fluid personalizado para mayor control
+    const containerClassName = `container-fluid ${containerClass}`.trim();
 
     return (
-        <section className={sectionClassName}>
+        <section 
+            className={sectionClassName}
+            style={getBackgroundStyle()}
+        >
             <div className={containerClassName}>
                 {children}
             </div>

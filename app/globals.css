@@ -1,39 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
-/* Paleta Profesional Gestium - Mejorada */
+/* Paleta Profesional Gestium - ACTUALIZADA CON ROJO */
 :root {
-  /* Colores Principales - Más Ejecutivos */
+  /* Colores Principales - Nueva Paleta con Rojo Gestium */
   --charcoal: #1a1a1a;         /* Carbón elegante */
   --black: #000000;            /* Negro puro */
   --white: #FFFFFF;            /* Blanco puro */
-  --gold: #C9A961;             /* Oro elegante y sutil */
-  --gold-dark: #B8975A;        /* Oro más oscuro */
+  --red-gestium: #a71a21;      /* Rojo principal del logo */
+  --red-dark: #821616;         /* Rojo más oscuro */
+  --red-light: #E32211;        /* Rojo más claro */
   --navy: #0F172A;             /* Azul marino profundo */
   --steel: #334155;            /* Gris acero */
   --platinum: #F8FAFC;         /* Platino claro */
   --silver: #64748B;           /* Plata medio */
   --graphite: #1E293B;         /* Grafito oscuro */
   
-  /* Gradientes Ejecutivos */
+  /* Gradientes Ejecutivos - Actualizados con Rojo */
   --gradient-primary: linear-gradient(135deg, var(--charcoal) 0%, var(--navy) 100%);
-  --gradient-gold: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-  --gradient-subtle: linear-gradient(135deg, var(--platinum) 0%, #F1F5F9 100%);
+  --gradient-red: linear-gradient(135deg, var(--red-gestium) 0%, var(--red-dark) 100%);
+  --gradient-red-light: linear-gradient(135deg, var(--red-light) 0%, var(--red-gestium) 100%);
   --gradient-dark: linear-gradient(135deg, var(--black) 0%, var(--graphite) 100%);
+  --gradient-subtle: linear-gradient(135deg, var(--platinum) 0%, #F1F5F9 100%);
   
-  /* Sombras Profesionales */
+  /* Sombras Profesionales - Actualizadas */
   --shadow-minimal: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-strong: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-gold: 0 4px 14px 0 rgba(201, 169, 97, 0.15);
+  --shadow-red: 0 4px 14px 0 rgba(216, 30, 39, 0.15);
+  --shadow-red-strong: 0 8px 25px -3px rgba(216, 30, 39, 0.3);
   --shadow-dark: 0 8px 25px -3px rgba(0, 0, 0, 0.3);
   
   /* Tipografía Premium */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
   
-  /* Variables para compatibilidad */
-  --red: var(--gold);  /* Mantenemos compatibilidad con código existente */
+  /* Variables para compatibilidad (mantener las doradas para componentes existentes) */
+  --gold: var(--red-gestium);  /* Mapear oro a rojo para compatibilidad */
+  --gold-dark: var(--red-dark);
 }
 
 /* Configuración base mejorada */
@@ -45,7 +49,7 @@
   --color-charcoal: var(--charcoal);
   --color-black: var(--black);
   --color-white: var(--white);
-  --color-gold: var(--gold);
+  --color-red-gestium: var(--red-gestium);
   --color-navy: var(--navy);
   --color-steel: var(--steel);
   --color-platinum: var(--platinum);
@@ -131,12 +135,12 @@ body {
   0%, 100% { 
     opacity: 1;
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(201, 169, 97, 0.4);
+    box-shadow: 0 0 0 0 rgba(216, 30, 39, 0.4);
   }
   50% { 
     opacity: 0.9;
     transform: scale(1.02);
-    box-shadow: 0 0 0 8px rgba(201, 169, 97, 0);
+    box-shadow: 0 0 0 8px rgba(216, 30, 39, 0);
   }
 }
 
@@ -187,7 +191,7 @@ body {
 }
 
 .shimmer-effect {
-  background: linear-gradient(90deg, transparent, rgba(201, 169, 97, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(216, 30, 39, 0.1), transparent);
   background-size: 200px 100%;
   animation: shimmer 2s infinite;
 }
@@ -205,8 +209,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.text-gradient-gold {
-  background: var(--gradient-gold);
+.text-gradient-red {
+  background: var(--gradient-red-light);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -234,7 +238,7 @@ body {
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 20px rgba(201, 169, 97, 0.4);
+  box-shadow: 0 0 20px rgba(216, 30, 39, 0.4);
   transform: scale(1.02);
 }
 
@@ -248,29 +252,29 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gold);
+  background: var(--red-gestium);
   border-radius: 4px;
   transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-dark);
+  background: var(--red-dark);
 }
 
 /* Selection colors */
 ::selection {
-  background: rgba(201, 169, 97, 0.2);
+  background: rgba(216, 30, 39, 0.2);
   color: var(--charcoal);
 }
 
 ::-moz-selection {
-  background: rgba(201, 169, 97, 0.2);
+  background: rgba(216, 30, 39, 0.2);
   color: var(--charcoal);
 }
 
 /* Focus styles mejorados */
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--red-gestium);
   outline-offset: 2px;
 }
 
@@ -319,5 +323,5 @@ body {
 .border-gradient {
   border: 1px solid transparent;
   background: linear-gradient(white, white) padding-box,
-              var(--gradient-gold) border-box;
+              var(--gradient-red) border-box;
 }

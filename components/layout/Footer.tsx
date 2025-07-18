@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
             {/* Línea decorativa superior */}
             <div
                 className="h-1 w-full"
-                style={{ backgroundColor: 'var(--red)' }}
+                style={{ backgroundColor: 'var(--red-gestium)' }} // ✅ CORREGIDO
             />
 
             <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
@@ -41,13 +41,13 @@ const Footer: React.FC = () => {
                     <div className="col-span-1 lg:col-span-1">
                         <Link href="/" className="inline-block group">
                             {/* Contenedor con tamaño definido y posición relativa */}
-                            <div className="relative h-[180px] w-48 transition-all duration-300 group-hover:scale-105"> {/* <-- AJUSTA EL TAMAÑO DEL LOGO AQUÍ */}
+                            <div className="relative h-[120px] w-48 transition-all duration-300 group-hover:scale-105">
                                 <Image
                                     src="/images/image.png"
                                     alt="Gestium SLI"
                                     fill
-                                    className="object-contain" // object-contain asegura que no se deforme
-                                    sizes="192px" // Esto debe coincidir con el ancho (w-48 = 12rem = 192px)
+                                    className="object-contain"
+                                    sizes="192px"
                                     priority
                                 />
                             </div>
@@ -61,37 +61,37 @@ const Footer: React.FC = () => {
                             <div className="flex items-center space-x-3 group">
                                 <MapPinIcon
                                     className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
-                                    style={{ color: 'var(--red)' }}
+                                    style={{ color: 'var(--red-gestium)' }} // ✅ CORREGIDO
                                 />
                                 <span
                                     className="text-sm"
                                     style={{ color: 'rgba(255, 255, 255, 0.9)' }}
                                 >
-                                    Quito, Ecuador
+                                    Av. 12 de Octubre N24-660 y Francisco Salazar, Edificio Concorde, piso 15, Oficina 15C
                                 </span>
                             </div>
                             <div className="flex items-center space-x-3 group">
                                 <PhoneIcon
                                     className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
-                                    style={{ color: 'var(--red)' }}
+                                    style={{ color: 'var(--red-gestium)' }} // ✅ CORREGIDO
                                 />
                                 <span
                                     className="text-sm"
                                     style={{ color: 'rgba(255, 255, 255, 0.9)' }}
                                 >
-                                    +593 2 XXX-XXXX
+                                    +593 2-543-653
                                 </span>
                             </div>
                             <div className="flex items-center space-x-3 group">
                                 <EnvelopeIcon
                                     className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
-                                    style={{ color: 'var(--red)' }}
+                                    style={{ color: 'var(--red-gestium)' }} // ✅ CORREGIDO
                                 />
                                 <span
                                     className="text-sm"
                                     style={{ color: 'rgba(255, 255, 255, 0.9)' }}
                                 >
-                                    info@gestium-sli.com
+                                    dmaldonado@gestium-sli.com
                                 </span>
                             </div>
                         </div>
@@ -165,7 +165,7 @@ const Footer: React.FC = () => {
                             href="/contacto"
                             className="inline-block px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 mb-8"
                             style={{
-                                backgroundColor: 'var(--red)',
+                                backgroundColor: 'var(--red-gestium)', // ✅ CORREGIDO
                                 color: 'var(--white)'
                             }}
                         >
@@ -177,7 +177,7 @@ const Footer: React.FC = () => {
                             <div className="flex items-center space-x-2 mb-4">
                                 <ClockIcon
                                     className="h-5 w-5"
-                                    style={{ color: 'var(--red)' }}
+                                    style={{ color: 'var(--red-gestium)' }} // ✅ CORREGIDO
                                 />
                                 <h4
                                     className="font-bold text-sm uppercase tracking-wider"
@@ -192,17 +192,22 @@ const Footer: React.FC = () => {
                             >
                                 <div className="flex justify-between">
                                     <span>Lun - Vie:</span>
-                                    <span className="font-medium">8:00 AM - 6:00 PM</span>
+                                    <span className="font-medium">8:30 AM - 5:30 PM</span>
                                 </div>
                                 <div className="flex justify-between">
                                     <span>Sábados:</span>
-                                    <span className="font-medium">9:00 AM - 1:00 PM</span>
+                                    <span
+                                        className="font-medium"
+                                        style={{ color: 'var(--red-gestium)' }} // ✅ CORREGIDO
+                                    >
+                                        Cerrado
+                                    </span>
                                 </div>
                                 <div className="flex justify-between">
                                     <span>Domingos:</span>
                                     <span
                                         className="font-medium"
-                                        style={{ color: 'var(--red)' }}
+                                        style={{ color: 'var(--red-gestium)' }} // ✅ CORREGIDO
                                     >
                                         Cerrado
                                     </span>
