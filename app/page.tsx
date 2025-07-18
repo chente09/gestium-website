@@ -530,7 +530,7 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Values Section - Actualizada con paleta roja */}
+      {/* Values Section*/}
       <div
         className="px-6 py-20 relative overflow-hidden"
         style={{ backgroundColor: 'var(--platinum)' }}
@@ -539,42 +539,17 @@ export default function Home() {
         <div
           className="absolute inset-0 bg-cover bg-center opacity-5"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&h=1080&fit=crop&crop=center')"
+            backgroundImage: "url('/images/ofi/justicia.jpg')",
           }}
         />
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2
-              className="text-4xl md:text-5xl font-bold mb-4 tracking-tight"
-              style={{
-                fontFamily: "'Playfair Display', serif",
-                color: 'var(--charcoal)'
-              }}
-            >
-              Nuestros Valores
-            </h2>
-            <motion.div
-              className="w-24 h-1 mx-auto mb-6"
-              style={{ backgroundColor: 'var(--red-gestium)' }} // Cambiado de gold
-              initial={{ width: 0 }}
-              whileInView={{ width: 96 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            />
-            <p
-              className="text-xl max-w-3xl mx-auto"
-              style={{ color: 'var(--silver)' }}
-            >
-              Principios que nos distinguen en el ejercicio profesional del derecho
-            </p>
-          </motion.div>
+          <SectionHeader
+            title="Nuestros Valores"
+            description="Principios que nos distinguen en el ejercicio profesional del derecho"
+            centered={true}
+            className="mb-20"
+          />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {values.map((value, index) => {
@@ -600,7 +575,7 @@ export default function Home() {
                   >
                     <div
                       className="text-2xl font-black"
-                      style={{ color: 'var(--red-gestium)' }} // Cambiado de gold
+                      style={{ color: 'var(--red-gestium)' }}
                     >
                       {value.metric}
                     </div>
@@ -615,7 +590,7 @@ export default function Home() {
                   {/* Icono con nueva paleta */}
                   <motion.div
                     className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300"
-                    style={{ backgroundColor: 'rgba(216, 30, 39, 0.1)' }} // Cambiado a fondo rojo
+                    style={{ backgroundColor: 'rgba(167, 26, 33, 0.1)' }}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
@@ -839,7 +814,7 @@ export default function Home() {
         className="section-padding-y relative overflow-hidden"
         style={{
           background: 'var(--gradient-primary)',
-          backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&h=1080&fit=crop&crop=center')",
+          backgroundImage: "url('/images/ofi/justicia.jpg')",
           backgroundBlendMode: 'overlay'
         }}
       >
