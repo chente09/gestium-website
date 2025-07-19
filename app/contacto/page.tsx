@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import Section from '@/components/ui/Section';
 import SectionHeader from '@/components/ui/SectionHeader';
@@ -20,6 +20,26 @@ import {
 export default function ContactoPage() {
     const [contactMethod, setContactMethod] = useState<'email' | 'call' | 'visit' | null>(null);
     const [isEmailCopied, setIsEmailCopied] = useState(false);
+
+    // --- INICIO: CÓDIGO AÑADIDO PARA EL SCROLL ---
+    // 1. Creamos una referencia para el contenedor de los detalles de contacto.
+    const contactDetailsRef = useRef<HTMLDivElement>(null);
+
+    // 2. Usamos useEffect para observar cambios en 'contactMethod'.
+    useEffect(() => {
+        // Si se selecciona un método de contacto (no es null)...
+        if (contactMethod) {
+            // ...hacemos scroll hacia la vista de detalles.
+            // Se usa un pequeño timeout para dar tiempo a que el elemento se renderice antes de hacer scroll.
+            setTimeout(() => {
+                contactDetailsRef.current?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center', // 'start' o 'center' para ajustar la posición final del scroll
+                });
+            }, 100);
+        }
+    }, [contactMethod]); // Este efecto se ejecuta cada vez que el valor de 'contactMethod' cambia.
+    // --- FIN: CÓDIGO AÑADIDO PARA EL SCROLL ---
 
     // Información de contacto
     const contactInfo = {
@@ -364,180 +384,184 @@ export default function ContactoPage() {
                         </motion.div>
                     </div>
 
-                    {/* Expanded Content */}
-                    <AnimatePresence mode="wait">
-                        {contactMethod && (
-                            <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: 'auto' }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className="overflow-hidden"
-                            >
-                                {contactMethod === 'email' && (
-                                    <div
-                                        className="relative p-8 sm:p-12 md:p-16 lg:p-24 xl:p-32"
-                                        style={{
-                                            backgroundImage: 'url(/images/ofi/ofi3.jpg)',
-                                            backgroundSize: 'cover',
-                                            backgroundPosition: 'center'
-                                        }}
-                                    >
-                                        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }} />
+                    {/* --- INICIO: CÓDIGO MODIFICADO PARA EL SCROLL --- */}
+                    {/* 3. Asignamos la referencia al div que envuelve el contenido expandible. */}
+                    <div ref={contactDetailsRef}>
+                        <AnimatePresence mode="wait">
+                            {contactMethod && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="overflow-hidden"
+                                >
+                                    {contactMethod === 'email' && (
+                                        <div
+                                            className="relative p-8 sm:p-12 md:p-16 lg:p-24 xl:p-32"
+                                            style={{
+                                                backgroundImage: 'url(/images/ofi/ofi3.jpg)',
+                                                backgroundSize: 'cover',
+                                                backgroundPosition: 'center'
+                                            }}
+                                        >
+                                            <div className="absolute inset-0" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }} />
 
-                                        <div className="relative z-10 max-w-4xl mx-auto">
-                                            <div className="text-center mb-8">
-                                                <h4 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--red-dark)' }}>
-                                                    Contacto por Email
-                                                </h4>
-                                                <p className="text-sm sm:text-base md:text-lg text-black mb-6 leading-relaxed">
-                                                    Haga clic en el botón para abrir su cliente de email con un mensaje pre-estructurado
-                                                </p>
-                                            </div>
-
-                                            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-                                                <CTAButton
-                                                    variant="primary"
-                                                    size="lg"
-                                                    onClick={openEmail}
-                                                >
-                                                    Redactar Email
-                                                </CTAButton>
-
-                                                <div className="text-center">
-                                                    <p className="text-xs sm:text-sm text-gray-900 mb-2">O copie nuestro email:</p>
-                                                    <button
-                                                        onClick={copyEmail}
-                                                        className="text-red-gestium hover:text-red-dark transition-colors flex items-center gap-2 text-sm sm:text-base"
-                                                    >
-                                                        <span className="break-all sm:break-normal">{contactInfo.email}</span>
-                                                        {isEmailCopied ? <CheckCircle size={16} /> : <ArrowRight size={16} />}
-                                                    </button>
-                                                    {isEmailCopied && (
-                                                        <motion.p
-                                                            initial={{ opacity: 0 }}
-                                                            animate={{ opacity: 1 }}
-                                                            className="text-green-600 text-xs sm:text-sm mt-1"
-                                                        >
-                                                            ¡Email copiado!
-                                                        </motion.p>
-                                                    )}
+                                            <div className="relative z-10 max-w-4xl mx-auto">
+                                                <div className="text-center mb-8">
+                                                    <h4 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--red-dark)' }}>
+                                                        Contacto por Email
+                                                    </h4>
+                                                    <p className="text-sm sm:text-base md:text-lg text-black mb-6 leading-relaxed">
+                                                        Haga clic en el botón para abrir su cliente de email con un mensaje pre-estructurado
+                                                    </p>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
 
-                                {contactMethod === 'call' && (
-                                    <div
-                                        className="relative p-8 sm:p-12 md:p-16 lg:p-24 xl:p-32 "
-                                        style={{
-                                            backgroundImage: 'url(/images/ofi/ofi3.jpg)',
-                                            backgroundSize: 'cover',
-                                            backgroundPosition: 'center'
-                                        }}
-                                    >
-                                        <div className="absolute inset-0 " style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }} />
-
-                                        <div className="relative z-10 max-w-4xl mx-auto">
-                                            <div className="text-center mb-8">
-                                                <h4 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--red-dark)' }}>
-                                                    Llamar a GESTIUM
-                                                </h4>
-                                                <p className="text-sm sm:text-base md:text-lg text-black mb-6 leading-relaxed">
-                                                    Seleccione el número que prefiera para su consulta
-                                                </p>
-                                            </div>
-
-                                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-                                                {contactInfo.phones.map((phone) => (
-                                                    <motion.button
-                                                        key={phone}
-                                                        onClick={() => makeCall(phone)}
-                                                        className="p-4 border-2 border-red-gestium text-red-gestium hover:bg-red-gestium hover:text-black transition-all duration-300 flex items-center justify-center gap-2  bg-white/90 backdrop-blur-sm"
-                                                        whileHover={{ scale: 1.02 }}
-                                                        whileTap={{ scale: 0.98 }}
-                                                    >
-                                                        <Phone size={16} />
-                                                        <span className="text-sm sm:text-base">{phone}</span>
-                                                    </motion.button>
-                                                ))}
-                                            </div>
-
-                                            <div className="text-center">
-                                                <div className="inline-flex items-center justify-center gap-2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg">
-                                                    <Clock size={16} className="text-red-gestium" />
-                                                    <span className="text-sm sm:text-base text-black font-medium">{contactInfo.hours.weekdays}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )}
-
-                                {contactMethod === 'visit' && (
-                                    <div
-                                        className="relative p-8 sm:p-12 md:p-16 lg:p-24 xl:p-32"
-                                        style={{
-                                            backgroundImage: 'url(/images/ofi/ofi3.jpg)',
-                                            backgroundSize: 'cover',
-                                            backgroundPosition: 'center'
-                                        }}
-                                    >
-                                        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(255, 255, 255, 0.7)' }} />
-
-                                        <div className="relative z-10 max-w-6xl mx-auto">
-                                            <div className="text-center mb-8">
-                                                <h4 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--red-dark)' }}>
-                                                    Visitar Nuestras Oficinas
-                                                </h4>
-                                                <p className="text-sm sm:text-base md:text-lg text-black mb-6 leading-relaxed">
-                                                    Ubicados en el corazón financiero de Quito
-                                                </p>
-                                            </div>
-
-                                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                                                <div className="bg-white/90 backdrop-blur-sm p-6 ">
-                                                    <h5 className="font-semibold mb-4 flex items-center gap-2 text-base sm:text-lg">
-                                                        <MapPin className="text-red-gestium" size={18} />
-                                                        Dirección
-                                                    </h5>
-                                                    <p className="text-sm sm:text-base text-gray-700 mb-6 leading-relaxed">{contactInfo.address}</p>
-
-                                                    <h5 className="font-semibold mb-4 flex items-center gap-2 text-base sm:text-lg">
-                                                        <Clock className="text-red-gestium" size={18} />
-                                                        Horarios
-                                                    </h5>
-                                                    <p className="text-sm sm:text-base text-gray-700 mb-2">{contactInfo.hours.weekdays}</p>
-                                                    <p className="text-sm sm:text-base text-gray-700 mb-6">{contactInfo.hours.weekends}</p>
-
+                                                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
                                                     <CTAButton
                                                         variant="primary"
-                                                        onClick={() => makeCall(contactInfo.phones[2])}
-                                                        className="w-full sm:w-auto"
+                                                        size="lg"
+                                                        onClick={openEmail}
                                                     >
-                                                        Agendar Cita
+                                                        Redactar Email
                                                     </CTAButton>
-                                                </div>
 
-                                                <div className="relative h-64 sm:h-80 lg:h-full min-h-[250px] bg-white/90 backdrop-blur-sm  overflow-hidden">
-                                                    <iframe
-                                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.792886824642!2d-78.48673609022296!3d-0.20458063539800178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59bd0fca99265%3A0x961706262f764d99!2sGESTIUM%20-%20SERVICIOS%20LEGALES%20INTEGRALES!5e0!3m2!1ses-419!2sec!4v1752904430906!5m2!1ses-419!2sec"
-                                                        width="100%"
-                                                        height="100%"
-                                                        style={{ border: 0 }}
-                                                        allowFullScreen
-                                                        loading="lazy"
-                                                        referrerPolicy="no-referrer-when-downgrade"
-                                                        className="rounded-lg"
-                                                    />
+                                                    <div className="text-center">
+                                                        <p className="text-xs sm:text-sm text-gray-900 mb-2">O copie nuestro email:</p>
+                                                        <button
+                                                            onClick={copyEmail}
+                                                            className="text-red-gestium hover:text-red-dark transition-colors flex items-center gap-2 text-sm sm:text-base"
+                                                        >
+                                                            <span className="break-all sm:break-normal">{contactInfo.email}</span>
+                                                            {isEmailCopied ? <CheckCircle size={16} /> : <ArrowRight size={16} />}
+                                                        </button>
+                                                        {isEmailCopied && (
+                                                            <motion.p
+                                                                initial={{ opacity: 0 }}
+                                                                animate={{ opacity: 1 }}
+                                                                className="text-green-600 text-xs sm:text-sm mt-1"
+                                                            >
+                                                                ¡Email copiado!
+                                                            </motion.p>
+                                                        )}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                )}
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                                    )}
+
+                                    {contactMethod === 'call' && (
+                                        <div
+                                            className="relative p-8 sm:p-12 md:p-16 lg:p-24 xl:p-32 "
+                                            style={{
+                                                backgroundImage: 'url(/images/ofi/ofi3.jpg)',
+                                                backgroundSize: 'cover',
+                                                backgroundPosition: 'center'
+                                            }}
+                                        >
+                                            <div className="absolute inset-0 " style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }} />
+
+                                            <div className="relative z-10 max-w-4xl mx-auto">
+                                                <div className="text-center mb-8">
+                                                    <h4 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--red-dark)' }}>
+                                                        Llamar a GESTIUM
+                                                    </h4>
+                                                    <p className="text-sm sm:text-base md:text-lg text-black mb-6 leading-relaxed">
+                                                        Seleccione el número que prefiera para su consulta
+                                                    </p>
+                                                </div>
+
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                                                    {contactInfo.phones.map((phone) => (
+                                                        <motion.button
+                                                            key={phone}
+                                                            onClick={() => makeCall(phone)}
+                                                            className="p-4 border-2 border-red-gestium text-red-gestium hover:bg-red-gestium hover:text-black transition-all duration-300 flex items-center justify-center gap-2  bg-white/90 backdrop-blur-sm"
+                                                            whileHover={{ scale: 1.02 }}
+                                                            whileTap={{ scale: 0.98 }}
+                                                        >
+                                                            <Phone size={16} />
+                                                            <span className="text-sm sm:text-base">{phone}</span>
+                                                        </motion.button>
+                                                    ))}
+                                                </div>
+
+                                                <div className="text-center">
+                                                    <div className="inline-flex items-center justify-center gap-2 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg">
+                                                        <Clock size={16} className="text-red-gestium" />
+                                                        <span className="text-sm sm:text-base text-black font-medium">{contactInfo.hours.weekdays}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {contactMethod === 'visit' && (
+                                        <div
+                                            className="relative p-8 sm:p-12 md:p-16 lg:p-24 xl:p-32"
+                                            style={{
+                                                backgroundImage: 'url(/images/ofi/ofi3.jpg)',
+                                                backgroundSize: 'cover',
+                                                backgroundPosition: 'center'
+                                            }}
+                                        >
+                                            <div className="absolute inset-0" style={{ backgroundColor: 'rgba(255, 255, 255, 0.7)' }} />
+
+                                            <div className="relative z-10 max-w-6xl mx-auto">
+                                                <div className="text-center mb-8">
+                                                    <h4 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4" style={{ color: 'var(--red-dark)' }}>
+                                                        Visitar Nuestras Oficinas
+                                                    </h4>
+                                                    <p className="text-sm sm:text-base md:text-lg text-black mb-6 leading-relaxed">
+                                                        Ubicados en el corazón financiero de Quito
+                                                    </p>
+                                                </div>
+
+                                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                                    <div className="bg-white/90 backdrop-blur-sm p-6 ">
+                                                        <h5 className="font-semibold mb-4 flex items-center gap-2 text-base sm:text-lg">
+                                                            <MapPin className="text-red-gestium" size={18} />
+                                                            Dirección
+                                                        </h5>
+                                                        <p className="text-sm sm:text-base text-gray-700 mb-6 leading-relaxed">{contactInfo.address}</p>
+
+                                                        <h5 className="font-semibold mb-4 flex items-center gap-2 text-base sm:text-lg">
+                                                            <Clock className="text-red-gestium" size={18} />
+                                                            Horarios
+                                                        </h5>
+                                                        <p className="text-sm sm:text-base text-gray-700 mb-2">{contactInfo.hours.weekdays}</p>
+                                                        <p className="text-sm sm:text-base text-gray-700 mb-6">{contactInfo.hours.weekends}</p>
+
+                                                        <CTAButton
+                                                            variant="primary"
+                                                            onClick={() => makeCall(contactInfo.phones[2])}
+                                                            className="w-full sm:w-auto"
+                                                        >
+                                                            Agendar Cita
+                                                        </CTAButton>
+                                                    </div>
+
+                                                    <div className="relative h-64 sm:h-80 lg:h-full min-h-[250px] bg-white/90 backdrop-blur-sm  overflow-hidden">
+                                                        <iframe
+                                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.792886824642!2d-78.48673609022296!3d-0.20458063539800178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59bd0fca99265%3A0x961706262f764d99!2sGESTIUM%20-%20SERVICIOS%20LEGALES%20INTEGRALES!5e0!3m2!1ses-419!2sec!4v1752904430906!5m2!1ses-419!2sec"
+                                                            width="100%"
+                                                            height="100%"
+                                                            style={{ border: 0 }}
+                                                            allowFullScreen
+                                                            loading="lazy"
+                                                            referrerPolicy="no-referrer-when-downgrade"
+                                                            className="rounded-lg"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+                    {/* --- FIN: CÓDIGO MODIFICADO PARA EL SCROLL --- */}
                 </div>
             </Section>
 
