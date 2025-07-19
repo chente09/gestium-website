@@ -133,7 +133,7 @@ export default function Home() {
                   transition={{ delay: 1.2, duration: 0.6 }}
                 >
                   <motion.span
-                    style={{ color: 'var(--red-light)', textShadow: '0 0 9px gray' }}
+                    style={{ color: 'var(--red-light)', textShadow: '0 0 9px black' }}
                     className="font-semibold"
                   >
                     Recuperación de cartera especializada

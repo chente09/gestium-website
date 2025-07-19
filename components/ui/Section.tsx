@@ -3,7 +3,7 @@ import React from 'react';
 interface SectionProps {
     children: React.ReactNode;
     className?: string;
-    background?: 'white' | 'platinum' | 'dark' | 'primary' | 'gradient-primary';
+    background?: 'white' | 'platinum' | 'dark' | 'primary' | 'gradient-primary' | 'gray';
     padding?: 'sm' | 'md' | 'lg' | 'xl';
     containerClass?: string;
 }
@@ -21,6 +21,7 @@ const Section: React.FC<SectionProps> = ({
         platinum: '',
         dark: '',
         primary: '',
+        gray: '',
         'gradient-primary': '',
     };
 
@@ -35,6 +36,8 @@ const Section: React.FC<SectionProps> = ({
                 return { backgroundColor: 'var(--red-gestium)' };
             case 'gradient-primary':
                 return { background: 'var(--gradient-primary)' };
+            case 'gray':
+                return { backgroundImage: 'url(/images/ofi/justicia.jpg)'};
             default:
                 return {};
         }

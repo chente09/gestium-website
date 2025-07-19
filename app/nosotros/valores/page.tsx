@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import Image from 'next/image';
 import MainLayout from '@/components/layout/MainLayout';
@@ -8,18 +8,7 @@ import Section from '@/components/ui/Section';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Card from '@/components/ui/Card';
 import { motion } from 'framer-motion';
-import {
-    Target,
-    Eye,
-    Heart,
-    Shield,
-    Clock,
-    Award,
-    Users,
-    CheckCircle,
-    Lightbulb,
-    Scale
-} from 'lucide-react';
+import { Target, Eye, Heart, Shield, Clock, Award, Users, CheckCircle, Lightbulb, Scale } from 'lucide-react';
 
 const missionVisionData = [
     {
@@ -134,7 +123,7 @@ export default function NuestrosValoresPage() {
                         >
                             Nuestros{' '}
                             <motion.span
-                                style={{ color: 'var(--red-gestium)', textShadow: '0 0 9px gray'  }}
+                                style={{ color: 'var(--red-gestium)', textShadow: '0 0 9px gray' }}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.5, duration: 0.6 }}
@@ -196,12 +185,17 @@ export default function NuestrosValoresPage() {
                                             whileHover={{ scale: 1.02 }}
                                             transition={{ duration: 0.3 }}
                                         >
+                                            
                                             <Image
                                                 src={item.bgImage}
                                                 alt={item.title}
                                                 fill
                                                 className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                                quality={95}
+                                                priority={true}
                                                 sizes="(max-width: 1024px) 100vw, 50vw"
+                                                placeholder="blur"
+                                                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                                             />
                                             <div className="absolute inset-0 transition-all duration-300"></div>
                                         </motion.div>
