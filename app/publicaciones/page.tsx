@@ -72,13 +72,13 @@ export default function PublicacionesPage() {
                 title={
                     <>
                         Nuestros{' '}
-                        <span style={{ color: 'var(--red-gestium)', textShadow: '0 0 9px gray' }}>Publicaciones</span>
+                        <span style={{ color: 'var(--gold-dark)', textShadow: '0 0 9px gray' }}>Publicaciones</span>
                     </>
                 }
                 description={
                     <>
                         Análisis jurídico, actualidad normativa y{' '}
-                        <span className="font-semibold" style={{ color: 'var(--red-light)', textShadow: '0 0 9px black' }}>
+                        <span className="font-semibold" style={{ textShadow: '0 0 9px black' }}>
                             recursos especializados
                         </span>{' '}
                         para profesionales del derecho.
@@ -94,7 +94,7 @@ export default function PublicacionesPage() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
                         >
-                            <CheckCircle size={16} style={{ color: 'var(--red-gestium)' }} />
+                            <CheckCircle size={16} style={{ color: 'var(--gold-dark)' }} />
                             <span className="font-medium text-white">{item}</span>
                         </motion.div>
                     ))}

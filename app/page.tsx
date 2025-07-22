@@ -114,8 +114,8 @@ export default function Home() {
                 >
                   GESTIUM{' '}
                   <motion.span
-                    className="text-6xl md:text-7xl lg:text-7xl font-black" // Mismo tamaño que GESTIUM
-                    style={{ color: 'var(--red-light)', textShadow: '0 0 9px gray' }}
+                    className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-none tracking-tight" // Mismo tamaño que GESTIUM
+                    style={{ color: 'var(--gold-dark)', textShadow: '0 0 9px gray', fontSize: '95px' }}
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.8, duration: 0.6 }}
@@ -133,30 +133,12 @@ export default function Home() {
                   transition={{ delay: 1.2, duration: 0.6 }}
                 >
                   <motion.span
-                    style={{ color: 'var(--red-light)', textShadow: '0 0 9px black' }}
                     className="font-semibold"
                   >
                     Recuperación de cartera especializada
                   </motion.span>
                   {' '}respaldada por tecnología propia y la confianza de las principales instituciones del Ecuador.
                 </motion.p>
-
-                {/* Badge de experiencia */}
-                <motion.div
-                  className="inline-flex items-center gap-3 px-6 py-2 border mb-8"
-                  style={{
-                    borderColor: 'var(--red-gestium)',
-                    backgroundColor: 'rgba(167, 26, 33, 0.15)'
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.6 }}
-                >
-                  <div className="w-2 h-2" style={{ backgroundColor: 'var(--red-gestium)' }}></div>
-                  <span className="text-sm font-medium uppercase tracking-wider text-white">
-                    20+ Años de Experiencia
-                  </span>
-                </motion.div>
 
                 {/* ✨ CTAs usando componentes refactorizados */}
                 <motion.div
@@ -173,23 +155,15 @@ export default function Home() {
                     Consulta Gratuita
                   </CTAButton>
 
-                  <motion.button
-                    className="group px-12 py-4 font-bold uppercase tracking-wider transition-all duration-300 border-2 bg-transparent"
-                    style={{
-                      borderColor: 'var(--white)',
-                      color: 'var(--white)'
-                    }}
-                    whileHover={{
-                      scale: 1.02,
-                      backgroundColor: 'var(--white)',
-                      color: 'var(--charcoal)',
-                      cursor: 'pointer'
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => router.push('/servicios')}
+                  <a
+                    href="https://gestium-app.netlify.app/consultas"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-block px-12 py-4 font-bold uppercase tracking-wider transition-all duration-300 border-2 bg-transparent text-white border-white hover:bg-white hover:text-[var(--charcoal)] hover:scale-105 active:scale-95 text-center"
                   >
-                    Ver Servicios
-                  </motion.button>
+                    Consulta el Estado de tu Proceso
+                  </a>
+                  
                 </motion.div>
               </motion.div>
             </div>

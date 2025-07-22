@@ -99,13 +99,13 @@ export default function ClientesPage() {
                 title={
                     <>
                         Nuestros{' '}
-                        <span style={{ color: 'var(--red-gestium)', textShadow: '0 0 9px gray' }}>Clientes</span>
+                        <span style={{ color: 'var(--gold-dark)', textShadow: '0 0 9px gray' }}>Clientes</span>
                     </>
                 }
                 description={
                     <>
                         La confianza de las{' '}
-                        <span className="font-semibold" style={{ color: 'var(--red-light)', textShadow: '0 0 9px black' }}>
+                        <span className="font-semibold" style={{ textShadow: '0 0 9px black' }}>
                             principales instituciones del Ecuador
                         </span>{' '}
                         respalda nuestra experiencia y calidad profesional.
@@ -121,7 +121,7 @@ export default function ClientesPage() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 1 + index * 0.1, duration: 0.5 }}
                         >
-                            <CheckCircle size={16} style={{ color: 'var(--red-gestium)' }} />
+                            <CheckCircle size={16} style={{ color: 'var(--gold-dark)' }} />
                             <span className="font-medium text-white">{item}</span>
                         </motion.div>
                     ))}

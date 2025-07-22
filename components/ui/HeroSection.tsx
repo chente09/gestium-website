@@ -47,7 +47,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
                     <motion.div
                         className="w-24 h-1 mx-auto mb-8"
-                        style={{ backgroundColor: 'var(--red-gestium)' }}
+                        style={{ backgroundColor: 'var(--gold-dark)' }}
                         initial={{ width: 0 }}
                         animate={{ width: 96 }}
                         transition={{ delay: 0.5, duration: 0.8 }}

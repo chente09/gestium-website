@@ -123,7 +123,7 @@ export default function NuestrosValoresPage() {
                         >
                             Nuestros{' '}
                             <motion.span
-                                style={{ color: 'var(--red-gestium)', textShadow: '0 0 9px gray' }}
+                                style={{ color: 'var(--gold-dark)', textShadow: '0 0 9px gray' }}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.5, duration: 0.6 }}
@@ -134,7 +134,7 @@ export default function NuestrosValoresPage() {
 
                         <motion.div
                             className="w-24 h-1 mx-auto mb-8"
-                            style={{ backgroundColor: 'var(--red-gestium)' }}
+                            style={{ backgroundColor: 'var(--gold-dark)' }}
                             initial={{ width: 0 }}
                             animate={{ width: 96 }}
                             transition={{ delay: 0.8, duration: 0.8 }}

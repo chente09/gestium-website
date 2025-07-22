@@ -1,46 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
-/* Paleta Profesional Gestium - ACTUALIZADA CON ROJO */
+/* PALETA PROFESIONAL GESTIUM - VERSIÓN COMPLETA CON DORADO */
 :root {
-  /* Colores Principales - Nueva Paleta con Rojo Gestium */
-  --charcoal: #1a1a1a;         /* Carbón elegante */
-  --black: #000000;            /* Negro puro */
-  --white: #FFFFFF;            /* Blanco puro */
-  --red-gestium: #a71a21;      /* Rojo principal del logo */
-  --red-dark: #821616;         /* Rojo más oscuro */
-  --red-light: #E32211;        /* Rojo más claro */
-  --navy: #0F172A;             /* Azul marino profundo */
-  --steel: #334155;            /* Gris acero */
-  --platinum: #F8FAFC;         /* Platino claro */
-  --silver: #64748B;           /* Plata medio */
-  --graphite: #1E293B;         /* Grafito oscuro */
+  /* === COLORES PRINCIPALES === */
+  --charcoal: #1a1a1a;         /* Carbón elegante - títulos principales */
+  --black: #000000;            /* Negro puro - texto fuerte */
+  --white: #FFFFFF;            /* Blanco puro - fondos limpios */
   
-  /* Gradientes Ejecutivos - Actualizados con Rojo */
+  /* === COLORES DE MARCA === */
+  --red-gestium: #a71a21;      /* Rojo principal del logo - CTA primario */
+  --red-dark: #821616;         /* Rojo oscuro - hover states */
+  --red-light: #E32211;        /* Rojo claro - acentos */
+  
+  --gold: #f4c401;             /* Oro principal - destacados premium */
+  --gold-dark: #d4a017;        /* Oro oscuro - hover dorado */
+  --gold-light: #ffd700;       /* Oro claro - brillos */
+  
+  /* === COLORES NEUTROS === */
+  --navy: #0F172A;             /* Azul marino profundo - fondos oscuros */
+  --steel: #334155;            /* Gris acero - texto secundario */
+  --platinum: #F8FAFC;         /* Platino claro - fondos suaves */
+  --silver: #64748B;           /* Plata medio - bordes y separadores */
+  --graphite: #1E293B;         /* Grafito oscuro - cards oscuras */
+  
+  /* === GRADIENTES PREMIUM === */
+  /* Gradientes con Rojo */
   --gradient-primary: linear-gradient(135deg, var(--charcoal) 0%, var(--navy) 100%);
   --gradient-red: linear-gradient(135deg, var(--red-gestium) 0%, var(--red-dark) 100%);
   --gradient-red-light: linear-gradient(135deg, var(--red-light) 0%, var(--red-gestium) 100%);
+  
+  /* Gradientes con Dorado */
+  --gradient-gold: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  --gradient-gold-light: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+  
+  /* Gradientes Combinados */
+  --gradient-luxury: linear-gradient(135deg, var(--red-gestium) 0%, var(--gold) 50%, var(--red-dark) 100%);
+  --gradient-premium: linear-gradient(45deg, var(--gold) 0%, var(--red-gestium) 100%);
+  
+  /* Gradientes Neutros */
   --gradient-dark: linear-gradient(135deg, var(--black) 0%, var(--graphite) 100%);
   --gradient-subtle: linear-gradient(135deg, var(--platinum) 0%, #F1F5F9 100%);
   
-  /* Sombras Profesionales - Actualizadas */
+  /* === SOMBRAS PROFESIONALES === */
   --shadow-minimal: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-strong: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-red: 0 4px 14px 0 rgba(216, 30, 39, 0.15);
-  --shadow-red-strong: 0 8px 25px -3px rgba(216, 30, 39, 0.3);
+  
+  /* Sombras de Color */
+  --shadow-red: 0 4px 14px 0 rgba(167, 26, 33, 0.15);
+  --shadow-red-strong: 0 8px 25px -3px rgba(167, 26, 33, 0.3);
+  --shadow-gold: 0 4px 14px 0 rgba(244, 196, 1, 0.15);
+  --shadow-gold-strong: 0 8px 25px -3px rgba(244, 196, 1, 0.3);
   --shadow-dark: 0 8px 25px -3px rgba(0, 0, 0, 0.3);
   
-  /* Tipografía Premium */
+  /* === TIPOGRAFÍA PREMIUM === */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  
-  /* Variables para compatibilidad (mantener las doradas para componentes existentes) */
-  --gold: var(--red-gestium);  /* Mapear oro a rojo para compatibilidad */
-  --gold-dark: var(--red-dark);
 }
 
-/* Configuración base mejorada */
+/* === CONFIGURACIÓN PARA TAILWIND === */
 :root {
   --font-sans: var(--font-primary);
   --font-serif: var(--font-display);
@@ -50,17 +69,18 @@
   --color-black: var(--black);
   --color-white: var(--white);
   --color-red-gestium: var(--red-gestium);
+  --color-gold: var(--gold);
   --color-navy: var(--navy);
   --color-steel: var(--steel);
   --color-platinum: var(--platinum);
   --color-silver: var(--silver);
 }
 
-/* Estilos Base Optimizados */
+/* === ESTILOS BASE OPTIMIZADOS === */
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  scroll-padding-top: 5rem; /* Para header fixed */
+  scroll-padding-top: 5rem;
 }
 
 body {
@@ -73,29 +93,25 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Clases para compensar header fixed */
+/* === CLASES DE UTILIDAD PARA HEADER === */
 .header-offset {
-  padding-top: 5rem; /* 80px del header */
+  padding-top: 5rem;
 }
 
-/* Hero section con padding responsivo */
 .hero-section {
   min-height: 100vh;
   padding-bottom: clamp(2rem, 5vh, 4rem);
 }
 
-/* Secciones que necesitan espacio del header */
 .section-with-header {
   min-height: calc(100vh - 5rem);
 }
 
-/* Espaciado vertical responsivo */
 .section-padding-y {
   padding-top: clamp(3rem, 8vh, 6rem);
   padding-bottom: clamp(3rem, 8vh, 6rem);
 }
 
-/* Contenedor centrado con márgenes fluidos */
 .container-fluid {
   max-width: 1400px;
   margin: 0 auto;
@@ -103,7 +119,7 @@ body {
   padding-right: clamp(1rem, 4vw, 3rem);
 }
 
-/* Animaciones Mejoradas */
+/* === ANIMACIONES PREMIUM === */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -131,20 +147,33 @@ body {
   50% { transform: translateY(-12px); }
 }
 
-@keyframes pulse-glow {
+@keyframes pulse-glow-red {
   0%, 100% { 
     opacity: 1;
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(216, 30, 39, 0.4);
+    box-shadow: 0 0 0 0 rgba(167, 26, 33, 0.4);
   }
   50% { 
     opacity: 0.9;
     transform: scale(1.02);
-    box-shadow: 0 0 0 8px rgba(216, 30, 39, 0);
+    box-shadow: 0 0 0 8px rgba(167, 26, 33, 0);
   }
 }
 
-@keyframes shimmer {
+@keyframes pulse-glow-gold {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(244, 196, 1, 0.4);
+  }
+  50% { 
+    opacity: 0.9;
+    transform: scale(1.02);
+    box-shadow: 0 0 0 8px rgba(244, 196, 1, 0);
+  }
+}
+
+@keyframes shimmer-gold {
   0% { background-position: -200px 0; }
   100% { background-position: calc(200px + 100%) 0; }
 }
@@ -165,7 +194,7 @@ body {
   }
 }
 
-/* Clases de animación */
+/* === CLASES DE ANIMACIÓN === */
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
 }
@@ -178,8 +207,12 @@ body {
   animation: float 4s ease-in-out infinite;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+.animate-pulse-glow-red {
+  animation: pulse-glow-red 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow-gold {
+  animation: pulse-glow-gold 3s ease-in-out infinite;
 }
 
 .animate-draw-line {
@@ -190,13 +223,19 @@ body {
   animation: countUp 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
-.shimmer-effect {
-  background: linear-gradient(90deg, transparent, rgba(216, 30, 39, 0.1), transparent);
+.shimmer-effect-red {
+  background: linear-gradient(90deg, transparent, rgba(167, 26, 33, 0.1), transparent);
   background-size: 200px 100%;
-  animation: shimmer 2s infinite;
+  animation: shimmer-gold 2s infinite;
 }
 
-/* Efectos Premium */
+.shimmer-effect-gold {
+  background: linear-gradient(90deg, transparent, rgba(244, 196, 1, 0.1), transparent);
+  background-size: 200px 100%;
+  animation: shimmer-gold 2s infinite;
+}
+
+/* === EFECTOS PREMIUM === */
 .glass-effect {
   backdrop-filter: blur(16px);
   background: rgba(255, 255, 255, 0.1);
@@ -209,8 +248,23 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* === GRADIENTES DE TEXTO === */
 .text-gradient-red {
   background: var(--gradient-red-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: var(--gradient-gold-light);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-luxury {
+  background: var(--gradient-luxury);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -223,7 +277,7 @@ body {
   background-clip: text;
 }
 
-/* Hover Effects Premium */
+/* === EFECTOS HOVER PREMIUM === */
 .hover-lift {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
@@ -233,16 +287,25 @@ body {
   box-shadow: var(--shadow-dark);
 }
 
-.hover-glow {
+.hover-glow-red {
   transition: all 0.3s ease;
 }
 
-.hover-glow:hover {
-  box-shadow: 0 0 20px rgba(216, 30, 39, 0.4);
+.hover-glow-red:hover {
+  box-shadow: var(--shadow-red-strong);
   transform: scale(1.02);
 }
 
-/* Scrollbar Premium */
+.hover-glow-gold {
+  transition: all 0.3s ease;
+}
+
+.hover-glow-gold:hover {
+  box-shadow: var(--shadow-gold-strong);
+  transform: scale(1.02);
+}
+
+/* === SCROLLBAR PREMIUM === */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -252,33 +315,32 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--red-gestium);
+  background: var(--gradient-premium);
   border-radius: 4px;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--red-dark);
+  background: var(--gradient-luxury);
 }
 
-/* Selection colors */
+/* === SELECCIÓN Y FOCUS === */
 ::selection {
-  background: rgba(216, 30, 39, 0.2);
+  background: rgba(244, 196, 1, 0.2);
   color: var(--charcoal);
 }
 
 ::-moz-selection {
-  background: rgba(216, 30, 39, 0.2);
+  background: rgba(244, 196, 1, 0.2);
   color: var(--charcoal);
 }
 
-/* Focus styles mejorados */
 :focus-visible {
-  outline: 2px solid var(--red-gestium);
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
 }
 
-/* Mejoras de accesibilidad */
+/* === ACCESIBILIDAD === */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -290,7 +352,7 @@ body {
   }
 }
 
-/* Responsive typography mejorada */
+/* === TIPOGRAFÍA RESPONSIVA === */
 @media (max-width: 640px) {
   html { font-size: 14px; }
 }
@@ -311,7 +373,7 @@ body {
   html { font-size: 18px; }
 }
 
-/* Utilidades adicionales */
+/* === UTILIDADES ADICIONALES === */
 .text-shadow {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -320,9 +382,53 @@ body {
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.border-gradient {
+.border-gradient-red {
   border: 1px solid transparent;
   background: linear-gradient(white, white) padding-box,
               var(--gradient-red) border-box;
 }
 
+.border-gradient-gold {
+  border: 1px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              var(--gradient-gold) border-box;
+}
+
+.border-gradient-luxury {
+  border: 1px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              var(--gradient-luxury) border-box;
+}
+
+/* === GUÍA DE USO COMENTADA === */
+/*
+🎨 GUÍA DE COLORES GESTIUM:
+
+PRIMARIOS:
+- Rojo (--red-gestium): CTAs principales, botones importantes
+- Dorado (--gold): Destacados premium, logros, certificaciones
+- Charcoal (--charcoal): Títulos principales, texto importante
+
+SECUNDARIOS:
+- Navy (--navy): Fondos elegantes, headers
+- Steel (--steel): Texto secundario, subtítulos
+- Platinum (--platinum): Fondos suaves, cards
+
+CASOS DE USO:
+- Botones principales: background rojo + texto blanco
+- Botones secundarios: background dorado + texto charcoal
+- Destacados premium: gradiente luxury (rojo + dorado)
+- Cards importantes: borde dorado + sombra gold
+- Texto de lujo: gradiente gold o luxury
+
+COMBINACIONES RECOMENDADAS:
+✅ Rojo + Blanco (alta legibilidad)
+✅ Dorado + Charcoal (elegante)
+✅ Navy + Dorado (sofisticado)
+✅ Gradiente Luxury (premium máximo)
+
+❌ EVITAR:
+- Rojo + Dorado sin separación
+- Colores saturados adicionales
+- Más de 3 colores principales por sección
+*/
