@@ -105,7 +105,7 @@ export default function ContactoPage() {
                         >
                             Hablemos de su{' '}
                             <motion.span
-                                style={{ color: 'var(--red-gestium)', textShadow: '0 0 20px rgba(167, 26, 33, 0.5)' }}
+                                style={{ color: 'var(--red-gestium)', textShadow: '0 0 9px gray' }} // Agregamos el estilo de color rojo y sombra'textShadow: '0 0 9px gray' }}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.5, duration: 0.6 }}

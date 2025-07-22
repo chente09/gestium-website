@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import Section from '@/components/ui/Section';
@@ -444,7 +444,7 @@ export default function Home() {
           </div>
 
           {/* Call to Action Discreto */}
-          <SectionButton onClick={() => router.push('/contacto')} cursor='pointer'>
+          <SectionButton onClick={() => router.push('/areas')} cursor='pointer'>
             Ver Todas las Áreas
           </SectionButton>
         </div>
@@ -777,7 +777,7 @@ export default function Home() {
                       className="group/btn text-sm font-bold uppercase tracking-wider flex items-center gap-2 transition-all duration-300"
                       style={{ color: 'var(--red-gestium)' }}
                       whileHover={{ x: 5 }}
-                      onClick={() => router.push(`/areas/${area.name.toLowerCase()}`) }
+                      onClick={() => router.push(`/areas/${area.name.toLowerCase()}`)}
                     >
                       Más Información
                     </motion.button>
@@ -818,13 +818,15 @@ export default function Home() {
 
       {/* CTA Section - Con nueva paleta */}
       <div
-        className="section-padding-y relative overflow-hidden"
+        className="py-20 text-center relative"
         style={{
-          background: 'var(--gradient-primary)',
           backgroundImage: "url('/images/ofi/justicia.jpg')",
-          backgroundBlendMode: 'overlay'
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
         }}
       >
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(15, 23, 42, 0.8)' }} />
         <div className="container-fluid text-center relative z-10">
           <motion.h2
             className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-shadow-strong"

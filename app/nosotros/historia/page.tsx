@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import Image from 'next/image';
 import MainLayout from '@/components/layout/MainLayout';
@@ -319,13 +319,15 @@ export default function NuestroHistoriaPage() {
 
             {/* Presente y Futuro - CTA responsivo corregido */}
             <div
-                className="py-16 sm:py-20 relative overflow-hidden"
+                className="py-20 text-center relative"
                 style={{
-                    background: 'var(--gradient-primary)',
                     backgroundImage: "url('/images/ofi/justicia.jpg')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundAttachment: 'fixed'
                 }}
             >
-                <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }} />
+                <div className="absolute inset-0" style={{ backgroundColor: 'rgba(15, 23, 42, 0.8)' }} />
 
                 <div className="container-fluid text-center relative z-10 px-4">
                     <motion.h2

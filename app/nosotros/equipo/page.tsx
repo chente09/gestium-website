@@ -25,7 +25,7 @@ interface TeamMember {
 export default function EquipoPage() {
     const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-    const teamMembers: TeamMember[] = [
+    const teamMembers: TeamMember[] = [ 
         {
             id: 'david-maldonado',
             name: 'Dr. David Maldonado Viteri',

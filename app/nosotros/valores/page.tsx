@@ -185,7 +185,7 @@ export default function NuestrosValoresPage() {
                                             whileHover={{ scale: 1.02 }}
                                             transition={{ duration: 0.3 }}
                                         >
-                                            
+
                                             <Image
                                                 src={item.bgImage}
                                                 alt={item.title}
@@ -322,13 +322,15 @@ export default function NuestrosValoresPage() {
 
             {/* Call to Action */}
             <div
-                className="py-20 relative overflow-hidden"
+                className="py-20 text-center relative"
                 style={{
-                    background: 'var(--gradient-primary)',
                     backgroundImage: "url('/images/ofi/justicia.jpg')",
-                    backgroundBlendMode: 'overlay'
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundAttachment: 'fixed'
                 }}
             >
+                <div className="absolute inset-0" style={{ backgroundColor: 'rgba(15, 23, 42, 0.8)' }} />
                 <div className="container-fluid text-center relative z-10">
                     <motion.h2
                         className="text-4xl md:text-5xl font-bold mb-6 tracking-tight"

@@ -184,7 +184,7 @@ const Header: React.FC = () => {
                     <div className="hidden lg:flex items-center gap-6">
                         {/* Portal Clientes - DISCRETO */}
                         <Link
-                            href="/portal-clientes"
+                            href="https://gestium-app.netlify.app/consultas" target='_blank'
                             className="text-[14px] font-medium tracking-wide transition-all duration-300 hover:scale-105 text-white/80 hover:text-red-600 flex items-center gap-1"
                         >
                             <LockClosedIcon className="w-3 h-3" />

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 interface SectionHeaderProps {
     title: string;
     subtitle?: string;
-    description?: string | React.ReactNode; // Permitir tanto string como ReactNode
+    description?: string | React.ReactNode;
     centered?: boolean;
     showDivider?: boolean;
     className?: string;
@@ -31,7 +31,11 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
             className={containerClass}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ 
+                once: true, 
+                margin: "-50px",  // ✅ CAMBIO: Detecta antes
+                amount: 0.3       // ✅ CAMBIO: Se activa con 30% visible
+            }}
             transition={{ duration: 0.6 }}
         >
             {/* Subtitle */}
@@ -41,7 +45,11 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
                     style={{ color: 'var(--red-gestium)' }}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ 
+                        once: true, 
+                        margin: "-50px",
+                        amount: 0.3 
+                    }}
                     transition={{ delay: 0.1, duration: 0.6 }}
                 >
                     {subtitle}
@@ -57,7 +65,11 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
                 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ 
+                    once: true, 
+                    margin: "-50px",
+                    amount: 0.3 
+                }}
                 transition={{ delay: 0.2, duration: 0.6 }}
             >
                 {title}
@@ -73,19 +85,27 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
                     }}
                     initial={{ width: 0 }}
                     whileInView={{ width: '64px' }}
-                    viewport={{ once: true }}
+                    viewport={{ 
+                        once: true, 
+                        margin: "-50px",
+                        amount: 0.3 
+                    }}
                     transition={{ delay: 0.3, duration: 0.6 }}
                 />
             )}
 
-            {/* Description - Ahora acepta ReactNode */}
+            {/* Description */}
             {description && (
                 <motion.div
                     className={`text-lg md:text-xl leading-relaxed ${centered ? 'max-w-3xl mx-auto' : 'max-w-4xl'} ${descriptionClassName}`}
                     style={{ color: 'var(--silver)' }}
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ 
+                        once: true, 
+                        margin: "-50px",
+                        amount: 0.3 
+                    }}
                     transition={{ delay: 0.4, duration: 0.6 }}
                 >
                     {description}
