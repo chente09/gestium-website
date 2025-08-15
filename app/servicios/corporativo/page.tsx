@@ -69,7 +69,7 @@ export default function DerechoCorporativoPage() {
         <MainLayout>
             {/* --- HERO SECTION --- */}
             <HeroSection
-                backgroundImage="/images/areas/corporativo.jpg"
+                backgroundImage="/images/servicios/corporativo.avif"
                 title={
                     <>
                         Derecho <span style={{ color: 'var(--gold-dark)', textShadow: '0 0 9px gray' }}>Corporativo</span>
@@ -93,6 +93,34 @@ export default function DerechoCorporativoPage() {
                 </div>
             </HeroSection>
 
+            {/* --- SERVICIOS CORPORATIVOS --- */}
+            <Section background="platinum" padding="lg">
+                <SectionHeader
+                    title="Nuestros Servicios Corporativos"
+                    description="Ofrecemos un portafolio completo de servicios para cubrir todas las necesidades legales de su empresa."
+                    centered={true}
+                    className="mb-16"
+                />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {corporateServices.map((service, index) => (
+                        <motion.div
+                            key={index}
+                            className="bg-white p-8 border border-slate-200/80 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group text-center"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1, duration: 0.6 }}
+                        >
+                            <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-red-50 group-hover:bg-red-100 transition-colors duration-300 mx-auto">
+                                <service.icon size={28} className="text-gold-dark" />
+                            </div>
+                            <h3 className="text-xl font-bold font-playfair mb-3 text-slate-900">{service.title}</h3>
+                            <p className="text-sm leading-relaxed text-slate-600 text-justify">{service.description}</p>
+                        </motion.div>
+                    ))}
+                </div>
+            </Section>
+
             {/* --- INTRODUCCIÓN AL SERVICIO --- */}
             <Section background="white" padding="lg">
                 <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
@@ -114,49 +142,21 @@ export default function DerechoCorporativoPage() {
                             description="En un entorno empresarial dinámico, contar con una asesoría corporativa sólida es fundamental. Nuestro equipo ofrece un servicio integral que acompaña a su empresa en todas sus etapas, garantizando el cumplimiento normativo, optimizando su estructura legal y brindando la seguridad jurídica necesaria para tomar decisiones estratégicas con confianza."
                             centered={false}
                             showDivider={true}
-                            className="mb-0"
+                            className="mb-0 text-justify"
                         />
                     </div>
                 </div>
             </Section>
 
-            {/* --- SERVICIOS CORPORATIVOS --- */}
-            <Section background="platinum" padding="lg">
-                <SectionHeader
-                    title="Nuestros Servicios Corporativos"
-                    description="Ofrecemos un portafolio completo de servicios para cubrir todas las necesidades legales de su empresa."
-                    centered={true}
-                    className="mb-16"
-                />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {corporateServices.map((service, index) => (
-                        <motion.div
-                            key={index}
-                            className="bg-white p-8 border border-slate-200/80 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.6 }}
-                        >
-                            <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-red-50 group-hover:bg-red-100 transition-colors duration-300">
-                                <service.icon size={28} className="text-gold-dark" />
-                            </div>
-                            <h3 className="text-xl font-bold font-playfair mb-3 text-slate-900">{service.title}</h3>
-                            <p className="text-sm leading-relaxed text-slate-600">{service.description}</p>
-                        </motion.div>
-                    ))}
-                </div>
-            </Section>
-
             {/* --- SECCIÓN DE CLIENTES TIPO --- */}
-            <Section background="white" padding="lg">
+            <Section background="platinum" padding="lg">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <SectionHeader
                             title="Asesoría a la Medida de su Empresa"
                             description="Entendemos que cada negocio es único. Adaptamos nuestros servicios para satisfacer las necesidades específicas de empresas de todos los tamaños y sectores, desde emprendedores que dan sus primeros pasos hasta corporaciones consolidadas."
                             centered={false}
-                            className="mb-8"
+                            className="mb-8 text-justify"
                         />
                         <div className="space-y-4">
                             {clientTypes.map((client, index) => (

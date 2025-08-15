@@ -16,7 +16,7 @@ import {
     CheckCircle,
     Clock,
     Award,
-    Target
+    Heart
 } from 'lucide-react';
 
 export default function ServiciosPage() {
@@ -27,89 +27,118 @@ export default function ServiciosPage() {
         {
             title: 'Recuperación de Cartera',
             subtitle: 'Especialidad Principal',
-            description: 'Gestión integral de cobranza judicial, extrajudicial y coactiva con más de 20 años de experiencia comprobada.',
+            description: 'Gestión integral de cobranza judicial, extrajudicial y coactiva respaldada por años de experiencia comprobada. Contamos con metodologías propias desarrolladas específicamente para optimizar los procesos de recuperación, manteniendo la confianza de las principales instituciones financieras del país. Nuestro enfoque combina tecnología avanzada con expertise legal para maximizar la efectividad en cada caso, desde la gestión preventiva hasta la ejecución judicial.',
             icon: ScaleIcon,
             features: [
-                'Cobranza Judicial especializada',
-                'Gestión Extrajudicial efectiva',
-                'Proceso Coactivo (14+ años)',
-                'Tecnología GESTIUM-APP'
+                'Cobranza Judicial especializada con representación experta',
+                'Gestión Extrajudicial efectiva y negociación directa',
+                'Proceso Coactivo con más de 14 años de experiencia',
+                'Tecnología propia GESTIUM-APP para seguimiento'
             ],
             stats: '95% Efectividad',
             href: '/servicios/recuperacion-cartera',
-            image: '/images/ofi/Ofi.JPG'
+            image: '/images/servicios/recuperacion.avif'
         },
         {
             title: 'Derecho Inmobiliario',
             subtitle: 'Proyectos Seguros',
-            description: 'Asesoría especializada en proyectos inmobiliarios con experiencia en más de 50 desarrollos exitosos.',
+            description: 'Asesoría legal integral para el desarrollo de proyectos inmobiliarios. Protegemos su inversión, tanto desde la perspectiva de constructor o desarrollador de proyectos, como de comprador de una unidad habitacional, así como de inversionista, ya sea de manera directa o a través de compañías o fideicomisos. Hemos participado en la constitución y desarrollo de más de cincuenta proyectos inmobiliarios tanto en Quito como en otras ciudades del país.',
             icon: House,
             features: [
-                'Constitución de proyectos',
-                'Declaratorias de propiedad horizontal',
-                'Compraventas y promesas',
-                'Hipotecas y garantías'
+                'Constitución y desarrollo de proyectos inmobiliarios',
+                'Declaratorias de propiedad horizontal y subdivisiones',
+                'Compraventas definitivas y promesas de compraventa',
+                'Estructuración a través de compañías o fideicomisos'
             ],
-            stats: '50+ Proyectos',
+            stats: 'Cumplimiento',
             href: '/servicios/inmobiliario',
-            image: '/images/ofi/Ofi.JPG'
+            image: '/images/servicios/inmoviliaria.avif'
         },
         {
             title: 'Derecho Corporativo',
             subtitle: 'Asesoría Empresarial',
-            description: 'Constitución, transformación, fusión y liquidación de compañías con respaldo legal integral.',
+            description: 'Constitución, transformación, fusión y liquidación de compañías con respaldo legal integral. Brindamos asesoría estratégica en estructuración corporativa, fusiones, transformaciones, aumentos de capital y todos los actos societarios necesarios para el crecimiento y consolidación de su empresa. Nuestra experiencia incluye el manejo de relaciones laborales tanto bajo prestación de servicios como relación de dependencia, asegurando el cumplimiento normativo en cada etapa del ciclo empresarial.',
             icon: Building2,
             features: [
-                'Constitución de compañías',
-                'Fusiones y transformaciones',
-                'Aumentos de capital',
-                'Liquidaciones societarias'
+                'Constitución de compañías y estructuración societaria',
+                'Fusiones, transformaciones y reorganizaciones',
+                'Aumentos y disminuciones de capital social',
+                'Liquidaciones societarias y cambios de denominación'
             ],
             stats: 'Respaldo Total',
             href: '/servicios/corporativo',
-            image: '/images/ofi/ofi3.jpg'
+            image: '/images/servicios/corporativo.avif'
         },
         {
             title: 'Mediación y Arbitraje',
             subtitle: 'Solución de Conflictos',
-            description: 'Resolución alternativa de controversias con negociación sólida y resultados positivos.',
+            description: 'Resolución alternativa de controversias con negociación sólida y resultados positivos. Nuestra experiencia y constante capacitación en este campo nos permite anticipar negociaciones efectivas en procura de soluciones favorables en todo tipo de procesos de mediación y arbitraje. Ofrecemos técnicas especializadas que han demostrado alta efectividad en la resolución extrajudicial de disputas comerciales y civiles, evitando los costos y tiempos del litigio tradicional.',
             icon: Users,
             features: [
-                'Mediación especializada',
-                'Arbitraje comercial',
-                'Negociación efectiva',
-                'Soluciones extrajudiciales'
+                'Mediación especializada en conflictos comerciales',
+                'Arbitraje comercial con árbitros certificados',
+                'Negociación efectiva con técnicas avanzadas',
+                'Soluciones extrajudiciales personalizadas'
             ],
             stats: 'Resultados Positivos',
             href: '/servicios/mediacion',
-            image: '/images/ofi/Ofi.JPG'
+            image: '/images/servicios/mediacion.avif'
+        },
+        {
+            title: 'Derecho de Familia',
+            subtitle: 'Acompañamiento Humano',
+            description: 'Ofrecemos un acompañamiento cercano y humano en todas las cuestiones relacionadas con el derecho de familia. Esto incluye asesoría y representación en procesos de divorcio, acuerdos de custodia, alimentos, patria potestad y mediación familiar. Nos enfocamos en encontrar soluciones que protejan el bienestar de la familia y resuelvan los conflictos de la manera más armoniosa posible, priorizando siempre el interés superior de los menores cuando están involucrados.',
+            icon: Heart,
+            features: [
+                'Procesos de divorcio y separación consensuada',
+                'Acuerdos de custodia y régimen de visitas',
+                'Fijación y modificación de pensiones alimenticias',
+                'Mediación familiar y soluciones amigables'
+            ],
+            stats: 'Enfoque Humano',
+            href: '/servicios/familia',
+            image: '/images/servicios/familia.avif'
+        },
+        {
+            title: 'Derecho Laboral',
+            subtitle: 'Relaciones Equilibradas',
+            description: 'En el ámbito laboral, brindamos asesoría integral tanto a empleadores como a trabajadores. Esto abarca desde la elaboración y revisión de contratos laborales, hasta la representación en casos de despidos, visto bueno ante el Ministerio de Trabajo, reclamaciones de derechos laborales y mediación en conflictos laborales. Nuestro objetivo es asegurar que cada parte entienda sus derechos y obligaciones, logrando soluciones justas y equitativas que fortalezcan las relaciones laborales.',
+            icon: Clock,
+            features: [
+                'Elaboración y revisión de contratos laborales',
+                'Representación en despidos y visto bueno',
+                'Reclamaciones de derechos laborales',
+                'Mediación en conflictos empleador-trabajador'
+            ],
+            stats: 'Soluciones Justas',
+            href: '/servicios/laboral',
+            image: '/images/servicios/laboral.avif'
+        },
+        {
+            title: 'Gestiones y Trámites',
+            subtitle: 'Eficiencia Institucional',
+            description: 'Desde una perspectiva profesional, cuidando el cumplimiento del más mínimo detalle, podemos guiar sus procesos, calificaciones y reclamos de todo tipo ante instituciones públicas, basándonos en nuestra experiencia y la solvencia de nuestros conocimientos. Contamos con contactos estratégicos en diferentes entidades públicas y privadas, lo que nos permite realizar todo trámite de manera rápida y eficaz, eludiendo las trabas que comúnmente se generan en los procesos administrativos.',
+            icon: Award,
+            features: [
+                'Trámites ante instituciones públicas',
+                'Procesos de calificación y certificación',
+                'Reclamos administrativos especializados',
+                'Gestión eficaz con contactos estratégicos'
+            ],
+            stats: 'Agilidad Comprobada',
+            href: '/servicios/tramites',
+            image: '/images/servicios/tramites.avif'
         }
     ];
 
-    const additionalServices = [
-        {
-            name: 'Derecho Civil',
-            description: 'Resolución de conflictos entre personas naturales o jurídicas',
-            icon: Target
-        },
-        {
-            name: 'Derecho Laboral',
-            description: 'Asesoría en relaciones laborales y contratos de trabajo',
-            icon: Clock
-        },
-        {
-            name: 'Consultoría Legal',
-            description: 'Asesoramiento jurídico especializado y preventivo',
-            icon: Award
-        }
-    ];
+
 
     const heroBadges = ['Especialización', 'Experiencia', 'Tecnología', 'Resultados'];
 
     // RENDER METHOD
     return (
         <MainLayout>
-            {/* --- HERO SECTION (REFACTORED) --- */}
+            {/* Hero Section */}
             <HeroSection
                 backgroundImage="/images/ofi/Ofi.JPG"
                 title={
@@ -120,7 +149,6 @@ export default function ServiciosPage() {
                         </span>
                     </>
                 }
-                
                 description={
                     <>
                         Soluciones jurídicas especializadas respaldadas por{' '}
@@ -147,11 +175,11 @@ export default function ServiciosPage() {
                 </div>
             </HeroSection>
 
-            {/* --- SPECIALIZED SERVICES SECTION --- */}
+            {/* ÚNICAMENTE Servicios Principales */}
             <Section background="white" padding="lg">
                 <SectionHeader
-                    title="Servicios Especializados"
-                    description="Áreas de práctica donde concentramos nuestra experiencia y conocimiento"
+                    title="Nuestros Servicios Especializados"
+                    description="Áreas de práctica donde concentramos nuestra experiencia de más de 20 años y el conocimiento desarrollado junto a las principales instituciones del país"
                     centered={true}
                     className="mb-16"
                 />
@@ -175,36 +203,42 @@ export default function ServiciosPage() {
                                 onClick={() => router.push(service.href)}
                             >
                                 <div
-                                    className="relative p-8 text-white"
+                                    className="relative p-8 text-white min-h-[300px] flex flex-col"
                                     style={{
                                         backgroundImage: `url(${service.image})`,
                                         backgroundSize: 'cover',
                                         backgroundPosition: 'center'
                                     }}
                                 >
-                                    <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }} />
-                                    <div className="relative z-10">
-                                        <div className="flex items-start justify-between mb-4">
-                                            <div className="flex-1">
-                                                <div className="flex items-center gap-3 mb-2">
-                                                    <IconComponent size={24} />
-                                                    <span className="text-sm font-medium opacity-90">{service.subtitle}</span>
-                                                </div>
-                                                <h3 className="text-2xl font-bold mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-                                                    {service.title}
-                                                </h3>
-                                                <p className="text-sm leading-relaxed opacity-90">{service.description}</p>
+                                    <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }} />
+                                    <div className="relative z-10 flex flex-col h-full">
+                                        {/* Header compacto */}
+                                        <div className="flex items-center justify-between mb-3 flex-shrink-0">
+                                            <div className="flex items-center gap-3">
+                                                <IconComponent size={24} />
+                                                <span className="text-sm font-medium opacity-90">{service.subtitle}</span>
                                             </div>
-                                            <div className="text-right">
-                                                <div className="text-lg font-bold" style={{ color: 'var(--red-gestium)' }}>
-                                                    {service.stats}
-                                                </div>
+                                            <div className="text-lg font-bold" style={{ color: 'var(--red-gestium)' }}>
+                                                {service.stats}
                                             </div>
+                                        </div>
+
+                                        {/* Título */}
+                                        <h3 className="text-2xl font-bold mb-4 flex-shrink-0" style={{ fontFamily: "'Playfair Display', serif" }}>
+                                            {service.title}
+                                        </h3>
+
+                                        {/* Descripción que crece para ocupar el espacio restante */}
+                                        <div className="flex-1">
+                                            <p className="text-sm leading-relaxed opacity-90 text-justify">
+                                                {service.description}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div className="p-6 bg-white">
-                                    <div className="grid grid-cols-2 gap-3 mb-6">
+                                    <div className="grid grid-cols-1 gap-3 mb-6">
                                         {service.features.map((feature, idx) => (
                                             <div key={idx} className="flex items-center gap-2 text-sm">
                                                 <CheckCircle size={14} style={{ color: 'var(--red-gestium)' }} />
@@ -227,50 +261,7 @@ export default function ServiciosPage() {
                 </div>
             </Section>
 
-            {/* --- ADDITIONAL SERVICES SECTION --- */}
-            <div style={{ backgroundColor: 'var(--platinum)' }} className="py-16">
-                <div className="container-fluid">
-                    <SectionHeader
-                        title="Servicios Adicionales"
-                        description="Otras áreas donde brindamos asesoría legal especializada"
-                        centered={true}
-                        className="mb-12"
-                    />
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {additionalServices.map((service, index) => {
-                            const IconComponent = service.icon;
-                            return (
-                                <motion.div
-                                    key={index}
-                                    className="group bg-white p-6 border transition-all duration-300 hover:scale-105 cursor-pointer"
-                                    style={{ boxShadow: 'var(--shadow-minimal)', borderColor: '#e2e8f0' }}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, margin: "-50px", amount: 0.3 }}
-                                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                                    whileHover={{ y: -3 }}
-                                >
-                                    <div className="flex items-start gap-4">
-                                        <div className="w-12 h-12 flex items-center justify-center" style={{ backgroundColor: 'rgba(167, 26, 33, 0.1)' }}>
-                                            <IconComponent size={20} style={{ color: 'var(--red-gestium)' }} />
-                                        </div>
-                                        <div className="flex-1">
-                                            <h4 className="font-semibold mb-2" style={{ color: 'var(--charcoal)', fontFamily: "'Inter', sans-serif" }}>
-                                                {service.name}
-                                            </h4>
-                                            <p className="text-sm leading-relaxed" style={{ color: 'var(--silver)' }}>
-                                                {service.description}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </div>
-
-            {/* --- CALL TO ACTION (CTA) SECTION --- */}
+            {/* CTA Section mantiene igual */}
             <div
                 className="py-20 text-center relative"
                 style={{

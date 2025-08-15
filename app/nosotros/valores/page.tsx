@@ -15,9 +15,9 @@ const missionVisionData = [
         id: 'mission',
         title: 'Nuestra Misión',
         icon: Target,
-        content: 'Dar un soporte íntegro a nuestros clientes en cualquier campo que lo requieran dentro del ámbito legal; realizar toda gestión con la mayor agilidad y eficiencia, para satisfacer oportunamente las necesidades de nuestros clientes, apoyándonos principalmente en el recurso humano debidamente especializado y capacitado, buscando brindar la mayor calidad en nuestros servicios, proponiendo siempre precios muy competitivos.',
+        content: 'Nuestra misión es dar un soporte íntegro a nuestros clientes en cualquier campo que lo requieran dentro del ámbito legal; realizar toda gestión con la mayor agilidad y eficiencia, para satisfacer oportunamente las necesidades de nuestros clientes, apoyándonos principalmente en el recurso humano debidamente especializado y capacitado, buscando brindar la mayor calidad en nuestros servicios, proponiendo siempre precios muy competitivos.',
         color: 'from-red-600 to-red-700',
-        bgImage: '/images/mision.jpg'
+        bgImage: '/images/mision.avif'
     },
     {
         id: 'vision',
@@ -25,7 +25,15 @@ const missionVisionData = [
         icon: Eye,
         content: 'Consolidar nuestro crecimiento y mantenernos en la imagen de nuestros clientes como una alternativa altamente eficaz y cercana para la solución de todo tipo de conflicto o gestión.',
         color: 'from-slate-700 to-slate-900',
-        bgImage: '/images/vision.jpg'
+        bgImage: '/images/vision.avif'
+    },
+    {
+        id: 'objective',
+        title: 'Nuestro Objetivo',
+        icon: Target,
+        content: 'Obtener los resultados que nuestros clientes requieren en el menor tiempo posible, superando inmediatamente cualquier inconveniente que se presente, brindando un servicio personalizado, minucioso y con precios competitivos.',
+        color: 'from-blue-600 to-blue-700',
+        bgImage: '/images/objetivo.avif'
     }
 ];
 
@@ -74,19 +82,37 @@ const coreValues = [
 
 const principlesData = [
     {
-        title: 'Filosofía de Trabajo',
-        description: 'Nuestra filosofía está enfocada en la construcción y el mantenimiento de una relación profesional a largo plazo con nuestros clientes, basada en el cumplimiento, respeto y la confianza mutua.',
-        image: '/images/filosy.avif'
+        title: 'Continuidad y Confianza',
+        description: 'Relaciones de largo plazo con clientes que han mantenido su confianza por más de 15 años, respaldadas por un crecimiento sostenido y expansión constante en servicios y presencia nacional.',
+        highlights: [
+            'Clientes con más de 15 años de confianza',
+            'Crecimiento sostenido en servicios',
+            'Expansión constante en presencia nacional'
+        ],
+        image: '/images/filosy.avif',
+        icon: Award
     },
     {
-        title: 'Servicio Personalizado',
-        description: 'Contamos con un equipo de profesionales idóneo y personalizado, así como integrado y estable, lo que nos permite establecer sólidas relaciones con nuestros clientes.',
-        image: '/images/servicio.avif'
+        title: 'Compromiso Social',
+        description: 'Contribución activa al desarrollo profesional y social a través de la formación académica, responsabilidad social y transferencia de conocimiento a la comunidad.',
+        highlights: [
+            'Apoyo a pasantes universitarios',
+            'Asesoría gratuita a grupos vulnerables',
+            'Capacitación a diversos grupos de interés'
+        ],
+        image: '/images/compromiso.avif',
+        icon: Heart
     },
     {
-        title: 'Adaptabilidad',
-        description: 'Tenemos la flexibilidad para adaptarnos al perfil y requerimientos de nuestro cliente, lo que nos permite intervenir en diferentes campos del derecho.',
-        image: '/images/adptabilidad.avif'
+        title: 'Innovación y Excelencia',
+        description: 'Desarrollo constante de tecnología propia, metodologías innovadoras y cobertura nacional que nos posiciona a la vanguardia del sector jurídico ecuatoriano.',
+        highlights: [
+            'GESTIUM-APP y herramientas digitales propias',
+            'Metodologías propias en desarrollo constante',
+            'Cobertura en todas las provincias del Ecuador'
+        ],
+        image: '/images/adptabilidad.avif',
+        icon: Lightbulb
     }
 ];
 
@@ -212,7 +238,7 @@ export default function NuestrosValoresPage() {
                                             </h3>
                                         </div>
 
-                                        <p className="text-lg text-slate-700 leading-relaxed">
+                                        <p className="text-lg text-slate-700 leading-relaxed text-justify">
                                             {item.content}
                                         </p>
                                     </div>
@@ -291,9 +317,10 @@ export default function NuestrosValoresPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6, delay: index * 0.2 }}
                                 viewport={{ once: true }}
+                                className="group"
                             >
-                                <Card padding="lg" shadow="medium" rounded="sm">
-                                    <div className="relative h-48 -mx-8 -mt-8 mb-6 overflow-hidden">
+                                <Card padding="lg" shadow="medium" rounded="sm" className="h-full">
+                                    <div className="relative h-56 -mx-8 -mt-8 mb-6 overflow-hidden">
                                         <Image
                                             src={principle.image}
                                             alt={principle.title}
@@ -303,20 +330,40 @@ export default function NuestrosValoresPage() {
                                             loading="lazy"
                                         />
                                         <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-all duration-300"></div>
+
+                                        {/* Icono flotante */}
+                                        <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center">
+                                            <principle.icon className="w-5 h-5" style={{ color: 'var(--red-gestium)' }} />
+                                        </div>
                                     </div>
 
                                     <h4 className="text-xl font-playfair font-bold mb-4"
                                         style={{ color: 'var(--charcoal)' }}>
                                         {principle.title}
                                     </h4>
-                                    <p className="leading-relaxed"
-                                        style={{ color: 'var(--silver)' }}>
+
+                                    <p className="leading-relaxed mb-6"
+                                        style={{ color: 'var(--silver)', textAlign: 'justify' }}>
                                         {principle.description}
                                     </p>
+
+                                    {/* Highlights específicos */}
+                                    <div className="space-y-2">
+                                        {principle.highlights.map((highlight, highlightIndex) => (
+                                            <div key={highlightIndex} className="flex items-start gap-2">
+                                                <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
+                                                    style={{ backgroundColor: 'var(--red-gestium)' }}></div>
+                                                <span className="text-sm" style={{ color: 'var(--steel)' }}>
+                                                    {highlight}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </Card>
                             </motion.div>
                         ))}
                     </div>
+
                 </div>
             </Section>
 

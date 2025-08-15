@@ -11,8 +11,9 @@ import {
     House,
     FileSignature,
     Building,
-    Landmark,
     CheckCircle,
+    HandHeart,
+    Shield,
 } from 'lucide-react';
 
 // ✅ 1. Definimos la "forma" de los datos para TypeScript
@@ -28,18 +29,23 @@ export default function DerechoInmobiliarioPage() {
     const servicePillars = [
         {
             icon: Building,
-            title: 'Constitución de Proyectos',
-            description: 'Estructuración legal completa para desarrollos inmobiliarios, desde la adquisición del terreno hasta la entrega final de las unidades.'
+            title: 'Constitución y desarrollo de proyectos inmobiliarios',
+            description: 'Asesoría integral desde la conceptualización hasta la entrega final del proyecto. Incluye análisis de viabilidad legal, estructuración societaria, obtención de permisos y acompañamiento en todas las fases del desarrollo inmobiliario.'
         },
         {
             icon: FileSignature,
-            title: 'Propiedad Horizontal',
-            description: 'Elaboración de declaratorias de propiedad horizontal, reglamentos internos y toda la documentación necesaria para la correcta administración de condominios.'
+            title: 'Declaratorias de propiedad horizontal y subdivisiones',
+            description: 'Elaboración de declaratorias de propiedad horizontal, reglamentos de copropiedad, subdivisiones, adjudicaciones y unificaciones. Garantizamos el cumplimiento normativo para la correcta administración y comercialización de unidades.'
         },
         {
-            icon: Landmark,
-            title: 'Transacciones y Contratos',
-            description: 'Asesoría y elaboración de promesas de compraventa, compraventas definitivas, hipotecas y garantías reales para asegurar transacciones transparentes y seguras.'
+            icon: HandHeart,
+            title: 'Compraventas definitivas y promesas de compraventa',
+            description: 'Redacción y negociación de contratos de promesa de compraventa y compraventas definitivas. Incluimos cláusulas de protección, cronogramas de pago, garantías y todas las condiciones necesarias para transacciones seguras y transparentes.'
+        },
+        {
+            icon: Shield,
+            title: 'Estructuración a través de compañías o fideicomisos',
+            description: 'Diseño de estructuras legales óptimas mediante constitución de compañías inmobiliarias o fideicomisos mercantiles. Optimizamos la gestión del proyecto, protegemos la inversión y facilitamos el financiamiento y comercialización.'
         }
     ];
 
@@ -95,6 +101,34 @@ export default function DerechoInmobiliarioPage() {
                 </div>
             </HeroSection>
 
+            {/* --- PILARES DEL SERVICIO --- */}
+            <Section background="platinum" padding="lg">
+                <SectionHeader
+                    title="Pilares de Nuestro Servicio"
+                    description="Cubrimos todas las facetas del derecho inmobiliario para ofrecer una solución integral y cohesiva."
+                    centered={true}
+                    className="mb-16"
+                />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {servicePillars.map((pillar, index) => (
+                        <motion.div
+                            key={index}
+                            className="bg-white p-8 border border-slate-200/80 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group text-center" // ← AGREGAR text-center
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1, duration: 0.6 }}
+                        >
+                            <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-red-50 group-hover:bg-red-100 transition-colors duration-300 mx-auto"> {/* ← AGREGAR mx-auto */}
+                                <pillar.icon size={28} className="text-gold-dark" />
+                            </div>
+                            <h3 className="text-xl font-bold font-playfair mb-3 text-slate-900 ">{pillar.title}</h3>
+                            <p className="text-sm leading-relaxed text-slate-600 text-justify">{pillar.description}</p>
+                        </motion.div>
+                    ))}
+                </div>
+            </Section>
+
             {/* --- INTRODUCCIÓN AL SERVICIO --- */}
             <Section background="white" padding="lg">
                 <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
@@ -116,42 +150,14 @@ export default function DerechoInmobiliarioPage() {
                             description="El sector inmobiliario es uno de los motores de la economía, pero también uno de los más complejos a nivel legal. Nuestro equipo especializado le brinda la tranquilidad de saber que cada aspecto de su proyecto, desde la compra del terreno hasta la venta de la última unidad, está jurídicamente blindado, optimizando la rentabilidad y minimizando los riesgos."
                             centered={false}
                             showDivider={true}
-                            className="mb-0"
+                            className="mb-0 text-justify"
                         />
                     </div>
                 </div>
             </Section>
 
-            {/* --- PILARES DEL SERVICIO --- */}
-            <Section background="platinum" padding="lg">
-                <SectionHeader
-                    title="Pilares de Nuestro Servicio"
-                    description="Cubrimos todas las facetas del derecho inmobiliario para ofrecer una solución integral y cohesiva."
-                    centered={true}
-                    className="mb-16"
-                />
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {servicePillars.map((pillar, index) => (
-                        <motion.div
-                            key={index}
-                            className="bg-white p-8 border border-slate-200/80 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.6 }}
-                        >
-                            <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-red-50 group-hover:bg-red-100 transition-colors duration-300">
-                                <pillar.icon size={28} className="text-gold-dark" />
-                            </div>
-                            <h3 className="text-xl font-bold font-playfair mb-3 text-slate-900">{pillar.title}</h3>
-                            <p className="text-sm leading-relaxed text-slate-600">{pillar.description}</p>
-                        </motion.div>
-                    ))}
-                </div>
-            </Section>
-
             {/* --- CICLO DE VIDA DEL PROYECTO --- */}
-            <Section background="white" padding="lg">
+            <Section background="platinum" padding="lg">
                 <SectionHeader
                     title="Acompañamiento en Todo el Ciclo de Vida"
                     description="Nuestra metodología nos permite acompañarlo de principio a fin, asegurando coherencia y seguridad en cada fase."
@@ -175,7 +181,7 @@ export default function DerechoInmobiliarioPage() {
                                 {step.step}
                             </div>
                             <h4 className="text-lg font-bold mb-3 text-slate-900">{step.title}</h4>
-                            <p className="text-sm leading-relaxed text-slate-600">{step.description}</p>
+                            <p className="text-sm leading-relaxed text-slate-600 text-justify">{step.description}</p>
                         </motion.div>
                     ))}
                 </div>

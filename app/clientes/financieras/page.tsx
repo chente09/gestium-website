@@ -129,8 +129,8 @@ export default function InstitucionesFinancierasPage() {
                             >
                                 <div className="text-center">
                                     {/* Icono visual sutil */}
-                                    <HandCoins className="w-4 h-4 mx-auto mb-2 opacity-60 group-hover:opacity-100 group-hover:scale-125" style={{ color: 'var(--red-gestium)' }} /> 
-                                    
+                                    <HandCoins className="w-4 h-4 mx-auto mb-2 opacity-60 group-hover:opacity-100 group-hover:scale-125" style={{ color: 'var(--red-gestium)' }} />
+
                                     {/* Nombre del cliente */}
                                     <motion.p
                                         className="text-lg font-semibold text-slate-700 whitespace-nowrap group-hover:text-[var(--red-gestium)] transition-colors duration-300 relative"
@@ -182,13 +182,13 @@ export default function InstitucionesFinancierasPage() {
             <Section background="white" padding="lg">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="relative h-96 lg:h-[500px] overflow-hidden rounded-lg">
-                        <Image 
-                            src="/images/clientes/asesoria-finan.jpg" 
-                            alt="Asesoría a instituciones financieras" 
-                            fill 
-                            className="object-cover hover:scale-105 transition-transform duration-700" 
-                            sizes="(max-width: 1024px) 100vw, 50vw" 
-                            quality={95} 
+                        <Image
+                            src="/images/areas/empresas.jpg"
+                            alt="Asesoría a instituciones financieras"
+                            fill
+                            className="object-cover hover:scale-105 transition-transform duration-700"
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            quality={95}
                         />
                     </div>
                     <div>
@@ -209,7 +209,7 @@ export default function InstitucionesFinancierasPage() {
                                     transition={{ delay: index * 0.2, duration: 0.6 }}
                                     whileHover={{ x: 5 }}
                                 >
-                                    <motion.div 
+                                    <motion.div
                                         className="w-12 h-12 flex-shrink-0 rounded-full flex items-center justify-center bg-platinum group-hover:bg-red-50 transition-colors duration-300"
                                         whileHover={{ scale: 1.1, rotate: 5 }}
                                     >
@@ -234,10 +234,10 @@ export default function InstitucionesFinancierasPage() {
             <div className="py-20 text-center relative" style={{ backgroundImage: "url('/images/ofi/justicia.jpg')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
                 <div className="absolute inset-0" style={{ backgroundColor: 'rgba(15, 23, 42, 0.8)' }} />
                 <div className="container-fluid relative z-10 text-white">
-                    <motion.div 
-                        initial={{ opacity: 0, y: 30 }} 
-                        whileInView={{ opacity: 1, y: 0 }} 
-                        viewport={{ once: true }} 
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
                         <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>

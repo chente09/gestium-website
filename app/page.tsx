@@ -1,17 +1,129 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import Section from '@/components/ui/Section';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { Building2, Users, User, Building, Clock, Target, Award, Briefcase, House, UserCheck, Calculator, FileText, ArrowRight, } from 'lucide-react';
 import { CTAButton } from '@/components/ui/Button';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { SectionButton } from '@/components/ui/Button';
 
+const useTypewriter = (text: string, speed = 50, delay = 0) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+  const [isTyping, setIsTyping] = useState(false);
+  const [hasFinished, setHasFinished] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsTyping(true);
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!isTyping) return;
+
+    if (displayedText.length < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(text.slice(0, displayedText.length + 1));
+      }, speed);
+      return () => clearTimeout(timeout);
+    } else {
+      setHasFinished(true);
+    }
+  }, [displayedText, text, speed, isTyping]);
+
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500);
+    return () => clearInterval(cursorInterval);
+  }, []);
+
+  return { displayedText, showCursor, hasFinished };
+};
+
+// 2. COMPONENTE TYPEWRITER - Agrega esto también al inicio
+type TypewriterWithCursorProps = {
+  text: string;
+  speed?: number;
+  delay?: number;
+  className?: string;
+  onComplete?: () => void;
+};
+
+const TypewriterWithCursor = ({
+  text,
+  speed = 50,
+  delay = 0,
+  className = "",
+  onComplete = () => { },
+}: TypewriterWithCursorProps) => {
+  const { displayedText, showCursor, hasFinished } = useTypewriter(text, speed, delay);
+
+  useEffect(() => {
+    if (hasFinished) {
+      onComplete();
+    }
+  }, [hasFinished, onComplete]);
+
+  // 🔥 ESTA ES LA FUNCIÓN CLAVE
+  const renderTextWithBreaks = (text: string) => {
+    return text.split('\n').map((line, index, array) => (
+      <React.Fragment key={index}>
+        {line}
+        {index < array.length - 1 && <><br /></>}
+      </React.Fragment>
+    ));
+  };
+
+  return (
+    <span className={className}>
+      {renderTextWithBreaks(displayedText)}
+      <span
+        className={`inline-block w-0.5 ml-1 transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'
+          }`}
+        style={{
+          backgroundColor: 'var(--gold)',
+          height: '1.2em',
+          verticalAlign: 'middle'
+        }}
+      />
+    </span>
+  );
+};
+
+
+
 export default function Home() {
   const router = useRouter();
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [, setIsLoaded] = useState(false);
+  const controls = useAnimation();
+  const [showCTAs, setShowCTAs] = useState(false);
+
+  const fullText = `Nuestra experiencia de más de veinte años y la confianza de las mayores Instituciones Financieras de nuestro País nos respaldan. Gestionamos todo tipo de procesos a nivel judicial y extrajudicial con la agilidad, iniciativa y proactividad que nuestros clientes requieren.\n\nLe invitamos a navegar por nuestra página web para conocer más sobre nuestra estructura, personal, respaldo y servicios. Es un honor contar con su confianza.`;
+
+  const handleTypewriterComplete = () => {
+    setShowCTAs(true);
+  };
+
+  useEffect(() => {
+    setIsLoaded(true);
+    controls.start("visible");
+  }, [controls]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePosition({
+      x: (e.clientX - rect.left) / rect.width,
+      y: (e.clientY - rect.top) / rect.height,
+    });
+  };
 
   const services = [
     {
@@ -70,197 +182,322 @@ export default function Home() {
 
   return (
     <MainLayout>
-      {/* Hero Section - DISEÑO DEFINITIVO */}
+      {/* Hero Section - CENTRADO */}
       <div
         className="hero-section flex items-center justify-center relative overflow-hidden"
         style={{ background: 'var(--gradient-primary)' }}
+        onMouseMove={handleMouseMove}
       >
         {/* Imagen de fondo profesional desde local */}
-        <div
+        <motion.div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: "url('/images/ofi/bg-sala.jpg')",
             opacity: 0.30
           }}
+          animate={{
+            scale: [1, 1.02, 1],
+            x: mousePosition.x * 10,
+            y: mousePosition.y * 10
+          }}
+          transition={{
+            scale: { duration: 20, repeat: Infinity, ease: "easeInOut" },
+            x: { duration: 0.3 },
+            y: { duration: 0.3 }
+          }}
         />
 
-        {/* Patrón geométrico sutil */}
+        {/* Patrón geométrico sutil con animación */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-32 h-32 border border-white transform rotate-45"></div>
-          <div className="absolute bottom-40 right-32 w-24 h-24 border border-red-gestium transform rotate-12"></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16 border border-white transform -rotate-12"></div>
+          <motion.div
+            className="absolute top-20 left-20 w-32 h-32 border border-white transform rotate-45"
+            animate={{
+              rotate: [45, 55, 45],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute bottom-40 right-32 w-24 h-24 border border-red-gestium transform rotate-12"
+            animate={{
+              rotate: [12, 22, 12],
+              opacity: [0.5, 1, 0.5]
+            }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="absolute top-1/2 left-1/4 w-16 h-16 border border-white transform -rotate-12"
+            animate={{
+              rotate: [-12, -2, -12],
+              x: [0, 10, 0]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
         </div>
 
         <div className="relative z-10 container-fluid py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[80vh]">
+          <div className="flex items-center justify-center min-h-[80vh]">
 
-            {/* Columna Izquierda - Contenido Principal */}
-            <div className="lg:col-span-8">
+            {/* Contenido Principal - CENTRADO */}
+            <div className="text-center max-w-5xl mx-auto">
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                {/* Título Principal GESTIUM S.A. */}
+                {/* Título Principal GESTIUM S.A. - CENTRADO con efectos de texto */}
                 <motion.h1
-                  className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-none tracking-tight"
+                  className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-none tracking-tight text-center"
                   style={{
                     fontFamily: "'Playfair Display', serif",
                     color: 'var(--white)'
                   }}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
+                  initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{ delay: 0.4, duration: 1.2, ease: "easeOut" }}
                 >
-                  GESTIUM{' '}
+                  {/* Animación de letras individuales para GESTIUM */}
+                  {"GESTIUM".split("").map((letter, index) => (
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0, y: 50, rotateX: -90 }}
+                      animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                      transition={{
+                        delay: 0.6 + index * 0.1,
+                        duration: 0.8,
+                        type: "spring",
+                        stiffness: 200
+                      }}
+                      whileHover={{
+                        scale: 1.1,
+                        color: 'var(--gold)',
+                        textShadow: '0 0 20px rgba(0, 0, 0, 0.8)',
+                        transition: { duration: 0.3 }
+                      }}
+                      style={{ display: 'inline-block', cursor: 'default' }}
+                    >
+                      {letter}
+                    </motion.span>
+                  ))}{' '}
+
+                  {/* S.A. con efectos especiales */}
                   <motion.span
-                    className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-none tracking-tight" // Mismo tamaño que GESTIUM
-                    style={{ color: 'var(--gold-dark)', textShadow: '0 0 9px gray', fontSize: '95px' }}
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.8, duration: 0.6 }}
+                    className="text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-none tracking-tight"
+                    style={{
+                      color: 'var(--gold-dark)',
+                      display: 'inline-block'
+                    }}
+                    initial={{ opacity: 0, x: -30, filter: "blur(10px)" }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                      filter: "blur(0px)",
+                      textShadow: [
+                        '0 0 20px rgba(0, 0, 0, 0.8)',
+                      ]
+                    }}
+                    transition={{
+                      delay: 1.3,
+                      duration: 0.8,
+                      textShadow: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                    }}
+                    whileHover={{
+                      scale: 1.05,
+                      rotate: [0, -2, 2, 0],
+                      transition: { duration: 0.5 }
+                    }}
                   >
                     S.A.
                   </motion.span>
                 </motion.h1>
 
-                {/* Subtítulo especializado */}
-                <motion.p
-                  className="text-xl md:text-2xl mb-8 leading-relaxed max-w-3xl"
+                {/* Línea decorativa central con animación avanzada */}
+                <motion.div
+                  className="mx-auto mb-8 h-1"
+                  style={{ backgroundColor: 'var(--gold-dark)' }}
+                  initial={{ width: 0, opacity: 0 }}
+                  animate={{
+                    width: 128,
+                    opacity: 1,
+                    boxShadow: [
+                      '0 0 0px var(--gold-dark)',
+                      '0 0 20px var(--gold-dark)',
+                      '0 0 0px var(--gold-dark)'
+                    ]
+                  }}
+                  transition={{
+                    delay: 1.8,
+                    duration: 1.2,
+                    boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                  }}
+                />
+
+                {/* Subtítulo con animación suave y elegante */}
+                <motion.div
+                  className="text-lg md:text-xl mb-12 leading-relaxed max-w-4xl mx-auto text-justify"
                   style={{ color: 'rgba(255, 255, 255, 0.9)' }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.2, duration: 0.6 }}
+                  transition={{ delay: 2.2, duration: 0.8 }}
                 >
-                  <motion.span
-                    className="font-semibold"
-                  >
-                    Recuperación de cartera especializada
-                  </motion.span>
-                  {' '}respaldada por tecnología propia y la confianza de las principales instituciones del Ecuador.
-                </motion.p>
-
-                {/* ✨ CTAs usando componentes refactorizados */}
-                <motion.div
-                  className="flex flex-col sm:flex-row gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.6, duration: 0.6 }}
-                >
-                  <CTAButton
-                    variant="primary"
-                    size="lg"
-                    onClick={() => router.push('/contacto')}
-                  >
-                    Consulta Gratuita
-                  </CTAButton>
-
-                  <a
-                    href="https://gestium-app.netlify.app/consultas"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-block px-12 py-4 font-bold uppercase tracking-wider transition-all duration-300 border-2 bg-transparent text-white border-white hover:bg-white hover:text-[var(--charcoal)] hover:scale-105 active:scale-95 text-center"
-                  >
-                    Consulta el Estado de tu Proceso
-                  </a>
-                  
-                </motion.div>
-              </motion.div>
-            </div>
-
-            {/* Columna Derecha - Clientes y Credibilidad MEJORADA */}
-            <div className="lg:col-span-4">
-              <motion.div
-                className="text-center lg:text-left"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-              >
-                {/* Panel de clientes con efectos hover */}
-                <div
-                  className="p-8 border border-gray-600 backdrop-blur-md"
-                  style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.4)',
-                    borderColor: 'rgba(255, 255, 255, 0.1)'
-                  }}
-                >
-                  <h3 className="text-sm font-medium uppercase tracking-wider text-gray-300 mb-6">
-                    Confianza de Instituciones Líderes
-                  </h3>
-
-                  <div className="space-y-3">
-                    {[
-                      'Banco Pichincha C.A.',
-                      'Banco Produbanco',
-                      'IESS - Instituto Ecuatoriano de Seguridad Social',
-                      'ISSFA - Fuerzas Armadas',
-                      'CNT - Corporación Nacional de Telecomunicaciones'
-                    ].map((client, index) => (
-                      <motion.div
-                        key={index}
-                        className="group cursor-pointer flex items-center gap-3 py-3 px-2 border-b border-gray-700 last:border-b-0 transition-all duration-300 hover:bg-white"
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 1.5 + (index * 0.1), duration: 0.5 }}
-                        whileHover={{ x: 8 }}
-                      >
-                        <motion.div
-                          className="w-1 h-6 transition-all duration-300 group-hover:w-2 group-hover:h-8"
-                          style={{ backgroundColor: 'var(--red-gestium)' }}
-                        />
-                        <span className="text-sm text-gray-200 leading-tight group-hover:text-black transition-colors duration-300">
-                          {client}
-                        </span>
-                        <motion.div
-                          className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                          whileHover={{ scale: 1.2 }}
-                        >
-                          <ArrowRight size={12} style={{ color: 'var(--red-gestium)' }} />
-                        </motion.div>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* Tecnología Propia Mejorada */}
                   <motion.div
-                    className="mt-8 pt-6 border-t border-gray-600"
+                    initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{ delay: 2.5, duration: 0.6, ease: "easeOut" }}
+                    whileHover={{ scale: 1.02, transition: { duration: 0.01 } }}
+                  >
+                    <TypewriterWithCursor
+                      text={fullText}
+                      speed={25}        // Más rápido
+                      delay={3000}      // Empieza a los 3 segundos
+                      onComplete={handleTypewriterComplete} // Callback cuando termine
+                    />
+                  </motion.div>
+                </motion.div>
+
+                {/* CTAs MODIFICADOS - Solo aparecen cuando termina el typewriter */}
+                {showCTAs && (
+                  <motion.div
+                    className="flex flex-col sm:flex-row gap-6 justify-center items-center"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 2, duration: 0.6 }}
+                    transition={{ duration: 0.8 }}
                   >
-                    <div className="flex items-center gap-3 mb-3">
+                    <motion.div
+                      initial={{ opacity: 0, x: -50, scale: 0.8 }}
+                      animate={{ opacity: 1, x: 0, scale: 1 }}
+                      transition={{ delay: 0.3, duration: 0.8, type: "spring", stiffness: 100 }}
+                      whileHover={{
+                        scale: 1.05,
+                        boxShadow: '0 10px 30px rgba(167, 26, 33, 0.4)',
+                        transition: { duration: 0.3 }
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <CTAButton
+                        variant="primary"
+                        size="lg"
+                        onClick={() => router.push('/contacto')}
+                        className="font-normal"
+                      >
+                        Consulta Gratuita
+                      </CTAButton>
+                    </motion.div>
+
+                    <motion.a
+                      href="https://gestium-app.netlify.app/consultas"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-block px-12 py-4 font-normal text-lg uppercase tracking-wider transition-all duration-300 border-2 bg-transparent text-white border-white hover:bg-white hover:text-[var(--charcoal)] hover:scale-105 active:scale-95 text-center relative overflow-hidden"
+                      initial={{ opacity: 0, x: 50, scale: 0.8 }}
+                      animate={{ opacity: 1, x: 0, scale: 1 }}
+                      transition={{ delay: 0.5, duration: 0.8, type: "spring", stiffness: 100 }}
+                      whileHover={{
+                        scale: 1.05,
+                        boxShadow: '0 10px 30px rgba(255, 255, 255, 0.2)',
+                        transition: { duration: 0.3 }
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                    >
                       <motion.div
-                        className="w-2 h-2"
-                        style={{ backgroundColor: 'var(--red-gestium)' }}
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-20"
+                        initial={{ x: '-100%' }}
+                        whileHover={{ x: '100%' }}
+                        transition={{ duration: 0.8 }}
                       />
-                      <span className="text-sm font-medium text-white uppercase tracking-wider">
-                        Tecnología Propia
+                      <span className="relative z-10">
+                        Consulta el Estado de tu Proceso
                       </span>
-                    </div>
-                    <p className="text-xs text-gray-300 leading-relaxed">
-                      <span className="font-semibold" style={{ color: 'var(--red-light)' }}>GESTIUM-APP:</span> Plataforma intranet corporativa para gestión operativa especializada
-                    </p>
+                    </motion.a>
                   </motion.div>
-                </div>
+                )}
+
+                {/* Indicadores de scroll centrados con animación mejorada */}
+                {showCTAs && (
+                  <motion.div
+                    className="mt-16 flex justify-center"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5, duration: 1 }}
+                  >
+                    <motion.div
+                      className="w-6 h-10 border-2 border-white rounded-full flex justify-center cursor-pointer group"
+                      style={{ borderColor: 'rgba(255, 255, 255, 0.5)' }}
+                      animate={{
+                        y: [0, 10, 0],
+                        borderColor: [
+                          'rgba(255, 255, 255, 0.5)',
+                          'rgba(244, 196, 1, 0.8)',
+                          'rgba(255, 255, 255, 0.5)'
+                        ]
+                      }}
+                      transition={{
+                        y: { duration: 2, repeat: Infinity },
+                        borderColor: { duration: 3, repeat: Infinity }
+                      }}
+                      whileHover={{
+                        scale: 1.1,
+                        borderColor: 'rgba(244, 196, 1, 1)',
+                        transition: { duration: 0.3 }
+                      }}
+                    >
+                      <motion.div
+                        className="w-1 h-3 bg-white rounded-full mt-2"
+                        style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}
+                        animate={{
+                          opacity: [1, 0.3, 1],
+                          backgroundColor: [
+                            'rgba(255, 255, 255, 0.8)',
+                            'rgba(244, 196, 1, 0.8)',
+                            'rgba(255, 255, 255, 0.8)'
+                          ]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          backgroundColor: { duration: 3, repeat: Infinity }
+                        }}
+                      />
+                    </motion.div>
+                  </motion.div>
+                )}
               </motion.div>
             </div>
           </div>
         </div>
 
-        {/* Línea decorativa inferior animada */}
+        {/* Línea decorativa inferior animada - CENTRADA con efectos mejorados */}
         <motion.div
-          className="absolute bottom-0 left-0 h-1"
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-1"
           style={{
-            background: 'linear-gradient(90deg, var(--red-gestium) 0%, rgba(167, 26, 33, 0.5) 70%, transparent 100%)',
-            width: '70%'
+            background: 'linear-gradient(90deg, transparent 0%, var(--red-gestium) 30%, var(--red-gestium) 70%, transparent 100%)',
           }}
-          initial={{ width: 0 }}
-          animate={{ width: '70%' }}
-          transition={{ delay: 2.5, duration: 1.2 }}
+          initial={{ width: 0, opacity: 0 }}
+          animate={{
+            width: '60%',
+            opacity: 1,
+            boxShadow: [
+              '0 0 0px var(--red-gestium)',
+              '0 0 20px var(--red-gestium)',
+              '0 0 0px var(--red-gestium)'
+            ]
+          }}
+          transition={{
+            delay: 6,
+            duration: 1.5,
+            boxShadow: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+          }}
         />
+
+        {/* CSS para animación de parpadeo del cursor */}
+        <style jsx>{`
+        @keyframes blink {
+          0%, 50% { border-color: var(--gold); }
+          51%, 100% { border-color: transparent; }
+        }
+      `}</style>
       </div>
+
 
       {/* SECCIÓN DE ESPECIALIZACIÓN MINIMALISTA */}
       <div

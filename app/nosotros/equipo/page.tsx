@@ -20,12 +20,13 @@ interface TeamMember {
     achievements?: string[];
     isLeader?: boolean;
     textPosition?: 'left' | 'right';
+    linkedinUrl?: string; // Optional LinkedIn URL
 }
 
 export default function EquipoPage() {
     const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-    const teamMembers: TeamMember[] = [ 
+    const teamMembers: TeamMember[] = [
         {
             id: 'david-maldonado',
             name: 'Dr. David Maldonado Viteri',
@@ -51,7 +52,8 @@ export default function EquipoPage() {
                 'Gestión de cumplimiento corporativo (compliance)',
                 'Estrategias legales para entidades bancarias'
             ],
-            textPosition: 'right'
+            textPosition: 'right',
+            linkedinUrl: 'https://www.linkedin.com/in/michelle-alejandra-ochoa-ch%C3%A1vez-692969225'
         },
         {
             id: 'karla-padilla',
@@ -65,7 +67,8 @@ export default function EquipoPage() {
                 'Litigios exitosos en procesos civiles y coactivos',
                 'Asesoría en casos de derecho penal y familiar',
             ],
-            textPosition: 'left'
+            textPosition: 'left',
+            linkedinUrl: 'https://www.linkedin.com/in/nahomi-padilla-846b87196'
         },
         {
             id: 'sofia-teran',
@@ -79,7 +82,8 @@ export default function EquipoPage() {
                 'Investigadora en el capítulo de Género del libro Memorias 30 años irreverentes de la Fundacion Regional de Asesoria en Derechos Humanos INREDH',
                 'Investigadora en el informe Ruta de incidencia de manejo de datos sobre violencia y agresiones a personas LGBTIQ+ para DATALAT',
             ],
-            textPosition: 'right'
+            textPosition: 'right',
+            linkedinUrl: 'https://www.linkedin.com/in/sofia-teran-a4490515a'
         },
         {
             id: 'silvia-arteaga',
@@ -109,7 +113,8 @@ export default function EquipoPage() {
                 'Apoyo integral en audiencias y trámites',
                 'Gestión personalizada de clientes'
             ],
-            textPosition: 'left'
+            textPosition: 'left',
+            linkedinUrl: 'https://www.linkedin.com/in/sof%C3%ADa-micaela-gua%C3%B1a-rojas-ab9a94328'
         },
         {
             id: 'tatiana-cordonez',
@@ -124,7 +129,8 @@ export default function EquipoPage() {
                 'Apoyo en estructuración societaria',
                 'Atención personalizada al cliente'
             ],
-            textPosition: 'right'
+            textPosition: 'right',
+            linkedinUrl: 'https://www.linkedin.com/in/tatiana-cordonez-cueva-4895a0207'
         },
         {
             id: 'vicente-nenger',
@@ -139,7 +145,8 @@ export default function EquipoPage() {
                 'Automatización de procesos coactivos',
                 'Soluciones digitales orientadas al usuario'
             ],
-            textPosition: 'right'
+            textPosition: 'right',
+            linkedinUrl: 'https://www.linkedin.com/in/vicente-nénger-9b30b1378'
         },
         {
             id: 'marco-sanguano',
@@ -168,7 +175,8 @@ export default function EquipoPage() {
                 'Publicaciones en editoriales internacionales',
                 'Beca académica por excelencia'
             ],
-            textPosition: 'left'
+            textPosition: 'left',
+            linkedinUrl: 'https://www.linkedin.com/in/mar%C3%ADa-paula-peralta-413a1a216'
         },
         {
             id: 'alexa-vasconez',
@@ -183,7 +191,8 @@ export default function EquipoPage() {
                 'Colaboración en cobranzas y procesos judiciales',
                 'Gestión de trámites internos'
             ],
-            textPosition: 'left'
+            textPosition: 'left',
+            linkedinUrl: 'https://www.linkedin.com/in/alexa-v%C3%A1sconez-silva-108593321'
         },
         {
             id: 'ingrid-perez',
@@ -197,7 +206,8 @@ export default function EquipoPage() {
                 'Colaboración en cobranzas y procesos judiciales',
                 'Gestión de trámites internos'
             ],
-            textPosition: 'left'
+            textPosition: 'left',
+            linkedinUrl: 'https://www.linkedin.com/in/ingrid-p%C3%A9rez-13438a301'
         }
 
     ];
@@ -291,31 +301,51 @@ export default function EquipoPage() {
                                 whileHover={{ y: -8, scale: 1.02 }}
                                 onClick={() => setSelectedMember(member)}
                             >
-                                <div className="relative overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl ">
+                                <div className="relative overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl">
                                     {/* Photo Container - OPTIMIZADO PARA ALTA CALIDAD */}
-                                    <div className="relative h-80 overflow-hidden bg-gray-100"> {/* Aumentado de h-64 a h-80 */}
+                                    <div className="relative h-80 overflow-hidden bg-gray-100">
                                         <Image
                                             src={member.image}
                                             alt={member.name}
                                             fill
-                                            className="object-cover transition-all duration-700 group-hover:scale-110 "
+                                            className="object-cover transition-all duration-700 group-hover:scale-110"
                                             // ✨ CONFIGURACIONES CLAVE PARA CALIDAD MÁXIMA
-                                            quality={95} // Calidad máxima para fotos profesionales
-                                            priority={true} // Prioridad para las primeras 4 imágenes
+                                            quality={95}
+                                            priority={index < 4} // ✅ OPTIMIZACIÓN: Solo las primeras 4 imágenes
                                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                                            placeholder="blur" // Blur mientras carga
+                                            placeholder="blur"
                                             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                                         />
-                                        <div className="absolute inset-0 bg-black/10 pointer-events-none z-10" /> 
+                                        <div className="absolute inset-0 bg-black/10 pointer-events-none z-10" />
+
                                         {/* Overlay Premium */}
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
                                         {/* Hover Content */}
                                         <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
                                             <p className="text-sm font-medium mb-2">{member.specialization}</p>
-                                            <button className="text-xs font-bold uppercase tracking-wider px-4 py-2 border border-white/50 hover:bg-white hover:text-black transition-all duration-300">
-                                                Ver Perfil
-                                            </button>
+
+                                            {/* Contenedor flex para alinear botón e icono */}
+                                            <div className="flex gap-2">
+                                                <button className="text-xs font-bold uppercase tracking-wider px-4 py-2 border border-white/50 hover:bg-white hover:text-black transition-all duration-300 cursor-pointer flex-1">
+                                                    Ver Perfil
+                                                </button>
+
+                                                {/* ✅ CORREGIDO: Etiqueta <a> bien formada */}
+                                                {member.linkedinUrl && (
+                                                    <a
+                                                        href={member.linkedinUrl}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="w-10 h-10 border border-white/50 hover:bg-white hover:text-black transition-all duration-300 flex items-center justify-center"
+                                                        onClick={(e) => e.stopPropagation()}
+                                                    >
+                                                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                                        </svg>
+                                                    </a>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
 
@@ -380,7 +410,7 @@ export default function EquipoPage() {
                         >
                             {/* Close Button */}
                             <button
-                                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all duration-300 flex items-center justify-center"
+                                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all duration-300 flex items-center justify-center cursor-pointer"
                                 onClick={() => setSelectedMember(null)}
                             >
                                 <XMarkIcon className="w-6 h-6" />

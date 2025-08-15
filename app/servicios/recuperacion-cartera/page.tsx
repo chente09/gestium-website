@@ -61,7 +61,7 @@ export default function RecuperacionCarteraPage() {
         <MainLayout>
             {/* --- HERO SECTION --- */}
             <HeroSection
-                backgroundImage="/images/areas/cobranza2.jpg"
+                backgroundImage="/images/servicios/recuperacion.avif"
                 title={
                     <>
                         Recuperación de <span style={{ color: 'var(--gold-dark)', textShadow: '0 0 9px gray' }}>Cartera</span>
@@ -85,6 +85,34 @@ export default function RecuperacionCarteraPage() {
                 </div>
             </HeroSection>
 
+            {/* --- TIPOS DE GESTIÓN --- */}
+            <Section background="platinum" padding="lg">
+                <SectionHeader
+                    title="Modalidades de Gestión"
+                    description="Adaptamos nuestra estrategia a la naturaleza de la deuda y a las necesidades específicas de cada cliente."
+                    centered={true}
+                    className="mb-16"
+                />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {serviceFeatures.map((feature, index) => (
+                        <motion.div
+                            key={index}
+                            className="bg-white p-8 border border-slate-200/80 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group text-center"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1, duration: 0.6 }}
+                        >
+                            <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-red-50 group-hover:bg-red-100 transition-colors duration-300 mx-auto">
+                                <feature.icon size={28} className="text-gold-dark" />
+                            </div>
+                            <h3 className="text-xl font-bold font-playfair mb-3 text-slate-900">{feature.title}</h3>
+                            <p className="text-sm leading-relaxed text-slate-600 text-justify">{feature.description}</p>
+                        </motion.div>
+                    ))}
+                </div>
+            </Section>
+
             {/* --- INTRODUCCIÓN AL SERVICIO --- */}
             <Section background="white" padding="lg">
                 <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
@@ -106,42 +134,14 @@ export default function RecuperacionCarteraPage() {
                             description="Entendemos que la recuperación de cartera es un pilar fundamental para la salud financiera de cualquier institución. Nuestro enfoque combina un profundo conocimiento legal con estrategias de negociación efectivas y el uso de tecnología avanzada para maximizar los resultados, minimizar los tiempos de recuperación y mantener los más altos estándares de ética profesional."
                             centered={false}
                             showDivider={true}
-                            className="mb-0"
+                            className="mb-0 text-justify"
                         />
                     </div>
                 </div>
             </Section>
 
-            {/* --- TIPOS DE GESTIÓN --- */}
-            <Section background="platinum" padding="lg">
-                <SectionHeader
-                    title="Modalidades de Gestión"
-                    description="Adaptamos nuestra estrategia a la naturaleza de la deuda y a las necesidades específicas de cada cliente."
-                    centered={true}
-                    className="mb-16"
-                />
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {serviceFeatures.map((feature, index) => (
-                        <motion.div
-                            key={index}
-                            className="bg-white p-8 border border-slate-200/80 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.6 }}
-                        >
-                            <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6 bg-red-50 group-hover:bg-red-100 transition-colors duration-300">
-                                <feature.icon size={28} className="text-gold-dark" />
-                            </div>
-                            <h3 className="text-xl font-bold font-playfair mb-3 text-slate-900">{feature.title}</h3>
-                            <p className="text-sm leading-relaxed text-slate-600">{feature.description}</p>
-                        </motion.div>
-                    ))}
-                </div>
-            </Section>
-
             {/* --- NUESTROS DIFERENCIADORES --- */}
-            <Section background="white" padding="lg">
+            <Section background="platinum" padding="lg">
                 <SectionHeader
                     title="Nuestra Ventaja Competitiva"
                     description="Factores clave que nos posicionan como el aliado estratégico ideal para la recuperación de su cartera."

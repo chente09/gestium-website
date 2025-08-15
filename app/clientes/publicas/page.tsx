@@ -184,7 +184,7 @@ export default function EntidadesPublicasPage() {
             <Section background="white" padding="lg">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="relative h-96 lg:h-[500px] overflow-hidden lg:order-last">
-                        <Image src="/images/areas/administrativo.webp" alt="Asesoría a entidades públicas" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={95} />
+                        <Image src="/images/areas/publica.jpg" alt="Asesoría a entidades públicas" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={95} />
                     </div>
                     <div>
                         <SectionHeader

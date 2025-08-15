@@ -250,7 +250,7 @@ export default function EmpresasPrivadasPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div className="relative h-96 lg:h-[500px] overflow-hidden rounded-lg">
                         <Image 
-                            src="/images/areas/reunion.jpg" 
+                            src="/images/areas/privadas.jpg" 
                             alt="Asesoría a empresas privadas" 
                             fill 
                             className="object-cover hover:scale-105 transition-transform duration-700" 

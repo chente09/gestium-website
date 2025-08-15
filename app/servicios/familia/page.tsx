@@ -9,64 +9,70 @@ import HeroSection from '@/components/ui/HeroSection';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import {
+    Heart,
     Users,
-    Scale,
-    ShieldCheck,
-    Clock,
+    FileText,
+    Shield,
     CheckCircle,
-    Award,
-    Briefcase
+    Baby,
+    Home,
+    Gavel
 } from 'lucide-react';
 
 // Definimos la "forma" de los datos para TypeScript
-interface MediationService {
+interface FamilyService {
     icon: React.ElementType;
     title: string;
     description: string;
 }
 
-interface Benefit {
+interface FamilyValue {
     icon: React.ElementType;
     title: string;
     description: string;
 }
 
-export default function MediacionArbitrajePage() {
+export default function DerechoFamiliaPage() {
     const router = useRouter();
 
-    const mediationServices: MediationService[] = [
+    const familyServices: FamilyService[] = [
         {
             icon: Users,
-            title: 'Mediación Especializada',
-            description: 'Facilitamos un diálogo constructivo entre las partes, guiándolas hacia un acuerdo mutuamente beneficioso, confidencial y con la misma validez que una sentencia judicial.'
+            title: 'Procesos de Divorcio',
+            description: 'Asesoría integral en procesos de divorcio consensual y contencioso, priorizando el bienestar de todos los miembros de la familia y buscando soluciones armoniosas.'
         },
         {
-            icon: Scale,
-            title: 'Arbitraje Institucional y Ad Hoc',
-            description: 'Ofrecemos un proceso de arbitraje ágil y especializado donde un tribunal arbitral imparcial resuelve la controversia de manera definitiva y vinculante.'
+            icon: Baby,
+            title: 'Custodia y Régimen de Visitas',
+            description: 'Establecimiento de acuerdos de custodia y régimen de visitas que protejan el interés superior de los menores, garantizando el derecho de los niños a mantener relación con ambos padres.'
         },
         {
-            icon: Briefcase,
-            title: 'Negociación Estratégica',
-            description: 'Diseñamos y ejecutamos estrategias de negociación para resolver disputas complejas antes de que escalen a litigios formales, protegiendo sus intereses comerciales.'
+            icon: Home,
+            title: 'Pensiones Alimenticias',
+            description: 'Fijación, modificación y seguimiento de pensiones alimenticias, asegurando que los menores y beneficiarios reciban el sustento económico adecuado.'
+        },
+        {
+            icon: Gavel,
+            title: 'Mediación Familiar',
+            description: 'Facilitamos espacios de diálogo constructivo para resolver conflictos familiares de manera pacífica, preservando los vínculos afectivos y evitando traumas innecesarios.'
         }
     ];
 
-    const benefits: Benefit[] = [
+    const familyValues: FamilyValue[] = [
         {
-            icon: Clock,
-            title: 'Eficiencia y Rapidez',
-            description: 'Resuelva sus conflictos en una fracción del tiempo que tomaría un proceso judicial tradicional.'
+            icon: Heart,
+            title: 'Enfoque Humano y Empático',
+            description: 'Entendemos que cada situación familiar es única y requiere un trato personalizado, con sensibilidad hacia las emociones involucradas.'
         },
         {
-            icon: ShieldCheck,
-            title: 'Confidencialidad Absoluta',
-            description: 'Los procedimientos son privados, protegiendo la reputación y la información sensible de su empresa.'
+            icon: Shield,
+            title: 'Protección de Menores',
+            description: 'En todos nuestros procesos priorizamos el interés superior de los niños, garantizando su bienestar físico, emocional y económico.'
         },
         {
-            icon: Award,
-            title: 'Soluciones a la Medida',
-            description: 'Las partes tienen control sobre el resultado, permitiendo soluciones creativas y adaptadas a sus necesidades.'
+            icon: FileText,
+            title: 'Confidencialidad y Respeto',
+            description: 'Mantenemos la más estricta confidencialidad y respeto por la privacidad familiar, creando un ambiente de confianza y seguridad.'
         }
     ];
 
@@ -74,16 +80,16 @@ export default function MediacionArbitrajePage() {
         <MainLayout>
             {/* --- HERO SECTION --- */}
             <HeroSection
-                backgroundImage="/images/servicios/mediacion.avif"
+                backgroundImage="/images/servicios/familia.avif"
                 title={
                     <>
-                        Mediación y <span style={{ color: 'var(--gold-dark)', textShadow: '0 0 9px gray' }}>Arbitraje</span>
+                        Derecho de <span style={{ color: 'var(--gold-dark)', textShadow: '0 0 9px gray' }}>Familia</span>
                     </>
                 }
-                description="Soluciones eficientes y confidenciales para la resolución de conflictos. Evite litigios prolongados y costosos a través de métodos alternativos dirigidos por expertos."
+                description="Acompañamiento cercano y humano en todas las cuestiones relacionadas con el derecho de familia. Priorizamos el bienestar familiar y el interés superior de los menores."
             >
                 <div className="flex flex-wrap justify-center gap-4 text-sm">
-                    {['Confidencial', 'Ágil', 'Vinculante', 'Económico'].map((item, index) => (
+                    {['Enfoque Humano', 'Soluciones Armoniosas', 'Protección de Menores'].map((item, index) => (
                         <motion.div
                             key={index}
                             className="flex items-center gap-2 px-4 py-2 border border-white/20 bg-white/10 rounded-full backdrop-blur-sm"
@@ -98,16 +104,16 @@ export default function MediacionArbitrajePage() {
                 </div>
             </HeroSection>
 
-            {/* --- TIPOS DE SERVICIOS --- */}
+            {/* --- SERVICIOS FAMILIARES --- */}
             <Section background="platinum" padding="lg">
                 <SectionHeader
-                    title="Nuestros Métodos de Resolución"
-                    description="Aplicamos el método más adecuado para la naturaleza y complejidad de cada conflicto."
+                    title="Nuestros Servicios Especializados"
+                    description="Cubrimos todas las áreas del derecho de familia con un enfoque integral y humanizado."
                     centered={true}
                     className="mb-16"
                 />
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {mediationServices.map((service, index) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {familyServices.map((service, index) => (
                         <motion.div
                             key={index}
                             className="bg-white p-8 border border-slate-200/80 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group text-center"
@@ -138,13 +144,13 @@ export default function MediacionArbitrajePage() {
                             className="w-40 h-40 rounded-full flex items-center justify-center"
                             style={{ background: 'var(--gradient-red)' }}
                         >
-                            <Users className="w-20 h-20 text-white" />
+                            <Heart className="w-20 h-20 text-white" />
                         </motion.div>
                     </div>
                     <div className="md:col-span-2">
                         <SectionHeader
-                            title="La Vía Inteligente para Resolver Disputas"
-                            description="Los litigios judiciales no siempre son la solución más eficiente. La mediación y el arbitraje ofrecen alternativas flexibles, rápidas y confidenciales para resolver controversias comerciales, civiles y corporativas. Nuestro equipo de mediadores y árbitros expertos facilita procesos que preservan las relaciones comerciales y alcanzan soluciones prácticas y duraderas."
+                            title="Cuidando el Bienestar de su Familia"
+                            description="Los conflictos familiares requieren un manejo especializado que vaya más allá del aspecto legal. Nuestro enfoque integral combina conocimiento jurídico con sensibilidad humana, buscando soluciones que protejan los vínculos familiares y promuevan el bienestar de todos los involucrados, especialmente de los menores. Creemos en la resolución pacífica de controversias y en la construcción de acuerdos duraderos."
                             centered={false}
                             showDivider={true}
                             className="mb-0 text-justify"
@@ -153,21 +159,21 @@ export default function MediacionArbitrajePage() {
                 </div>
             </Section>
 
-            {/* --- BENEFICIOS --- */}
+            {/* --- VALORES Y PRINCIPIOS --- */}
             <Section background="platinum" padding="lg">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className="relative h-80 lg:h-[450px] overflow-hidden">
-                        <Image src="/images/areas/mediacion2.avif" alt="Mesa de negociación" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={95} />
+                        <Image src="/images/areas/familia2.avif" alt="Consulta familiar" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={95} />
                     </div>
                     <div>
                         <SectionHeader
-                            title="Ventajas Clave de los Métodos Alternativos"
-                            description="Descubra por qué cada vez más empresas eligen la mediación y el arbitraje sobre los litigios tradicionales."
+                            title="Nuestros Valores en la Práctica"
+                            description="Cada caso es abordado con los más altos estándares éticos y un profundo respeto por la dignidad humana."
                             centered={false}
-                            className="mb-8"
+                            className="mb-8 text-justify"
                         />
                         <div className="space-y-6">
-                            {benefits.map((benefit, index) => (
+                            {familyValues.map((value, index) => (
                                 <motion.div
                                     key={index}
                                     className="flex items-start gap-4"
@@ -177,11 +183,11 @@ export default function MediacionArbitrajePage() {
                                     transition={{ delay: index * 0.2, duration: 0.6 }}
                                 >
                                     <div className="w-12 h-12 flex-shrink-0 rounded-full flex items-center justify-center bg-platinum">
-                                        <benefit.icon className="w-6 h-6" style={{ color: 'var(--red-gestium)' }} />
+                                        <value.icon className="w-6 h-6" style={{ color: 'var(--red-gestium)' }} />
                                     </div>
                                     <div>
-                                        <h4 className="font-semibold text-slate-800">{benefit.title}</h4>
-                                        <p className="text-sm text-slate-600">{benefit.description}</p>
+                                        <h4 className="font-semibold text-slate-800">{value.title}</h4>
+                                        <p className="text-sm text-slate-600 text-justify">{value.description}</p>
                                     </div>
                                 </motion.div>
                             ))}
@@ -195,9 +201,9 @@ export default function MediacionArbitrajePage() {
                 <div className="absolute inset-0" style={{ backgroundColor: 'rgba(15, 23, 42, 0.8)' }} />
                 <div className="container-fluid relative z-10 text-white">
                     <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-                        <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>Encuentre una Solución a su Conflicto</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>Proteja el Bienestar de su Familia</h2>
                         <div className="w-24 h-1 mx-auto mb-6" style={{ backgroundColor: 'var(--red-gestium)' }} />
-                        <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">Nuestro equipo está listo para guiarlo hacia la resolución más favorable. Contáctenos para una evaluación confidencial de su caso.</p>
+                        <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">Permítanos acompañarle en este momento importante. Ofrecemos consultas confidenciales en un ambiente de respeto y comprensión.</p>
                         <motion.button
                             className="px-8 py-3 font-bold uppercase tracking-wider text-white"
                             style={{ background: 'var(--gradient-red)', cursor: 'pointer' }}
@@ -205,7 +211,7 @@ export default function MediacionArbitrajePage() {
                             whileTap={{ scale: 0.98 }}
                             onClick={() => router.push('/contacto')}
                         >
-                            Iniciar Proceso
+                            Consulta Confidencial
                         </motion.button>
                     </motion.div>
                 </div>

@@ -51,7 +51,7 @@ const Header: React.FC = () => {
         },
         { 
             name: 'Nosotros', 
-            href: '/nosotros',
+            href: '#',
             dropdown: [
                 { name: 'Nuestra Historia', href: '/nosotros/historia' },
                 { name: 'Nuestro Equipo', href: '/nosotros/equipo' },
@@ -65,7 +65,10 @@ const Header: React.FC = () => {
                 { name: 'Recuperación de Cartera', href: '/servicios/recuperacion-cartera' },
                 { name: 'Derecho Inmobiliario', href: '/servicios/inmobiliario' },
                 { name: 'Derecho Corporativo', href: '/servicios/corporativo' },
-                { name: 'Mediación y Arbitraje', href: '/servicios/mediacion' }
+                { name: 'Mediación y Arbitraje', href: '/servicios/mediacion' },
+                { name: 'Derecho de Familia', href: '/servicios/familia' },
+                { name: 'Derecho Laboral', href: '/servicios/laboral' },
+                { name: 'Gestiones y Trámites', href: '/servicios/tramites' }
             ]
         },
         { 
@@ -154,8 +157,8 @@ const Header: React.FC = () => {
                                     <motion.div
                                         className="absolute top-[15px] left-0 w-64 mt-2 backdrop-blur-xl border shadow-2xl overflow-hidden"
                                         style={{
-                                            backgroundColor: 'rgba(0, 0, 0, 0.4)',
-                                            borderColor: 'rgba(167, 26, 33, 0.2)'
+                                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                                            borderColor: 'rgba(167, 26, 33, 0.2)',
                                         }}
                                         initial={{ opacity: 0, y: -10 }}
                                         animate={{ opacity: 1, y: 0 }}
@@ -185,7 +188,7 @@ const Header: React.FC = () => {
                         {/* Portal Clientes - DISCRETO */}
                         <Link
                             href="https://gestium-app.netlify.app/consultas" target='_blank'
-                            className="text-[14px] font-medium tracking-wide transition-all duration-300 hover:scale-105 text-white/80 hover:text-red-600 flex items-center gap-1"
+                            className="text-[14px] font-medium tracking-wide transition-all duration-300 hover:scale-115 text-white/80  flex items-center gap-1"
                         >
                             <LockClosedIcon className="w-3 h-3" />
                             Portal Clientes
@@ -303,7 +306,7 @@ const Header: React.FC = () => {
                             {/* Mobile CTAs */}
                             <div className="pt-3 border-t space-y-2" style={{ borderTopColor: 'rgba(167, 26, 33, 0.2)' }}>
                                 <Link
-                                    href="/portal-clientes"
+                                    href="https://gestium-app.netlify.app/consultas"
                                     className="flex items-center justify-center gap-1 px-3 py-2 text-white/80 text-sm transition-all duration-300 hover:bg-white/5"
                                     onClick={() => setIsMenuOpen(false)}
                                 >

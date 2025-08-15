@@ -15,80 +15,159 @@ import {
     Users,
     Briefcase,
     ChevronRight,
-    Star
+    Star,
+    Heart
 } from 'lucide-react';
 
 const stageData = [
     {
-        id: 'fundacion',
-        period: '2005 - 2010',
-        title: 'Fundación',
-        subtitle: 'Los Primeros Pasos',
+        id: 'constitucion-arranque',
+        period: '2005 - 2008',
+        title: 'Constitución y Arranque',
+        subtitle: 'Los Cimientos de la Excelencia',
         icon: Building2,
-        description: 'Nace GESTIUM Servicios Legales Integrales con una visión clara: especialización en recuperación de cartera y servicios jurídicos integrales.',
+        description: 'Nuestro Estudio Jurídico se constituyó en el año 2005, iniciando operaciones en nuestra primera oficina ubicada en el octavo piso del Edificio El Girón de la ciudad de Quito. Desde el comienzo, establecimos las bases de lo que sería una trayectoria de crecimiento y especialización.',
         highlights: [
-            'Constitución del estudio jurídico',
-            'Especialización en cobranzas',
-            'Primeros clientes institucionales',
-            'Construcción de metodologías propias'
+            'Constitución del Estudio Jurídico en 2005',
+            'Inicio de operaciones en el Edificio El Girón, Quito',
+            'Especialización inicial en el campo inmobiliario',
+            'Participación en diversos proyectos a nivel nacional',
+            'Inicio de participación en procesos coactivos',
+            'Obtención de la confianza de varias instituciones públicas'
         ],
-        imageAlt: 'Fundación de GESTIUM en 2005',
+        imageAlt: 'Constitución de GESTIUM en 2005',
         bgGradient: 'from-slate-900 via-slate-800 to-slate-900'
     },
     {
-        id: 'consolidacion',
-        period: '2011 - 2020',
-        title: 'Consolidación',
-        subtitle: 'Crecimiento y Reconocimiento',
+        id: 'consolidacion-diversificacion',
+        period: '2009 - 2015',
+        title: 'Consolidación y Diversificación',
+        subtitle: 'Crecimiento Estratégico y Expansión de Servicios',
         icon: Scale,
-        description: 'Etapa de crecimiento sostenido marcada por el nombramiento del Dr. Maldonado como Notario Primero de Quito y la expansión hacia grandes instituciones financieras.',
+        description: 'Período de consolidación marcado por la diversificación estratégica de nuestros servicios jurídicos y el fortalecimiento de nuestra presencia tanto en el sector público como privado. Expandimos significativamente nuestro portafolio de especialidades.',
         highlights: [
-            'Dr. Maldonado: Notario Primero de Quito (2007-2014)',
-            'Alianzas con instituciones financieras líderes',
-            'Expansión del equipo especializado',
-            'Desarrollo de GESTIUM-APP'
+            'Constitución como Secretarios Abogados de dependencias públicas',
+            'Especialización en cobranzas por vía judicial y extrajudicial',
+            'Participación activa en procesos de mediación y arbitraje',
+            'Intervención en procesos de contratación pública',
+            'Servicios especializados en Derecho societario',
+            'Incorporación al Derecho Familiar',
+            'Incursión en temas de derecho laboral'
         ],
-        imageAlt: 'Consolidación y crecimiento del estudio',
+        imageAlt: 'Consolidación y diversificación del estudio',
         bgGradient: 'from-red-900 via-red-800 to-slate-900'
     },
     {
-        id: 'evolucion',
-        period: '2021 - 2024',
-        title: 'Evolución Corporativa',
-        subtitle: 'Transformación Estratégica',
-        icon: TrendingUp,
-        description: 'Culminación de la madurez empresarial con la incorporación como Sociedad Anónima, consolidando nuestro liderazgo en el sector jurídico ecuatoriano.',
+        id: 'estabilidad-fortalecimiento',
+        period: '2016 - 2020',
+        title: 'Estabilidad y Fortalecimiento',
+        subtitle: 'Madurez Institucional y Confianza Consolidada',
+        icon: Award,
+        description: 'Alcanzamos estabilidad operativa y financiera, culminando con nuestra constitución como Sociedad Anónima. Consolidamos relaciones de largo plazo con nuestros clientes y fortalecimos nuestro compromiso con la formación profesional.',
         highlights: [
-            'Incorporación como GESTIUM S.A.',
+            'Constitución como Sociedad Anónima (GESTIUM S.A.)',
+            'Mantenimiento de la confianza de las principales Instituciones Financieras',
+            'Clientes con más de quince años de confianza en nuestros servicios',
+            'Crecimiento continuo en la gama de servicios ofrecidos',
+            'Apertura a pasantes de diferentes Universidades del país',
+            'Fortalecimiento de la formación académica estudiantil'
+        ],
+        imageAlt: 'Estabilidad y fortalecimiento institucional',
+        bgGradient: 'from-slate-900 via-red-900 to-black'
+    },
+    {
+        id: 'expansion-innovacion',
+        period: '2021 - 2023',
+        title: 'Expansión e Innovación',
+        subtitle: 'Crecimiento Integral y Compromiso Social',
+        icon: Users,
+        description: 'Período de expansión significativa tanto en alcance geográfico como en impacto social. Desarrollamos nuevas iniciativas de responsabilidad social y continuamos creciendo en todos los aspectos operativos.',
+        highlights: [
+            'Asesoría gratuita a grupos vulnerables',
+            'Crecimiento en experiencia y celeridad de procedimientos',
+            'Mejoramiento de prestaciones sociales',
+            'Capacitación a grupos de diversos intereses',
+            'Expansión del compromiso social corporativo'
+        ],
+        imageAlt: 'Expansión e innovación social',
+        bgGradient: 'from-blue-900 via-slate-800 to-slate-900'
+    },
+    {
+        id: 'ampliacion-tecnologia',
+        period: '2024',
+        title: 'Ampliación de Servicios y Tecnología',
+        subtitle: 'Transformación Digital y Modernización',
+        icon: TrendingUp,
+        description: 'Revolucionamos nuestra operación a través de la tecnología, rediseñando completamente nuestra presencia digital y desarrollando herramientas propias para optimizar el servicio a nuestros clientes.',
+        highlights: [
+            'Rediseño completo de la página web',
+            'Acceso facilitado para clientes al estado de sus casos',
+            'Desarrollo de GESTIUM-APP para nuestros clientes',
+            'Modernización de la experiencia digital',
+            'Optimización de la comunicación cliente-estudio'
+        ],
+        imageAlt: 'Transformación digital',
+        bgGradient: 'from-purple-900 via-slate-800 to-slate-900'
+    },
+    {
+        id: 'diversificacion-liderazgo',
+        period: '2024 - Presente',
+        title: 'Diversificación y Liderazgo Nacional',
+        subtitle: 'Presencia Nacional y Liderazgo Reconocido',
+        icon: Briefcase,
+        description: 'Consolidamos nuestra presencia a nivel nacional estableciendo alianzas estratégicas en todas las provincias del país. Nos posicionamos como líderes reconocidos en nuestras áreas de especialización.',
+        highlights: [
+            'Alianzas estratégicas en todas las provincias del Ecuador',
+            'Servicios a nivel nacional',
             'Liderazgo reconocido en recuperación de cartera',
-            'Expansión tecnológica avanzada',
             'Presencia consolidada a nivel nacional'
         ],
-        imageAlt: 'Evolución hacia GESTIUM S.A.',
-        bgGradient: 'from-slate-900 via-red-900 to-black'
+        imageAlt: 'Liderazgo nacional consolidado',
+        bgGradient: 'from-green-900 via-slate-800 to-slate-900'
+    },
+    {
+        id: 'renovacion-constante',
+        period: 'Presente - Futuro',
+        title: 'Renovación Constante',
+        subtitle: 'Innovación Continua y Excelencia Sostenida',
+        icon: Star,
+        description: 'Mantenemos nuestro compromiso con la renovación constante, la capacitación continua y el desarrollo de metodologías propias que nos permiten mantenernos a la vanguardia del ejercicio profesional del derecho.',
+        highlights: [
+            'Capacitación continua de nuestro personal',
+            'Construcción constante de metodologías propias',
+            'Expansión tecnológica avanzada',
+            'Presencia consolidada a nivel nacional',
+            'Innovación permanente en procesos y servicios'
+        ],
+        imageAlt: 'Renovación constante y futuro',
+        bgGradient: 'from-red-900 via-black to-slate-900'
     }
 ];
 
 const achievements = [
     {
-        icon: Award,
-        title: 'Reconocimiento Institucional',
-        description: 'Confianza de las principales instituciones financieras del país'
+        icon: Users,
+        title: 'Formación y Crecimiento',
+        description: 'Apertura a pasantes universitarios y capacitación continua, contribuyendo al desarrollo profesional del sector',
+        highlight: 'Compromiso Educativo'
     },
     {
-        icon: Users,
-        title: 'Equipo Especializado',
-        description: 'Profesionales altamente capacitados en todas las áreas del derecho'
+        icon: Heart,
+        title: 'Responsabilidad Social',
+        description: 'Asesoría jurídica gratuita a grupos vulnerables, demostrando nuestro compromiso con la sociedad',
+        highlight: 'Impacto Social'
     },
     {
         icon: Briefcase,
-        title: 'Experiencia Comprobada',
-        description: 'Trayectoria sólida en recuperación de cartera y servicios corporativos'
+        title: 'Diversificación Integral',
+        description: 'Servicios especializados desde derecho societario hasta mediación, cubriendo todas las necesidades legales',
+        highlight: 'Cobertura Completa'
     },
     {
-        icon: Star,
-        title: 'Innovación Tecnológica',
-        description: 'Plataforma GESTIUM-APP para gestión operativa avanzada'
+        icon: TrendingUp,
+        title: 'Renovación Constante',
+        description: 'Construcción permanente de metodologías propias y expansión tecnológica avanzada',
+        highlight: 'Innovación Continua'
     }
 ];
 
@@ -189,23 +268,20 @@ export default function NuestroHistoriaPage() {
                                         >
                                             <Image
                                                 src={
-                                                    stage.id === 'fundacion' ? '/images/ofi/inicios.jpg' :
-                                                        stage.id === 'consolidacion' ? '/images/ofi/david-bn.jpg' :
-                                                            '/images/logo.sa.png'
+                                                    stage.id === 'constitucion-arranque' ? '/images/ofi/inicios.jpg' :
+                                                        stage.id === 'consolidacion-diversificacion' ? '/images/ofi/david-bn.jpg' :
+                                                            stage.id === 'estabilidad-fortalecimiento' ? '/images/ofi/Ofi.JPG' :
+                                                                stage.id === 'expansion-innovacion' ? '/images/ofi/bg-sala.jpg' :
+                                                                    stage.id === 'ampliacion-tecnologia' ? '/images/ofi/tecnologia.jpg' :
+                                                                        stage.id === 'diversificacion-liderazgo' ? '/images/ofi/equipo.jpg' :
+                                                                            '/images/logo.sa.png'
                                                 }
                                                 alt={stage.imageAlt}
                                                 fill
                                                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                                                 sizes="(max-width: 1024px) 100vw, 50vw"
                                             />
-                                            <div className="absolute inset-0  group-hover:opacity-40 transition-all duration-300" ></div>
-
-                                            {/* Overlay content para logo en fundación */}
-                                            {stage.id === 'fundacion' && (
-                                                <div className="absolute inset-0 flex items-center justify-center">
-
-                                                </div>
-                                            )}
+                                            <div className="absolute inset-0 group-hover:opacity-40 transition-all duration-300"></div>
                                         </motion.div>
                                     </div>
 
