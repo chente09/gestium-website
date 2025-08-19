@@ -48,7 +48,7 @@ export default function PDFViewer({
                 <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
 
                 <motion.div
-                    className="relative w-full h-full max-w-7xl mx-auto my-6 bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col"
+                    className="relative w-full h-full bg-white overflow-hidden flex flex-col"
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.9, opacity: 0 }}

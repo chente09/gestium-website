@@ -34,17 +34,42 @@ export default function PublicacionesPage() {
 
     // Importación dinámica para el visor de PDF
     const PDFViewer = dynamic(() => import('@/components/ui/PDFViewer'), {
-        ssr: false, // <-- Esto es lo más importante
-        loading: () => <p>Cargando visor...</p> // Opcional: Muestra algo mientras carga
+        ssr: false,
+        loading: () => <p>Cargando visor...</p>
     });
+
     const featuredArticles = [
+        {
+            "title": "La Prescripción Adquisitiva del Dominio",
+            "category": "Derecho Civil",
+            "author": "Nahomí Padilla, Sofía Osorio, Luis Peñaherrera, et al.",
+            "excerpt": "Análisis sobre la prescripción como modo de adquirir el dominio, sus requisitos y clases, y su aplicación en la legislación ecuatoriana.",
+            "date": "09 Septiembre 2020",
+            "readTime": "25 min",
+            "image": "/documents/prescripcion.jpg",
+            "type": "Ensayo Académico",
+            "institution": "Universidad Central del Ecuador",
+            "pdfUrl": "/documents/prescripcion.pdf"
+        },
+        {
+            title: 'La Rebelión de la Granja ¿Distopía o una profecía al Estado ecuatoriano?',
+            category: 'Análisis Político',
+            author: 'María Paula Peralta',
+            excerpt: 'Análisis comparativo entre la obra distópica de George Orwell y la realidad política contemporánea del Ecuador, explorando los paralelismos en términos de manipulación política y falta de educación cívica.',
+            date: '2025',
+            readTime: '12 min',
+            image: '/documents/rebelion-granja.jpg', // Usa la imagen de portada que me mostraste
+            type: 'Ensayo Académico',
+            institution: 'Análisis Literario-Político',
+            pdfUrl: '/documents/rebelion-granja-ecuador.pdf'
+        },
         {
             title: 'Desarrollo de una Plataforma Web Administrable para la Gestión Integral de Procesos Jurídicos',
             category: 'Legal Tech',
-            author: 'Nenger Coral Celso Vicente',
+            author: 'Nenger Coral Vicente',
             excerpt: 'Proyecto de titulación sobre el desarrollo de tecnología innovadora para optimizar la gestión de procesos jurídicos mediante plataformas web administrables.',
-            date: '2024',
-            readTime: '45 min',
+            date: '31 Marzo 2025',
+            readTime: 'Documento extenso',
             image: '/documents/tesis-legal-tech.png',
             type: 'Tesis',
             institution: 'ITSQMET - Instituto Superior Tecnológico Quito Metropolitano',
@@ -75,7 +100,7 @@ export default function PublicacionesPage() {
     // Función para abrir el visor PDF
     const openPDFViewer = (article: typeof featuredArticles[0]) => {
         if (article.pdfUrl) {
-            console.log('Abriendo PDF con estos datos:', article); 
+            console.log('Abriendo PDF con estos datos:', article);
             setSelectedPDF({
                 url: article.pdfUrl,
                 title: article.title,
@@ -110,7 +135,7 @@ export default function PublicacionesPage() {
                 title={
                     <>
                         Nuestras{' '}
-                        <span style={{ color: 'var(--gold-dark)', textShadow: '0 0 9px gray' }}>Publicaciones</span>
+                        <span style={{ color: 'var(--gold-dark)' }}>Publicaciones</span>
                     </>
                 }
                 description="Análisis jurídico, actualidad normativa y recursos especializados para profesionales del derecho."
@@ -151,7 +176,8 @@ export default function PublicacionesPage() {
                             transition={{ delay: index * 0.1, duration: 0.6 }}
                             onClick={() => article.pdfUrl ? openPDFViewer(article) : null}
                         >
-                            <div className="relative h-56">
+                            {/* Contenedor de imagen mejorado */}
+                            <div className="relative h-68 overflow-hidden">
                                 <Image
                                     src={article.image}
                                     alt={article.title}
@@ -159,30 +185,29 @@ export default function PublicacionesPage() {
                                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <div className="absolute top-4 right-4 flex flex-col gap-2">
-                                    <span className="text-xs px-3 py-1 rounded-full text-white font-semibold"
-                                        style={{ backgroundColor: 'var(--gold-dark)' }}>
+                                {/* Overlay que crece con la imagen */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent transition-all duration-500 group-hover:from-black/70 group-hover:to-black/20"></div>
+
+                                {/* Categoría en la esquina superior derecha */}
+                                <div className="absolute top-3 right-3">
+                                    <span className="text-xs px-3 py-1 rounded-full text-white font-semibold backdrop-blur-sm"
+                                        style={{ backgroundColor: 'var(--red-gestium)' }}>
                                         {article.category}
                                     </span>
-                                    {article.type && (
+                                </div>
+
+                                {/* Tipo en la esquina inferior derecha */}
+                                {article.type && (
+                                    <div className="absolute bottom-3 right-3">
                                         <span className="text-xs px-3 py-1 rounded-full bg-white/20 text-white font-semibold backdrop-blur-sm">
                                             {article.type}
                                         </span>
-                                    )}
-                                    {article.pdfUrl && (
-                                        <motion.div
-                                            className="absolute top-4 left-4 text-xs px-3 py-1 rounded-full bg-green-600 text-white font-semibold backdrop-blur-sm flex items-center gap-1"
-                                            whileHover={{ scale: 1.05 }}
-                                        >
-                                            <FileText size={12} />
-                                            PDF
-                                        </motion.div>
-                                    )}
-                                </div>
+                                    </div>
+                                )}
                             </div>
+
                             <div className="p-6 flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-[var(--gold-dark)] transition-colors duration-300 flex-grow"
+                                <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-[var(--red-gestium)] transition-colors duration-300 flex-grow"
                                     style={{ fontFamily: "'Playfair Display', serif" }}>
                                     {article.title}
                                 </h3>
@@ -204,11 +229,10 @@ export default function PublicacionesPage() {
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <Clock size={14} />
-                                        <span>{article.readTime} de lectura</span>
+                                        <span>{article.readTime}</span>
                                     </div>
                                     {article.pdfUrl && (
                                         <div className="flex items-center gap-1 text-green-600 font-medium">
-                                            <FileText size={14} />
                                             <span>Ver PDF</span>
                                         </div>
                                     )}
@@ -240,11 +264,11 @@ export default function PublicacionesPage() {
                                 transition={{ delay: index * 0.1, duration: 0.5 }}
                             >
                                 <div className="flex items-center justify-between mb-4">
-                                    <Icon size={24} style={{ color: 'var(--gold-dark)' }} className="transition-transform duration-300 group-hover:scale-110" />
+                                    <Icon size={24} style={{ color: 'var(--red-gestium)' }} className="transition-transform duration-300 group-hover:scale-110" />
                                     <span className="text-xs font-bold text-slate-400">{category.count} {category.count === 1 ? 'Publicación' : 'Publicaciones'}</span>
                                 </div>
                                 <h4 className="font-semibold text-slate-800 mb-2">{category.name}</h4>
-                                <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-[var(--gold-dark)] transition-all duration-300 group-hover:translate-x-1 mt-4" />
+                                <ArrowRight className="w-5 h-5 text-slate-300 group-hover:text-[var(--red-gestium)] transition-all duration-300 group-hover:translate-x-1 mt-4" />
                             </motion.div>
                         );
                     })}
@@ -272,15 +296,15 @@ export default function PublicacionesPage() {
                                 viewport={{ once: true, amount: 0.5 }}
                                 transition={{ delay: index * 0.1, duration: 0.6 }}
                             >
-                                <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 bg-platinum group-hover:bg-yellow-50 transition-colors duration-300">
-                                    <IconComponent size={32} style={{ color: 'var(--gold-dark)' }} />
+                                <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 bg-platinum group-hover:bg-red-50 transition-colors duration-300">
+                                    <IconComponent size={32} style={{ color: 'var(--red-gestium)' }} />
                                 </div>
                                 <h4 className="text-xl font-bold mb-3 text-slate-900"
                                     style={{ fontFamily: "'Playfair Display', serif" }}>
                                     {resource.title}
                                 </h4>
                                 <p className="text-sm leading-relaxed text-slate-600 mb-4">{resource.description}</p>
-                                <span className="font-semibold text-sm" style={{ color: 'var(--gold-dark)' }}>
+                                <span className="font-semibold text-sm" style={{ color: 'var(--red-gestium)' }}>
                                     {resource.count}
                                 </span>
                             </motion.div>
@@ -299,11 +323,11 @@ export default function PublicacionesPage() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <Users size={40} className="mx-auto mb-4" style={{ color: 'var(--gold-dark)' }} />
+                        <Users size={40} className="mx-auto mb-4" style={{ color: 'var(--red-gestium)' }} />
                         <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
                             Manténgase Actualizado
                         </h2>
-                        <div className="w-24 h-1 mx-auto mb-6" style={{ backgroundColor: 'var(--gold-dark)' }} />
+                        <div className="w-24 h-1 mx-auto mb-6" style={{ backgroundColor: 'var(--red-gestium)' }} />
                         <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
                             Reciba las últimas publicaciones y análisis jurídicos directamente en su correo.
                         </p>
