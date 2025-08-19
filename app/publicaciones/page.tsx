@@ -6,7 +6,8 @@ import MainLayout from '@/components/layout/MainLayout';
 import Section from '@/components/ui/Section';
 import SectionHeader from '@/components/ui/SectionHeader';
 import HeroSection from '@/components/ui/HeroSection';
-import PDFViewer from '@/components/ui/PDFViewer';
+import dynamic from 'next/dynamic';
+
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import {
@@ -31,6 +32,11 @@ export default function PublicacionesPage() {
         institution?: string;
     } | null>(null);
 
+    // Importación dinámica para el visor de PDF
+    const PDFViewer = dynamic(() => import('@/components/ui/PDFViewer'), {
+        ssr: false, // <-- Esto es lo más importante
+        loading: () => <p>Cargando visor...</p> // Opcional: Muestra algo mientras carga
+    });
     const featuredArticles = [
         {
             title: 'Desarrollo de una Plataforma Web Administrable para la Gestión Integral de Procesos Jurídicos',
@@ -39,7 +45,7 @@ export default function PublicacionesPage() {
             excerpt: 'Proyecto de titulación sobre el desarrollo de tecnología innovadora para optimizar la gestión de procesos jurídicos mediante plataformas web administrables.',
             date: '2024',
             readTime: '45 min',
-            image: '/images/ofi/Ofi.JPG',
+            image: '/documents/tesis-legal-tech.png',
             type: 'Tesis',
             institution: 'ITSQMET - Instituto Superior Tecnológico Quito Metropolitano',
             pdfUrl: '/documents/tesis-legal-tech.pdf'
@@ -69,6 +75,7 @@ export default function PublicacionesPage() {
     // Función para abrir el visor PDF
     const openPDFViewer = (article: typeof featuredArticles[0]) => {
         if (article.pdfUrl) {
+            console.log('Abriendo PDF con estos datos:', article); 
             setSelectedPDF({
                 url: article.pdfUrl,
                 title: article.title,
@@ -145,17 +152,17 @@ export default function PublicacionesPage() {
                             onClick={() => article.pdfUrl ? openPDFViewer(article) : null}
                         >
                             <div className="relative h-56">
-                                <Image 
-                                    src={article.image} 
-                                    alt={article.title} 
-                                    fill 
-                                    className="object-cover transition-transform duration-500 group-hover:scale-110" 
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" 
+                                <Image
+                                    src={article.image}
+                                    alt={article.title}
+                                    fill
+                                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                                 <div className="absolute top-4 right-4 flex flex-col gap-2">
                                     <span className="text-xs px-3 py-1 rounded-full text-white font-semibold"
-                                          style={{ backgroundColor: 'var(--gold-dark)' }}>
+                                        style={{ backgroundColor: 'var(--gold-dark)' }}>
                                         {article.category}
                                     </span>
                                     {article.type && (
@@ -286,10 +293,10 @@ export default function PublicacionesPage() {
             <div className="py-20 text-center relative" style={{ backgroundImage: "url('/images/ofi/Ofi.JPG')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
                 <div className="absolute inset-0" style={{ backgroundColor: 'rgba(15, 23, 42, 0.8)' }} />
                 <div className="container-fluid relative z-10 text-white">
-                    <motion.div 
-                        initial={{ opacity: 0, y: 30 }} 
-                        whileInView={{ opacity: 1, y: 0 }} 
-                        viewport={{ once: true }} 
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
                         <Users size={40} className="mx-auto mb-4" style={{ color: 'var(--gold-dark)' }} />
@@ -301,10 +308,10 @@ export default function PublicacionesPage() {
                             Reciba las últimas publicaciones y análisis jurídicos directamente en su correo.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-2 justify-center max-w-lg mx-auto">
-                            <input 
-                                type="email" 
-                                placeholder="Su correo electrónico" 
-                                className="flex-1 px-5 py-3 text-slate-900 bg-white rounded focus:outline-none transition-all duration-300" 
+                            <input
+                                type="email"
+                                placeholder="Su correo electrónico"
+                                className="flex-1 px-5 py-3 text-slate-900 bg-white rounded focus:outline-none transition-all duration-300"
                             />
                             <motion.button
                                 className="px-8 py-3 font-bold uppercase tracking-wider text-white rounded"

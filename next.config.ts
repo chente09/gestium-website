@@ -16,7 +16,13 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+
+  // --- AÑADE ESTA SECCIÓN ---
+  webpack: (config) => {
+    config.resolve.alias.canvas = false;
+    return config;
+  },
+  // --- FIN DE LA SECCIÓN AÑADIDA ---
 };
 
 export default nextConfig;
-
