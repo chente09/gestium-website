@@ -13,7 +13,6 @@ import Image from 'next/image';
 import {
     BookOpen,
     Calendar,
-    ArrowRight,
     FileText,
     Newspaper,
     Video,
@@ -244,7 +243,7 @@ export default function PublicacionesPage() {
             </Section>
 
             {/* --- CATEGORÍAS --- */}
-            <Section background="platinum" padding="lg">
+            {/* <Section background="platinum" padding="lg">
                 <SectionHeader
                     title="Categorías Temáticas"
                     description="Explore nuestro contenido organizado por áreas de especialización"
@@ -273,10 +272,10 @@ export default function PublicacionesPage() {
                         );
                     })}
                 </div>
-            </Section>
+            </Section> */}
 
             {/* --- RECURSOS ADICIONALES --- */}
-            <Section background="white" padding="lg">
+            {/* <Section background="white" padding="lg">
                 <SectionHeader
                     title="Centro de Recursos"
                     description="Herramientas y materiales complementarios para profesionales del derecho"
@@ -311,45 +310,100 @@ export default function PublicacionesPage() {
                         );
                     })}
                 </div>
-            </Section>
+            </Section> */}
 
-            {/* --- NEWSLETTER CTA --- */}
-            <div className="py-20 text-center relative" style={{ backgroundImage: "url('/images/ofi/Ofi.JPG')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
-                <div className="absolute inset-0" style={{ backgroundColor: 'rgba(15, 23, 42, 0.8)' }} />
-                <div className="container-fluid relative z-10 text-white">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <Users size={40} className="mx-auto mb-4" style={{ color: 'var(--red-gestium)' }} />
-                        <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-                            Manténgase Actualizado
-                        </h2>
-                        <div className="w-24 h-1 mx-auto mb-6" style={{ backgroundColor: 'var(--red-gestium)' }} />
-                        <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-                            Reciba las últimas publicaciones y análisis jurídicos directamente en su correo.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-2 justify-center max-w-lg mx-auto">
-                            <input
-                                type="email"
-                                placeholder="Su correo electrónico"
-                                className="flex-1 px-5 py-3 text-slate-900 bg-white rounded focus:outline-none transition-all duration-300"
-                            />
-                            <motion.button
-                                className="px-8 py-3 font-bold uppercase tracking-wider text-white rounded"
-                                style={{ background: 'var(--gradient-red)' }}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.98 }}
-                                onClick={() => router.push('/contacto')}
-                            >
-                                Suscribirse
-                            </motion.button>
+            {/* Presente y Futuro - CTA responsivo corregido */}
+                        <div
+                            className="py-20 text-center relative"
+                            style={{
+                                backgroundImage: "url('/images/ofi/justicia.jpg')",
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                backgroundAttachment: 'fixed'
+                            }}
+                        >
+                            <div className="absolute inset-0" style={{ backgroundColor: 'rgba(15, 23, 42, 0.8)' }} />
+            
+                            <div className="container-fluid text-center relative z-10 px-4">
+                                <motion.h2
+                                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 tracking-tight"
+                                    style={{
+                                        fontFamily: "'Playfair Display', serif",
+                                        color: 'var(--white)'
+                                    }}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6 }}
+                                >
+                                    GESTIUM S.A. Hoy
+                                </motion.h2>
+            
+                                <motion.div
+                                    className="w-20 sm:w-24 md:w-32 h-1 mx-auto mb-6 sm:mb-8"
+                                    style={{ backgroundColor: 'var(--red-gestium)' }}
+                                    initial={{ width: 0 }}
+                                    whileInView={{ width: '8rem' }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.3, duration: 0.6 }}
+                                />
+            
+                                <motion.p
+                                    className="text-base sm:text-lg md:text-xl mb-8 sm:mb-12 leading-relaxed max-w-3xl mx-auto"
+                                    style={{ color: 'rgba(255, 255, 255, 0.9)' }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.6, duration: 0.6 }}
+                                >
+                                    Como GESTIUM S.A., continuamos construyendo sobre la sólida base de confianza
+                                    y excelencia establecida desde 2005, proyectándonos hacia el futuro con la
+                                    misma pasión y compromiso que nos ha caracterizado.
+                                </motion.p>
+            
+                                <motion.div
+                                    className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.9, duration: 0.6 }}
+                                >
+                                    <motion.button
+                                        className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider transition-all duration-300 relative overflow-hidden shadow-xl"
+                                        style={{
+                                            background: 'var(--gradient-red)',
+                                            color: 'var(--white)',
+                                            border: 'none',
+                                            cursor: 'pointer'
+                                        }}
+                                        whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.98 }}
+                                        onClick={() => router.push('/nosotros/equipo')}
+                                    >
+                                        <span className="relative z-10">
+                                            Conocer Nuestro Equipo
+                                        </span>
+                                    </motion.button>
+            
+                                    <motion.button
+                                        className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider border-2 transition-all duration-300 bg-transparent"
+                                        style={{
+                                            borderColor: 'var(--white)',
+                                            color: 'var(--white)',
+                                            cursor: 'pointer'
+                                        }}
+                                        whileHover={{
+                                            scale: 1.05,
+                                            backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                                        }}
+                                        whileTap={{ scale: 0.98 }}
+                                        onClick={() => router.push('/nosotros/valores')}
+                                    >
+                                        Nuestros Valores
+                                    </motion.button>
+                                </motion.div>
+                            </div>
                         </div>
-                    </motion.div>
-                </div>
-            </div>
 
             {/* PDF Viewer Modal */}
             {selectedPDF && (

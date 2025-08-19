@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import MainLayout from '@/components/layout/MainLayout';
 import Section from '@/components/ui/Section';
@@ -25,6 +25,27 @@ interface TeamMember {
 
 export default function EquipoPage() {
     const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+
+    useEffect(() => {
+        // Función que se ejecuta al presionar una tecla
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                // 2. La función que se llama es setSelectedMember(null)
+                setSelectedMember(null); 
+            }
+        };
+
+        // 1. La condición ahora es verificar si 'selectedMember' tiene datos
+        if (selectedMember) {
+            document.addEventListener('keydown', handleKeyDown);
+        }
+
+        // La función de limpieza se encarga de remover el listener
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [selectedMember]); // 3. La dependencia es 'selectedMember'
+
 
     const teamMembers: TeamMember[] = [
         {
@@ -199,14 +220,14 @@ export default function EquipoPage() {
             name: 'Ingrid Pérez',
             title: 'Pasante Legal',
             specialization: 'Gestión Documental Legal',
-            image: '/images/equipo/ingrid.jpg',
+            image: '/images/equipo/in.png',
             description: 'Estudiante universitaria con experiencia como pasante legal en el Banco Pichincha. Destaca por su capacidad de organización y apoyo en la gestión de cartera.',
             experience: 'Cobranza y redacción de demandas',
             achievements: [
                 'Colaboración en cobranzas y procesos judiciales',
                 'Gestión de trámites internos'
             ],
-            textPosition: 'left',
+            textPosition: 'right',
             linkedinUrl: 'https://www.linkedin.com/in/ingrid-p%C3%A9rez-13438a301'
         }
 

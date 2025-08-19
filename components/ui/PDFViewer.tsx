@@ -2,7 +2,7 @@
 
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, FileText, ExternalLink } from 'lucide-react';
 
@@ -35,6 +35,27 @@ export default function PDFViewer({
     // Crea una instancia del plugin de la interfaz
     const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
+    useEffect(() => {
+        // Función que se ejecuta al presionar una tecla
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                onClose(); // Llama a la función para cerrar el modal
+            }
+        };
+
+        // Añade el "escuchador" al documento cuando el modal está abierto
+        if (isOpen) {
+            document.addEventListener('keydown', handleKeyDown);
+        }
+
+        // Función de limpieza: elimina el "escuchador" cuando el modal se cierra
+        // Esto es muy importante para evitar problemas de rendimiento.
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isOpen, onClose]); // Se ejecuta cada vez que isOpen o onClose cambian
+
+
     if (!isOpen) return null;
 
     return (
@@ -53,7 +74,7 @@ export default function PDFViewer({
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.9, opacity: 0 }}
                 >
-                    <header className="flex items-center justify-between p-4 border-b border-gray-200 bg-white">
+                    <header className="flex items-center justify-between p-1 border-b border-gray-200 bg-white">
                         <div className="flex items-center gap-3 min-w-0">
                             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center flex-shrink-0">
                                 <FileText size={20} className="text-white" />
@@ -67,9 +88,6 @@ export default function PDFViewer({
                         <div className="flex items-center gap-2 flex-shrink-0 ml-4">
                             <a href={pdfUrl} target="_blank" rel="noopener noreferrer" title="Abrir en nueva pestaña" className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600">
                                 <ExternalLink size={20} />
-                            </a>
-                            <a href={pdfUrl} download={`${title}.pdf`} title="Descargar PDF" className="p-2 rounded-lg hover:bg-gray-100 transition-colors" style={{ color: 'var(--gold-dark)' }}>
-                                <Download size={20} />
                             </a>
                             <button onClick={onClose} title="Cerrar visor" className="p-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-600">
                                 <X size={20} />
