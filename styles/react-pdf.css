@@ -1,0 +1,29 @@
+.react-pdf__Page {
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.react-pdf__Page__canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.react-pdf__Page__textContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: transparent;
+    font-size: 1px;
+    line-height: 1;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.react-pdf__Page__annotations {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

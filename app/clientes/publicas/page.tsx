@@ -133,7 +133,7 @@ export default function EntidadesPublicasPage() {
                                     
 
                                     {/* Nombre del cliente */}
-                                    <motion.p
+                                    <motion.div
                                         className="text-lg font-semibold text-slate-700 whitespace-nowrap group-hover:text-[var(--red-gestium)] transition-colors duration-300 relative"
                                         whileHover={{
                                             scale: 1.02,
@@ -150,7 +150,7 @@ export default function EntidadesPublicasPage() {
                                             whileHover={{ scaleX: 1 }}
                                             transition={{ duration: 0.3, ease: "easeOut" }}
                                         />
-                                    </motion.p>
+                                    </motion.div>
 
                                     {/* Badge sutil de confianza */}
                                     <motion.div

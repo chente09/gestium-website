@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import 'react-pdf/dist/Page/AnnotationLayer.css'
+import 'react-pdf/dist/Page/TextLayer.css'
+import '../styles/react-pdf.css'
 
 export const metadata: Metadata = {
   title: 'Gestium SLI - Estudio Jurídico',

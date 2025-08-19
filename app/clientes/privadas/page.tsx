@@ -160,7 +160,7 @@ export default function EmpresasPrivadasPage() {
                                     <Landmark className="w-4 h-4 mx-auto mb-2 opacity-60 group-hover:opacity-100 group-hover:scale-125" style={{ color: 'var(--red-gestium)' }} />
                                     
                                     {/* Nombre del cliente */}
-                                    <motion.p
+                                    <motion.div
                                         className="text-lg font-semibold text-slate-700 whitespace-nowrap group-hover:text-[var(--red-gestium)] transition-colors duration-300 relative"
                                         whileHover={{
                                             scale: 1.02,
@@ -177,7 +177,7 @@ export default function EmpresasPrivadasPage() {
                                             whileHover={{ scaleX: 1 }}
                                             transition={{ duration: 0.3, ease: "easeOut" }}
                                         />
-                                    </motion.p>
+                                    </motion.div>
 
                                     {/* Badge sutil de confianza */}
                                     <motion.div

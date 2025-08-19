@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import Section from '@/components/ui/Section';
 import { motion, useAnimation } from 'framer-motion';
@@ -105,6 +105,8 @@ export default function Home() {
   const [, setIsLoaded] = useState(false);
   const controls = useAnimation();
   const [showCTAs, setShowCTAs] = useState(false);
+  const throttleRef = useRef<NodeJS.Timeout | null>(null);
+  const lastUpdateRef = useRef(0);
 
   const fullText = `Nuestra experiencia de más de veinte años y la confianza de las mayores Instituciones Financieras de nuestro País nos respaldan. Gestionamos todo tipo de procesos a nivel judicial y extrajudicial con la agilidad, iniciativa y proactividad que nuestros clientes requieren.\n\nLe invitamos a navegar por nuestra página web para conocer más sobre nuestra estructura, personal, respaldo y servicios. Es un honor contar con su confianza.`;
 
@@ -117,13 +119,33 @@ export default function Home() {
     controls.start("visible");
   }, [controls]);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  useEffect(() => {
+    // Capturar la referencia actual
+    const currentRef = throttleRef.current;
+
+    return () => {
+      // Usar la referencia capturada
+      if (currentRef) {
+        clearTimeout(currentRef);
+      }
+    };
+  }, []);
+
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!e?.currentTarget) return;
+
+    const now = Date.now();
+    if (now - lastUpdateRef.current < 50) return; // Reducir a 20fps
+    lastUpdateRef.current = now;
+
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePosition({
       x: (e.clientX - rect.left) / rect.width,
       y: (e.clientY - rect.top) / rect.height,
     });
-  };
+  }, []);
+
 
   const services = [
     {
