@@ -574,8 +574,8 @@ export default function Home() {
                     <Users size={20} style={{ color: 'var(--red-gestium)' }} />
                   </div>
                   <div>
-                    <h4 className="font-semibold" style={{ color: 'var(--steel)' }}>Equipo de +12 Profesionales</h4>
-                    <p className="text-sm" style={{ color: 'var(--silver)' }}>Expertos en diversas áreas del derecho.</p>
+                    <h4 className="font-semibold" style={{ color: 'var(--steel)' }}>Equipo de 12 Profesionales</h4>
+                    <p className="text-sm" style={{ color: 'var(--silver)' }}>Expertos en diversas áreas del Derecho.</p>
                   </div>
                 </div>
               </div>
@@ -618,7 +618,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {[
             {
-              title: 'Recuperación de Cartera',
+              title: 'Cobranza Judicial Civil y Coactiva',
               description: 'Gestión judicial, extrajudicial y coactiva. Optimizamos procesos con tecnología propia para una máxima efectividad.',
               icon: Calculator,
               number: '01',

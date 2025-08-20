@@ -356,7 +356,7 @@ export default function TerminosCondicionesPage() {
                     +593 2-543-653 (Principal)<br>
                     +593 98-933-5061 (Celular)</p>
                     
-                    <p><strong>Email:</strong> dmaldonado@gestium-sli.com</p>
+                    <p><strong>Email:</strong> info.gestium@gmail.com</p>
                     
                     <p><strong>Portal Clientes:</strong> <a href="https://gestium-app.netlify.app/consultas" target="_blank">GESTIUM-APP</a></p>
                 </div>

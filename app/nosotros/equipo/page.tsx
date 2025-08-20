@@ -86,7 +86,7 @@ export default function EquipoPage() {
             experience: 'Ejercicio profesional independiente',
             achievements: [
                 'Litigios exitosos en procesos civiles y coactivos',
-                'Asesoría en casos de derecho penal y familiar',
+                'Asesoría en casos de derecho civil, penal y familiar',
             ],
             textPosition: 'left',
             linkedinUrl: 'https://www.linkedin.com/in/nahomi-padilla-846b87196'
@@ -172,7 +172,7 @@ export default function EquipoPage() {
         {
             id: 'marco-sanguano',
             name: 'Marco Sanguano',
-            title: 'Impulsor de Procesos',
+            title: 'Gestor Legal',
             specialization: 'Gestión Procesal',
             image: '/images/equipo/MS-v2.jpg',
             description: 'Encargado del impulso y seguimiento de procesos legales. Asegura el cumplimiento de plazos y correcta tramitación de expedientes con alto nivel de organización.',
@@ -187,8 +187,8 @@ export default function EquipoPage() {
         {
             id: 'maria-paula-peralta',
             name: 'María Paula Peralta',
-            title: 'Pasante Legal',
-            specialization: 'Atención al Cliente Jurídico',
+            title: 'Asistente Legal',
+            specialization: 'Gestión Judicial',
             image: '/images/equipo/MP-v2.jpg',
             description: 'Estudiante de Derecho con destacada trayectoria académica y capacidad investigativa. Aporta una mirada analítica y comunicacional al área de atención y cobranzas.',
             experience: 'Área judicial y de cobranzas',
@@ -202,7 +202,7 @@ export default function EquipoPage() {
         {
             id: 'alexa-vasconez',
             name: 'Alexa Vásconez',
-            title: 'Pasante Legal',
+            title: 'Asistente Legal',
             specialization: 'Gestión Jurídica Interna',
             image: '/images/equipo/AV-v2.jpg',
             description: 'Estudiante de Derecho con méritos académicos y experiencia práctica en derecho penal, civil y cobranzas. Destaca por su compromiso y adaptabilidad.',
@@ -218,8 +218,8 @@ export default function EquipoPage() {
         {
             id: 'ingrid-perez',
             name: 'Ingrid Pérez',
-            title: 'Pasante Legal',
-            specialization: 'Gestión Documental Legal',
+            title: 'Asistente Legal',
+            specialization: 'Gestión Prejudicial',
             image: '/images/equipo/ip.jpg',
             description: 'Estudiante universitaria con experiencia como pasante legal en el Banco Pichincha. Destaca por su capacidad de organización y apoyo en la gestión de cartera.',
             experience: 'Cobranza y redacción de demandas',
@@ -298,7 +298,7 @@ export default function EquipoPage() {
             <Section background="white" padding="lg">
                 <SectionHeader
                     title="Profesionales Especializados"
-                    description="Conoce a nuestro equipo de expertos en cada área del derecho"
+                    description="Conoce a nuestro equipo de expertos en cada área del Derecho"
                     centered={true}
                     className="mb-16"
                 />

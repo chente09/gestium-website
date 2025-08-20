@@ -45,10 +45,11 @@ export default function ContactoPage() {
     const contactInfo = {
         address: "Av. 12 de Octubre N24-660 y Francisco Salazar, Edificio Concorde, piso 15, Oficina 15C",
         phones: ["022-543-653",  "098-933-5061"],
-        email: "dmaldonado@gestium-sli.com",
+        email: "info.gestium@gmail.com",
         hours: {
             weekdays: "Lun - Vie: 8:30 AM - 5:30 PM",
-            weekends: "Sáb - Dom: Cerrado"
+            weekends: "Sáb : Previa Cita",
+            sundays: " Dom: Cerrado"
         }
     };
 
@@ -129,7 +130,7 @@ export default function ContactoPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 1, duration: 0.6 }}
                         >
-                            Consulta gratuita • Respuesta inmediata • 20+ años de experiencia
+                            Consulta gratuita • Respuesta inmediata • +20 años de experiencia
                         </motion.p>
                     </motion.div>
                 </div>
@@ -611,6 +612,7 @@ export default function ContactoPage() {
                                 <div className="text-sm text-white">
                                     <p>{contactInfo.hours.weekdays}</p>
                                     <p>{contactInfo.hours.weekends}</p>
+                                    <p>{contactInfo.hours.sundays}</p>
                                 </div>
                             </div>
                         </motion.div>
@@ -624,7 +626,7 @@ export default function ContactoPage() {
                                     <Users size={20} />
                                 </div>
                                 <h4 className="font-semibold mb-2  text-white group-hover:text-red-gestium transition-colors">Experiencia</h4>
-                                <p className="text-sm  text-white">20+ años atendiendo casos legales</p>
+                                <p className="text-sm  text-white">+20 años atendiendo casos legales</p>
                             </div>
                         </motion.div>
                     </div>

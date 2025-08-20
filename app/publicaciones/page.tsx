@@ -19,7 +19,8 @@ import {
     Users,
     Download,
     Clock,
-    CheckCircle
+    CheckCircle,
+    ArrowRight
 } from 'lucide-react';
 
 export default function PublicacionesPage() {
@@ -39,9 +40,21 @@ export default function PublicacionesPage() {
 
     const featuredArticles = [
         {
+            "title": "Amicus Curiae sobre la Crisis Carcelaria y Derechos Humanos en Ecuador",
+            "category": "Derechos Humanos",
+            "author": "Fundación INREDH",
+            "excerpt": "Presentación de argumentos jurídicos sobre la responsabilidad del Estado ecuatoriano frente a las masacres carcelarias, la vulneración de derechos de las personas privadas de libertad y la figura de las ejecuciones extrajudiciales.",
+            "date": "09 Junio 2023",
+            "readTime": "28 min",
+            "image": "/documents/AmicusCuriae.png",
+            "type": "Amicus Curiae",
+            "institution": "Fundación Regional de Asesoría en Derechos Humanos (INREDH)",
+            "pdfUrl": "/documents/AmicusCuriae.pdf"
+        },
+        {
             "title": "La Prescripción Adquisitiva del Dominio",
             "category": "Derecho Civil",
-            "author": "Nahomí Padilla, Sofía Osorio, Luis Peñaherrera, et al.",
+            "author": "Nahomí Padilla, et al.",
             "excerpt": "Análisis sobre la prescripción como modo de adquirir el dominio, sus requisitos y clases, y su aplicación en la legislación ecuatoriana.",
             "date": "09 Septiembre 2020",
             "readTime": "25 min",

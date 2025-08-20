@@ -33,7 +33,7 @@ export const GESTIUM_COMPANY_INFO = {
             mobile: "0998-028-605"
         },
         email: {
-            main: "dmaldonado@gestium-sli.com",
+            main: "info.gestium@gmail.com",
             website: "www.gestium-sli.com"
         },
         parking: "50+ parqueaderos disponibles para clientes"

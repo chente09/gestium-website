@@ -94,7 +94,7 @@ const Footer: React.FC = () => {
                                     style={{ color: 'var(--red-gestium)' }}
                                 />
                                 <span className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-                                    dmaldonado@gestium-sli.com
+                                    info.gestium@gmail.com
                                 </span>
                             </div>
 

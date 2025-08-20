@@ -28,7 +28,7 @@ export default function PoliticaPrivacidadPage() {
                     <li><strong>Razón Social:</strong> GESTIUM S.A.</li>
                     <li><strong>Domicilio:</strong> Av. 12 de Octubre N24-660 y Francisco Salazar, Edificio Concorde, piso 15, Oficina 15C, Quito, Ecuador</li>
                     <li><strong>Teléfonos:</strong> +593 2-543-653</li>
-                    <li><strong>Email:</strong> dmaldonado@gestium-sli.com</li>
+                    <li><strong>Email:</strong> info.gestium@gmail.com</li>
                     <li><strong>Representante Legal:</strong> Dr. David Maldonado Viteri</li>
                 </ul>
 
@@ -178,7 +178,7 @@ export default function PoliticaPrivacidadPage() {
                 <h4>6.3 Ejercicio de Derechos:</h4>
                 <p>Para ejercer estos derechos, puede contactarnos a través de:</p>
                 <ul>
-                    <li><strong>Email:</strong> dmaldonado@gestium-sli.com</li>
+                    <li><strong>Email:</strong> info.gestium@gmail.com</li>
                     <li><strong>Oficina:</strong> Av. 12 de Octubre N24-660 y Francisco Salazar, Edificio Concorde, piso 15, Oficina 15C</li>
                     <li><strong>Teléfono:</strong> +593 2-543-653</li>
                 </ul>
@@ -242,7 +242,7 @@ export default function PoliticaPrivacidadPage() {
                     
                     <p><strong>Teléfonos:</strong> +593 2-543-653 | +593 99-802-8605</p>
                     
-                    <p><strong>Email:</strong> dmaldonado@gestium-sli.com</p>
+                    <p><strong>Email:</strong> info.gestium@gmail.com</p>
                     
                     <p><strong>Horario de Atención:</strong> Lunes a Viernes de 8:30 AM a 5:30 PM</p>
                 </div>
