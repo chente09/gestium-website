@@ -1,27 +1,37 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import {  MapPinIcon, PhoneIcon, EnvelopeIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { MapPinIcon, PhoneIcon, EnvelopeIcon, ClockIcon, LockClosedIcon } from '@heroicons/react/24/outline';
 
 const Footer: React.FC = () => {
     const currentYear = new Date().getFullYear();
 
-    const practiceAreas = [
-        'Derecho Corporativo',
-        'Derecho Financiero',
-        'Derecho Civil',
-        'Derecho Laboral',
-        'Derecho Tributario',
-        'Contratos Comerciales'
+    // ✅ SERVICIOS REALES de GESTIUM S.A.
+    const servicios = [
+        { name: 'Recuperación de Cartera', href: '/servicios/recuperacion-cartera' },
+        { name: 'Derecho Inmobiliario', href: '/servicios/inmobiliario' },
+        { name: 'Derecho Corporativo', href: '/servicios/corporativo' },
+        { name: 'Mediación y Arbitraje', href: '/servicios/mediacion' },
+        { name: 'Derecho de Familia', href: '/servicios/familia' },
+        { name: 'Derecho Laboral', href: '/servicios/laboral' },
+        { name: 'Gestiones y Trámites', href: '/servicios/tramites' }
     ];
 
-    const quickLinks = [
-        { name: 'Sobre Nosotros', href: '/sobre-nosotros' },
-        { name: 'Áreas de Práctica', href: '/areas-de-practica' },
-        { name: 'Casos de Éxito', href: '/casos-de-exito' },
-        { name: 'Recursos Legales', href: '/recursos' },
-        { name: 'Blog Jurídico', href: '/blog' },
+    // ✅ ENLACES RÁPIDOS ALINEADOS CON HEADER
+    const enlacesRapidos = [
+        { name: 'Nuestra Historia', href: '/nosotros/historia' },
+        { name: 'Nuestro Equipo', href: '/nosotros/equipo' },
+        { name: 'Valores y Misión', href: '/nosotros/valores' },
+        { name: 'Nuestros Clientes', href: '/clientes' },
+        { name: 'Publicaciones', href: '/publicaciones' },
         { name: 'Contacto', href: '/contacto' }
+    ];
+
+    // ✅ CLIENTES REALES
+    const tiposClientes = [
+        { name: 'Instituciones Financieras', href: '/clientes/instituciones-financieras' },
+        { name: 'Entidades Públicas', href: '/clientes/publicas' },
+        { name: 'Empresas Privadas', href: '/clientes/privadas' }
     ];
 
     return (
@@ -32,19 +42,20 @@ const Footer: React.FC = () => {
             {/* Línea decorativa superior */}
             <div
                 className="h-1 w-full"
-                style={{ backgroundColor: 'var(--red-gestium)' }} // ✅ CORREGIDO
+                style={{ backgroundColor: 'var(--red-gestium)' }}
             />
 
             <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                    {/* Logo and Description */}
+                    
+                    {/* ===== LOGO Y CONTACTO ===== */}
                     <div className="col-span-1 lg:col-span-1">
                         <Link href="/" className="inline-block group">
-                            {/* Contenedor con tamaño definido y posición relativa */}
+                            {/* ✅ LOGO CORRECTO */}
                             <div className="relative h-[120px] w-48 transition-all duration-300 group-hover:scale-105">
                                 <Image
                                     src="/images/image.png"
-                                    alt="Gestium SLI"
+                                    alt="GESTIUM S.A."
                                     fill
                                     className="object-contain"
                                     sizes="192px"
@@ -53,68 +64,62 @@ const Footer: React.FC = () => {
                             </div>
                         </Link>
 
-                        <p className="mt-4 ">
-                        </p>
-
-                        {/* Contact Info Minimalista */}
-                        <div className="space-y-4">
-                            <div className="flex items-center space-x-3 group">
+                        {/* ✅ INFORMACIÓN DE CONTACTO REAL Y COMPLETA */}
+                        <div className="space-y-4 mt-2">
+                            <div className="flex items-start space-x-3 group">
                                 <MapPinIcon
-                                    className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
-                                    style={{ color: 'var(--red-gestium)' }} // ✅ CORREGIDO
+                                    className="h-5 w-5 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110"
+                                    style={{ color: 'var(--red-gestium)' }}
                                 />
-                                <span
-                                    className="text-sm"
-                                    style={{ color: 'rgba(255, 255, 255, 0.9)' }}
-                                >
-                                    Av. 12 de Octubre N24-660 y Francisco Salazar, Edificio Concorde, piso 15, Oficina 15C
+                                <span className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                                    Av. 12 de Octubre N24-660 y Francisco Salazar,<br />
+                                    Edificio Concorde, piso 15, Oficina 15C
                                 </span>
                             </div>
+                            
                             <div className="flex items-center space-x-3 group">
                                 <PhoneIcon
                                     className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
-                                    style={{ color: 'var(--red-gestium)' }} // ✅ CORREGIDO
+                                    style={{ color: 'var(--red-gestium)' }}
                                 />
-                                <span
-                                    className="text-sm"
-                                    style={{ color: 'rgba(255, 255, 255, 0.9)' }}
-                                >
-                                    +593 2-543-653
-                                </span>
+                                <div className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                                    <div>+593 2-543-653</div>
+                                    <div>+593 98-933-5061</div>
+                                </div>
                             </div>
+                            
                             <div className="flex items-center space-x-3 group">
                                 <EnvelopeIcon
                                     className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
-                                    style={{ color: 'var(--red-gestium)' }} // ✅ CORREGIDO
+                                    style={{ color: 'var(--red-gestium)' }}
                                 />
-                                <span
-                                    className="text-sm"
-                                    style={{ color: 'rgba(255, 255, 255, 0.9)' }}
-                                >
+                                <span className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                                     dmaldonado@gestium-sli.com
                                 </span>
                             </div>
+
+
                         </div>
                     </div>
 
-                    {/* Practice Areas */}
+                    {/* ===== SERVICIOS ESPECIALIZADOS ===== */}
                     <div>
                         <h3
                             className="text-lg font-bold mb-6 uppercase tracking-wider"
                             style={{ color: 'var(--white)' }}
                         >
-                            Áreas de Práctica
+                            Nuestros Servicios
                         </h3>
                         <ul className="space-y-3">
-                            {practiceAreas.map((area) => (
-                                <li key={area}>
+                            {servicios.map((servicio) => (
+                                <li key={servicio.name}>
                                     <Link
-                                        href={`/areas-de-practica/${area.toLowerCase().replace(/\s+/g, '-')}`}
+                                        href={servicio.href}
                                         className="text-sm transition-all duration-300 hover:translate-x-2 hover:scale-105 block"
                                         style={{ color: 'rgba(255, 255, 255, 0.8)' }}
                                     >
                                         <span className="border-l-2 border-transparent hover:border-red-500 pl-3 py-1 block transition-all duration-300">
-                                            {area}
+                                            {servicio.name}
                                         </span>
                                     </Link>
                                 </li>
@@ -122,16 +127,16 @@ const Footer: React.FC = () => {
                         </ul>
                     </div>
 
-                    {/* Quick Links */}
+                    {/* ===== NAVEGACIÓN RÁPIDA ===== */}
                     <div>
                         <h3
                             className="text-lg font-bold mb-6 uppercase tracking-wider"
                             style={{ color: 'var(--white)' }}
                         >
-                            Enlaces Rápidos
+                            Navegación
                         </h3>
                         <ul className="space-y-3">
-                            {quickLinks.map((link) => (
+                            {enlacesRapidos.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
@@ -145,45 +150,61 @@ const Footer: React.FC = () => {
                                 </li>
                             ))}
                         </ul>
+
+                        {/* ✅ PORTAL CLIENTES */}
+                        <div className="mt-6 pt-6 border-t" style={{ borderTopColor: 'rgba(255, 255, 255, 0.1)' }}>
+                            <Link
+                                href="https://gestium-app.netlify.app/consultas"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center space-x-2 text-sm transition-all duration-300 hover:translate-x-2 hover:scale-105"
+                                style={{ color: 'var(--gold)' }}
+                            >
+                                <LockClosedIcon className="h-4 w-4" />
+                                <span className="font-medium">Portal GESTIUM-APP</span>
+                            </Link>
+                        </div>
                     </div>
 
-                    {/* CTA Section */}
+                    {/* ===== CTA Y HORARIOS ===== */}
                     <div>
                         <h3
                             className="text-lg font-bold mb-6 uppercase tracking-wider"
                             style={{ color: 'var(--white)' }}
                         >
-                            Asistencia Legal
+                            Consulta Legal
                         </h3>
                         <p
-                            className="text-sm mb-6"
+                            className="text-sm mb-6 leading-relaxed"
                             style={{ color: 'rgba(255, 255, 255, 0.8)' }}
                         >
-                            Contáctenos para una consulta gratuita y personalizada.
+                            Más de 20 años de experiencia al servicio de nuestros clientes. 
+                            Contáctenos para una consulta especializada.
                         </p>
+                        
                         <Link
                             href="/contacto"
-                            className="inline-block px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 mb-8"
+                            className="inline-block px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 mb-8 rounded"
                             style={{
-                                backgroundColor: 'var(--red-gestium)', // ✅ CORREGIDO
+                                backgroundColor: 'var(--red-gestium)',
                                 color: 'var(--white)'
                             }}
                         >
-                            Consulta Gratuita
+                            Contactar Ahora
                         </Link>
 
-                        {/* Business Hours */}
+                        {/* ✅ HORARIOS DE ATENCIÓN */}
                         <div>
                             <div className="flex items-center space-x-2 mb-4">
                                 <ClockIcon
                                     className="h-5 w-5"
-                                    style={{ color: 'var(--red-gestium)' }} // ✅ CORREGIDO
+                                    style={{ color: 'var(--red-gestium)' }}
                                 />
                                 <h4
                                     className="font-bold text-sm uppercase tracking-wider"
                                     style={{ color: 'var(--white)' }}
                                 >
-                                    Horarios
+                                    Horarios de Atención
                                 </h4>
                             </div>
                             <div
@@ -191,24 +212,18 @@ const Footer: React.FC = () => {
                                 style={{ color: 'rgba(255, 255, 255, 0.8)' }}
                             >
                                 <div className="flex justify-between">
-                                    <span>Lun - Vie:</span>
+                                    <span>Lunes - Viernes:</span>
                                     <span className="font-medium">8:30 AM - 5:30 PM</span>
                                 </div>
                                 <div className="flex justify-between">
                                     <span>Sábados:</span>
-                                    <span
-                                        className="font-medium"
-                                        style={{ color: 'var(--red-gestium)' }} // ✅ CORREGIDO
-                                    >
-                                        Cerrado
+                                    <span className="font-medium" style={{ color: 'var(--gold)' }}>
+                                        Previa cita
                                     </span>
                                 </div>
                                 <div className="flex justify-between">
                                     <span>Domingos:</span>
-                                    <span
-                                        className="font-medium"
-                                        style={{ color: 'var(--red-gestium)' }} // ✅ CORREGIDO
-                                    >
+                                    <span className="font-medium" style={{ color: 'var(--red-gestium)' }}>
                                         Cerrado
                                     </span>
                                 </div>
@@ -217,29 +232,54 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
 
-                {/* Bottom Bar Minimalista */}
+                {/* ===== BOTTOM BAR MEJORADO ===== */}
                 <div
                     className="border-t pt-8 mt-16"
                     style={{ borderTopColor: 'rgba(255, 255, 255, 0.1)' }}
                 >
-                    <div className="flex flex-col lg:flex-row justify-between items-center">
-                        <p
-                            className="text-sm"
-                            style={{ color: 'rgba(255, 255, 255, 0.6)' }}
-                        >
-                            © {currentYear} Gestium SLI. Todos los derechos reservados.
-                        </p>
-                        <div className="flex space-x-8 mt-4 lg:mt-0">
+                    <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+                        <div className="text-center lg:text-left">
+                            <p
+                                className="text-sm font-medium"
+                                style={{ color: 'rgba(255, 255, 255, 0.9)' }}
+                            >
+                                © {currentYear} GESTIUM S.A. - Servicios Jurídicos Integrales
+                            </p>
+                            <p
+                                className="text-xs mt-1"
+                                style={{ color: 'rgba(255, 255, 255, 0.6)' }}
+                            >
+                                20+ años de experiencia | 95% efectividad | Cobertura nacional
+                            </p>
+                            <p
+                                className="text-xs mt-2"
+                                style={{ color: 'rgba(255, 255, 255, 0.5)' }}
+                            >
+                                Desarrollado por{' '}
+                                <a
+                                    href="https://vnenger.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:text-white transition-colors duration-300"
+                                    style={{ color: 'var(--gold)' }}
+                                >
+                                    vnenger.com
+                                </a>
+                                {' '}(New Experience Softw) - Todos los derechos reservados
+                            </p>
+                        </div>
+                        
+                        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-8">
                             <Link
                                 href="/politica-privacidad"
-                                className="text-sm transition-all duration-300 hover:scale-105"
+                                className="text-sm transition-all duration-300 hover:scale-105 text-center"
                                 style={{ color: 'rgba(255, 255, 255, 0.6)' }}
                             >
                                 Política de Privacidad
                             </Link>
                             <Link
                                 href="/terminos-condiciones"
-                                className="text-sm transition-all duration-300 hover:scale-105"
+                                className="text-sm transition-all duration-300 hover:scale-105 text-center"
                                 style={{ color: 'rgba(255, 255, 255, 0.6)' }}
                             >
                                 Términos y Condiciones

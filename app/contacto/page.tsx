@@ -44,7 +44,7 @@ export default function ContactoPage() {
     // Información de contacto
     const contactInfo = {
         address: "Av. 12 de Octubre N24-660 y Francisco Salazar, Edificio Concorde, piso 15, Oficina 15C",
-        phones: ["022-543-653", "022-553-923", "0998-028-605"],
+        phones: ["022-543-653",  "098-933-5061"],
         email: "dmaldonado@gestium-sli.com",
         hours: {
             weekdays: "Lun - Vie: 8:30 AM - 5:30 PM",
@@ -70,7 +70,7 @@ export default function ContactoPage() {
 
     // Función para abrir email
     const openEmail = () => {
-        const subject = encodeURIComponent('Consulta Legal - GESTIUM S.A.');
+        const subject = encodeURIComponent('Consulta Legal - GESTIUM S.A. - Web');
         const body = encodeURIComponent('Estimados Señores GESTIUM:\n\nMe dirijo a ustedes para solicitar información sobre...\n\nQuedo atento a su respuesta.\n\nSaludos cordiales,');
         window.location.href = `mailto:${contactInfo.email}?subject=${subject}&body=${body}`;
     };
@@ -430,7 +430,7 @@ export default function ContactoPage() {
                                                         <p className="text-xs sm:text-sm text-gray-900 mb-2">O copie nuestro email:</p>
                                                         <button
                                                             onClick={copyEmail}
-                                                            className="text-red-gestium hover:text-red-dark transition-colors flex items-center gap-2 text-sm sm:text-base"
+                                                            className="text-red-gestium hover:text-red-dark transition-colors flex items-center gap-2 text-sm sm:text-base cursor-pointer"
                                                         >
                                                             <span className="break-all sm:break-normal">{contactInfo.email}</span>
                                                             {isEmailCopied ? <CheckCircle size={16} /> : <ArrowRight size={16} />}
@@ -471,7 +471,7 @@ export default function ContactoPage() {
                                                     </p>
                                                 </div>
 
-                                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 mb-8">
                                                     {contactInfo.phones.map((phone) => (
                                                         <motion.button
                                                             key={phone}

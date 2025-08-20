@@ -220,7 +220,7 @@ export default function EquipoPage() {
             name: 'Ingrid Pérez',
             title: 'Pasante Legal',
             specialization: 'Gestión Documental Legal',
-            image: '/images/equipo/in.png',
+            image: '/images/equipo/ip.jpg',
             description: 'Estudiante universitaria con experiencia como pasante legal en el Banco Pichincha. Destaca por su capacidad de organización y apoyo en la gestión de cartera.',
             experience: 'Cobranza y redacción de demandas',
             achievements: [

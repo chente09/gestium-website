@@ -56,44 +56,49 @@ export default function PublicacionesPage() {
             author: 'María Paula Peralta',
             excerpt: 'Análisis comparativo entre la obra distópica de George Orwell y la realidad política contemporánea del Ecuador, explorando los paralelismos en términos de manipulación política y falta de educación cívica.',
             date: '2025',
-            readTime: '12 min',
-            image: '/documents/rebelion-granja.jpg', // Usa la imagen de portada que me mostraste
+            readTime: '5 min',
+            image: '/documents/rebelion-granja.jpg',
             type: 'Ensayo Académico',
             institution: 'Análisis Literario-Político',
             pdfUrl: '/documents/rebelion-granja-ecuador.pdf'
         },
         {
+            "title": "Transformación Digital: PYMES y Facturación Electrónica en Ecuador",
+            "category": "Derecho Tributario",
+            "author": "Alexa Gabriela Vásconez Silva",
+            "excerpt": "Análisis sobre el impacto, las ventajas y desventajas de la facturación electrónica en las pequeñas y medianas empresas (PYMES) del Ecuador, explorando su implementación y requisitos.",
+            "date": "2024",
+            "readTime": "15 min",
+            "image": "/documents/LaFacturacionElectronica.jpg",
+            "type": "Ensayo Académico",
+            "institution": "Universidad Central del Ecuador",
+            "pdfUrl": "/documents/LaFacturacionElectronica.pdf"
+        },
+        {
+            "title": "Perspectivas de Género en Actuación y Diligencias Judiciales",
+            "category": "Derecho y Género",
+            "author": "Ingrid Pérez",
+            "excerpt": "Análisis sobre la importancia y aplicación de la perspectiva de género en el sistema judicial ecuatoriano, abordando la legislación vigente, desafíos estructurales y una comparativa con los sistemas de España y México.",
+            "date": "2024",
+            "readTime": "18 min",
+            "image": "/documents/perspectivasGenero.png",
+            "type": "Artículo de Investigación",
+            "institution": "Investigación Académica",
+            "pdfUrl": "/documents/perspectivasGenero.pdf"
+        },
+        {
             title: 'Desarrollo de una Plataforma Web Administrable para la Gestión Integral de Procesos Jurídicos',
             category: 'Legal Tech',
-            author: 'Nenger Coral Vicente',
+            author: 'Vicente Nenger',
             excerpt: 'Proyecto de titulación sobre el desarrollo de tecnología innovadora para optimizar la gestión de procesos jurídicos mediante plataformas web administrables.',
             date: '31 Marzo 2025',
             readTime: 'Documento extenso',
-            image: '/documents/tesis-legal-tech.png',
+            image: '/documents/tesis-legal-tech.jpeg',
             type: 'Tesis',
             institution: 'ITSQMET - Instituto Superior Tecnológico Quito Metropolitano',
             pdfUrl: '/documents/tesis-legal-tech.pdf'
         },
-        {
-            title: 'Nuevas Regulaciones en Cobranza Coactiva 2024',
-            category: 'Cobranza',
-            author: 'Equipo GESTIUM',
-            excerpt: 'Análisis detallado de las últimas modificaciones normativas que afectan los procesos de cobranza coactiva en el Ecuador.',
-            date: '15 Julio 2024',
-            readTime: '8 min',
-            image: '/images/ofi/Ofi.JPG',
-            type: 'Artículo'
-        },
-        {
-            title: 'Derecho Inmobiliario: Tendencias del Mercado',
-            category: 'Inmobiliario',
-            author: 'Equipo GESTIUM',
-            excerpt: 'Perspectivas del mercado inmobiliario ecuatoriano y su impacto en la práctica legal especializada.',
-            date: '28 Junio 2024',
-            readTime: '12 min',
-            image: '/images/ofi/Ofi.JPG',
-            type: 'Artículo'
-        }
+
     ];
 
     // Función para abrir el visor PDF
@@ -176,7 +181,7 @@ export default function PublicacionesPage() {
                             onClick={() => article.pdfUrl ? openPDFViewer(article) : null}
                         >
                             {/* Contenedor de imagen mejorado */}
-                            <div className="relative h-68 overflow-hidden">
+                            <div className="relative h-58 overflow-hidden">
                                 <Image
                                     src={article.image}
                                     alt={article.title}
@@ -313,97 +318,97 @@ export default function PublicacionesPage() {
             </Section> */}
 
             {/* Presente y Futuro - CTA responsivo corregido */}
-                        <div
-                            className="py-20 text-center relative"
+            <div
+                className="py-20 text-center relative"
+                style={{
+                    backgroundImage: "url('/images/ofi/justicia.jpg')",
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundAttachment: 'fixed'
+                }}
+            >
+                <div className="absolute inset-0" style={{ backgroundColor: 'rgba(15, 23, 42, 0.8)' }} />
+
+                <div className="container-fluid text-center relative z-10 px-4">
+                    <motion.h2
+                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 tracking-tight"
+                        style={{
+                            fontFamily: "'Playfair Display', serif",
+                            color: 'var(--white)'
+                        }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        GESTIUM S.A. Hoy
+                    </motion.h2>
+
+                    <motion.div
+                        className="w-20 sm:w-24 md:w-32 h-1 mx-auto mb-6 sm:mb-8"
+                        style={{ backgroundColor: 'var(--red-gestium)' }}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '8rem' }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3, duration: 0.6 }}
+                    />
+
+                    <motion.p
+                        className="text-base sm:text-lg md:text-xl mb-8 sm:mb-12 leading-relaxed max-w-3xl mx-auto"
+                        style={{ color: 'rgba(255, 255, 255, 0.9)' }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.6, duration: 0.6 }}
+                    >
+                        Como GESTIUM S.A., continuamos construyendo sobre la sólida base de confianza
+                        y excelencia establecida desde 2005, proyectándonos hacia el futuro con la
+                        misma pasión y compromiso que nos ha caracterizado.
+                    </motion.p>
+
+                    <motion.div
+                        className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.9, duration: 0.6 }}
+                    >
+                        <motion.button
+                            className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider transition-all duration-300 relative overflow-hidden shadow-xl"
                             style={{
-                                backgroundImage: "url('/images/ofi/justicia.jpg')",
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                backgroundAttachment: 'fixed'
+                                background: 'var(--gradient-red)',
+                                color: 'var(--white)',
+                                border: 'none',
+                                cursor: 'pointer'
                             }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => router.push('/nosotros/equipo')}
                         >
-                            <div className="absolute inset-0" style={{ backgroundColor: 'rgba(15, 23, 42, 0.8)' }} />
-            
-                            <div className="container-fluid text-center relative z-10 px-4">
-                                <motion.h2
-                                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 tracking-tight"
-                                    style={{
-                                        fontFamily: "'Playfair Display', serif",
-                                        color: 'var(--white)'
-                                    }}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6 }}
-                                >
-                                    GESTIUM S.A. Hoy
-                                </motion.h2>
-            
-                                <motion.div
-                                    className="w-20 sm:w-24 md:w-32 h-1 mx-auto mb-6 sm:mb-8"
-                                    style={{ backgroundColor: 'var(--red-gestium)' }}
-                                    initial={{ width: 0 }}
-                                    whileInView={{ width: '8rem' }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.3, duration: 0.6 }}
-                                />
-            
-                                <motion.p
-                                    className="text-base sm:text-lg md:text-xl mb-8 sm:mb-12 leading-relaxed max-w-3xl mx-auto"
-                                    style={{ color: 'rgba(255, 255, 255, 0.9)' }}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.6, duration: 0.6 }}
-                                >
-                                    Como GESTIUM S.A., continuamos construyendo sobre la sólida base de confianza
-                                    y excelencia establecida desde 2005, proyectándonos hacia el futuro con la
-                                    misma pasión y compromiso que nos ha caracterizado.
-                                </motion.p>
-            
-                                <motion.div
-                                    className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.9, duration: 0.6 }}
-                                >
-                                    <motion.button
-                                        className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider transition-all duration-300 relative overflow-hidden shadow-xl"
-                                        style={{
-                                            background: 'var(--gradient-red)',
-                                            color: 'var(--white)',
-                                            border: 'none',
-                                            cursor: 'pointer'
-                                        }}
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.98 }}
-                                        onClick={() => router.push('/nosotros/equipo')}
-                                    >
-                                        <span className="relative z-10">
-                                            Conocer Nuestro Equipo
-                                        </span>
-                                    </motion.button>
-            
-                                    <motion.button
-                                        className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider border-2 transition-all duration-300 bg-transparent"
-                                        style={{
-                                            borderColor: 'var(--white)',
-                                            color: 'var(--white)',
-                                            cursor: 'pointer'
-                                        }}
-                                        whileHover={{
-                                            scale: 1.05,
-                                            backgroundColor: 'rgba(255, 255, 255, 0.1)'
-                                        }}
-                                        whileTap={{ scale: 0.98 }}
-                                        onClick={() => router.push('/nosotros/valores')}
-                                    >
-                                        Nuestros Valores
-                                    </motion.button>
-                                </motion.div>
-                            </div>
-                        </div>
+                            <span className="relative z-10">
+                                Conocer Nuestro Equipo
+                            </span>
+                        </motion.button>
+
+                        <motion.button
+                            className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 text-sm sm:text-base font-bold uppercase tracking-wider border-2 transition-all duration-300 bg-transparent"
+                            style={{
+                                borderColor: 'var(--white)',
+                                color: 'var(--white)',
+                                cursor: 'pointer'
+                            }}
+                            whileHover={{
+                                scale: 1.05,
+                                backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                            }}
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => router.push('/nosotros/valores')}
+                        >
+                            Nuestros Valores
+                        </motion.button>
+                    </motion.div>
+                </div>
+            </div>
 
             {/* PDF Viewer Modal */}
             {selectedPDF && (

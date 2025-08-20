@@ -1,11 +1,12 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import Section from '@/components/ui/Section';
 import { motion, useAnimation } from 'framer-motion';
-import { Building2, Users, User, Building, Clock, Target, Award, Briefcase, House, UserCheck, Calculator, FileText, ArrowRight, } from 'lucide-react';
+import { Building2, Users, User, Clock, Target, Award, Briefcase, House, UserCheck, Calculator, FileText, ArrowRight, Bell, BarChart3, ShieldCheck, Activity, Zap, Eye, BookOpen, BrainCircuit, Feather, } from 'lucide-react';
 import { CTAButton } from '@/components/ui/Button';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { SectionButton } from '@/components/ui/Button';
@@ -145,38 +146,6 @@ export default function Home() {
       y: (e.clientY - rect.top) / rect.height,
     });
   }, []);
-
-
-  const services = [
-    {
-      title: 'Recuperación de Cartera',
-      description: 'Judicial, extrajudicial y coactiva. Estudio jurídico especializado.',
-      icon: FileText,
-      number: '01',
-      image: '/images/areas/cobranza.jpg'
-    },
-    {
-      title: 'Derecho Inmobiliario',
-      description: 'Proyectos inmobiliarios desarrollados en Quito y otras ciudades.',
-      icon: House,
-      number: '02',
-      image: '/images/areas/inmobiliaria.jpg'
-    },
-    {
-      title: 'Derecho Corporativo',
-      description: 'Constitución, liquidación, fusiones y todo tipo de actos societarios.',
-      icon: Building2,
-      number: '03',
-      image: '/images/areas/companias.jpg'
-    },
-    {
-      title: 'Mediación y Arbitraje',
-      description: 'Solución de conflictos con resultados positivos y negociación sólida.',
-      icon: Users,
-      number: '04',
-      image: '/images/areas/mediacion.jpg'
-    }
-  ];
 
   const values = [
     {
@@ -520,267 +489,682 @@ export default function Home() {
       `}</style>
       </div>
 
-
-      {/* SECCIÓN DE ESPECIALIZACIÓN MINIMALISTA */}
+      {/* SECCIÓN 2: NUESTRA FIRMA (Diseño Editorial Unificado) */}
       <div
         className="relative py-20 overflow-hidden"
         style={{
           backgroundImage: "url('/images/ofi/Ofi.JPG')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
+          backgroundAttachment: 'fixed',
         }}
       >
         {/* Overlay sutil para mantener legibilidad */}
         <div
           className="absolute inset-0"
           style={{
-            backgroundColor: 'rgba(245, 245, 249, 0.85)'
+            backgroundColor: 'rgba(245, 245, 249, 0.85)' // Aumentamos opacidad para enfocar en el contenido
           }}
         />
         <div className="container-fluid relative z-10">
           <SectionHeader
-            title="Áreas de Especialización"
-            description="Experiencia especializada en las principales ramas del derecho"
+            title="Nuestra Firma"
+            description="Confianza, experiencia y un equipo dedicado a proteger sus intereses."
             centered={true}
+            className="mb-16"
           />
 
-          {/* Grid Minimalista de Especialidades */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {[
-              {
-                title: 'Cobranza Judicial',
-                description: 'Ejecutamos procesos judiciales para recuperar deudas con respaldo legal y representación experta.',
-                icon: FileText,
-                stats: 'Especialistas',
-              },
-              {
-                title: 'Cobranza Extrajudicial',
-                description: 'Gestionamos cobranzas preventivas y negociaciones directas sin necesidad de juicio.',
-                icon: Users,
-                stats: 'Experiencia',
-              },
-              {
-                title: 'Cobranza Coactiva',
-                description: 'Aplicamos la vía coactiva para ejecutar cobros mediante títulos de crédito y actos administrativos.',
-                icon: Building,
-                stats: 'Eficiencia',
-              },
-              {
-                title: 'Derecho Inmobiliario',
-                description: 'Asesoramos proyectos inmobiliarios con seguridad jurídica desde la planificación hasta la ejecución.',
-                icon: House,
-                stats: 'Precisión',
-              },
-              {
-                title: 'Derecho Civil',
-                description: 'Atendemos procesos civiles y familiares con soluciones legales personalizadas.',
-                icon: User,
-                stats: 'Confianza',
-              },
-              {
-                title: 'Derecho Corporativo',
-                description: 'Brindamos asesoría legal integral para empresas, contratos, sociedades y cumplimiento normativo.',
-                icon: Briefcase,
-                stats: 'Solidez',
-              }
-            ]
-              .map((area, index) => {
-                const IconComponent = area.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    className="group relative"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.08, duration: 0.5 }}
-                    whileHover={{ y: -4 }}
-                  >
-                    {/* Card Minimalista */}
-                    <div
-                      className="relative p-6 bg-white transition-all duration-300 group-hover:shadow-lg border"
-                      style={{
-                        borderColor: '#e2e8f0',
-                        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)'
-                      }}
-                    >
-                      {/* Indicador superior sutil */}
-                      <motion.div
-                        className="absolute top-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-400"
-                        style={{ backgroundColor: 'var(--red-gestium)' }}
-                      />
+          {/* Contenedor principal de dos columnas */}
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
 
-                      {/* Contenido */}
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                          <div
-                            className="w-8 h-8 rounded-md flex items-center justify-center transition-all duration-300"
-                            style={{
-                              backgroundColor: 'rgba(216, 30, 39, 0.05)',
-                              border: '1px solid rgba(216, 30, 39, 0.1)'
-                            }}
-                          >
-                            <IconComponent
-                              size={16}
-                              style={{ color: 'var(--red-gestium)' }}
-                            />
-                          </div>
-                          <div>
-                            <h3
-                              className="text-lg font-semibold mb-1"
-                              style={{
-                                color: 'var(--charcoal)',
-                                fontFamily: "'Inter', sans-serif"
-                              }}
-                            >
-                              {area.title}
-                            </h3>
-                          </div>
-                        </div>
+            {/* Columna Izquierda: Imagen del Líder */}
+            <motion.div
+              className="relative w-full h-full"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              <div
+                className="rounded-lg shadow-lg"
+                style={{ boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' }}
+              >
+                {/* Contenedor relativo para que 'fill' funcione */}
+                <div className="relative w-full overflow-hidden rounded-md" style={{ minHeight: '450px' }}>
+                  <Image
+                    src="/images/logo.sa.sf.png"
+                    alt="Dr. David Maldonado Viteri, Gerente General de Gestium S.A."
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw" // Opcional pero recomendado para optimizar más
+                  />
+                </div>
+              </div>
+            </motion.div>
 
-                        {/* Estadística discreta */}
-                        <div className="text-right">
-                          <span
-                            className="text-xs font-medium uppercase tracking-wider"
-                            style={{ color: 'var(--silver)' }}
-                          >
-                            {area.stats}
-                          </span>
-                        </div>
-                      </div>
+            {/* Columna Derecha: Narrativa, Métricas y CTA */}
+            <motion.div
+              className="flex flex-col justify-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif", color: 'var(--charcoal)' }}>
+                Más de 20 Años Forjando <span style={{ color: 'var(--red-gestium)' }}>Confianza</span>
+              </h2>
 
-                      <p
-                        className="text-sm leading-relaxed"
-                        style={{ color: 'var(--silver)' }}
-                      >
-                        {area.description}
-                      </p>
+              <p className="text-base leading-relaxed mb-8" style={{ color: 'var(--silver)' }}>
+                Bajo la dirección del Dr. David Maldonado Viteri, hemos consolidado una firma legal que es sinónimo de integridad y resultados. Nuestra trayectoria no se mide solo en años, sino en la solidez de las soluciones que ofrecemos y la tranquilidad que brindamos a cada cliente.
+              </p>
 
-                      {/* Indicador de hover discreto */}
-                      <motion.div
-                        className="absolute bottom-0 right-0 w-6 h-6 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
-                        style={{
-                          background: 'rgba(216, 30, 39, 0.05)',
-                          borderTopLeftRadius: '6px'
-                        }}
-                      >
-                        <ArrowRight
-                          size={12}
-                          style={{ color: 'var(--red-gestium)', cursor: 'pointer' }}
-                        />
-                      </motion.div>
-                    </div>
-                  </motion.div>
-                );
-              })}
+              {/* Métricas integradas de forma sutil */}
+              <div className="space-y-4 mb-10">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 flex-shrink-0 rounded-md flex items-center justify-center" style={{ backgroundColor: 'rgba(244, 196, 1, 0.1)', border: '1px solid rgba(244, 196, 1, 0.2)' }}>
+                    <Award size={20} style={{ color: 'var(--gold-dark)' }} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold" style={{ color: 'var(--steel)' }}>95% de Tasa de Efectividad</h4>
+                    <p className="text-sm" style={{ color: 'var(--silver)' }}>En la gestión y recuperación de casos.</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 flex-shrink-0 rounded-md flex items-center justify-center" style={{ backgroundColor: 'rgba(167, 26, 33, 0.05)', border: '1px solid rgba(167, 26, 33, 0.1)' }}>
+                    <Users size={20} style={{ color: 'var(--red-gestium)' }} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold" style={{ color: 'var(--steel)' }}>Equipo de +12 Profesionales</h4>
+                    <p className="text-sm" style={{ color: 'var(--silver)' }}>Expertos en diversas áreas del derecho.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Call to Action (CTA) */}
+              <div className="flex items-center flex-wrap gap-x-8 gap-y-4 pt-6 border-t border-slate-200">
+                <motion.button
+                  onClick={() => router.push('/nosotros/equipo')}
+                  className="group text-lg font-semibold flex items-center gap-2 transition-colors duration-300 cursor-pointer"
+                  style={{ color: 'var(--red-gestium)' }}
+                  whileHover={{ x: 5 }}
+                >
+                  <span>Conocer al Equipo</span>
+                  <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+                </motion.button>
+                <motion.button
+                  onClick={() => router.push('/nosotros')}
+                  className="group text-lg font-semibold flex items-center gap-2 transition-colors duration-300 cursor-pointer"
+                  style={{ color: 'var(--steel)' }}
+                  whileHover={{ x: 5, color: 'var(--charcoal)' }}
+                >
+                  <span>Nuestra Trayectoria</span>
+                  <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
+                </motion.button>
+              </div>
+            </motion.div>
           </div>
-
-          {/* Call to Action Discreto */}
-          <SectionButton onClick={() => router.push('/areas')} cursor='pointer'>
-            Ver Todas las Áreas
-          </SectionButton>
         </div>
       </div>
 
-      {/* Services Section - Con nueva paleta roja */}
-      <Section background="white" padding="lg">
+      {/* SECCIÓN 3: SERVICIOS (Diseño Híbrido: Minimalista + Imagen) */}
+      <Section background="platinum" padding="lg">
         <SectionHeader
-          title="Nuestros Servicios"
-          description="Asesoría jurídica especializada respaldada por nuestra experiencia y trayectoria."
+          title="Nuestros Servicios Especializados"
+          description="Asesoría jurídica integral respaldada por nuestra trayectoria y la confianza de las principales instituciones del país."
           centered={true}
-          className="mb-20"
+          className="mb-12"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {[
+            {
+              title: 'Recuperación de Cartera',
+              description: 'Gestión judicial, extrajudicial y coactiva. Optimizamos procesos con tecnología propia para una máxima efectividad.',
+              icon: Calculator,
+              number: '01',
+              image: '/images/servicios/recuperacion.avif',
+              href: '/servicios/recuperacion-cartera',
+            },
+            {
+              title: 'Derecho Inmobiliario',
+              description: 'Brindamos respaldo legal integral en el desarrollo de proyectos inmobiliarios en Quito y a nivel nacional.',
+              icon: House,
+              number: '02',
+              image: '/images/servicios/inmoviliaria.avif',
+              href: '/servicios/inmobiliario'
+            },
+            {
+              title: 'Derecho Corporativo',
+              description: 'Asesoría experta en constitución, fusiones, liquidaciones y todo tipo de actos societarios para empresas.',
+              icon: Building2,
+              number: '03',
+              image: '/images/servicios/corporativo.avif',
+              href: '/servicios/corporativo'
+            },
+            {
+              title: 'Mediación y Arbitraje',
+              description: 'Facilitamos la resolución alternativa de conflictos a través de negociación sólida y procesos de mediación efectivos.',
+              icon: Users,
+              number: '04',
+              image: '/images/servicios/mediacion.avif',
+              href: '/servicios/mediacion'
+            },
+            {
+              title: 'Derecho de Familia',
+              description: 'Asesoría integral y con enfoque humano en divorcios, alimentos, régimen de visitas y protección de menores.',
+              icon: User,
+              number: '05',
+              image: '/images/servicios/familia.avif',
+              href: '/servicios/familia'
+            },
+            {
+              title: 'Derecho Laboral',
+              description: 'Representación en contratos, liquidaciones, despidos y procesos ante las autoridades competentes.',
+              icon: UserCheck,
+              number: '06',
+              image: '/images/servicios/laboral.avif',
+              href: '/servicios/laboral'
+            },
+            {
+              title: 'Gestiones y Trámites',
+              description: 'Realizamos gestiones eficientes ante entidades públicas y privadas, incluyendo trámites notariales y registrales.',
+              icon: FileText,
+              number: '07',
+              image: '/images/servicios/tramites.avif',
+              href: '/servicios/tramites'
+            }
+          ].map((service, index) => {
             const IconComponent = service.icon;
             return (
               <motion.div
                 key={index}
-                className="group bg-white transition-all duration-500 hover:scale-105 relative overflow-hidden hover-lift"
-                style={{ boxShadow: 'var(--shadow-minimal)' }}
-                initial={{ opacity: 0, y: 30 }}
+                className="group relative bg-white flex flex-col overflow-hidden transition-all duration-300 cursor-pointer"
+                style={{
+                  border: '1px solid #e2e8f0',
+                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.05)'
+                }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                whileHover={{ y: -10 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                whileHover={{ y: -6, boxShadow: 'var(--shadow-medium)' }}
+                onClick={() => router.push(service.href)}
               >
-                {/* Imagen de fondo */}
-                <div className="relative h-48 overflow-hidden">
-                  <motion.img
+                {/* --- SECCIÓN DE IMAGEN --- */}
+                <div className="relative h-40 w-full overflow-hidden">
+                  <Image
                     src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                    alt={`Imagen de ${service.title}`}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background: 'linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(0, 0, 0, 0.3) 100%)'
-                    }}
-                  />
-
-                  {/* Número decorativo */}
-                  <div
-                    className="absolute top-4 right-4 text-4xl font-black opacity-80"
-                    style={{ color: 'var(--white)' }}
-                  >
-                    {service.number}
-                  </div>
-
-                  {/* Icono con nueva paleta */}
-                  <div className="absolute bottom-4 left-4">
-                    <motion.div
-                      className="w-12 h-12 rounded-lg flex items-center justify-center shadow-lg"
-                      style={{ background: 'var(--gradient-red)' }} // Cambiado de gradient-gold
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <IconComponent className="w-6 h-6" style={{ color: 'var(--white)' }} />
-                    </motion.div>
-                  </div>
+                  {/* Overlay sutil para dar profundidad */}
+                  <div className="absolute inset-0 bg-black/10"></div>
                 </div>
 
-                <div className="p-6">
-                  <h3
-                    className="text-xl font-bold mb-3"
-                    style={{ color: 'var(--charcoal)' }}
-                  >
-                    {service.title}
-                  </h3>
-                  <p
-                    className="mb-4 text-sm leading-relaxed"
-                    style={{ color: 'var(--silver)' }}
-                  >
+                {/* --- SECCIÓN DE CONTENIDO --- */}
+                <div className="relative p-6 flex-grow flex flex-col">
+                  {/* Indicador superior sutil que se anima */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-slate-200 group-hover:w-full group-hover:bg-[var(--red-gestium)] transition-all duration-400" />
+
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-md flex items-center justify-center"
+                      style={{ backgroundColor: 'rgba(167, 26, 33, 0.05)', border: '1px solid rgba(167, 26, 33, 0.1)' }}>
+                      <IconComponent size={16} style={{ color: 'var(--red-gestium)' }} />
+                    </div>
+                    <h3 className="text-lg font-semibold" style={{ color: 'var(--charcoal)', fontFamily: "'Inter', sans-serif" }}>
+                      {service.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-sm leading-relaxed flex-grow" style={{ color: 'var(--silver)' }}>
                     {service.description}
                   </p>
-                  <motion.button
-                    className="group text-sm font-bold uppercase tracking-wider flex items-center gap-2 transition-all duration-300"
-                    style={{ color: 'var(--red-gestium)', cursor: 'pointer' }} // Cambiado de gold
-                    whileHover={{ x: 5 }}
-                  >
-                    Ver Más
-                    <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                  </motion.button>
+
+                  {/* --- FOOTER CON CTA --- */}
+                  <div className="pt-5 mt-5 border-t border-slate-100">
+                    <div className="group/btn text-sm font-semibold flex items-center gap-2" style={{ color: 'var(--red-gestium)' }}>
+                      <span>Ver Servicio</span>
+                      <ArrowRight size={14} className="transition-transform group-hover/btn:translate-x-1" />
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             );
           })}
         </div>
+
+        {/* Call to Action de servicios */}
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+        >
+          <SectionButton onClick={() => router.push('/servicios')}>
+            <span className="flex items-center gap-2">
+              Ver Todos los Servicios
+              <Briefcase className="w-5 h-5" />
+            </span>
+          </SectionButton>
+        </motion.div>
       </Section>
+
+      {/* SECCIÓN 4: GESTIUM-APP - Diferenciación Tecnológica */}
+      <div
+        className="py-16 relative overflow-hidden"
+        style={{
+          background: 'var(--gradient-primary)'
+        }}
+      >
+        {/* Patrón tecnológico de fondo */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="grid grid-cols-12 gap-4 h-full">
+              {Array.from({ length: 144 }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="border border-white opacity-20"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, 0.3, 0] }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    delay: Math.random() * 4
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            {/* Contenido principal */}
+            <motion.div
+              className="lg:pr-6"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.div
+                className="inline-flex items-center gap-3 px-4 py-2 rounded-full mb-6 backdrop-blur-sm bg-white/10 border"
+                style={{ borderColor: 'rgba(244, 196, 1, 0.3)' }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+              >
+                <div
+                  className="w-2 h-2 rounded-full animate-pulse"
+                  style={{
+                    backgroundColor: '#f4c401',
+                    animation: 'pulse 2s infinite'
+                  }}
+                />
+                <span className="text-sm font-medium text-white">Portal Exclusivo para Clientes</span>
+              </motion.div>
+
+              <motion.h2
+                className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-white"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
+                <span
+                  className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent"
+                >
+                  Transparencia y Control
+                </span>
+                <br />
+                Sobre su Caso, 24/7
+              </motion.h2>
+
+              <motion.p
+                className="text-lg mb-8 leading-relaxed"
+                style={{ color: 'rgba(255, 255, 255, 0.9)' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+              >
+                Con <b className="text-white">GESTIUM-APP</b>, nuestra plataforma de desarrollo propio, le ofrecemos acceso directo y en tiempo real al estado de sus procesos. La información que necesita, cuando la necesita, con total seguridad.
+              </motion.p>
+
+              {/* Características para el Cliente */}
+              <motion.div
+                className="space-y-3 mb-8"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.7, duration: 0.8 }}
+              >
+                {[
+                  { icon: Clock, title: "Seguimiento de Caso en Tiempo Real" },
+                  { icon: Bell, title: "Notificaciones y Alertas Clave" },
+                  { icon: FileText, title: "Documentación Centralizada" },
+                  { icon: BarChart3, title: "Reportes de Avance Claros" }
+                ].map((feature, index) => {
+                  const IconComponent = feature.icon;
+                  return (
+                    <motion.div
+                      key={index}
+                      className="flex items-center gap-3 p-3 backdrop-blur-sm bg-white/10 rounded-lg transition-all duration-300 hover:bg-white/20 hover:shadow-lg"
+                      initial={{ opacity: 0, x: -30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
+                      whileHover={{ x: 10, scale: 1.02 }}
+                    >
+                      <div
+                        className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg"
+                        style={{ background: 'rgba(244, 196, 1, 0.1)' }}
+                      >
+                        <IconComponent className="w-4 h-4" style={{ color: '#f4c401' }} />
+                      </div>
+                      <h4 className="font-semibold text-white text-sm">{feature.title}</h4>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+
+              {/* CTAs */}
+              <motion.div
+                className="flex flex-col sm:flex-row gap-4"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 1, duration: 0.8 }}
+              >
+                <motion.a
+                  href="https://gestium-app.netlify.app/consultas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 font-bold uppercase tracking-wider transition-all duration-300 rounded-lg"
+                  style={{
+                    background: 'linear-gradient(135deg, #f4c401 0%, #d4a017 100%)',
+                    color: '#2c2c2c',
+                    textDecoration: 'none',
+                    boxShadow: '0 10px 25px rgba(244, 196, 1, 0.3)'
+                  }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span>Consultar mi Proceso</span>
+                  <ArrowRight className="w-5 h-5" />
+                </motion.a>
+              </motion.div>
+            </motion.div>
+
+            {/* Visualización tecnológica */}
+            <motion.div
+              className="relative hidden lg:block"
+              initial={{ opacity: 0, scale: 0.9, x: 50 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <div className="relative ">
+                <motion.div
+                  className="bg-white rounded-2xl p-8 glass-effect border-2 relative z-10"
+                  style={{ borderColor: 'var(--gold)' }}
+                  initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
+                  whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  whileHover={{ scale: 1.02, rotateY: 5 }}
+                >
+                  {/* Header del mockup */}
+                  <div className="bg-white rounded-t-lg p-3 flex justify-between items-center border-b">
+                    <div className="flex items-center gap-3">
+                      <motion.div
+                        className="w-8 h-8 rounded-lg flex items-center justify-center"
+                        style={{ background: 'var(--gradient-red)' }}
+                        animate={{ rotate: [0, 5, -5, 0] }}
+                        transition={{ duration: 4, repeat: Infinity }}
+                      >
+                        <span className="text-white font-bold text-sm">G</span>
+                      </motion.div>
+                      <div>
+                        <h4 className="font-bold text-charcoal text-sm sm:text-base">Detalle del Proceso</h4>
+                        <p className="text-xs text-silver">Portal Corporativo</p>
+                      </div>
+                    </div>
+                    <div className="flex gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                    </div>
+                  </div>
+
+                  {/* Cuerpo del mockup */}
+                  <div className="bg-white rounded-b-lg p-4 space-y-4">
+                    {/* Métricas principales */}
+                    <div className="grid grid-cols-3 gap-3 mb-4">
+                      {[
+                        { label: "Casos Activos", value: "247", color: "var(--red-gestium)" },
+                        { label: "Efectividad", value: "95%", color: "var(--gold)" },
+                        { label: "Recuperado", value: "$2.4M", color: "var(--red-gestium)" }
+                      ].map((metric, index) => (
+                        <motion.div
+                          key={index}
+                          className="p-3 bg-slate-50 rounded-lg text-center"
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          <motion.div
+                            className="text-lg font-bold"
+                            style={{ color: metric.color }}
+                            animate={{ scale: [1, 1.1, 1] }}
+                            transition={{ duration: 2, repeat: Infinity, delay: index * 0.5 }}
+                          >
+                            {metric.value}
+                          </motion.div>
+                          <div className="text-xs text-silver">{metric.label}</div>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Información del cliente */}
+                    <div>
+                      <h4 className="font-semibold text-sm mb-2 text-charcoal">Información Principal</h4>
+                      <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
+                        <p><strong className="text-silver">Cliente:</strong> YACH... MILTON</p>
+                        <p><strong className="text-silver">Cédula:</strong> 0501...72</p>
+                        <p><strong className="text-silver">Materia:</strong> ISSFA</p>
+                        <p><strong className="text-silver">Fecha Inicio:</strong> 15 ago 2025</p>
+                      </div>
+                    </div>
+
+                    {/* Etapas del proceso mejoradas */}
+                    <div>
+                      <h4 className="font-semibold text-sm mb-3 text-charcoal">Etapas del Proceso</h4>
+                      <div className="relative flex justify-between items-start">
+                        {/* Línea de progreso animada */}
+                        <div className="absolute top-2 left-4 right-4 h-0.5 bg-slate-200">
+                          <motion.div
+                            className="h-full"
+                            style={{ background: 'linear-gradient(to right, var(--red-gestium), var(--gold))' }}
+                            initial={{ width: 0 }}
+                            whileInView={{ width: '75%' }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 1, duration: 1.5, ease: 'easeInOut' }}
+                          />
+                        </div>
+
+                        {/* Puntos de etapa mejorados */}
+                        {['Ingreso', 'Revisión', 'Facturación', 'Elaboración', 'Pago'].map((stage, i) => {
+                          const isActive = i === 3;
+                          const isCompleted = i < 3;
+                          return (
+                            <motion.div
+                              key={i}
+                              className="relative text-center flex flex-col items-center"
+                              initial={{ opacity: 0, y: 15 }}
+                              whileInView={{ opacity: 1, y: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: 0.8 + i * 0.2 }}
+                            >
+                              <motion.div
+                                className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${isActive ? 'border-red-gestium bg-white' :
+                                  isCompleted ? 'border-red-gestium bg-red-gestium' :
+                                    'border-slate-300 bg-white'
+                                  }`}
+                                whileHover={{ scale: 1.2 }}
+                              >
+                                {isActive && (
+                                  <motion.div
+                                    className="w-1.5 h-1.5 bg-red-gestium rounded-full"
+                                    animate={{ scale: [1, 1.3, 1] }}
+                                    transition={{ duration: 1.5, repeat: Infinity }}
+                                  />
+                                )}
+                              </motion.div>
+                              <p className="text-[10px] font-medium mt-1 w-16"
+                                style={{ color: isActive || isCompleted ? 'var(--charcoal)' : 'var(--silver)' }}>
+                                {stage}
+                              </p>
+                            </motion.div>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Elementos flotantes decorativos */}
+                <motion.div
+                  className="absolute -top-20 -right-4 w-16 h-16 rounded-full flex items-center justify-center backdrop-blur-sm bg-white/10"
+                  style={{
+                    boxShadow: '0 10px 25px rgba(244, 196, 1, 0.3)',
+                    animation: 'float 3s ease-in-out infinite'
+                  }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 1.2, duration: 0.6 }}
+                >
+                  <ShieldCheck className="w-8 h-8 text-yellow-400" />
+                </motion.div>
+
+                <motion.div
+                  className="absolute -bottom-20 -left-6 w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm bg-white/10"
+                  style={{
+                    boxShadow: '0 10px 25px rgba(220, 38, 38, 0.3)',
+                    animation: 'float 3s ease-in-out infinite 1s'
+                  }}
+                  initial={{ opacity: 0, scale: 0 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 1.4, duration: 0.6 }}
+                >
+                  <Activity className="w-7 h-7 text-red-500" />
+                </motion.div>
+
+                {/* Líneas conectoras animadas */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none">
+                  <motion.path
+                    d="M50,50 Q150,25 250,50 T450,50"
+                    stroke="url(#goldGradient)"
+                    strokeWidth="2"
+                    fill="none"
+                    initial={{ pathLength: 0 }}
+                    whileInView={{ pathLength: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 1.6, duration: 2 }}
+                  />
+                  <defs>
+                    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" style={{ stopColor: '#f4c401', stopOpacity: 0 }} />
+                      <stop offset="50%" style={{ stopColor: '#f4c401', stopOpacity: 1 }} />
+                      <stop offset="100%" style={{ stopColor: '#f4c401', stopOpacity: 0 }} />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Sección de beneficios */}
+          <motion.div
+            className="mt-16 pt-12 border-t border-white/10"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            <div className="text-center mb-10">
+              <motion.h3
+                className="text-2xl md:text-3xl font-bold text-white"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6, duration: 0.6 }}
+              >
+                Ventajas Clave de Nuestra Tecnología
+              </motion.h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                { title: "Eficiencia", description: "La automatización agiliza cada etapa de su proceso, optimizando tiempos.", icon: Zap },
+                { title: "Visibilidad", description: "Control total con reportes y acceso a su expediente en tiempo real.", icon: Eye },
+                { title: "Confianza", description: "Un portal transparente que fortalece la relación abogado-cliente.", icon: UserCheck }
+              ].map((benefit, index) => {
+                const IconComponent = benefit.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    className="text-center p-5 backdrop-blur-sm bg-white/10 rounded-xl transition-all duration-300 hover:bg-white/20 hover:shadow-lg"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.8 + index * 0.1, duration: 0.6 }}
+                    whileHover={{ y: -5, scale: 1.02 }}
+                  >
+                    <div
+                      className="w-14 h-14 mx-auto mb-4 rounded-full flex items-center justify-center"
+                      style={{ background: 'rgba(244, 196, 1, 0.1)' }}
+                    >
+                      <IconComponent className="w-7 h-7 text-yellow-400" />
+                    </div>
+                    <h4 className="text-lg font-bold text-white mb-2">{benefit.title}</h4>
+                    <p className="text-white/70 text-sm">{benefit.description}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+        </div>
+
+        <style jsx>{`
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .5; }
+    }
+  `}</style>
+      </div>
 
       {/* Values Section*/}
       <div
         className="px-6 py-20 relative overflow-hidden"
         style={{ backgroundColor: 'var(--platinum)' }}
       >
-        {/* Imagen de fondo sutil */}
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-5"
-          style={{
-            backgroundImage: "url('/images/ofi/justicia.jpg')",
-          }}
-        />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <SectionHeader
@@ -858,196 +1242,155 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Practice Areas - REFACTORIZADA CON INFORMACIÓN REAL */}
-      <Section background="white" padding="lg">
-        <SectionHeader
-          title="Áreas de Práctica"
-          description={
-            <>
-              Experiencia comprobada en las principales ramas del derecho respaldada por
-              <span className="font-semibold" style={{ color: 'var(--red-gestium)' }}> más de 20 años</span> de trayectoria profesional
-            </>
-          }
-          centered={true}
-          className="mb-20"
+      {/* SECCIÓN 7: PUBLICACIONES (Versión Refinada) */}
+      <div
+        className="py-20 relative overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/ofi/justicia.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        {/* Overlay elegante */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(15, 23, 42, 0.8))'
+          }}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {[
-            {
-              name: 'Derecho Corporativo',
-              icon: Building2,
-              focus: 'Asesoría empresarial integral',
-              description: 'Constitución, transformación, fusión, liquidación y otros actos societarios con respaldo legal y experiencia comprobada.',
-              specialty: 'Especialistas'
-            },
-            {
-              name: 'Derecho Financiero',
-              icon: Calculator,
-              focus: 'Gestión de riesgos financieros',
-              description: 'Asesoría estratégica en instituciones financieras, estructuración de operaciones y recuperación de cartera vencida.',
-              specialty: 'Experiencia'
-            },
-            {
-              name: 'Derecho Civil',
-              icon: House,
-              focus: 'Soluciones legales familiares',
-              description: 'Resolución de conflictos entre personas naturales o jurídicas en materias de bienes, sucesiones y obligaciones.',
-              specialty: 'Confianza'
-            },
-            {
-              name: 'Derecho Laboral',
-              icon: UserCheck,
-              focus: 'Relaciones laborales efectivas',
-              description: 'Representación y asesoría en contratos laborales, liquidaciones, despidos y procesos judiciales o de mediación.',
-              specialty: 'Eficiencia'
-            },
-            {
-              name: 'Derecho Inmobiliario',
-              icon: Briefcase,
-              focus: 'Proyectos inmobiliarios seguros',
-              description: 'Experiencia consolidada en el desarrollo de proyectos habitacionales y comerciales, con respaldo legal en cada etapa.',
-              specialty: 'Precisión'
-            },
-            {
-              name: 'Mediación y Arbitraje',
-              icon: Users,
-              focus: 'Resolución alternativa de conflictos',
-              description: 'Negociación y métodos alternativos para resolver controversias de manera ágil, eficaz y sin litigio judicial.',
-              specialty: 'Resultados'
-            }
-          ].map((area, index) => {
-            const IconComponent = area.icon;
-            return (
+        <div className="container-fluid relative z-10">
+          
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            {/* Contenido principal: Narrativa */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <motion.div
-                key={index}
-                className="group relative bg-white transition-all duration-500 hover:scale-105 cursor-pointer"
-                style={{
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
-                  border: '1px solid #f1f5f9'
-                }}
-                initial={{ opacity: 0, y: 30 }}
+                className="inline-flex items-center gap-3 px-4 py-2 rounded-full mb-6 glass-dark border"
+                style={{ borderColor: 'rgba(244, 196, 1, 0.3)' }}
+              >
+                <div className="w-2 h-2 rounded-full animate-pulse-glow-gold" style={{ backgroundColor: 'var(--gold)' }} />
+                <span className="text-sm font-medium text-white">Contenido de Valor</span>
+              </motion.div>
+
+              <h3
+                className="text-3xl md:text-4xl font-bold mb-6 leading-tight text-white"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Conocimiento que <span className="text-gradient-gold">Transforma</span> la Práctica Legal
+              </h3>
+
+              <p className="text-lg mb-8 leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+                Nuestro compromiso con la excelencia se refleja en la investigación continua y el desarrollo de conocimiento jurídico que enriquece nuestra práctica y aporta valor a la comunidad legal.
+              </p>
+
+              {/* Lista de áreas de conocimiento */}
+              <div className="space-y-4 mb-10 text-white">
+                {[
+                  { icon: BrainCircuit, title: "Tesis sobre Legal Tech e Innovación" },
+                  { icon: BarChart3, title: "Análisis de Tendencias y Normativas" },
+                  { icon: Feather, title: "Artículos sobre Derecho Corporativo y Financiero" }
+                ].map((item, index) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <motion.div
+                      key={index}
+                      className="flex items-center gap-4"
+                      initial={{ opacity: 0, x: -30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.5 + index * 0.15 }}
+                    >
+                      <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full" style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
+                        <IconComponent className="w-4 h-4 text-gold" />
+                      </div>
+                      <span className="text-white">{item.title}</span>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {/* CTA Principal */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                whileHover={{ y: -8 }}
+                transition={{ delay: 1, duration: 0.8 }}
               >
-                {/* Línea indicadora superior animada */}
-                <motion.div
-                  className="absolute top-0 left-0 w-0 h-1 group-hover:w-full transition-all duration-500"
-                  style={{ backgroundColor: 'var(--red-gestium)' }}
-                />
-
-                <div className="p-8">
-                  {/* Header del card */}
-                  <div className="flex items-start justify-between mb-6">
-                    <motion.div
-                      className="flex items-center justify-center w-14 h-14 rounded-lg transition-all duration-300"
-                      style={{
-                        backgroundColor: 'rgba(167, 26, 33, 0.08)',
-                        border: '1px solid rgba(167, 26, 33, 0.15)'
-                      }}
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <IconComponent
-                        size={24}
-                        style={{ color: 'var(--black)' }}
-                      />
-                    </motion.div>
-
-                    {/* Badge de especialidad */}
-                    <motion.div
-                      className="px-3 py-1 text-xs font-medium uppercase tracking-wider rounded-full"
-                      style={{
-                        backgroundColor: 'rgba(167, 26, 33, 0.05)',
-                        color: 'var(--red-gestium)',
-                        border: '1px solid rgba(167, 26, 33, 0.1)'
-                      }}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 + 0.3, duration: 0.4 }}
-                    >
-                      {area.specialty}
-                    </motion.div>
-                  </div>
-
-                  {/* Contenido principal */}
-                  <div className="mb-6">
-                    <h3
-                      className="text-xl font-bold mb-2 group-hover:text-red-gestium transition-colors duration-300"
-                      style={{
-                        color: 'var(--charcoal)',
-                        fontFamily: "'Inter', sans-serif"
-                      }}
-                    >
-                      {area.name}
-                    </h3>
-                    <p
-                      className="text-sm font-medium mb-3"
-                      style={{ color: 'var(--red-gestium)' }}
-                    >
-                      {area.focus}
-                    </p>
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: 'var(--silver)' }}
-                    >
-                      {area.description}
-                    </p>
-                  </div>
-
-                  {/* Call to action */}
-                  <motion.div
-                    className="flex items-center justify-between pt-4 border-t border-gray-100"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 + 0.5, duration: 0.4 }}
-                  >
-                    <motion.button
-                      className="group/btn text-sm font-bold uppercase tracking-wider flex items-center gap-2 transition-all duration-300"
-                      style={{ color: 'var(--red-gestium)' }}
-                      whileHover={{ x: 5 }}
-                      onClick={() => router.push(`/areas/${area.name.toLowerCase()}`)}
-                    >
-                      Más Información
-                    </motion.button>
-
-                    {/* Indicador de hover discreto */}
-                    <motion.div
-                      className="w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
-                      style={{
-                        backgroundColor: 'rgba(167, 26, 33, 0.08)'
-                      }}
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      <ArrowRight
-                        size={12}
-                        style={{ color: 'var(--red-gestium)' }}
-                      />
-                    </motion.div>
-                  </motion.div>
-                </div>
-
-                {/* Efecto de hover en todo el card */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-red-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(167, 26, 33, 0.02) 0%, transparent 50%)'
-                  }}
-                />
+                <motion.button
+                  className="inline-flex items-center justify-center gap-3 px-8 py-4 font-bold uppercase tracking-wider transition-all duration-300 rounded-lg animate-pulse-glow-gold cursor-pointer"
+                  style={{ background: 'var(--gradient-gold)', color: 'var(--charcoal)' }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => router.push('/publicaciones')}
+                >
+                  <span>Explorar Publicaciones</span>
+                  <BookOpen className="w-5 h-5" />
+                </motion.button>
               </motion.div>
-            );
-          })}
-        </div>
+            </motion.div>
 
-        {/* Call to Action Mejorado */}
-        <SectionButton onClick={() => router.push('/areas')}>
-          Ver Todas las Áreas de Práctica
-        </SectionButton>
-      </Section>
+            {/* Showcase visual abstracto (AHORA CLICKEABLE) */}
+            <motion.div
+              className="relative h-6 hidden lg:flex items-center justify-center cursor-pointer"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              onClick={() => router.push('/publicaciones')}
+              whileHover={{ scale: 1.03 }}
+            >
+              {/* Documentos abstractos */}
+              <motion.div
+                className="absolute w-75 h-95 bg-white/500 glass-dark rounded-xl border border-white/500"
+                animate={{ y: [-10, 10] }}
+                transition={{ duration: 4, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
+              />
+              <motion.div
+                className="absolute w-75 h-95 bg-white/500 glass-dark rounded-xl border border-white/10"
+                style={{ transform: 'rotate(-8deg)' }}
+                animate={{ y: [10, -10], rotate: [-8, -6] }}
+                transition={{ duration: 5, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
+              />
+              <motion.div
+                className="absolute w-75 h-95 bg-white/100 glass-dark rounded-xl border border-white/20 p-6 flex flex-col"
+                style={{ transform: 'rotate(6deg)' }}
+                animate={{ y: [-5, 5], rotate: [6, 8] }}
+                transition={{ duration: 3, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
+              >
+                <div className="w-8 h-8 flex items-center justify-center rounded-full mb-4" style={{ background: 'var(--gradient-gold)' }}>
+                  <BookOpen className="w-4 h-4 text-charcoal" />
+                </div>
+                <div className="w-full h-1.5 bg-white/80 rounded-full mb-2"></div>
+                <div className="w-3/4 h-1.5 bg-white/80 rounded-full mb-4"></div>
+                <div className="w-full h-1 bg-white/70 rounded-full mb-1.5"></div>
+                <div className="w-full h-1 bg-white/70 rounded-full mb-1.5"></div>
+                <div className="w-1/2 h-1 bg-white/70 rounded-full"></div>
+                <br />
+                <div className="w-full h-1.5 bg-white/80 rounded-full mb-2"></div>
+                <div className="w-3/4 h-1.5 bg-white/80 rounded-full mb-4"></div>
+                <div className="w-full h-1 bg-white/70 rounded-full mb-1.5"></div>
+                <div className="w-full h-1 bg-white/70 rounded-full mb-1.5"></div>
+                <div className="w-1/2 h-1 bg-white/70 rounded-full"></div>
+                <br />
+                <div className="w-full h-1.5 bg-white/80 rounded-full mb-2"></div>
+                <div className="w-3/4 h-1.5 bg-white/80 rounded-full mb-4"></div>
+                <div className="w-full h-1 bg-white/70 rounded-full mb-1.5"></div>
+                <div className="w-full h-1 bg-white/70 rounded-full mb-1.5"></div>
+                <div className="w-1/2 h-1 bg-white/70 rounded-full"></div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+
 
       {/* CTA Section - Con nueva paleta */}
       <div
