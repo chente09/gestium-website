@@ -27,13 +27,6 @@ const Footer: React.FC = () => {
         { name: 'Contacto', href: '/contacto' }
     ];
 
-    // ✅ CLIENTES REALES
-    const tiposClientes = [
-        { name: 'Instituciones Financieras', href: '/clientes/instituciones-financieras' },
-        { name: 'Entidades Públicas', href: '/clientes/publicas' },
-        { name: 'Empresas Privadas', href: '/clientes/privadas' }
-    ];
-
     return (
         <footer
             className="relative"
@@ -249,7 +242,7 @@ const Footer: React.FC = () => {
                                 className="text-xs mt-1"
                                 style={{ color: 'rgba(255, 255, 255, 0.6)' }}
                             >
-                                20+ años de experiencia | 95% efectividad | Cobertura nacional
+                                +20 años de experiencia | 95% efectividad | Cobertura nacional
                             </p>
                             <p
                                 className="text-xs mt-2"

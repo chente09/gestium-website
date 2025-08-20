@@ -7,6 +7,7 @@ import Section from '@/components/ui/Section';
 import SectionHeader from '@/components/ui/SectionHeader';
 import HeroSection from '@/components/ui/HeroSection';
 import dynamic from 'next/dynamic';
+import { useArticleClicks } from '@/hooks/useArticleClicks';
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -20,11 +21,14 @@ import {
     Download,
     Clock,
     CheckCircle,
-    ArrowRight
+    ArrowRight,
+    Eye
 } from 'lucide-react';
 
 export default function PublicacionesPage() {
     const router = useRouter();
+    const { clickCounts, loading, incrementClick } = useArticleClicks();
+
     const [selectedPDF, setSelectedPDF] = useState<{
         url: string;
         title: string;
@@ -37,6 +41,14 @@ export default function PublicacionesPage() {
         ssr: false,
         loading: () => <p>Cargando visor...</p>
     });
+
+    // Función para generar ID único del artículo
+    const generateArticleId = (title: string) => {
+        return title.toLowerCase()
+            .replace(/[^a-z0-9\s]/g, '')
+            .replace(/\s+/g, '-')
+            .substring(0, 50);
+    };
 
     const featuredArticles = [
         {
@@ -111,12 +123,15 @@ export default function PublicacionesPage() {
             institution: 'ITSQMET - Instituto Superior Tecnológico Quito Metropolitano',
             pdfUrl: '/documents/tesis-legal-tech.pdf'
         },
-
     ];
 
     // Función para abrir el visor PDF
-    const openPDFViewer = (article: typeof featuredArticles[0]) => {
+    const openPDFViewer = async (article: typeof featuredArticles[0]) => {
         if (article.pdfUrl) {
+            // Incrementar contador de clicks en Supabase
+            const articleId = generateArticleId(article.title);
+            await incrementClick(articleId, article.title);
+            
             console.log('Abriendo PDF con estos datos:', article);
             setSelectedPDF({
                 url: article.pdfUrl,
@@ -181,83 +196,116 @@ export default function PublicacionesPage() {
                     centered={true}
                     className="mb-16"
                 />
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {featuredArticles.map((article, index) => (
-                        <motion.article
-                            key={index}
-                            className="group bg-white border border-slate-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden flex flex-col rounded-lg"
-                            style={{ boxShadow: 'var(--shadow-minimal)' }}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.3 }}
-                            transition={{ delay: index * 0.1, duration: 0.6 }}
-                            onClick={() => article.pdfUrl ? openPDFViewer(article) : null}
-                        >
-                            {/* Contenedor de imagen mejorado */}
-                            <div className="relative h-58 overflow-hidden">
-                                <Image
-                                    src={article.image}
-                                    alt={article.title}
-                                    fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                />
-                                {/* Overlay que crece con la imagen */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent transition-all duration-500 group-hover:from-black/70 group-hover:to-black/20"></div>
+                
+                {loading ? (
+                    <div className="text-center py-8">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
+                        <p className="text-slate-600">Cargando estadísticas...</p>
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {featuredArticles.map((article, index) => {
+                            const articleId = generateArticleId(article.title);
+                            const clicks = clickCounts[articleId] || 0;
+                            
+                            return (
+                                <motion.article
+                                    key={index}
+                                    className="group bg-white border border-slate-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden flex flex-col rounded-lg"
+                                    style={{ boxShadow: 'var(--shadow-minimal)' }}
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, amount: 0.3 }}
+                                    transition={{ delay: index * 0.1, duration: 0.6 }}
+                                    onClick={() => article.pdfUrl ? openPDFViewer(article) : null}
+                                >
+                                    {/* Contenedor de imagen mejorado */}
+                                    <div className="relative h-58 overflow-hidden">
+                                        <Image
+                                            src={article.image}
+                                            alt={article.title}
+                                            fill
+                                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        />
+                                        {/* Overlay que crece con la imagen */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent transition-all duration-500 group-hover:from-black/70 group-hover:to-black/20"></div>
 
-                                {/* Categoría en la esquina superior derecha */}
-                                <div className="absolute top-3 right-3">
-                                    <span className="text-xs px-3 py-1 rounded-full text-white font-semibold backdrop-blur-sm"
-                                        style={{ backgroundColor: 'var(--red-gestium)' }}>
-                                        {article.category}
-                                    </span>
-                                </div>
-
-                                {/* Tipo en la esquina inferior derecha */}
-                                {article.type && (
-                                    <div className="absolute bottom-3 right-3">
-                                        <span className="text-xs px-3 py-1 rounded-full bg-white/20 text-white font-semibold backdrop-blur-sm">
-                                            {article.type}
-                                        </span>
-                                    </div>
-                                )}
-                            </div>
-
-                            <div className="p-6 flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-[var(--red-gestium)] transition-colors duration-300 flex-grow"
-                                    style={{ fontFamily: "'Playfair Display', serif" }}>
-                                    {article.title}
-                                </h3>
-                                {article.author && (
-                                    <p className="text-sm font-medium text-slate-700 mb-2">
-                                        Por: {article.author}
-                                    </p>
-                                )}
-                                {article.institution && (
-                                    <p className="text-xs text-slate-500 mb-3">
-                                        {article.institution}
-                                    </p>
-                                )}
-                                <p className="text-sm text-slate-600 mb-4">{article.excerpt}</p>
-                                <div className="flex items-center justify-between text-xs text-slate-500 mt-auto pt-4 border-t border-slate-100">
-                                    <div className="flex items-center gap-2">
-                                        <Calendar size={14} />
-                                        <span>{article.date}</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <Clock size={14} />
-                                        <span>{article.readTime}</span>
-                                    </div>
-                                    {article.pdfUrl && (
-                                        <div className="flex items-center gap-1 text-green-600 font-medium">
-                                            <span>Ver PDF</span>
+                                        {/* Categoría en la esquina superior derecha */}
+                                        <div className="absolute top-3 right-3">
+                                            <span className="text-xs px-3 py-1 rounded-full text-white font-semibold backdrop-blur-sm"
+                                                style={{ backgroundColor: 'var(--red-gestium)' }}>
+                                                {article.category}
+                                            </span>
                                         </div>
-                                    )}
-                                </div>
-                            </div>
-                        </motion.article>
-                    ))}
-                </div>
+
+                                        {/* Contador de clicks en la esquina superior izquierda */}
+                                        {clicks > 0 && (
+                                            <div className="absolute top-3 left-3">
+                                                <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-black/70 text-white text-xs backdrop-blur-sm">
+                                                    <Eye size={12} />
+                                                    <span>{clicks}</span>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {/* Tipo en la esquina inferior derecha */}
+                                        {article.type && (
+                                            <div className="absolute bottom-3 right-3">
+                                                <span className="text-xs px-3 py-1 rounded-full bg-white/20 text-white font-semibold backdrop-blur-sm">
+                                                    {article.type}
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    <div className="p-6 flex flex-col flex-grow">
+                                        <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-[var(--red-gestium)] transition-colors duration-300 flex-grow"
+                                            style={{ fontFamily: "'Playfair Display', serif" }}>
+                                            {article.title}
+                                        </h3>
+                                        {article.author && (
+                                            <p className="text-sm font-medium text-slate-700 mb-2">
+                                                Por: {article.author}
+                                            </p>
+                                        )}
+                                        {article.institution && (
+                                            <p className="text-xs text-slate-500 mb-3">
+                                                {article.institution}
+                                            </p>
+                                        )}
+                                        <p className="text-sm text-slate-600 mb-4">{article.excerpt}</p>
+                                        <div className="flex items-center justify-between text-xs text-slate-500 mt-auto pt-4 border-t border-slate-100">
+                                            <div className="flex items-center gap-2">
+                                                <Calendar size={14} />
+                                                <span>{article.date}</span>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <Clock size={14} />
+                                                <span>{article.readTime}</span>
+                                            </div>
+                                            {article.pdfUrl && (
+                                                <div className="flex items-center gap-1 text-green-600 font-medium">
+                                                    <span>Ver PDF</span>
+                                                </div>
+                                            )}
+                                        </div>
+                                        
+                                        {/* Mostrar contador de clicks en el footer */}
+                                        {clicks > 0 && (
+                                            <div className="flex items-center gap-2 mt-2 pt-2 border-t border-slate-100">
+                                                <Eye size={14} className="text-slate-400" />
+                                                <span className="text-xs text-slate-500">
+                                                    {clicks} {clicks === 1 ? 'vista' : 'vistas'}
+                                                </span>
+                                            </div>
+                                        )}
+                                    </div>
+                                </motion.article>
+                            );
+                        })}
+                    </div>
+                )}
             </Section>
 
             {/* --- CATEGORÍAS --- */}
@@ -330,7 +378,7 @@ export default function PublicacionesPage() {
                 </div>
             </Section> */}
 
-            {/* Presente y Futuro - CTA responsivo corregido */}
+            {/* CTA Section */}
             <div
                 className="py-20 text-center relative"
                 style={{
