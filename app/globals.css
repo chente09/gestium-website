@@ -305,7 +305,7 @@ body {
   transform: scale(1.02);
 }
 
-/* === SCROLLBAR PREMIUM === */
+/* === SCROLLBAR SIN GRADIENTE === */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -315,13 +315,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gradient-premium);
+  background: var(--color-silver);              /* Color sólido */
   border-radius: 4px;
   transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gradient-luxury);
+  background: var(--red-gestium);         /* Color sólido en hover */
 }
 
 /* === SELECCIÓN Y FOCUS === */

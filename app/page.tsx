@@ -1420,7 +1420,7 @@ export default function Home() {
 
           <motion.div
             className="w-32 h-1 mx-auto mb-8"
-            style={{ backgroundColor: 'var(--red-gestium)' }} // Cambiado de gold
+            style={{ backgroundColor: 'var(--gold-dark)' }} // Cambiado de gold
             initial={{ width: 0 }}
             whileInView={{ width: 128 }}
             viewport={{ once: true }}
@@ -1435,14 +1435,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 0.6 }}
           >
-            Contáctenos para una{' '}
-            <motion.span
-              style={{ color: 'var(--red-gestium)' }} // Cambiado de gold
-              whileHover={{ scale: 1.1 }}
-            >
-              consulta gratuita
-            </motion.span>{' '}
-            y personalizada
+            Contáctenos para una consulta gratuita y personalizada
           </motion.p>
 
           <motion.div
@@ -1455,8 +1448,8 @@ export default function Home() {
             <motion.button
               className="group px-12 py-4 font-bold uppercase tracking-wider transition-all duration-300 relative overflow-hidden shadow-xl"
               style={{
-                background: 'var(--gradient-red)', // Cambiado de gradient-gold
-                color: 'var(--white)', // Cambiado a blanco
+                background: 'var(--gradient-gold)', // Cambiado de gradient-gold
+                color: 'var(--black)', // Cambiado a negro
                 border: 'none',
                 cursor: 'pointer'
               }}

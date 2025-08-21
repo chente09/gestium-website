@@ -123,6 +123,19 @@ export default function PublicacionesPage() {
             institution: 'ITSQMET - Instituto Superior Tecnológico Quito Metropolitano',
             pdfUrl: '/documents/tesis-legal-tech.pdf'
         },
+        {
+            "title": "El Debido Proceso en la Citación Telemática y su Impacto en el Derecho a la Defensa",
+            "category": "Derecho Procesal",
+            "author": "David Maldonado y Luis Guijarro",
+            "excerpt": "Análisis sobre la implementación de la citación telemática en Ecuador, su alineación con los principios del debido proceso y el derecho a la defensa, y los desafíos asociados a la brecha digital y la seguridad de la información.",
+            "date": "2023",
+            "readTime": "Documento extenso",
+            "image": "/documents/tesisDavid.png",
+            "type": "Tesis de Maestría",
+            "institution": "Universidad Bolivariana del Ecuador",
+            "pdfUrl": "/documents/tesisDavid.pdf"
+        },
+
     ];
 
     // Función para abrir el visor PDF
@@ -131,7 +144,7 @@ export default function PublicacionesPage() {
             // Incrementar contador de clicks en Supabase
             const articleId = generateArticleId(article.title);
             await incrementClick(articleId, article.title);
-            
+
             console.log('Abriendo PDF con estos datos:', article);
             setSelectedPDF({
                 url: article.pdfUrl,
@@ -196,7 +209,7 @@ export default function PublicacionesPage() {
                     centered={true}
                     className="mb-16"
                 />
-                
+
                 {loading ? (
                     <div className="text-center py-8">
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto mb-4"></div>
@@ -207,7 +220,7 @@ export default function PublicacionesPage() {
                         {featuredArticles.map((article, index) => {
                             const articleId = generateArticleId(article.title);
                             const clicks = clickCounts[articleId] || 0;
-                            
+
                             return (
                                 <motion.article
                                     key={index}
@@ -290,7 +303,7 @@ export default function PublicacionesPage() {
                                                 </div>
                                             )}
                                         </div>
-                                        
+
                                         {/* Mostrar contador de clicks en el footer */}
                                         {clicks > 0 && (
                                             <div className="flex items-center gap-2 mt-2 pt-2 border-t border-slate-100">
