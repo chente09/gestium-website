@@ -1,5 +1,19 @@
 import type { Metadata } from 'next'
+import { Inter, Playfair_Display } from 'next/font/google'; 
 import './globals.css'
+
+// 2. Configura las fuentes con sus pesos y subconjuntos
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap', // Asegura que el texto sea visible mientras carga la fuente
+  variable: '--font-primary', // Asigna a tu variable CSS
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display', // Asigna a tu variable CSS
+});
 
 export const metadata: Metadata = {
   title: 'Gestium SLI - Estudio Jurídico',
@@ -13,14 +27,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://gestium-sli.netlify.app'),
+  metadataBase: new URL('https://www.gestium-sli.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Gestium SLI - Estudio Jurídico Especializado',
     description: 'Soluciones jurídicas integrales con experiencia comprobada en las principales ramas del derecho.',
-    url: 'https://gestium-sli.netlify.app',
+    url: 'https://www.gestium-sli.com',
     siteName: 'Gestium SLI',
     images: [
       {
@@ -61,11 +75,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang="es" className={`${inter.variable} ${playfairDisplay.variable} scroll-smooth`}>
       <head>
         {/* Preconnect to external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://images.unsplash.com" />
         
         {/* Favicon */}
@@ -87,15 +99,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LegalService",
-              "@id": "https://gestium-sli.netlify.app/#organization",
+              "@id": "https://www.gestium-sli.com/#organization",
               "name": "Gestium SLI",
               "alternateName": "Gestium Soluciones Legales Integrales",
               "description": "Estudio jurídico especializado en soluciones legales integrales",
-              "url": "https://gestium-sli.netlify.app",
-              "logo": "https://gestium-sli.netlify.app/images/logo.png",
-              "image": "https://gestium-sli.netlify.app/images/logo.png",
-              "telephone": "+593-2-XXX-XXXX", // Reemplazar con número real
-              "email": "info@gestium-sli.com", // Reemplazar con email real
+              "url": "https://www.gestium-sli.com",
+              "logo": "https://www.gestium-sli.com/images/logo.png",
+              "image": "https://www.gestium-sli.com/images/logo.png",
+              "telephone": "+593989335061", // Reemplazar con número real
+              "email": "info@gestium-sli.com",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Quito",

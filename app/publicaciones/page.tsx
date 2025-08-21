@@ -54,7 +54,7 @@ export default function PublicacionesPage() {
         {
             "title": "Amicus Curiae sobre la Crisis Carcelaria y Derechos Humanos en Ecuador",
             "category": "Derechos Humanos",
-            "author": "Fundación INREDH",
+            "author": "Sofía Terán, et al.",
             "excerpt": "Presentación de argumentos jurídicos sobre la responsabilidad del Estado ecuatoriano frente a las masacres carcelarias, la vulneración de derechos de las personas privadas de libertad y la figura de las ejecuciones extrajudiciales.",
             "date": "09 Junio 2023",
             "readTime": "28 min",
@@ -81,7 +81,7 @@ export default function PublicacionesPage() {
             author: 'María Paula Peralta',
             excerpt: 'Análisis comparativo entre la obra distópica de George Orwell y la realidad política contemporánea del Ecuador, explorando los paralelismos en términos de manipulación política y falta de educación cívica.',
             date: '2025',
-            readTime: '5 min',
+            readTime: '10 min',
             image: '/documents/rebelion-granja.jpg',
             type: 'Ensayo Académico',
             institution: 'Análisis Literario-Político',
@@ -135,6 +135,30 @@ export default function PublicacionesPage() {
             "institution": "Universidad Bolivariana del Ecuador",
             "pdfUrl": "/documents/tesisDavid.pdf"
         },
+        {
+            "title": "Reforma a la LOSEP (junio 2025): Sumarios administrativos a cargo de la institución",
+            "category": "Derecho Administrativo",
+            "author": "Tatiana Cordonez",
+            "excerpt": "Análisis de la reforma de junio de 2025 a la LOSEP, que transfiere la competencia de los sumarios administrativos del Ministerio del Trabajo a cada entidad pública, y sus implicaciones en la eficiencia y los derechos laborales.",
+            "date": "Junio 2025",
+            "readTime": "2 min",
+            "image": "/documents/ReformaLosep.jpg",
+            "type": "Análisis Jurídico",
+            "institution": "Análisis Legal",
+            "pdfUrl": "/documents/ReformaLosep.pdf"
+        },
+        {
+            "title": "Cambios Importantes en la Ley de Inquilinato",
+            "category": "Derecho Inmobiliario",
+            "author": "Sofía Guaña",
+            "excerpt": "Análisis de las reformas que introducen la inscripción obligatoria de contratos, topes al valor del arriendo y nuevas sanciones para proteger a los inquilinos en Ecuador.",
+            "date": "Agosto 2025",
+            "readTime": "2 min",
+            "image": "/documents/articuloSg.jpg",
+            "type": "Artículo",
+            "institution": "GESTIUM Servicios Legales Integrales",
+            "pdfUrl": "/documents/articuloSg.pdf"
+        }
 
     ];
 
@@ -220,7 +244,6 @@ export default function PublicacionesPage() {
                         {featuredArticles.map((article, index) => {
                             const articleId = generateArticleId(article.title);
                             const clicks = clickCounts[articleId] || 0;
-
                             return (
                                 <motion.article
                                     key={index}

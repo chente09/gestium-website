@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
+import WhatsAppButton from './WhatsAppButton';
+import CookieConsentBanner from '../ui/CookieConsentBanner';
 
 interface MainLayoutProps {
     children: React.ReactNode;
@@ -14,6 +16,8 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                 {children}
             </main>
             <Footer />
+            <WhatsAppButton />
+            <CookieConsentBanner />
         </div>
     );
 };
