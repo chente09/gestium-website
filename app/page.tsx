@@ -1029,10 +1029,10 @@ export default function Home() {
                   className="absolute -top-20 -right-4 w-16 h-16 rounded-full flex items-center justify-center backdrop-blur-sm bg-white/10"
                   style={{
                     boxShadow: '0 10px 25px rgba(244, 196, 1, 0.3)',
-                    animation: 'float 3s ease-in-out infinite'
+                    // Se elimina la animación de CSS 'float'
                   }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, scale: 0, y: 50 }} // Añadimos y: 50
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }} // Animamos y a 0
                   viewport={{ once: true }}
                   transition={{ delay: 1.2, duration: 0.6 }}
                 >
@@ -1043,10 +1043,10 @@ export default function Home() {
                   className="absolute -bottom-20 -left-6 w-14 h-14 rounded-full flex items-center justify-center backdrop-blur-sm bg-white/10"
                   style={{
                     boxShadow: '0 10px 25px rgba(220, 38, 38, 0.3)',
-                    animation: 'float 3s ease-in-out infinite 1s'
+                    // Se elimina la animación de CSS 'float'
                   }}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, scale: 0, y: -50 }} // Añadimos y: -50
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }} // Animamos y a 0
                   viewport={{ once: true }}
                   transition={{ delay: 1.4, duration: 0.6 }}
                 >
@@ -1244,7 +1244,7 @@ export default function Home() {
         />
 
         <div className="container-fluid relative z-10">
-          
+
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
