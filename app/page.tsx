@@ -10,6 +10,7 @@ import { Building2, Users, User, Clock, Target, Award, Briefcase, House, UserChe
 import { CTAButton } from '@/components/ui/Button';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { SectionButton } from '@/components/ui/Button';
+import TechGrid from '@/components/ui/TechGrid';
 
 const useTypewriter = (text: string, speed = 50, delay = 0) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -760,25 +761,7 @@ export default function Home() {
         }}
       >
         {/* Patrón tecnológico de fondo */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-0 w-full h-full">
-            <div className="grid grid-cols-12 gap-4 h-full">
-              {Array.from({ length: 144 }).map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="border border-white opacity-20"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 0.3, 0] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    delay: Math.random() * 4
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+        <TechGrid />
 
         <div className="container mx-auto px-6 relative z-10 max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -1390,7 +1373,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
 
       {/* CTA Section - Con nueva paleta */}
       <div

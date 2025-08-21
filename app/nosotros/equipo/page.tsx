@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import MainLayout from '@/components/layout/MainLayout';
 import Section from '@/components/ui/Section';
 import SectionHeader from '@/components/ui/SectionHeader';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, animate } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 interface TeamMember {
@@ -25,6 +25,7 @@ interface TeamMember {
 
 export default function EquipoPage() {
     const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         // Función que se ejecuta al presionar una tecla
@@ -38,6 +39,32 @@ export default function EquipoPage() {
         // 1. La condición ahora es verificar si 'selectedMember' tiene datos
         if (selectedMember) {
             document.addEventListener('keydown', handleKeyDown);
+
+            const scrollableElement = scrollContainerRef.current;
+            if (scrollableElement) {
+                // Pequeño retraso para que la animación del modal termine
+                const timer = setTimeout(() => {
+                    // Solo animar si hay suficiente contenido para hacer scroll
+                    if (scrollableElement.scrollHeight > scrollableElement.clientHeight) {
+                        animate(
+                            scrollableElement.scrollTop, // Animar desde la posición actual (0)
+                            60, // Hasta 50px hacia abajo
+                            {
+                                duration: 1.5, // Duración total
+                                ease: "easeInOut",
+                                repeat: 2, // Hacer el ciclo una vez (bajar y subir)
+                                repeatType: "mirror", // "mirror" hace que vuelva a la posición inicial
+                                onUpdate: (latest) => {
+                                    scrollableElement.scrollTop = latest;
+                                }
+                            }
+                        );
+                    }
+                }, 800); // 800ms de retraso
+
+                // Limpieza del temporizador
+                return () => clearTimeout(timer);
+            }
         }
 
         // La función de limpieza se encarga de remover el listener
@@ -471,7 +498,7 @@ export default function EquipoPage() {
                                         : 'ml-8 lg:ml-12'
                                     }`}>
                                     {/* Contenedor scrolleable SIN fondo visible - REDUCIDO */}
-                                    <div className="h-full overflow-y-auto scrollbar-hide">
+                                    <div ref={scrollContainerRef} className="h-full overflow-y-auto scrollbar-hide cursor-row-resize">
                                         <div className="min-h-full p-5 lg:p-6 text-white flex flex-col justify-end">
                                             <motion.div
                                                 initial={{

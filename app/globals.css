@@ -193,7 +193,23 @@ body {
   }
 }
 
+/* Animación de pulso para la grilla tecnológica */
+@keyframes grid-pulse {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
 /* === CLASES DE ANIMACIÓN === */
+
+/* Clase de utilidad para aplicar la animación */
+.animate-grid-pulse {
+  animation: grid-pulse 4s ease-in-out infinite;
+}
+
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
 }
