@@ -193,22 +193,48 @@ body {
   }
 }
 
-/* Animación de pulso para la grilla tecnológica */
-@keyframes grid-pulse {
+/* Keyframes para un efecto de "shimmer" o parpadeo sutil */
+@keyframes shimmer {
   0%, 100% {
     opacity: 0;
   }
   50% {
-    opacity: 0.3;
+    opacity: 0.5;
   }
+}
+
+/* Contenedor principal que dibuja la grilla y aplica la animación */
+.tech-grid-background {
+  /* Dibuja las líneas verticales e horizontales con gradientes */
+  background-image:
+    repeating-linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) 1px, transparent 1px, transparent 4rem),
+    repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) 1px, transparent 1px, transparent 4rem);
+  
+  /* Pseudo-elemento para el efecto de parpadeo */
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-grid-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  
+  /* Un gradiente radial grande y difuso que se moverá y parpadeará */
+  background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.3) 0%, transparent 50%);
+  
+  /* Aplicamos la animación de parpadeo */
+  animation: shimmer 10s ease-in-out infinite;
+  
+  /* Posicionamos el gradiente aleatoriamente (opcional, para variar el efecto) */
+  top: calc(50% - 50vh);
+  left: calc(50% - 50vw);
+  width: 100vw;
+  height: 100vh;
 }
 
 /* === CLASES DE ANIMACIÓN === */
 
-/* Clase de utilidad para aplicar la animación */
-.animate-grid-pulse {
-  animation: grid-pulse 4s ease-in-out infinite;
-}
 
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
