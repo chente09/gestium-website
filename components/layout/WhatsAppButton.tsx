@@ -169,7 +169,7 @@ const PhenomenalWhatsAppButton: React.FC = () => {
     const serviceOptions = [
         {
             text: "Recuperación Cartera",
-            message: "Hola! visité su página web, necesito asistencia URGENTE con recuperación de cartera. He visto su experiencia de 20+ años y 95% efectividad en gestium-sli.com",
+            message: "Hola! visité su página web, necesito asistencia URGENTE con recuperación de cartera. He visto su experiencia de 20 años y 95% efectividad en gestium-sli.com",
             icon: <ScaleIcon className="h-4 w-4" />,
             premium: true
         },
@@ -193,7 +193,7 @@ const PhenomenalWhatsAppButton: React.FC = () => {
         },
         {
             text: "Derecho de Familia",
-            message: "Hola! visité su página web, necesito ayuda urgente con un asunto de derecho familiar. Me contacto desde gestium-sli.com",
+            message: "Hola! visité su página web, necesito ayuda urgente con un asunto de derecho familiar. Me interesan sus servicios desde gestium-sli.com",
             icon: <UserGroupIcon className="h-4 w-4" />,
             premium: false
         },
