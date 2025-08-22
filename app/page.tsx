@@ -593,7 +593,7 @@ export default function Home() {
                   <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
                 </motion.button>
                 <motion.button
-                  onClick={() => router.push('/historia')}
+                  onClick={() => router.push('/nosotros/historia')}
                   className="group text-lg font-semibold flex items-center gap-2 transition-colors duration-300 cursor-pointer"
                   style={{ color: 'var(--steel)' }}
                   whileHover={{ x: 5, color: 'var(--charcoal)' }}
