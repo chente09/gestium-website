@@ -46,8 +46,7 @@ export default function InstitucionesFinancierasPage() {
 
     // Lista de clientes financieros para el scroll
     const financialClients = [
-        'Banco del Pichincha C.A.',
-        'Produbanco Grupo Promerica',
+        'Principales Instituciones Financieras del IESS',
         'Banco del Instituto Ecuatoriano de Seguridad Social (BIESS)',
         'Banco Nacional de Fomento',
     ];
