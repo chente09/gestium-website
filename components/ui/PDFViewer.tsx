@@ -4,7 +4,7 @@
 
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Download, FileText, ExternalLink } from 'lucide-react';
+import { X, FileText, ExternalLink } from 'lucide-react';
 
 // Importaciones de la nueva biblioteca
 import { Worker } from '@react-pdf-viewer/core';
