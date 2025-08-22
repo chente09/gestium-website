@@ -64,9 +64,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification: {
-    google: 'your-google-verification-code', // Reemplazar con tu código real
-  },
 }
 
 export default function RootLayout({
@@ -136,6 +133,16 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased" suppressHydrationWarning={true}>
+
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-W3Q4VQS5"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          ></iframe>
+        </noscript>
+
         {children}
         
         {/* Prevent FOUC (Flash of Unstyled Content) */}

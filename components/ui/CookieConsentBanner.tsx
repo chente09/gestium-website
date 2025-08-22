@@ -3,12 +3,19 @@
 import React from 'react';
 import CookieConsent from "react-cookie-consent";
 import Link from 'next/link';
+import TagManager from 'react-gtm-module';
 
 // Opcional: Función para inicializar Google Analytics u otros scripts tras el consentimiento
 const handleAcceptCookies = () => {
-    // Ejemplo: Si usas Google Analytics, aquí inicializarías el script.
-    // gtm.initialize({ gtmId: 'G-XXXXXXXXXX' });
-    console.log("Cookies aceptadas. Scripts de analítica pueden inicializarse.");
+    // Define los argumentos para inicializar GTM
+    const tagManagerArgs = {
+        gtmId: 'GTM-W3Q4VQS5' // ⬅️ USA TU ID DE GOOGLE TAG MANAGER
+    };
+
+    // Inicializa Google Tag Manager
+    TagManager.initialize(tagManagerArgs);
+
+    console.log("Cookies aceptadas. Google Tag Manager inicializado.");
 };
 
 const CookieConsentBanner: React.FC = () => {

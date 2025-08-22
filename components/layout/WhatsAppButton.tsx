@@ -24,12 +24,12 @@ const RippleEffect = ({ isVisible }: { isVisible: boolean }) => (
                         className="absolute inset-0 rounded-full border-2 border-white/30"
                         initial={{ scale: 0, opacity: 0.8 }}
                         animate={{
-                            scale: [0, 1.8, 3],
-                            opacity: [0.8, 0.3, 0]
+                            scale: [0, 2, 3],
+                            opacity: [0.6, 0.2, 0]
                         }}
                         transition={{
-                            duration: 2.5,
-                            delay: i * 0.5,
+                            duration: 2,
+                            delay: i * 0.6,
                             repeat: Infinity,
                             ease: "easeOut"
                         }}
@@ -43,7 +43,7 @@ const RippleEffect = ({ isVisible }: { isVisible: boolean }) => (
 // --- INDICADOR DE ESTADO PREMIUM ---
 const StatusIndicator = ({ isOfficeHours }: { isOfficeHours: boolean }) => (
     <motion.div
-        className={`absolute -top-1 -right-1 w-3 h-3 rounded-full border-2 border-white shadow-sm ${isOfficeHours ? 'bg-green-500' : 'bg-orange-500'
+        className={`absolute -top-1 right-1 w-3 h-3 rounded-full border-2 border-white shadow-sm ${isOfficeHours ? 'bg-green-500' : 'bg-orange-500'
             }`}
         animate={{
             scale: [1, 1.1, 1],
@@ -94,7 +94,7 @@ const SmartTooltip = ({
             return {
                 title: "Fuera de horario",
                 subtitle: "Te responderemos pronto",
-                time: "Lunes 8:30 AM"
+                time: "Mañana 8:30 AM"
             };
         }
     };
@@ -113,7 +113,7 @@ const SmartTooltip = ({
                 <div className="flex items-center gap-2 mb-1">
                     <h4 className="font-semibold text-sm text-gray-800">{content.title}</h4>
                     <motion.div
-                        className={`w-2 h-2 rounded-full ${isOfficeHours ? 'bg-green-500' : 'bg-orange-500'
+                        className={`w-3 h-3 rounded-full ${isOfficeHours ? 'bg-green-500' : 'bg-orange-500'
                             }`}
                         animate={{
                             scale: [1, 1.2, 1],
@@ -169,13 +169,13 @@ const PhenomenalWhatsAppButton: React.FC = () => {
     const serviceOptions = [
         {
             text: "Recuperación Cartera",
-            message: "Hola Dr. Maldonado, necesito asistencia URGENTE con recuperación de cartera. He visto su experiencia de 20+ años y 95% efectividad en gestium-sli.com",
+            message: "Hola! visité su página web, necesito asistencia URGENTE con recuperación de cartera. He visto su experiencia de 20+ años y 95% efectividad en gestium-sli.com",
             icon: <ScaleIcon className="h-4 w-4" />,
             premium: true
         },
         {
             text: "Derecho Inmobiliario",
-            message: "Hola Dr. Maldonado, tengo una consulta sobre derecho inmobiliario. Vi que han participado en 50+ proyectos exitosos en gestium-sli.com",
+            message: "Hola! visité su página web, tengo una consulta sobre derecho inmobiliario. Vi que han participado en proyectos exitosos en gestium-sli.com",
             icon: <HomeModernIcon className="h-4 w-4" />,
             premium: false
         },
@@ -187,19 +187,19 @@ const PhenomenalWhatsAppButton: React.FC = () => {
         },
         {
             text: "Mediación & Arbitraje",
-            message: "Hola Dr. Maldonado, requiero servicios de mediación y arbitraje. He escuchado de su excelencia profesional en gestium-sli.com",
+            message: "Hola! visité su página web, requiero servicios de mediación y arbitraje. He escuchado de su excelencia profesional en gestium-sli.com",
             icon: <BriefcaseIcon className="h-4 w-4" />,
             premium: false
         },
         {
             text: "Derecho de Familia",
-            message: "Hola Dr. Maldonado, necesito ayuda urgente con un asunto de derecho familiar. Me contacto desde gestium-sli.com",
+            message: "Hola! visité su página web, necesito ayuda urgente con un asunto de derecho familiar. Me contacto desde gestium-sli.com",
             icon: <UserGroupIcon className="h-4 w-4" />,
             premium: false
         },
         {
             text: "Gestiones & Trámites",
-            message: "Buenas Dr. Maldonado, me contacto desde gestium-sli.com para consultar sobre gestiones y trámites especializados.",
+            message: "Hola!, me contacto desde gestium-sli.com para consultar sobre gestiones y trámites especializados.",
             icon: <ClipboardDocumentListIcon className="h-4 w-4" />,
             premium: false
         }
