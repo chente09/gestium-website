@@ -20,59 +20,71 @@ interface TeamMember {
     achievements?: string[];
     isLeader?: boolean;
     textPosition?: 'left' | 'right';
-    linkedinUrl?: string; // Optional LinkedIn URL
+    linkedinUrl?: string;
 }
 
 export default function EquipoPage() {
     const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+    const [hoveredMember, setHoveredMember] = useState<string | null>(null);
+    const [isMobile, setIsMobile] = useState(false);
     const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+    // Detectar si es móvil
     useEffect(() => {
-        // Función que se ejecuta al presionar una tecla
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    useEffect(() => {
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
-                // 2. La función que se llama es setSelectedMember(null)
-                setSelectedMember(null); 
+                setSelectedMember(null);
             }
         };
 
-        // 1. La condición ahora es verificar si 'selectedMember' tiene datos
         if (selectedMember) {
             document.addEventListener('keydown', handleKeyDown);
+            // Prevenir scroll del body cuando el modal está abierto
+            document.body.style.overflow = 'hidden';
 
             const scrollableElement = scrollContainerRef.current;
             if (scrollableElement) {
-                // Pequeño retraso para que la animación del modal termine
                 const timer = setTimeout(() => {
-                    // Solo animar si hay suficiente contenido para hacer scroll
                     if (scrollableElement.scrollHeight > scrollableElement.clientHeight) {
                         animate(
-                            scrollableElement.scrollTop, // Animar desde la posición actual (0)
-                            60, // Hasta 50px hacia abajo
+                            scrollableElement.scrollTop,
+                            60,
                             {
-                                duration: 1.5, // Duración total
+                                duration: 1.5,
                                 ease: "easeInOut",
-                                repeat: 2, // Hacer el ciclo una vez (bajar y subir)
-                                repeatType: "mirror", // "mirror" hace que vuelva a la posición inicial
+                                repeat: 2,
+                                repeatType: "mirror",
                                 onUpdate: (latest) => {
                                     scrollableElement.scrollTop = latest;
                                 }
                             }
                         );
                     }
-                }, 800); // 800ms de retraso
+                }, 800);
 
-                // Limpieza del temporizador
                 return () => clearTimeout(timer);
             }
+        } else {
+            // Restaurar scroll del body
+            document.body.style.overflow = 'unset';
         }
 
-        // La función de limpieza se encarga de remover el listener
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = 'unset';
         };
-    }, [selectedMember]); // 3. La dependencia es 'selectedMember'
-
+    }, [selectedMember]);
 
     const teamMembers: TeamMember[] = [
         {
@@ -264,7 +276,7 @@ export default function EquipoPage() {
         <MainLayout>
             {/* Hero Section */}
             <div
-                className="relative py-32 overflow-hidden"
+                className="relative py-24 sm:py-32 overflow-hidden"
                 style={{
                     background: 'var(--gradient-primary)',
                     backgroundImage: "url('/images/ofi/Ofi.JPG')",
@@ -275,14 +287,14 @@ export default function EquipoPage() {
             >
                 <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }} />
 
-                <div className="container-fluid relative z-10 text-center">
+                <div className="container-fluid relative z-10 text-center px-4">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
                         <motion.h1
-                            className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
+                            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 tracking-tight"
                             style={{
                                 fontFamily: "'Playfair Display', serif",
                                 color: 'var(--white)'
@@ -308,7 +320,7 @@ export default function EquipoPage() {
                         />
 
                         <motion.p
-                            className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed"
+                            className="text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed px-4"
                             style={{ color: 'rgba(255, 255, 255, 0.9)' }}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -327,11 +339,11 @@ export default function EquipoPage() {
                     title="Profesionales Especializados"
                     description="Conoce a nuestro equipo de expertos en cada área del Derecho"
                     centered={true}
-                    className="mb-16"
+                    className="mb-12 sm:mb-16"
                 />
 
                 {/* Team Grid Premium */}
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
                         {teamMembers.map((member, index) => (
                             <motion.div
@@ -348,47 +360,54 @@ export default function EquipoPage() {
                                 }}
                                 whileHover={{ y: -8, scale: 1.02 }}
                                 onClick={() => setSelectedMember(member)}
+                                onMouseEnter={() => setHoveredMember(member.id)}
+                                onMouseLeave={() => setHoveredMember(null)}
                             >
-                                <div className="relative overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl">
-                                    {/* Photo Container - OPTIMIZADO PARA ALTA CALIDAD */}
+                                <div className="relative overflow-hidden shadow-lg transition-all duration-500 group-hover:shadow-2xl rounded-lg">
+                                    {/* Photo Container */}
                                     <div className="relative h-80 overflow-hidden bg-gray-100">
                                         <Image
                                             src={member.image}
                                             alt={member.name}
                                             fill
                                             className="object-cover transition-all duration-700 group-hover:scale-110"
-                                            // ✨ CONFIGURACIONES CLAVE PARA CALIDAD MÁXIMA
                                             quality={95}
-                                            priority={index < 4} // ✅ OPTIMIZACIÓN: Solo las primeras 4 imágenes
+                                            priority={index < 4}
                                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                                             placeholder="blur"
                                             blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                                         />
                                         <div className="absolute inset-0 bg-black/10 pointer-events-none z-10" />
 
-                                        {/* Overlay Premium */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                                        {/* Overlay Premium - SIEMPRE VISIBLE EN MÓVIL */}
+                                        <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-all duration-500 ${isMobile || hoveredMember === member.id ? 'opacity-100' : 'opacity-0'
+                                            }`} />
 
-                                        {/* Hover Content */}
-                                        <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                                            <p className="text-sm font-medium mb-2">{member.specialization}</p>
+                                        {/* Hover Content - MEJORADO PARA MÓVIL */}
+                                        <div className={`absolute bottom-4 left-4 right-4 text-white transition-all duration-500 ${isMobile || hoveredMember === member.id
+                                                ? 'opacity-100 transform translate-y-0'
+                                                : 'opacity-0 transform translate-y-4'
+                                            }`}>
+                                            <p className="text-sm font-medium mb-3 line-clamp-2">{member.specialization}</p>
 
-                                            {/* Contenedor flex para alinear botón e icono */}
-                                            <div className="flex gap-2">
-                                                <button className="text-xs font-bold uppercase tracking-wider px-4 py-2 border border-white/50 hover:bg-white hover:text-black transition-all duration-300 cursor-pointer flex-1">
+                                            {/* Contenedor flex responsivo */}
+                                            <div className="flex flex-col sm:flex-row gap-2">
+                                                <button className="text-xs font-bold uppercase tracking-wider px-4 py-2.5 border border-white/50 hover:bg-white hover:text-black transition-all duration-300 cursor-pointer flex-1 min-h-[40px] flex items-center justify-center">
                                                     Ver Perfil
                                                 </button>
 
-                                                {/* ✅ CORREGIDO: Etiqueta <a> bien formada */}
+                                                {/* LinkedIn Button - MEJORADO */}
                                                 {member.linkedinUrl && (
                                                     <a
                                                         href={member.linkedinUrl}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="w-10 h-10 border border-white/50 hover:bg-white hover:text-black transition-all duration-300 flex items-center justify-center"
+                                                        className="w-full sm:w-10 h-10 border border-white/50 hover:bg-white hover:text-black transition-all duration-300 flex items-center justify-center text-xs font-bold sm:text-base"
                                                         onClick={(e) => e.stopPropagation()}
+                                                        aria-label="Ver perfil de LinkedIn"
                                                     >
-                                                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                        <span className="sm:hidden">LinkedIn</span>
+                                                        <svg className="w-4 h-4 hidden sm:block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                                                         </svg>
                                                     </a>
@@ -397,10 +416,10 @@ export default function EquipoPage() {
                                         </div>
                                     </div>
 
-                                    {/* Info Section - Tamaño uniforme */}
+                                    {/* Info Section - Mejorada */}
                                     <div className="p-6">
                                         <h3
-                                            className="text-lg font-bold mb-2 group-hover:text-red-gestium transition-colors duration-300"
+                                            className="text-lg font-bold mb-2 group-hover:text-red-gestium transition-colors duration-300 line-clamp-2"
                                             style={{
                                                 color: 'var(--charcoal)',
                                                 fontFamily: "'Inter', sans-serif"
@@ -410,20 +429,20 @@ export default function EquipoPage() {
                                         </h3>
 
                                         <p
-                                            className="text-sm font-medium mb-3"
+                                            className="text-sm font-medium mb-3 line-clamp-2"
                                             style={{ color: 'var(--red-gestium)' }}
                                         >
                                             {member.title}
                                         </p>
 
                                         {/* Expertise Indicator */}
-                                        <div className="mt-4 flex items-center gap-2">
+                                        <div className="mt-4 flex items-start gap-2">
                                             <div
-                                                className="w-2 h-2 rounded-full"
+                                                className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
                                                 style={{ backgroundColor: 'var(--red-gestium)' }}
                                             />
                                             <span
-                                                className="text-xs uppercase tracking-wider"
+                                                className="text-xs uppercase tracking-wider line-clamp-2"
                                                 style={{ color: 'var(--silver)' }}
                                             >
                                                 {member.specialization}
@@ -437,11 +456,11 @@ export default function EquipoPage() {
                 </div>
             </Section>
 
-            {/* Modal Premium Full-Width - CON POSICIONAMIENTO DINÁMICO */}
+            {/* Modal Premium Full-Width - MEJORADO PARA MÓVIL */}
             <AnimatePresence>
                 {selectedMember && (
                     <motion.div
-                        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4"
                         style={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
@@ -449,19 +468,20 @@ export default function EquipoPage() {
                         onClick={() => setSelectedMember(null)}
                     >
                         <motion.div
-                            className="relative bg-white max-w-7xl w-full h-[95vh] overflow-hidden"
+                            className="relative bg-white w-full max-w-7xl h-[98vh] sm:h-[95vh] overflow-hidden rounded-none sm:rounded-lg"
                             initial={{ scale: 0.7, opacity: 0, y: 50 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.7, opacity: 0, y: 50 }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                             onClick={(e) => e.stopPropagation()}
                         >
-                            {/* Close Button */}
+                            {/* Close Button - MEJORADO */}
                             <button
-                                className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all duration-300 flex items-center justify-center cursor-pointer"
+                                className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 w-12 h-12 sm:w-10 sm:h-10 rounded-full bg-black/50 text-white hover:bg-black/70 transition-all duration-300 flex items-center justify-center cursor-pointer"
                                 onClick={() => setSelectedMember(null)}
+                                aria-label="Cerrar perfil"
                             >
-                                <XMarkIcon className="w-6 h-6" />
+                                <XMarkIcon className="w-6 h-6 sm:w-6 sm:h-6" />
                             </button>
 
                             {/* Background Image - FULL WIDTH */}
@@ -479,46 +499,53 @@ export default function EquipoPage() {
                                 />
                             </div>
 
-                            {/* Gradient Overlay - DINÁMICO SEGÚN POSICIÓN */}
-                            <div className={`absolute inset-0 ${selectedMember.textPosition === 'right'
-                                ? 'bg-gradient-to-l from-black/70 via-black/30 to-black/5'
-                                : 'bg-gradient-to-r from-black/70 via-black/30 to-black/5'
+                            {/* Gradient Overlay - MEJORADO PARA MÓVIL */}
+                            <div className={`absolute inset-0 ${isMobile
+                                    ? 'bg-gradient-to-t from-black/90 via-black/60 to-black/30'
+                                    : selectedMember.textPosition === 'right'
+                                        ? 'bg-gradient-to-l from-black/70 via-black/30 to-black/5'
+                                        : 'bg-gradient-to-r from-black/70 via-black/30 to-black/5'
                                 }`} />
 
-                            {/* Content Section - POSICIÓN DINÁMICA Y TAMAÑO REDUCIDO */}
-                            <div className={`absolute inset-0 flex items-end ${selectedMember.textPosition === 'right'
-                                ? 'justify-end'
-                                : 'justify-start'
+                            {/* Content Section - RESPONSIVE */}
+                            <div className={`absolute inset-0 flex ${isMobile
+                                    ? 'items-end justify-center'
+                                    : selectedMember.textPosition === 'right'
+                                        ? 'items-end justify-end'
+                                        : 'items-end justify-start'
                                 }`}>
-                                <div className={`w-full ${selectedMember.textPosition === 'right'
-                                    ? 'max-w-lg'  // ← Más delgado para la derecha
-                                    : 'max-w-xl'  // ← Tamaño normal para la izquierda
-                                    } h-[100vh] ${selectedMember.textPosition === 'right'
-                                        ? 'mr-8 lg:mr-12'
-                                        : 'ml-8 lg:ml-12'
-                                    }`}>
-                                    {/* Contenedor scrolleable SIN fondo visible - REDUCIDO */}
-                                    <div ref={scrollContainerRef} className="h-full overflow-y-auto scrollbar-hide cursor-row-resize">
-                                        <div className="min-h-full p-5 lg:p-6 text-white flex flex-col justify-end">
+                                <div className={`w-full ${isMobile
+                                        ? 'max-w-full'
+                                        : selectedMember.textPosition === 'right'
+                                            ? 'max-w-lg mr-4 sm:mr-8 lg:mr-12'
+                                            : 'max-w-xl ml-4 sm:ml-8 lg:ml-12'
+                                    } h-[100vh]`}>
+                                    {/* Contenedor scrolleable - RESPONSIVE */}
+                                    <div
+                                        ref={scrollContainerRef}
+                                        className="h-full overflow-y-auto scrollbar-hide"
+                                        style={{ cursor: isMobile ? 'default' : 'row-resize' }}
+                                    >
+                                        <div className="min-h-full p-4 sm:p-5 lg:p-6 text-white flex flex-col justify-end">
                                             <motion.div
                                                 initial={{
                                                     opacity: 0,
-                                                    x: selectedMember.textPosition === 'right' ? 50 : -50
+                                                    x: isMobile ? 0 : selectedMember.textPosition === 'right' ? 50 : -50,
+                                                    y: isMobile ? 30 : 0
                                                 }}
-                                                animate={{ opacity: 1, x: 0 }}
+                                                animate={{ opacity: 1, x: 0, y: 0 }}
                                                 transition={{ delay: 0.3, duration: 0.8 }}
-                                                className="space-y-5 pt-[55vh]"
+                                                className={`space-y-4 sm:space-y-5 ${isMobile ? 'pt-[50vh]' : 'pt-[55vh]'
+                                                    }`}
                                             >
-                                                {/* Nombre */}
-                                                <h2
-                                                    className="text-3xl lg:text-4xl font-bold leading-tight"
-                                                >
+                                                {/* Nombre - RESPONSIVE */}
+                                                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">
                                                     {selectedMember.name}
                                                 </h2>
 
-                                                {/* Título */}
+                                                {/* Título - RESPONSIVE */}
                                                 <p
-                                                    className="text-lg lg:text-xl font-semibold"
+                                                    className="text-base sm:text-lg lg:text-xl font-semibold"
                                                     style={{
                                                         color: 'var(--red-gestium)',
                                                         fontFamily: "'Inter', sans-serif"
@@ -527,10 +554,10 @@ export default function EquipoPage() {
                                                     {selectedMember.title}
                                                 </p>
 
-                                                {/* Especialización */}
+                                                {/* Especialización - RESPONSIVE */}
                                                 <div className="space-y-2">
                                                     <h3
-                                                        className="text-base font-semibold"
+                                                        className="text-sm sm:text-base font-semibold"
                                                         style={{ fontFamily: "'Inter', sans-serif" }}
                                                     >
                                                         Especialización
@@ -543,10 +570,10 @@ export default function EquipoPage() {
                                                     </p>
                                                 </div>
 
-                                                {/* Descripción */}
+                                                {/* Descripción - RESPONSIVE */}
                                                 <div className="space-y-2">
                                                     <h3
-                                                        className="text-base font-semibold"
+                                                        className="text-sm sm:text-base font-semibold"
                                                         style={{ fontFamily: "'Inter', sans-serif" }}
                                                     >
                                                         Descripción
@@ -559,11 +586,11 @@ export default function EquipoPage() {
                                                     </p>
                                                 </div>
 
-                                                {/* Experiencia */}
+                                                {/* Experiencia - RESPONSIVE */}
                                                 {selectedMember.experience && (
                                                     <div className="space-y-2">
                                                         <h3
-                                                            className="text-base font-semibold"
+                                                            className="text-sm sm:text-base font-semibold"
                                                             style={{ fontFamily: "'Inter', sans-serif" }}
                                                         >
                                                             Experiencia
@@ -577,11 +604,11 @@ export default function EquipoPage() {
                                                     </div>
                                                 )}
 
-                                                {/* Formación */}
+                                                {/* Formación - RESPONSIVE */}
                                                 {selectedMember.education && selectedMember.education.length > 0 && (
                                                     <div className="space-y-2">
                                                         <h3
-                                                            className="text-base font-semibold"
+                                                            className="text-sm sm:text-base font-semibold"
                                                             style={{ fontFamily: "'Inter', sans-serif" }}
                                                         >
                                                             Formación
@@ -600,11 +627,11 @@ export default function EquipoPage() {
                                                     </div>
                                                 )}
 
-                                                {/* Logros Destacados */}
+                                                {/* Logros Destacados - RESPONSIVE */}
                                                 {selectedMember.achievements && selectedMember.achievements.length > 0 && (
                                                     <div className="space-y-3">
                                                         <h3
-                                                            className="text-base font-semibold"
+                                                            className="text-sm sm:text-base font-semibold"
                                                             style={{ fontFamily: "'Inter', sans-serif" }}
                                                         >
                                                             Logros Destacados
@@ -627,22 +654,51 @@ export default function EquipoPage() {
                                                         </ul>
                                                     </div>
                                                 )}
+
+                                                {/* LinkedIn CTA - SOLO EN MODAL */}
+                                                {selectedMember.linkedinUrl && (
+                                                    <div className="pt-4">
+                                                        <a
+                                                            href={selectedMember.linkedinUrl}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white text-sm font-medium transition-colors duration-300"
+                                                            onClick={(e) => e.stopPropagation()}
+                                                        >
+                                                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                                            </svg>
+                                                            Conectar en LinkedIn
+                                                        </a>
+                                                    </div>
+                                                )}
+
+                                                {/* Padding extra para móvil */}
+                                                <div className="pb-8 sm:pb-4" />
                                             </motion.div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            {/* CSS para ocultar scrollbar completamente */}
+                            {/* CSS para ocultar scrollbar */}
                             <style jsx>{`
-                    .scrollbar-hide {
-                        -ms-overflow-style: none;  /* Internet Explorer 10+ */
-                        scrollbar-width: none;     /* Firefox */
-                    }
-                    .scrollbar-hide::-webkit-scrollbar {
-                        display: none;             /* Safari and Chrome */
-                    }
-                `}</style>
+                                .scrollbar-hide {
+                                    -ms-overflow-style: none;
+                                    scrollbar-width: none;
+                                }
+                                .scrollbar-hide::-webkit-scrollbar {
+                                    display: none;
+                                }
+                                
+                                /* Clases de utilidad para truncar texto */
+                                .line-clamp-2 {
+                                    display: -webkit-box;
+                                    -webkit-line-clamp: 2;
+                                    -webkit-box-orient: vertical;
+                                    overflow: hidden;
+                                }
+                            `}</style>
                         </motion.div>
                     </motion.div>
                 )}

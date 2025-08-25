@@ -38,80 +38,79 @@ const Footer: React.FC = () => {
                 style={{ backgroundColor: 'var(--red-gestium)' }}
             />
 
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+                {/* LAYOUT RESPONSIVO MEJORADO */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
                     
-                    {/* ===== LOGO Y CONTACTO ===== */}
-                    <div className="col-span-1 lg:col-span-1">
+                    {/* ===== LOGO Y CONTACTO - CENTRADO EN MÓVIL ===== */}
+                    <div className="col-span-1 md:col-span-2 lg:col-span-1 text-center md:text-left">
                         <Link href="/" className="inline-block group">
                             {/* ✅ LOGO CORRECTO */}
-                            <div className="relative h-[120px] w-48 transition-all duration-300 group-hover:scale-105">
+                            <div className="relative h-[100px] sm:h-[120px] w-40 sm:w-48 mx-auto md:mx-0 transition-all duration-300 group-hover:scale-105">
                                 <Image
                                     src="/images/image.png"
                                     alt="GESTIUM S.A."
                                     fill
                                     className="object-contain"
-                                    sizes="192px"
+                                    sizes="(max-width: 640px) 160px, 192px"
                                     priority
                                 />
                             </div>
                         </Link>
 
-                        {/* ✅ INFORMACIÓN DE CONTACTO REAL Y COMPLETA */}
-                        <div className="space-y-4 mt-2">
-                            <div className="flex items-start space-x-3 group">
+                        {/* ✅ INFORMACIÓN DE CONTACTO CENTRADA EN MÓVIL */}
+                        <div className="space-y-3 sm:space-y-4 mt-4 sm:mt-2">
+                            <div className="flex items-start space-x-3 group justify-center md:justify-start">
                                 <MapPinIcon
-                                    className="h-5 w-5 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110"
+                                    className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:scale-110"
                                     style={{ color: 'var(--red-gestium)' }}
                                 />
-                                <span className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                                <span className="text-xs sm:text-sm text-center md:text-left" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                                     Av. 12 de Octubre N24-660 y Francisco Salazar,<br />
                                     Edificio Concorde, piso 15, Oficina 15C
                                 </span>
                             </div>
                             
-                            <div className="flex items-center space-x-3 group">
+                            <div className="flex items-center space-x-3 group justify-center md:justify-start">
                                 <PhoneIcon
-                                    className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                                    className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
                                     style={{ color: 'var(--red-gestium)' }}
                                 />
-                                <div className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                                <div className="text-xs sm:text-sm text-center md:text-left" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                                     <div>+593 2-543-653</div>
                                     <div>+593 98-933-5061</div>
                                 </div>
                             </div>
                             
-                            <div className="flex items-center space-x-3 group">
+                            <div className="flex items-center space-x-3 group justify-center md:justify-start">
                                 <EnvelopeIcon
-                                    className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
+                                    className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-110"
                                     style={{ color: 'var(--red-gestium)' }}
                                 />
-                                <span className="text-sm" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                                <span className="text-xs sm:text-sm" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                                     info.gestium@gmail.com
                                 </span>
                             </div>
-
-
                         </div>
                     </div>
 
-                    {/* ===== SERVICIOS ESPECIALIZADOS ===== */}
-                    <div>
+                    {/* ===== SERVICIOS - MÓVIL: COLUMNA 1 ===== */}
+                    <div className="col-span-1">
                         <h3
-                            className="text-lg font-bold mb-6 uppercase tracking-wider"
+                            className="text-base sm:text-lg font-bold mb-4 sm:mb-6 uppercase tracking-wider text-center md:text-left"
                             style={{ color: 'var(--white)' }}
                         >
                             Nuestros Servicios
                         </h3>
-                        <ul className="space-y-3">
+                        <ul className="space-y-2 sm:space-y-3">
                             {servicios.map((servicio) => (
                                 <li key={servicio.name}>
                                     <Link
                                         href={servicio.href}
-                                        className="text-sm transition-all duration-300 hover:translate-x-2 hover:scale-105 block"
+                                        className="text-xs sm:text-sm transition-all duration-300 hover:translate-x-2 hover:scale-105 block text-center md:text-left"
                                         style={{ color: 'rgba(255, 255, 255, 0.8)' }}
                                     >
-                                        <span className="border-l-2 border-transparent hover:border-red-500 pl-3 py-1 block transition-all duration-300">
+                                        <span className="border-l-2 border-transparent hover:border-red-500 pl-0 md:pl-3 py-1 block transition-all duration-300">
                                             {servicio.name}
                                         </span>
                                     </Link>
@@ -120,23 +119,23 @@ const Footer: React.FC = () => {
                         </ul>
                     </div>
 
-                    {/* ===== NAVEGACIÓN RÁPIDA ===== */}
-                    <div>
+                    {/* ===== NAVEGACIÓN - MÓVIL: COLUMNA 2 ===== */}
+                    <div className="col-span-1">
                         <h3
-                            className="text-lg font-bold mb-6 uppercase tracking-wider"
+                            className="text-base sm:text-lg font-bold mb-4 sm:mb-6 uppercase tracking-wider text-center md:text-left"
                             style={{ color: 'var(--white)' }}
                         >
                             Navegación
                         </h3>
-                        <ul className="space-y-3">
+                        <ul className="space-y-2 sm:space-y-3">
                             {enlacesRapidos.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         href={link.href}
-                                        className="text-sm transition-all duration-300 hover:translate-x-2 hover:scale-105 block"
+                                        className="text-xs sm:text-sm transition-all duration-300 hover:translate-x-2 hover:scale-105 block text-center md:text-left"
                                         style={{ color: 'rgba(255, 255, 255, 0.8)' }}
                                     >
-                                        <span className="border-l-2 border-transparent hover:border-red-500 pl-3 py-1 block transition-all duration-300">
+                                        <span className="border-l-2 border-transparent hover:border-red-500 pl-0 md:pl-3 py-1 block transition-all duration-300">
                                             {link.name}
                                         </span>
                                     </Link>
@@ -145,63 +144,65 @@ const Footer: React.FC = () => {
                         </ul>
 
                         {/* ✅ PORTAL CLIENTES */}
-                        <div className="mt-6 pt-6 border-t" style={{ borderTopColor: 'rgba(255, 255, 255, 0.1)' }}>
+                        <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t text-center md:text-left" style={{ borderTopColor: 'rgba(255, 255, 255, 0.1)' }}>
                             <Link
                                 href="https://gestium-app.netlify.app/consultas"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center space-x-2 text-sm transition-all duration-300 hover:translate-x-2 hover:scale-105"
+                                className="inline-flex items-center space-x-2 text-xs sm:text-sm transition-all duration-300 hover:translate-x-2 hover:scale-105"
                                 style={{ color: 'var(--gold)' }}
                             >
-                                <LockClosedIcon className="h-4 w-4" />
+                                <LockClosedIcon className="h-3 w-3 sm:h-4 sm:w-4" />
                                 <span className="font-medium">Portal GESTIUM-APP</span>
                             </Link>
                         </div>
                     </div>
 
-                    {/* ===== CTA Y HORARIOS ===== */}
-                    <div>
+                    {/* ===== CTA Y HORARIOS - FULL WIDTH EN MÓVIL ===== */}
+                    <div className="col-span-1 md:col-span-2 lg:col-span-1">
                         <h3
-                            className="text-lg font-bold mb-6 uppercase tracking-wider"
+                            className="text-base sm:text-lg font-bold mb-4 sm:mb-6 uppercase tracking-wider text-center lg:text-left"
                             style={{ color: 'var(--white)' }}
                         >
                             Consulta Legal
                         </h3>
                         <p
-                            className="text-sm mb-6 leading-relaxed"
+                            className="text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed text-center lg:text-left"
                             style={{ color: 'rgba(255, 255, 255, 0.8)' }}
                         >
-                            Más de 20 años de experiencia al servicio de nuestros clientes. 
+                            Experiencia comprobada al servicio de nuestros clientes. 
                             Contáctenos para una consulta especializada.
                         </p>
                         
-                        <Link
-                            href="/contacto"
-                            className="inline-block px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 mb-8 rounded"
-                            style={{
-                                backgroundColor: 'var(--red-gestium)',
-                                color: 'var(--white)'
-                            }}
-                        >
-                            Contactar Ahora
-                        </Link>
+                        <div className="flex justify-center lg:justify-start mb-6 sm:mb-8">
+                            <Link
+                                href="/contacto"
+                                className="inline-block px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 rounded"
+                                style={{
+                                    backgroundColor: 'var(--red-gestium)',
+                                    color: 'var(--white)'
+                                }}
+                            >
+                                Contactar Ahora
+                            </Link>
+                        </div>
 
-                        {/* ✅ HORARIOS DE ATENCIÓN */}
+                        {/* ✅ HORARIOS DE ATENCIÓN CENTRADOS EN MÓVIL */}
                         <div>
-                            <div className="flex items-center space-x-2 mb-4">
+                            <div className="flex items-center space-x-2 mb-3 sm:mb-4 justify-center lg:justify-start">
                                 <ClockIcon
-                                    className="h-5 w-5"
+                                    className="h-4 w-4 sm:h-5 sm:w-5"
                                     style={{ color: 'var(--red-gestium)' }}
                                 />
                                 <h4
-                                    className="font-bold text-sm uppercase tracking-wider"
+                                    className="font-bold text-xs sm:text-sm uppercase tracking-wider"
                                     style={{ color: 'var(--white)' }}
                                 >
                                     Horarios de Atención
                                 </h4>
                             </div>
                             <div
-                                className="text-sm space-y-2"
+                                className="text-xs sm:text-sm space-y-1 sm:space-y-2 max-w-xs mx-auto lg:max-w-none lg:mx-0"
                                 style={{ color: 'rgba(255, 255, 255, 0.8)' }}
                             >
                                 <div className="flex justify-between">
@@ -225,15 +226,15 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
 
-                {/* ===== BOTTOM BAR MEJORADO ===== */}
+                {/* ===== BOTTOM BAR RESPONSIVE ===== */}
                 <div
-                    className="border-t pt-8 mt-16"
+                    className="border-t pt-6 sm:pt-8 mt-8 sm:mt-12 lg:mt-16"
                     style={{ borderTopColor: 'rgba(255, 255, 255, 0.1)' }}
                 >
-                    <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-                        <div className="text-center lg:text-left">
+                    <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0 text-center lg:text-left">
+                        <div>
                             <p
-                                className="text-sm font-medium"
+                                className="text-xs sm:text-sm font-medium"
                                 style={{ color: 'rgba(255, 255, 255, 0.9)' }}
                             >
                                 © {currentYear} GESTIUM S.A. - Servicios Jurídicos Integrales
@@ -245,7 +246,7 @@ const Footer: React.FC = () => {
                                 +20 años de experiencia | 95% efectividad | Cobertura nacional
                             </p>
                             <p
-                                className="text-xs mt-2"
+                                className="text-xs mt-1 sm:mt-2"
                                 style={{ color: 'rgba(255, 255, 255, 0.5)' }}
                             >
                                 Desarrollado por{' '}
@@ -262,17 +263,17 @@ const Footer: React.FC = () => {
                             </p>
                         </div>
                         
-                        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-8">
+                        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 lg:space-x-8">
                             <Link
                                 href="/politica-privacidad"
-                                className="text-sm transition-all duration-300 hover:scale-105 text-center"
+                                className="text-xs sm:text-sm transition-all duration-300 hover:scale-105"
                                 style={{ color: 'rgba(255, 255, 255, 0.6)' }}
                             >
                                 Política de Privacidad
                             </Link>
                             <Link
                                 href="/terminos-condiciones"
-                                className="text-sm transition-all duration-300 hover:scale-105 text-center"
+                                className="text-xs sm:text-sm transition-all duration-300 hover:scale-105"
                                 style={{ color: 'rgba(255, 255, 255, 0.6)' }}
                             >
                                 Términos y Condiciones
