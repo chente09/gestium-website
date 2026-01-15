@@ -274,7 +274,7 @@ export default function NuestroHistoriaPage() {
                                                                 stage.id === 'expansion-innovacion' ? '/images/ofi/bg-sala.jpg' :
                                                                     stage.id === 'ampliacion-tecnologia' ? '/images/ofi/tecnologia.jpg' :
                                                                         stage.id === 'diversificacion-liderazgo' ? '/images/ofi/equipo.jpg' :
-                                                                            '/images/logo.sa.png'
+                                                                            '/images/logo.sfn.png'
                                                 }
                                                 alt={stage.imageAlt}
                                                 fill
