@@ -533,7 +533,7 @@ export default function Home() {
                 {/* Contenedor relativo para que 'fill' funcione */}
                 <div className="relative w-full overflow-hidden rounded-md" style={{ minHeight: '450px' }}>
                   <Image
-                    src="/images/logo.sa.sf.png"
+                    src="/images/logo.sfn.png"
                     alt="Dr. David Maldonado Viteri, Gerente General de Gestium S.A."
                     fill
                     className="object-cover"

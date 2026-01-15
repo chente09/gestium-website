@@ -29,7 +29,12 @@ export const useArticleClicks = (): UseArticleClicksReturn => {
                 .select('article_id, click_count');
 
             if (error) {
-                console.error('Error loading clicks:', error);
+                console.error('Error loading clicks:', {
+                    message: error.message,
+                    details: error.details,
+                    hint: error.hint,
+                    code: error.code
+                });
                 return;
             }
 
@@ -50,7 +55,7 @@ export const useArticleClicks = (): UseArticleClicksReturn => {
     const incrementClick = async (articleId: string, articleTitle: string): Promise<number> => {
         try {
             console.log('🚀 Calling increment_click with:', { articleId, articleTitle });
-            
+
             // Llamar a la función de PostgreSQL
             const { data, error } = await supabase
                 .rpc('increment_click', {

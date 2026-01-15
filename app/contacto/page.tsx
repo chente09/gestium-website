@@ -20,6 +20,21 @@ import {
 export default function ContactoPage() {
     const [contactMethod, setContactMethod] = useState<'email' | 'call' | 'visit' | null>(null);
     const [isEmailCopied, setIsEmailCopied] = useState(false);
+    const openWhatsApp = (phone: string) => {
+        if (!phone) return;
+
+        // 1. Limpiamos el número de guiones y espacios
+        const cleanNumber = phone.replace(/[-\s]/g, '');
+
+        // 2. Quitamos el '0' inicial si lo tiene (común en celulares de Ecuador: 098... -> 98...)
+        const finalNumber = cleanNumber.startsWith('0') ? cleanNumber.substring(1) : cleanNumber;
+
+        // 3. Construimos la URL de WhatsApp (Código de Ecuador es 593)
+        const whatsappUrl = `https://wa.me/593${finalNumber}?text=Hola,%20me%20gustaría%20agendar%20una%20cita.`;
+
+        // 4. Abrimos en una nueva pestaña
+        window.open(whatsappUrl, '_blank');
+    };
 
     // --- INICIO: CÓDIGO AÑADIDO PARA EL SCROLL ---
     // 1. Creamos una referencia para el contenedor de los detalles de contacto.
@@ -44,7 +59,7 @@ export default function ContactoPage() {
     // Información de contacto
     const contactInfo = {
         address: "Av. 12 de Octubre N24-660 y Francisco Salazar, Edificio Concorde, piso 15, Oficina 15C",
-        phones: ["022-543-653",  "098-933-5061"],
+        phones: ["022-543-653", "098-933-5061"],
         email: "info.gestium@gmail.com",
         hours: {
             weekdays: "Lun - Vie: 8:30 AM - 5:30 PM",
@@ -535,7 +550,7 @@ export default function ContactoPage() {
 
                                                         <CTAButton
                                                             variant="primary"
-                                                            onClick={() => makeCall(contactInfo.phones[2])}
+                                                            onClick={() => openWhatsApp(contactInfo.phones[1])}
                                                             className="w-full sm:w-auto"
                                                         >
                                                             Agendar Cita

@@ -46,7 +46,7 @@ export default function InstitucionesFinancierasPage() {
 
     // Lista de clientes financieros para el scroll
     const financialClients = [
-        'Principales Instituciones Financieras del IESS',
+        'Principales Instituciones Financieras del Ecuador',
         'Banco del Instituto Ecuatoriano de Seguridad Social (BIESS)',
         'Banco Nacional de Fomento',
     ];

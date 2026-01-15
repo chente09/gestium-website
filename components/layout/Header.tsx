@@ -112,7 +112,7 @@ const Header: React.FC = () => {
                         <Link href="/" className="flex items-center group">
                             <div className="relative w-[160px] h-[180px] lg:w-[200px] lg:h-[200px]">
                                 <Image 
-                                    src="/images/logo.png" 
+                                    src="/images/logo1.png" 
                                     alt="Gestium S.A." 
                                     fill
                                     className={`object-contain transition-all duration-300 ${

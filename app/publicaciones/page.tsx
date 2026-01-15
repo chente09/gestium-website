@@ -21,7 +21,6 @@ import {
     Download,
     Clock,
     CheckCircle,
-    ArrowRight,
     Eye
 } from 'lucide-react';
 
@@ -182,19 +181,6 @@ export default function PublicacionesPage() {
     const closePDFViewer = () => {
         setSelectedPDF(null);
     };
-
-    const categories = [
-        { name: 'Legal Tech', count: 1, icon: FileText },
-        { name: 'Cobranza y Recuperación', count: 15, icon: Users },
-        { name: 'Derecho Corporativo', count: 12, icon: Newspaper },
-        { name: 'Derecho Inmobiliario', count: 8, icon: BookOpen }
-    ];
-
-    const resources = [
-        { title: 'Tesis y Investigaciones', description: 'Proyectos académicos sobre innovación legal y tecnología.', icon: BookOpen, count: '5 documentos' },
-        { title: 'Formularios Legales', description: 'Plantillas y formularios para diferentes procesos.', icon: Download, count: '25 documentos' },
-        { title: 'Webinars Grabados', description: 'Conferencias y seminarios sobre temas especializados.', icon: Video, count: '12 videos' }
-    ];
 
     return (
         <MainLayout>

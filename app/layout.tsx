@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     siteName: 'Gestium SLI',
     images: [
       {
-        url: '/images/logo.png',
+        url: '/images/logo1.png',
         width: 400,
         height: 230,
         alt: 'Gestium SLI - Estudio Jurídico',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Gestium SLI - Estudio Jurídico',
     description: 'Soluciones jurídicas integrales con experiencia comprobada.',
-    images: ['/images/logo.png'],
+    images: ['/images/logo1.png'],
   },
   robots: {
     index: true,
@@ -101,8 +101,8 @@ export default function RootLayout({
               "alternateName": "Gestium Soluciones Legales Integrales",
               "description": "Estudio jurídico especializado en soluciones legales integrales",
               "url": "https://www.gestium-sli.com",
-              "logo": "https://www.gestium-sli.com/images/logo.png",
-              "image": "https://www.gestium-sli.com/images/logo.png",
+              "logo": "https://www.gestium-sli.com/images/logo1.png",
+              "image": "https://www.gestium-sli.com/images/logo1.png",
               "telephone": "+593989335061", // Reemplazar con número real
               "email": "info@gestium-sli.com",
               "address": {
