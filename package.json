@@ -38,10 +38,11 @@
     "@types/webpack": "^5.28.5",
     "eslint": "^9",
     "eslint-config-next": "^15.5.9",
+    "lightningcss": "^1.30.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
   "overrides": {
-  "pdfjs-dist": "^4.4.168"
-}
+    "pdfjs-dist": "^4.4.168"
+  }
 }
