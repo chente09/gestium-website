@@ -44,5 +44,9 @@
   },
   "overrides": {
     "pdfjs-dist": "^4.4.168"
+  },
+  "optionalDependencies": {
+    "@tailwindcss/oxide-linux-x64-gnu": "^4.0.0",
+    "lightningcss-linux-x64-gnu": "^1.28.2"
   }
 }
