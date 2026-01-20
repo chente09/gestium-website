@@ -180,7 +180,7 @@ export default function EquipoPage() {
             name: 'Dev. Vicente Nénger',
             title: 'Desarrollador de Software',
             specialization: 'Automatización de Procesos Jurídicos',
-            image: '/images/equipo/DMV06865.jpg',
+            image: '/images/equipo/vn.jpg',
             description: 'Desarrollador de software especializado en el sector legal, con experiencia en cobranza coactiva y automatización. Lidera proyectos tecnológicos que mejoran la eficiencia y experiencia del cliente.',
             experience: 'Innovación legal-tecnológica',
             achievements: [
