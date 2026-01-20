@@ -146,6 +146,21 @@ export default function EquipoPage() {
             linkedinUrl: 'https://www.linkedin.com/in/sofia-teran-a4490515a'
         },
         {
+            id: 'eduardo-melendez',
+            name: 'Ab. Eduardo Meléndez',
+            title: 'Especialista en Coactivas IESS y Gestión Notarial',
+            specialization: 'Derecho Administrativo, Coactivas y Derecho Civil',
+            image: '/images/equipo/edu0.jpg',
+            description: 'Abogado de los Tribunales y Juzgados de la República por la Universidad Central del Ecuador. Cuenta con una sólida formación en Ciencias Sociales y Derecho, con amplia experiencia en la resolución de procesos coactivos ante el IESS y la gestión integral de escrituras públicas. Su enfoque combina el rigor técnico de la escuela jurídica de la Universidad Central con habilidades de comunicación empresarial, ofreciendo soluciones eficaces en transferencias de dominio y defensa administrativa.',
+            experience: 'Experto en litigio administrativo y perfeccionamiento de instrumentos públicos.',
+            achievements: [
+                'Especialista en el levantamiento de medidas cautelares y defensa técnica en juicios coactivos del IESS.',
+                'Vasta trayectoria en la elaboración y protocolos de escrituras públicas, garantizando seguridad jurídica en actos y contratos.',
+            ],
+            textPosition: 'left',
+            linkedinUrl: 'https://www.linkedin.com/in/eduardo-melendez'
+        },
+        {
             id: 'silvia-arteaga',
             name: 'Silvia Arteaga',
             title: 'Coordinadora Legal',
@@ -194,7 +209,7 @@ export default function EquipoPage() {
         },
         {
             id: 'vicente-nenger',
-            name: 'Tec. Vicente Nénger',
+            name: 'Dev. Vicente Nénger',
             title: 'Desarrollador de Software',
             specialization: 'Automatización de Procesos Jurídicos',
             image: '/images/equipo/DMV06865.jpg',
@@ -222,37 +237,6 @@ export default function EquipoPage() {
                 'Trámite de escritos y notificaciones'
             ],
             textPosition: 'left'
-        },
-        {
-            id: 'maria-paula-peralta',
-            name: 'María Paula Peralta',
-            title: 'Asistente Legal',
-            specialization: 'Gestión Judicial',
-            image: '/images/equipo/MP-v2.jpg',
-            description: 'Estudiante de Derecho con destacada trayectoria académica y capacidad investigativa. Aporta una mirada analítica y comunicacional al área de atención y cobranzas.',
-            experience: 'Área judicial y de cobranzas',
-            achievements: [
-                'Publicaciones en editoriales internacionales',
-                'Beca académica por excelencia'
-            ],
-            textPosition: 'left',
-            linkedinUrl: 'https://www.linkedin.com/in/mar%C3%ADa-paula-peralta-413a1a216'
-        },
-        {
-            id: 'alexa-vasconez',
-            name: 'Alexa Vásconez',
-            title: 'Asistente Legal',
-            specialization: 'Gestión Jurídica Interna',
-            image: '/images/equipo/AV-v2.jpg',
-            description: 'Estudiante de Derecho con méritos académicos y experiencia práctica en derecho penal, civil y cobranzas. Destaca por su compromiso y adaptabilidad.',
-            experience: 'Gestión de trámites internos y cobranzas',
-            achievements: [
-                'Becas por excelencia académica',
-                'Colaboración en cobranzas y procesos judiciales',
-                'Gestión de trámites internos'
-            ],
-            textPosition: 'left',
-            linkedinUrl: 'https://www.linkedin.com/in/alexa-v%C3%A1sconez-silva-108593321'
         },
         {
             id: 'ingrid-perez',
@@ -385,8 +369,8 @@ export default function EquipoPage() {
 
                                         {/* Hover Content - MEJORADO PARA MÓVIL */}
                                         <div className={`absolute bottom-4 left-4 right-4 text-white transition-all duration-500 ${isMobile || hoveredMember === member.id
-                                                ? 'opacity-100 transform translate-y-0'
-                                                : 'opacity-0 transform translate-y-4'
+                                            ? 'opacity-100 transform translate-y-0'
+                                            : 'opacity-0 transform translate-y-4'
                                             }`}>
                                             <p className="text-sm font-medium mb-3 line-clamp-2">{member.specialization}</p>
 
@@ -501,24 +485,24 @@ export default function EquipoPage() {
 
                             {/* Gradient Overlay - MEJORADO PARA MÓVIL */}
                             <div className={`absolute inset-0 ${isMobile
-                                    ? 'bg-gradient-to-t from-black/90 via-black/60 to-black/30'
-                                    : selectedMember.textPosition === 'right'
-                                        ? 'bg-gradient-to-l from-black/70 via-black/30 to-black/5'
-                                        : 'bg-gradient-to-r from-black/70 via-black/30 to-black/5'
+                                ? 'bg-gradient-to-t from-black/90 via-black/60 to-black/30'
+                                : selectedMember.textPosition === 'right'
+                                    ? 'bg-gradient-to-l from-black/70 via-black/30 to-black/5'
+                                    : 'bg-gradient-to-r from-black/70 via-black/30 to-black/5'
                                 }`} />
 
                             {/* Content Section - RESPONSIVE */}
                             <div className={`absolute inset-0 flex ${isMobile
-                                    ? 'items-end justify-center'
-                                    : selectedMember.textPosition === 'right'
-                                        ? 'items-end justify-end'
-                                        : 'items-end justify-start'
+                                ? 'items-end justify-center'
+                                : selectedMember.textPosition === 'right'
+                                    ? 'items-end justify-end'
+                                    : 'items-end justify-start'
                                 }`}>
                                 <div className={`w-full ${isMobile
-                                        ? 'max-w-full'
-                                        : selectedMember.textPosition === 'right'
-                                            ? 'max-w-lg mr-4 sm:mr-8 lg:mr-12'
-                                            : 'max-w-xl ml-4 sm:ml-8 lg:ml-12'
+                                    ? 'max-w-full'
+                                    : selectedMember.textPosition === 'right'
+                                        ? 'max-w-lg mr-4 sm:mr-8 lg:mr-12'
+                                        : 'max-w-xl ml-4 sm:ml-8 lg:ml-12'
                                     } h-[100vh]`}>
                                     {/* Contenedor scrolleable - RESPONSIVE */}
                                     <div
