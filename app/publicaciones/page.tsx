@@ -12,13 +12,7 @@ import { useArticleClicks } from '@/hooks/useArticleClicks';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import {
-    BookOpen,
     Calendar,
-    FileText,
-    Newspaper,
-    Video,
-    Users,
-    Download,
     Clock,
     CheckCircle,
     Eye
@@ -251,7 +245,7 @@ export default function PublicacionesPage() {
                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         />
                                         {/* Overlay que crece con la imagen */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent transition-all duration-500 group-hover:from-black/70 group-hover:to-black/20"></div>
+                                        <div className="absolute inset-0 bg-linear-to-t from-black/10 to-transparent transition-all duration-500 group-hover:from-black/70 group-hover:to-black/20"></div>
 
                                         {/* Categoría en la esquina superior derecha */}
                                         <div className="absolute top-3 right-3">
@@ -281,8 +275,8 @@ export default function PublicacionesPage() {
                                         )}
                                     </div>
 
-                                    <div className="p-6 flex flex-col flex-grow">
-                                        <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-[var(--red-gestium)] transition-colors duration-300 flex-grow"
+                                    <div className="p-6 flex flex-col grow">
+                                        <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-(--red-gestium) transition-colors duration-300 grow"
                                             style={{ fontFamily: "'Playfair Display', serif" }}>
                                             {article.title}
                                         </h3>

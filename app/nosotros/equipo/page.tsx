@@ -115,6 +115,23 @@ export default function EquipoPage() {
             textPosition: 'right',
             linkedinUrl: 'https://www.linkedin.com/in/michelle-alejandra-ochoa-ch%C3%A1vez-692969225'
         },
+
+        {
+            id: 'tatiana-cordonez',
+            name: 'Ab.Tatiana Cordonez',
+            title: 'Especialista en Inmobiliario',
+            specialization: 'Derecho Inmobiliario y Familiar',
+            image: '/images/equipo/tc-v1.jpg',
+            description: 'Estudiante avanzada de Derecho con sólida formación en áreas inmobiliaria, propiedad intelectual, familia y societario. Brinda soluciones legales prácticas y confiables.',
+            experience: 'Especialista en gestión legal estratégica',
+            achievements: [
+                'Asesoría legal en procesos inmobiliarios y familiares',
+                'Apoyo en estructuración societaria',
+                'Atención personalizada al cliente'
+            ],
+            textPosition: 'right',
+            linkedinUrl: 'https://www.linkedin.com/in/tatiana-cordonez-cueva-4895a0207'
+        },
         {
             id: 'karla-padilla',
             name: 'Ab. Karla Padilla',
@@ -159,6 +176,22 @@ export default function EquipoPage() {
             ],
             textPosition: 'left',
             linkedinUrl: 'https://www.linkedin.com/in/eduardo-melendez'
+        },
+        {
+            id: 'pamela-andrade',
+            name: 'Ab. Pamela Andrade',
+            title: 'Especialista en Coactivas IESS y Derecho Administrativo',
+            specialization: 'Derecho Administrativo, Constitucional e Inmobiliario',
+            image: '/images/equipo/pame.jpg',
+            description: 'Abogada por la Universidad Central del Ecuador, con una formación académica de excelencia y un enfoque especializado en el área administrativa y constitucional. Cuenta con una trayectoria destacada en la defensa técnica de procesos coactivos del IESS, tanto en fase prejudicial como judicial. Su práctica se distingue por una sólida capacidad de argumentación jurídica, respaldada por su experiencia en competencias internacionales de Derechos Humanos y Derecho Constitucional.',
+            experience: 'Defensa administrativa estratégica y gestión de procesos coactivos.',
+            achievements: [
+                'Becaria por la Fundación Konrad-Adenauer-Stiftung para la Competencia Centroamericana de Derechos Humanos Moot Court.',
+                'Concursante destacada en las Olimpiadas de Derecho Constitucional organizadas por la Corte Constitucional del Ecuador (CCE).',
+                'Especialista en la resolución de glosas y levantamiento de medidas cautelares en coactivas del IESS.'
+            ],
+            textPosition: 'right',
+            linkedinUrl: 'https://www.linkedin.com/in/pamela-andrade' // Ajustar URL real
         },
         {
             id: 'silvia-arteaga',
@@ -208,20 +241,34 @@ export default function EquipoPage() {
             linkedinUrl: 'https://www.linkedin.com/in/sof%C3%ADa-micaela-gua%C3%B1a-rojas-ab9a94328'
         },
         {
-            id: 'tatiana-cordonez',
-            name: 'Tatiana Cordonez',
-            title: 'Especialista en Inmobiliario',
-            specialization: 'Derecho Inmobiliario y Familiar',
-            image: '/images/equipo/tc-v1.jpg',
-            description: 'Estudiante avanzada de Derecho con sólida formación en áreas inmobiliaria, propiedad intelectual, familia y societario. Brinda soluciones legales prácticas y confiables.',
-            experience: 'Especialista en gestión legal estratégica',
+            id: 'ingrid-perez',
+            name: 'Ingrid Pérez',
+            title: 'Asistente Legal',
+            specialization: 'Gestión Prejudicial',
+            image: '/images/equipo/ip.jpg',
+            description: 'Estudiante universitaria con experiencia como pasante legal en el Banco Pichincha. Destaca por su capacidad de organización y apoyo en la gestión de cartera.',
+            experience: 'Cobranza y redacción de demandas',
             achievements: [
-                'Asesoría legal en procesos inmobiliarios y familiares',
-                'Apoyo en estructuración societaria',
-                'Atención personalizada al cliente'
+                'Colaboración en cobranzas y procesos judiciales',
+                'Gestión de trámites internos'
             ],
             textPosition: 'right',
-            linkedinUrl: 'https://www.linkedin.com/in/tatiana-cordonez-cueva-4895a0207'
+            linkedinUrl: 'https://www.linkedin.com/in/ingrid-p%C3%A9rez-13438a301'
+        },
+        {
+            id: 'victoria-villegas',
+            name: 'Victoria Villegas',
+            title: 'Asistente Legal',
+            specialization: 'Recuperación de Cartera',
+            image: '/images/equipo/vv.jpg',
+            description: 'Profesional en formación con destacada trayectoria en el sector cooperativista, especializándose en el área de recuperación de cartera para Cooprogreso. Posee una alta capacidad para la gestión de cobranza judicial y extrajudicial, enfocada en la resolución de conflictos y el saneamiento de activos financieros. Se distingue por su agilidad en el seguimiento de procesos y su destreza en la redacción de instrumentos legales para el sector financiero.',
+            experience: 'Gestión operativa de cartera vencida y soporte procesal en el sector de la economía popular y solidaria.',
+            achievements: [
+                'Gestión eficiente en la recuperación de cartera para Cooprogreso, optimizando los indicadores de retorno de activos.',
+                'Soporte técnico-legal en la elaboración de demandas y control de procesos judiciales en plataformas institucionales.',
+            ],
+            textPosition: 'left',
+            linkedinUrl: 'https://www.linkedin.com/in/victoria-villegas'
         },
         {
             id: 'marco-sanguano',
@@ -237,21 +284,6 @@ export default function EquipoPage() {
                 'Trámite de escritos y notificaciones'
             ],
             textPosition: 'left'
-        },
-        {
-            id: 'ingrid-perez',
-            name: 'Ingrid Pérez',
-            title: 'Asistente Legal',
-            specialization: 'Gestión Prejudicial',
-            image: '/images/equipo/ip.jpg',
-            description: 'Estudiante universitaria con experiencia como pasante legal en el Banco Pichincha. Destaca por su capacidad de organización y apoyo en la gestión de cartera.',
-            experience: 'Cobranza y redacción de demandas',
-            achievements: [
-                'Colaboración en cobranzas y procesos judiciales',
-                'Gestión de trámites internos'
-            ],
-            textPosition: 'right',
-            linkedinUrl: 'https://www.linkedin.com/in/ingrid-p%C3%A9rez-13438a301'
         }
 
     ];
@@ -364,7 +396,7 @@ export default function EquipoPage() {
                                         <div className="absolute inset-0 bg-black/10 pointer-events-none z-10" />
 
                                         {/* Overlay Premium - SIEMPRE VISIBLE EN MÓVIL */}
-                                        <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-all duration-500 ${isMobile || hoveredMember === member.id ? 'opacity-100' : 'opacity-0'
+                                        <div className={`absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent transition-all duration-500 ${isMobile || hoveredMember === member.id ? 'opacity-100' : 'opacity-0'
                                             }`} />
 
                                         {/* Hover Content - MEJORADO PARA MÓVIL */}
@@ -376,7 +408,7 @@ export default function EquipoPage() {
 
                                             {/* Contenedor flex responsivo */}
                                             <div className="flex flex-col sm:flex-row gap-2">
-                                                <button className="text-xs font-bold uppercase tracking-wider px-4 py-2.5 border border-white/50 hover:bg-white hover:text-black transition-all duration-300 cursor-pointer flex-1 min-h-[40px] flex items-center justify-center">
+                                                <button className="text-xs font-bold uppercase tracking-wider px-4 py-2.5 border border-white/50 hover:bg-white hover:text-black transition-all duration-300 cursor-pointer flex-1 min-h-10 flex items-center justify-center">
                                                     Ver Perfil
                                                 </button>
 
@@ -422,7 +454,7 @@ export default function EquipoPage() {
                                         {/* Expertise Indicator */}
                                         <div className="mt-4 flex items-start gap-2">
                                             <div
-                                                className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
+                                                className="w-2 h-2 rounded-full mt-2 shrink-0"
                                                 style={{ backgroundColor: 'var(--red-gestium)' }}
                                             />
                                             <span
@@ -485,10 +517,10 @@ export default function EquipoPage() {
 
                             {/* Gradient Overlay - MEJORADO PARA MÓVIL */}
                             <div className={`absolute inset-0 ${isMobile
-                                ? 'bg-gradient-to-t from-black/90 via-black/60 to-black/30'
+                                ? 'bg-linear-to-t from-black/90 via-black/60 to-black/30'
                                 : selectedMember.textPosition === 'right'
-                                    ? 'bg-gradient-to-l from-black/70 via-black/30 to-black/5'
-                                    : 'bg-gradient-to-r from-black/70 via-black/30 to-black/5'
+                                    ? 'bg-linear-to-l from-black/70 via-black/30 to-black/5'
+                                    : 'bg-linear-to-r from-black/70 via-black/30 to-black/5'
                                 }`} />
 
                             {/* Content Section - RESPONSIVE */}
@@ -503,7 +535,7 @@ export default function EquipoPage() {
                                     : selectedMember.textPosition === 'right'
                                         ? 'max-w-lg mr-4 sm:mr-8 lg:mr-12'
                                         : 'max-w-xl ml-4 sm:ml-8 lg:ml-12'
-                                    } h-[100vh]`}>
+                                    } h-screen`}>
                                     {/* Contenedor scrolleable - RESPONSIVE */}
                                     <div
                                         ref={scrollContainerRef}
@@ -624,7 +656,7 @@ export default function EquipoPage() {
                                                             {selectedMember.achievements.map((achievement, index) => (
                                                                 <li key={index} className="flex items-start gap-3">
                                                                     <div
-                                                                        className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
+                                                                        className="w-1.5 h-1.5 rounded-full mt-2 shrink-0"
                                                                         style={{ backgroundColor: 'var(--red-gestium)' }}
                                                                     />
                                                                     <span
