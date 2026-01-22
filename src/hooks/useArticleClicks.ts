@@ -4,6 +4,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { createClient } from '../lib/supabase/client';
 
+
 interface ClickCounts {
     [articleId: string]: number;
 }

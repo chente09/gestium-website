@@ -7,6 +7,7 @@ import Section from '@/components/ui/Section';
 import SectionHeader from '@/components/ui/SectionHeader';
 import HeroSection from '@/components/ui/HeroSection';
 import { useArticleClicks } from '@/hooks/useArticleClicks';
+import { articles } from '@/src/data/articles';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import {
@@ -21,137 +22,8 @@ export default function PublicacionesPage() {
     const router = useRouter();
     const { clickCounts, loading, incrementClick } = useArticleClicks();
 
-    const featuredArticles = [
-        {
-            slug: 'amicus-curiae-crisis-carcelaria-ecuador',
-            title: "Amicus Curiae sobre la Crisis Carcelaria y Derechos Humanos en Ecuador",
-            category: "Derechos Humanos",
-            author: "Sofía Terán, et al.",
-            excerpt: "Presentación de argumentos jurídicos sobre la responsabilidad del Estado ecuatoriano frente a las masacres carcelarias, la vulneración de derechos de las personas privadas de libertad y la figura de las ejecuciones extrajudiciales.",
-            date: "09 Junio 2023",
-            readTime: "28 min",
-            image: "/documents/AmicusCuriae.png",
-            type: "Amicus Curiae",
-            institution: "Fundación Regional de Asesoría en Derechos Humanos (INREDH)",
-            pdfUrl: "/documents/AmicusCuriae.pdf",
-            hasFullArticle: false // Por ahora todos en false, luego los activamos
-        },
-        {
-            slug: 'prescripcion-adquisitiva-dominio',
-            title: "La Prescripción Adquisitiva del Dominio",
-            category: "Derecho Civil",
-            author: "Nahomí Padilla, et al.",
-            excerpt: "Análisis sobre la prescripción como modo de adquirir el dominio, sus requisitos y clases, y su aplicación en la legislación ecuatoriana.",
-            date: "09 Septiembre 2020",
-            readTime: "25 min",
-            image: "/documents/prescripcion.jpg",
-            type: "Ensayo Académico",
-            institution: "Universidad Central del Ecuador",
-            pdfUrl: "/documents/prescripcion.pdf",
-            hasFullArticle: false
-        },
-        {
-            slug: 'rebelion-granja-ecuador',
-            title: 'La Rebelión de la Granja ¿Distopía o una profecía al Estado ecuatoriano?',
-            category: 'Análisis Político',
-            author: 'María Paula Peralta',
-            excerpt: 'Análisis comparativo entre la obra distópica de George Orwell y la realidad política contemporánea del Ecuador, explorando los paralelismos en términos de manipulación política y falta de educación cívica.',
-            date: '2025',
-            readTime: '10 min',
-            image: '/documents/rebelion-granja.jpg',
-            type: 'Ensayo Académico',
-            institution: 'Análisis Literario-Político',
-            pdfUrl: '/documents/rebelion-granja-ecuador.pdf',
-            hasFullArticle: false
-        },
-        {
-            slug: 'facturacion-electronica-pymes-ecuador',
-            title: "Transformación Digital: PYMES y Facturación Electrónica en Ecuador",
-            category: "Derecho Tributario",
-            author: "Alexa Gabriela Vásconez Silva",
-            excerpt: "Análisis sobre el impacto, las ventajas y desventajas de la facturación electrónica en las pequeñas y medianas empresas (PYMES) del Ecuador, explorando su implementación y requisitos.",
-            date: "2024",
-            readTime: "15 min",
-            image: "/documents/LaFacturacionElectronica.jpg",
-            type: "Ensayo Académico",
-            institution: "Universidad Central del Ecuador",
-            pdfUrl: "/documents/LaFacturacionElectronica.pdf",
-            hasFullArticle: false
-        },
-        {
-            slug: 'perspectivas-genero-actuacion-judicial',
-            title: "Perspectivas de Género en Actuación y Diligencias Judiciales",
-            category: "Derecho y Género",
-            author: "Ingrid Pérez",
-            excerpt: "Análisis sobre la importancia y aplicación de la perspectiva de género en el sistema judicial ecuatoriano, abordando la legislación vigente, desafíos estructurales y una comparativa con los sistemas de España y México.",
-            date: "2024",
-            readTime: "18 min",
-            image: "/documents/perspectivasGenero.png",
-            type: "Artículo de Investigación",
-            institution: "Investigación Académica",
-            pdfUrl: "/documents/perspectivasGenero.pdf",
-            hasFullArticle: false
-        },
-        {
-            slug: 'plataforma-web-gestion-procesos-juridicos',
-            title: 'Desarrollo de una Plataforma Web Administrable para la Gestión Integral de Procesos Jurídicos',
-            category: 'Legal Tech',
-            author: 'Vicente Nenger',
-            excerpt: 'Proyecto de titulación sobre el desarrollo de tecnología innovadora para optimizar la gestión de procesos jurídicos mediante plataformas web administrables.',
-            date: '31 Marzo 2025',
-            readTime: 'Documento extenso',
-            image: '/documents/tesis-legal-tech.jpeg',
-            type: 'Tesis',
-            institution: 'ITSQMET - Instituto Superior Tecnológico Quito Metropolitano',
-            pdfUrl: '/documents/tesis-legal-tech.pdf',
-            hasFullArticle: false
-        },
-        {
-            slug: 'debido-proceso-citacion-telematica',
-            title: "El Debido Proceso en la Citación Telemática y su Impacto en el Derecho a la Defensa",
-            category: "Derecho Procesal",
-            author: "David Maldonado y Luis Guijarro",
-            excerpt: "Análisis sobre la implementación de la citación telemática en Ecuador, su alineación con los principios del debido proceso y el derecho a la defensa, y los desafíos asociados a la brecha digital y la seguridad de la información.",
-            date: "2023",
-            readTime: "Documento extenso",
-            image: "/documents/tesisDavid.png",
-            type: "Tesis de Maestría",
-            institution: "Universidad Bolivariana del Ecuador",
-            pdfUrl: "/documents/tesisDavid.pdf",
-            hasFullArticle: false
-        },
-        {
-            slug: 'reforma-losep-2025-sumarios-administrativos',
-            title: "Reforma a la LOSEP (junio 2025): Sumarios administrativos a cargo de la institución",
-            category: "Derecho Administrativo",
-            author: "Tatiana Cordonez",
-            excerpt: "Análisis de la reforma de junio de 2025 a la LOSEP, que transfiere la competencia de los sumarios administrativos del Ministerio del Trabajo a cada entidad pública, y sus implicaciones en la eficiencia y los derechos laborales.",
-            date: "Junio 2025",
-            readTime: "2 min",
-            image: "/documents/ReformaLosep.jpg",
-            type: "Análisis Jurídico",
-            institution: "Análisis Legal",
-            pdfUrl: "/documents/ReformaLosep.pdf",
-            hasFullArticle: false
-        },
-        {
-            slug: 'cambios-ley-inquilinato-ecuador',
-            title: "Cambios Importantes en la Ley de Inquilinato",
-            category: "Derecho Inmobiliario",
-            author: "Sofía Guaña",
-            excerpt: "Análisis de las reformas que introducen la inscripción obligatoria de contratos, topes al valor del arriendo y nuevas sanciones para proteger a los inquilinos en Ecuador.",
-            date: "Agosto 2025",
-            readTime: "2 min",
-            image: "/documents/articuloSg.jpg",
-            type: "Artículo",
-            institution: "GESTIUM Servicios Legales Integrales",
-            pdfUrl: "/documents/articuloSg.pdf",
-            hasFullArticle: false
-        }
-    ];
-
     // Manejador de click en artículo
-    const handleArticleClick = async (article: typeof featuredArticles[0]) => {
+    const handleArticleClick = async (article: typeof articles[0]) => {
         const articleId = article.slug;
         await incrementClick(articleId, article.title);
 
@@ -209,7 +81,7 @@ export default function PublicacionesPage() {
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {featuredArticles.map((article, index) => {
+                        {articles.map((article, index) => {
                             const clicks = clickCounts[article.slug] || 0;
                             return (
                                 <motion.article
