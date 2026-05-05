@@ -133,21 +133,6 @@ export default function EquipoPage() {
             linkedinUrl: 'https://www.linkedin.com/in/tatiana-cordonez-cueva-4895a0207'
         },
         {
-            id: 'karla-padilla',
-            name: 'Ab. Karla Padilla',
-            title: 'Abogada Especialista',
-            specialization: 'Derecho Civil y Coactivo',
-            image: '/images/equipo/nahomi-v2.jpg',
-            description: 'Abogada en libre ejercicio con amplia experiencia en procedimientos civiles, coactivos, penales y de familia, aportando soluciones jurídicas integrales con enfoque práctico.',
-            experience: 'Ejercicio profesional independiente',
-            achievements: [
-                'Litigios exitosos en procesos civiles y coactivos',
-                'Asesoría en casos de derecho civil, penal y familiar',
-            ],
-            textPosition: 'left',
-            linkedinUrl: 'https://www.linkedin.com/in/nahomi-padilla-846b87196'
-        },
-        {
             id: 'sofia-teran',
             name: 'Ab. Sofía Terán',
             title: 'Derecho civil y laboral',
@@ -176,22 +161,6 @@ export default function EquipoPage() {
             ],
             textPosition: 'left',
             linkedinUrl: 'https://www.linkedin.com/in/eduardo-melendez'
-        },
-        {
-            id: 'pamela-andrade',
-            name: 'Ab. Pamela Andrade',
-            title: 'Especialista en Coactivas IESS y Derecho Administrativo',
-            specialization: 'Derecho Administrativo, Constitucional e Inmobiliario',
-            image: '/images/equipo/pame.jpg',
-            description: 'Abogada por la Universidad Central del Ecuador, con una formación académica de excelencia y un enfoque especializado en el área administrativa y constitucional. Cuenta con una trayectoria destacada en la defensa técnica de procesos coactivos del IESS, tanto en fase prejudicial como judicial. Su práctica se distingue por una sólida capacidad de argumentación jurídica, respaldada por su experiencia en competencias internacionales de Derechos Humanos y Derecho Constitucional.',
-            experience: 'Defensa administrativa estratégica y gestión de procesos coactivos.',
-            achievements: [
-                'Becaria por la Fundación Konrad-Adenauer-Stiftung para la Competencia Centroamericana de Derechos Humanos Moot Court.',
-                'Concursante destacada en las Olimpiadas de Derecho Constitucional organizadas por la Corte Constitucional del Ecuador (CCE).',
-                'Especialista en la resolución de glosas y levantamiento de medidas cautelares en coactivas del IESS.'
-            ],
-            textPosition: 'right',
-            linkedinUrl: 'https://www.linkedin.com/in/pamela-andrade' // Ajustar URL real
         },
         {
             id: 'silvia-arteaga',
@@ -225,22 +194,6 @@ export default function EquipoPage() {
             linkedinUrl: 'https://www.linkedin.com/in/vicente-nénger-9b30b1378'
         },
         {
-            id: 'sofia-guana',
-            name: 'Sofía Guaña',
-            title: 'Asistente Legal',
-            specialization: 'Derecho Inmobiliario, Laboral y Coactivo',
-            image: '/images/equipo/SG-v2.jpg',
-            description: 'Estudiante de Derecho con experiencia en derecho inmobiliario, coactivo y laboral. Destaca por su dedicación, análisis detallado y acompañamiento personalizado al cliente.',
-            experience: 'Estudiante activa en práctica jurídica',
-            achievements: [
-                'Colaboración en casos coactivos e inmobiliarios',
-                'Apoyo integral en audiencias y trámites',
-                'Gestión personalizada de clientes'
-            ],
-            textPosition: 'left',
-            linkedinUrl: 'https://www.linkedin.com/in/sof%C3%ADa-micaela-gua%C3%B1a-rojas-ab9a94328'
-        },
-        {
             id: 'ingrid-perez',
             name: 'Ingrid Pérez',
             title: 'Asistente Legal',
@@ -255,36 +208,6 @@ export default function EquipoPage() {
             textPosition: 'right',
             linkedinUrl: 'https://www.linkedin.com/in/ingrid-p%C3%A9rez-13438a301'
         },
-        {
-            id: 'victoria-villegas',
-            name: 'Victoria Villegas',
-            title: 'Asistente Legal',
-            specialization: 'Recuperación de Cartera',
-            image: '/images/equipo/vv.jpg',
-            description: 'Profesional en formación con destacada trayectoria en el sector cooperativista, especializándose en el área de recuperación de cartera para Cooprogreso. Posee una alta capacidad para la gestión de cobranza judicial y extrajudicial, enfocada en la resolución de conflictos y el saneamiento de activos financieros. Se distingue por su agilidad en el seguimiento de procesos y su destreza en la redacción de instrumentos legales para el sector financiero.',
-            experience: 'Gestión operativa de cartera vencida y soporte procesal en el sector de la economía popular y solidaria.',
-            achievements: [
-                'Gestión eficiente en la recuperación de cartera para Cooprogreso, optimizando los indicadores de retorno de activos.',
-                'Soporte técnico-legal en la elaboración de demandas y control de procesos judiciales en plataformas institucionales.',
-            ],
-            textPosition: 'left',
-            linkedinUrl: 'https://www.linkedin.com/in/victoria-villegas'
-        },
-        {
-            id: 'marco-sanguano',
-            name: 'Marco Sanguano',
-            title: 'Gestor Legal',
-            specialization: 'Gestión Procesal',
-            image: '/images/equipo/MS-v2.jpg',
-            description: 'Encargado del impulso y seguimiento de procesos legales. Asegura el cumplimiento de plazos y correcta tramitación de expedientes con alto nivel de organización.',
-            experience: 'Seguimiento y control judicial',
-            achievements: [
-                'Gestión de expedientes judiciales',
-                'Control de tiempos procesales',
-                'Trámite de escritos y notificaciones'
-            ],
-            textPosition: 'left'
-        }
 
     ];
 
