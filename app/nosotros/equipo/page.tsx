@@ -21,6 +21,11 @@ interface TeamMember {
     isLeader?: boolean;
     textPosition?: 'left' | 'right';
     linkedinUrl?: string;
+    tagline?: string;
+    expertise?: string[];
+    technologies?: string[];
+    portfolioUrl?: string;
+    yearsOfExperience?: number;
 }
 
 export default function EquipoPage() {
@@ -179,19 +184,44 @@ export default function EquipoPage() {
         },
         {
             id: 'vicente-nenger',
-            name: 'Dev. Vicente Nénger',
-            title: 'Desarrollador de Software',
-            specialization: 'Automatización de Procesos Jurídicos',
+            name: 'Vicente Nénger',
+            title: 'Líder de Área IESS | Software Developer',
+            specialization: 'Legal Tech & Recuperación de Cartera Coactiva',
             image: '/images/equipo/vn.jpg',
-            description: 'Desarrollador de software especializado en el sector legal, con experiencia en cobranza coactiva y automatización. Lidera proyectos tecnológicos que mejoran la eficiencia y experiencia del cliente.',
-            experience: 'Innovación legal-tecnológica',
+            tagline: 'Construyendo el puente entre el derecho y la tecnología',
+            description: 'Líder del área IESS en GESTIUM S.A., con experiencia integral en recuperación de cartera coactiva bajo la Resolución C.D. 625. Combino el conocimiento profundo del marco normativo con el desarrollo de software para diseñar soluciones que automatizan, escalan y profesionalizan la gestión coactiva. Fundador de New Experience Software.',
+            experience: 'Liderazgo legal-tecnológico en GESTIUM S.A.',
+            isLeader: true,
+            expertise: [
+                'Procedimiento Coactivo (Resolución C.D. 625)',
+                'Gestión de Títulos de Crédito IESS',
+                'Arquitectura de aplicaciones web Angular / Next.js / Node.js',
+                'Firebase & Cloud Architecture',
+                'Automatización con Python & Selenium',
+                'Integraciones con sistemas IESS y APIs externas',
+                'Liderazgo y dirección de equipos legales'
+            ],
+            technologies: [
+                'TypeScript',
+                'Angular',
+                'Next.js',
+                'Node.js',
+                'Firebase',
+                'Python',
+                'Selenium',
+                'Tailwind CSS'
+            ],
             achievements: [
-                'Desarrollo y mantenimiento de GESTIUM-APP',
-                'Automatización de procesos coactivos',
-                'Soluciones digitales orientadas al usuario'
+                'Liderazgo del área IESS en GESTIUM S.A.',
+                'Arquitecto de GESTIUM-APP: sistema integral de gestión coactiva',
+                'Desarrollo del Sistema de Providencias IESS bajo Resolución C.D. 625',
+                'Automatización de consultas masivas de títulos de crédito (~70% reducción en tiempos)',
+                'Implementación de dashboards analíticos sobre +1,300 registros judiciales',
+                'Capacitación de equipos en procedimientos coactivos y herramientas digitales'
             ],
             textPosition: 'right',
-            linkedinUrl: 'https://www.linkedin.com/in/vicente-nénger-9b30b1378'
+            linkedinUrl: 'https://www.linkedin.com/in/vicente-nénger-9b30b1378',
+            portfolioUrl: 'https://vnenger.com'
         },
         {
             id: 'ingrid-perez',
