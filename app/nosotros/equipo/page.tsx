@@ -208,6 +208,35 @@ export default function EquipoPage() {
             textPosition: 'right',
             linkedinUrl: 'https://www.linkedin.com/in/ingrid-p%C3%A9rez-13438a301'
         },
+        {
+            id: 'victoria-bohorquez',
+            name: 'Victoria Bohorquez',
+            title: 'Pasante Legal',
+            specialization: 'Recuperación de Cartera',
+            image: '/images/equipo/vb.jpeg', // Asegúrate de tener la imagen con este nombre o actualizar la ruta
+            description: 'Pasante legal asignada al área de Banco Pichincha. Destaca por su apoyo estratégico en la gestión de cobranza y ejecución de procesos orientados a la efectiva recuperación de cartera.',
+            experience: 'Gestión de cobranza y recuperación de cartera',
+            achievements: [
+                'Apoyo activo en procesos de cobranza para Banco Pichincha',
+                'Colaboración en el seguimiento y recuperación de cartera'
+            ],
+            textPosition: 'left', // Puedes cambiarlo a 'right' dependiendo de cómo quieras que se vea en tu diseño
+        },
+        {
+            id: 'valeria_marcillo',
+            name: 'Valeria Marcillo',
+            title: 'Gestor Legal',
+            specialization: 'Gestión Institucional y Procesal',
+            image: '/images/equipo/vm.jpg',
+            description: 'Especialista en la gestión y agilitación de diligencias ante entidades públicas y judiciales. Su labor es clave para asegurar la fluidez de los procesos mediante la coordinación directa con complejos judiciales, municipios y notarías.',
+            experience: 'Gestión externa y diligencias administrativas',
+            achievements: [
+                'Ejecución efectiva de trámites en el Complejo Judicial y Notarías',
+                'Gestión de procesos administrativos y seguimiento en el Municipio',
+                'Optimización en la presentación y retiro de documentos institucionales'
+            ],
+            textPosition: 'left'
+        }
 
     ];
 
