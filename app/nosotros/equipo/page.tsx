@@ -106,7 +106,7 @@ export default function EquipoPage() {
         },
         {
             id: 'michelle-ochoa',
-            name: 'Ab. Michelle Ochoa',
+            name: 'Abg. Michelle Ochoa',
             title: 'Abogada Especialista',
             specialization: 'Derecho Corporativo y Societario',
             image: '/images/equipo/MO-v2.jpg',
@@ -123,7 +123,7 @@ export default function EquipoPage() {
 
         {
             id: 'tatiana-cordonez',
-            name: 'Ab.Tatiana Cordonez',
+            name: 'Abg.Tatiana Cordonez',
             title: 'Especialista en Inmobiliario',
             specialization: 'Derecho Inmobiliario y Familiar',
             image: '/images/equipo/tc-v1.jpg',
@@ -139,7 +139,7 @@ export default function EquipoPage() {
         },
         {
             id: 'sofia-teran',
-            name: 'Ab. Sofía Terán',
+            name: 'Abg. Sofía Terán',
             title: 'Derecho civil y laboral',
             specialization: 'Derecho Civil, Laboral y Propiedad Intelectual',
             image: '/images/equipo/ST-v2.png',
@@ -153,38 +153,8 @@ export default function EquipoPage() {
             linkedinUrl: 'https://www.linkedin.com/in/sofia-teran-a4490515a'
         },
         {
-            id: 'eduardo-melendez',
-            name: 'Ab. Eduardo Meléndez',
-            title: 'Especialista en Coactivas IESS y Gestión Notarial',
-            specialization: 'Derecho Administrativo, Coactivas y Derecho Civil',
-            image: '/images/equipo/edu0.jpg',
-            description: 'Abogado de los Tribunales y Juzgados de la República por la Universidad Central del Ecuador. Cuenta con una sólida formación en Ciencias Sociales y Derecho, con amplia experiencia en la resolución de procesos coactivos ante el IESS y la gestión integral de escrituras públicas. Su enfoque combina el rigor técnico de la escuela jurídica de la Universidad Central con habilidades de comunicación empresarial, ofreciendo soluciones eficaces en transferencias de dominio y defensa administrativa.',
-            experience: 'Experto en litigio administrativo y perfeccionamiento de instrumentos públicos.',
-            achievements: [
-                'Especialista en el levantamiento de medidas cautelares y defensa técnica en juicios coactivos del IESS.',
-                'Vasta trayectoria en la elaboración y protocolos de escrituras públicas, garantizando seguridad jurídica en actos y contratos.',
-            ],
-            textPosition: 'left',
-            linkedinUrl: 'https://www.linkedin.com/in/eduardo-melendez'
-        },
-        {
-            id: 'silvia-arteaga',
-            name: 'Silvia Arteaga',
-            title: 'Coordinadora Legal',
-            specialization: 'Cobranza Judicial',
-            image: '/images/equipo/SA-v2.jpg',
-            description: 'Líder de Cobranza Judicial del Banco Pichincha. Con amplia experiencia en recuperación de cartera y supervisión de procesos judiciales, lidera estrategias de gestión legal con altos estándares de eficiencia.',
-            experience: 'Cobranza judicial en banca',
-            achievements: [
-                'Liderazgo de equipos legales especializados',
-                'Estrategias de recuperación para cartera compleja',
-                'Supervisión de procesos judiciales masivos'
-            ],
-            textPosition: 'left'
-        },
-        {
             id: 'vicente-nenger',
-            name: 'Vicente Nénger',
+            name: 'Dev. Vicente Nénger',
             title: 'Líder de Área IESS | Software Developer',
             specialization: 'Legal Tech & Recuperación de Cartera Coactiva',
             image: '/images/equipo/vn.jpg',
@@ -222,6 +192,49 @@ export default function EquipoPage() {
             textPosition: 'right',
             linkedinUrl: 'https://www.linkedin.com/in/vicente-nénger-9b30b1378',
             portfolioUrl: 'https://vnenger.com'
+        },
+        {
+            id: 'eduardo-melendez',
+            name: 'Ab. Eduardo Meléndez',
+            title: 'Especialista en Coactivas IESS y Gestión Notarial',
+            specialization: 'Derecho Administrativo, Coactivas y Derecho Civil',
+            image: '/images/equipo/edu0.jpg',
+            description: 'Abogado de los Tribunales y Juzgados de la República por la Universidad Central del Ecuador. Cuenta con una sólida formación en Ciencias Sociales y Derecho, con amplia experiencia en la resolución de procesos coactivos ante el IESS y la gestión integral de escrituras públicas. Su enfoque combina el rigor técnico de la escuela jurídica de la Universidad Central con habilidades de comunicación empresarial, ofreciendo soluciones eficaces en transferencias de dominio y defensa administrativa.',
+            experience: 'Experto en litigio administrativo y perfeccionamiento de instrumentos públicos.',
+            achievements: [
+                'Especialista en el levantamiento de medidas cautelares y defensa técnica en juicios coactivos del IESS.',
+                'Vasta trayectoria en la elaboración y protocolos de escrituras públicas, garantizando seguridad jurídica en actos y contratos.',
+            ],
+            textPosition: 'left',
+        },
+        {
+            id: 'nayely-toapanta',
+            name: 'Abg. Nayely Toapanta',
+            title: 'Especialista en Recuperación de Cartera y Resoluciones Coactivas IESS',
+            specialization: 'Derecho Administrativo, Jurisdicción Coactiva y Gestión de Cobranzas',
+            image: '/images/equipo/ny2.jpeg',
+            description: 'Abogada con destacada trayectoria en el sector público, enfocada en la jurisdicción coactiva dentro del Instituto Ecuatoriano de Seguridad Social (IESS). Se especializa en el impulso procesal y la proyección de providencias con alta precisión jurídica. Su enfoque combina un profundo conocimiento del derecho administrativo con estrategias modernas de cobranza persuasiva y coactiva, garantizando la recuperación efectiva de cartera vencida siempre bajo el estricto cumplimiento del debido proceso.',
+            experience: 'Experta en redacción jurídica, impulso procesal y estrategias de cobro institucional.',
+            achievements: [
+                'Especialista en la proyección, redacción y fundamentación de providencias dentro de juicios coactivos en el IESS.',
+                'Diseño e implementación de estrategias persuasivas y medidas cautelares para la eficiente recuperación de cartera patronal.'
+            ],
+            textPosition: 'right', // Alterna con el 'left' de Eduardo para un diseño balanceado
+        },
+        {
+            id: 'silvia-arteaga',
+            name: 'Silvia Arteaga',
+            title: 'Coordinadora Legal',
+            specialization: 'Cobranza Judicial',
+            image: '/images/equipo/SA-v2.jpg',
+            description: 'Líder de Cobranza Judicial del Banco Pichincha. Con amplia experiencia en recuperación de cartera y supervisión de procesos judiciales, lidera estrategias de gestión legal con altos estándares de eficiencia.',
+            experience: 'Cobranza judicial en banca',
+            achievements: [
+                'Liderazgo de equipos legales especializados',
+                'Estrategias de recuperación para cartera compleja',
+                'Supervisión de procesos judiciales masivos'
+            ],
+            textPosition: 'left'
         },
         {
             id: 'ingrid-perez',
