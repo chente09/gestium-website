@@ -110,7 +110,7 @@ export default function Home() {
   const throttleRef = useRef<NodeJS.Timeout | null>(null);
   const lastUpdateRef = useRef(0);
 
-  const fullText = `Nuestra experiencia de más de veinte años y la confianza de las mayores Instituciones Financieras de nuestro País nos respaldan. Gestionamos todo tipo de procesos a nivel judicial y extrajudicial con la agilidad, iniciativa y proactividad que nuestros clientes requieren.\n\nLe invitamos a navegar por nuestra página web para conocer más sobre nuestra estructura, personal, respaldo y servicios. Es un honor contar con su confianza.`;
+  const fullText = `Con más de 20 años de experiencia, brindamos servicios legales, financieros y modelos de sostenibilidad a empresas de todo el país. Nuestros valores institucionales guían todas nuestras decisiones, al ofrecer soluciones confiables y profesionales.\n\nLe invitamos a conocer más sobre nuestra estructura, personal, respaldo y servicios. Es un honor contar con su confianza.`;
 
   const handleTypewriterComplete = () => {
     setShowCTAs(true);
